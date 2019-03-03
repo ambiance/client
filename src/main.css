@@ -1,0 +1,7 @@
+@import "./common/styles/palette.css";
+@import "./components/page-header/PageHeader.css";
+@import "./components/search-form/SearchForm.css";
+
+:root {
+  font-size: 18px;
+}
