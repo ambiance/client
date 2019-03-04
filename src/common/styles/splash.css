@@ -35,7 +35,7 @@
   height: 100%;
 }
 
-@media all and (max-width: 493px) {
+@media all and (max-width: 577px) {
   .slideshow {
     height: 16rem;
     margin-bottom: 3px;

@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Comfortaa");
 
-@media only screen and (min-width: 0px) and (max-width: 590px) {
+/* @media only screen and (min-width: 0px) and (max-width: 590px) {
   #navoptions {
     display: none;
   }
-}
+} */
 
 :root {
   font-size: 16px;
@@ -110,22 +110,7 @@ nav ul li {
   color: black;
 }
 
-@media all and (max-width: 544px) {
-  header {
-    height: 5.5rem;
-  }
-
-  header nav {
-    height: 55px;
-    padding: 49px 0px 0px;
-  }
-
-  nav ul {
-    margin: 0px;
-  }
-}
-
-@media all and (max-width: 493px) {
+@media all and (max-width: 577px) {
   header {
     height: 6.4rem;
     text-align: center;
