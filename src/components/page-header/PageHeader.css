@@ -109,3 +109,49 @@ nav ul li {
 .btn:hover {
   color: black;
 }
+
+@media all and (max-width: 544px) {
+  header {
+    height: 5.5rem;
+  }
+
+  header nav {
+    height: 55px;
+    padding: 49px 0px 0px;
+  }
+
+  nav ul {
+    margin: 0px;
+  }
+}
+
+@media all and (max-width: 493px) {
+  header {
+    height: 6.4rem;
+    text-align: center;
+  }
+  header nav {
+    height: 55px;
+    float: none;
+    display: block;
+    padding: 0px 0px 0px;
+    margin-top: -3rem;
+  }
+  #headerLogo {
+    height: 7rem;
+    margin: 0;
+    margin-left: 0.1rem;
+    margin-top: -20px;
+    float: none;
+    padding: 0;
+  }
+  nav ul {
+    margin: 0px;
+    padding: 0px;
+    margin-top: -3rem;
+  }
+  nav ul li {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
