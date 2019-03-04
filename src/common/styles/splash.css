@@ -1,0 +1,49 @@
+@import "./colorVariables.css";
+
+.centerSplash {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+}
+
+.splashHeader {
+  margin: 2rem;
+  text-align: center;
+  font-size: 6rem;
+  font-weight: 400;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 4rem;
+  /* width: 100%; */
+}
+
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* background-color: white; */
+  margin-bottom: 4rem;
+  overflow: hidden;
+}
+
+.slides {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+@media all and (max-width: 493px) {
+  .slideshow {
+    height: 16rem;
+    margin-bottom: 3px;
+    margin-bottom: -3rem;
+  }
+  .splashHeader {
+    margin-bottom: 3rem;
+    margin-top: 7rem;
+    font-size: 5.5rem;
+  }
+}
