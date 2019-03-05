@@ -9,7 +9,7 @@ article {
   margin-right: 15%;
 }
 
-h2 {
+.formHeader {
   font-family: Comfortaa;
   text-align: center;
   background-color: rgba(65, 150, 124, 0.85);
@@ -36,4 +36,8 @@ input {
 
 #submitButton {
   margin-top: 20px;
+}
+
+.forms {
+  margin: 2rem;
 }
