@@ -46,7 +46,7 @@ nav {
 /*Gets rid of dots*/
 nav ul {
   list-style: none;
-  height: 105%;
+  height: 100%;
 }
 
 /*Displays List side by side*/
@@ -81,9 +81,9 @@ nav ul li a {
   height: 100%;
 }
 
-@media all and (max-width: 577px) {
+@media all and (max-width: 596px) {
   header {
-    height: 6.4rem;
+    height: 6rem;
     text-align: center;
   }
   header nav {

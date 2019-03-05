@@ -8,6 +8,11 @@
   font-family: "Comfortaa", cursive;
 }
 
+body {
+  background-image: url(../../assets/img/trinityBackgroundWhite.png);
+  margin: 0;
+}
+
 html,
 body {
   margin: 0;
