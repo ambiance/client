@@ -1,11 +1,15 @@
-const numOfCards = 5;
+const sampleCardCount = 5;
 
-export default function insertResults() {
+document
+  .getElementById('submitButton')
+  .addEventListener('click', () => insertResults(sampleCardCount));
+
+function insertResults(numOfCards) {
   const resultsCardsObject = document.querySelector('.resultCards');
   resultsCardsObject.innerHTML = getResults(numOfCards);
 }
 
-function getResults() {
+function getResults(numOfCards) {
   let resultsCardsHTML = '';
 
   for (let i = 0; i < numOfCards; i++) {
