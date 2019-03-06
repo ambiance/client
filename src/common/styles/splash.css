@@ -23,7 +23,7 @@
 .slideshow {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 27rem;
   /* background-color: white; */
   margin-bottom: 4rem;
   overflow: hidden;
@@ -40,13 +40,33 @@
   display: inline-block;
   position: absolute;
   width: 100%;
-  height: 100vh;
+  height: 27rem;
   background-color: rgba(0, 0, 0, 0);
   margin-bottom: 4rem;
   overflow: hidden;
   z-index: 0;
-  padding-top: 50vh;
-  font-size: 5rem;
+  padding-top: 20%;
+  font-size: 4.5rem;
+}
+
+
+@media all and (max-width: 748px) {
+  .slideshow {
+    height: 21.5rem;
+    margin-bottom: 3px;
+    margin-bottom: -3rem;
+  }
+  .splashHeader {
+    margin-bottom: 3rem;
+    margin-top: 7rem;
+    font-size: 5.5rem;
+  }
+  .splashOverlay {
+    margin-bottom: 4rem;
+    margin-left: -0.7rem;
+    padding-top: 25%;
+    font-size: 3.5rem;
+  }
 }
 
 @media all and (max-width: 596px) {
@@ -65,5 +85,24 @@
     margin-left: -0.7rem;
     padding-top: 25%;
     font-size: 3rem;
+  }
+}
+
+@media all and (max-width: 450px) {
+  .slideshow {
+    height: 13.9rem;
+    margin-bottom: 3px;
+    margin-bottom: -3rem;
+  }
+  .splashHeader {
+    margin-bottom: 3rem;
+    margin-top: 7rem;
+    font-size: 5.5rem;
+  }
+  .splashOverlay {
+    margin-bottom: 4rem;
+    margin-left: -0.7rem;
+    padding-top: 30%;
+    font-size: 2rem;
   }
 }
