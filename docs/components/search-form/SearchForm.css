@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Comfortaa");
+
+article {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.formHeader {
+  font-family: Comfortaa;
+  text-align: center;
+  background-color: rgba(65, 150, 124, 0.85);
+  padding: 2%;
+  border-radius: 25px;
+  border: solid black 2px;
+}
+
+select {
+  height: 100px;
+  width: 50%;
+  border-radius: 25px;
+  border: solid black 2px;
+  text-align: center;
+}
+
+input {
+  height: 50px;
+  width: 100px;
+  border-radius: 15px;
+  border: solid black 2px;
+  align-self: center;
+}
+
+#submitButton {
+  margin-top: 20px;
+}
+
+.forms {
+  margin: 2rem;
+}

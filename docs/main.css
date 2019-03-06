@@ -1,0 +1,14 @@
+@import './common/styles/palette.css';
+@import './common/styles/article.css';
+@import './common/styles/colorVariables.css';
+@import './common/styles/general.css';
+@import './common/styles/header.css';
+@import './common/styles/meetTeam.css';
+@import './common/styles/splash.css';
+@import './components/page-header/PageHeader.css';
+@import './components/search-form/SearchForm.css';
+@import './components/result-card/ResultCard.css';
+
+:root {
+  font-size: 18px;
+}
