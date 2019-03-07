@@ -2,7 +2,9 @@
   "name": "aura-client",
   "version": "0.2.0",
   "description": "The front-end portion of the aura web application",
+  "main": "src/main.js",
   "scripts": {
+    "dev": "nodemon",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -21,6 +23,7 @@
   },
   "homepage": "https://github.com/project-aura/client#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "gh-pages": "^2.0.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
@@ -31,5 +34,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
 }
