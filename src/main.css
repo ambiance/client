@@ -5,6 +5,7 @@
 @import './common/styles/header.css';
 @import './common/styles/meetTeam.css';
 @import './common/styles/splash.css';
+@import './common/styles/aura_inputs.css';
 @import './components/search-form/SearchForm.css';
 @import './components/result-card/ResultCard.css';
 
