@@ -2,7 +2,8 @@
 
 /*Header*/
 header {
-  height: 4rem; /*4 times the height of our base font*/
+  height: 4rem;
+  /*4 times the height of our base font*/
   background-color: var(--black);
   padding: 1rem;
   color: #fff;
@@ -25,9 +26,10 @@ header img {
 nav ul li:hover {
   background-color: var(--base-color-dark);
   height: 4rem;
+  z-index: 1;
 }
 
-header > * {
+header>* {
   display: inline-block;
 }
 
@@ -69,15 +71,15 @@ nav ul li a {
   text-decoration: none;
 }
 
-.btnActive{
+.btnActive {
   color: black;
 }
 
-.liActive{
+.liActive {
   background-color: var(--base-color-dark);
 }
 
-.liActive:hover{
+.liActive:hover {
   height: 100%;
 }
 
@@ -86,6 +88,7 @@ nav ul li a {
     height: 6rem;
     text-align: center;
   }
+
   header nav {
     height: 55px;
     float: none;
@@ -93,6 +96,7 @@ nav ul li a {
     padding: 0px 0px 0px;
     margin-top: -3.1rem;
   }
+
   header img {
     height: 7rem;
     margin: 0;
@@ -101,11 +105,13 @@ nav ul li a {
     float: none;
     padding: 0;
   }
+
   nav ul {
     margin: 0px;
     padding: 0px;
     margin-top: -3rem;
   }
+
   nav ul li {
     margin-left: 0rem;
     margin-right: 0rem;
