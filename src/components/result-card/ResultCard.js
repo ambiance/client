@@ -1,15 +1,14 @@
 const sampleCardCount = 20;
 
-document
-  .getElementById('submitButton')
-  .addEventListener('click', () => insertResults(sampleCardCount));
+document.getElementById('submitButton').addEventListener('click', insertResults);
 
-async function insertResults(numOfCards) {
+async function insertResults(event) {
+  event.preventDefault();
   const resultsCardsObject = document.querySelector('.resultCards');
   const businessData = await fetch('https://aurelia-server.herokuapp.com/api/businessAPI')
     .then(response => response.json())
     .then(myJson => myJson);
-  resultsCardsObject.innerHTML = getResults(numOfCards, businessData);
+  resultsCardsObject.innerHTML = getResults(sampleCardCount, businessData);
 }
 
 function parseAuras(auras) {
