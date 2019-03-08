@@ -1,31 +1,47 @@
-const sampleCardCount = 5;
+const sampleCardCount = 20;
 
 document
   .getElementById('submitButton')
   .addEventListener('click', () => insertResults(sampleCardCount));
 
-function insertResults(numOfCards) {
+async function insertResults(numOfCards) {
   const resultsCardsObject = document.querySelector('.resultCards');
-  resultsCardsObject.innerHTML = getResults(numOfCards);
+  const businessData = await fetch('https://aurelia-server.herokuapp.com/api/businessAPI')
+    .then(response => response.json())
+    .then(myJson => myJson);
+  resultsCardsObject.innerHTML = getResults(numOfCards, businessData);
 }
 
-function getResults(numOfCards) {
+function parseAuras(auras) {
+  return auras.split(', ');
+}
+
+function getResults(numOfCards, businessData) {
   let resultsCardsHTML = '';
 
   for (let i = 0; i < numOfCards; i++) {
+    const business = businessData[i];
+    const businessAuras = parseAuras(business.attributes.Aura);
     resultsCardsHTML += /* html */ `
     <div class="resultCard">
       <div class="resultCardImageContainer">
         <img
           class="resultCardImage"
-          src="https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"
+          src="${businessData[i].img ||
+            'https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"'}"
         />
       </div>
       <p class="resultCardTitle">
-        Address
+        ${business.name}
       </p>
       <p class="resultCardSubtitle">
-        Aura
+        ${business.address}
+      </p>
+      <p class="resultCardSubtitle">
+        ${business.city}, ${business.state} ${business.postal_code}
+      </p>
+      <p class="resultCardAura">
+        ${businessAuras[0]}
       </p>
     </div>
   `;
