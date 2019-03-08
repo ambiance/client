@@ -31,18 +31,18 @@ function getResults(numOfCards, businessData) {
             'https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"'}"
         />
       </div>
-      <p class="resultCardTitle">
+      <span class="resultCardTitle">
         ${business.name}
-      </p>
-      <p class="resultCardSubtitle">
+      </span>
+      <span class="resultCardSubtitle">
         ${business.address}
-      </p>
-      <p class="resultCardSubtitle">
+      </span>
+      <span class="resultCardSubtitle">
         ${business.city}, ${business.state} ${business.postal_code}
-      </p>
-      <p class="resultCardAura">
-        ${businessAuras[0]}
-      </p>
+      </span>
+      <span class="resultCardAura">
+        ${businessAuras[0]}${businessAuras[1] ? ` / ${businessAuras[1]}` : ''}
+      </span>
     </div>
   `;
   }

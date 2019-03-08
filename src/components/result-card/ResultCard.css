@@ -9,6 +9,9 @@
 }
 
 .resultCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   width: 20rem;
   height: 20rem;
   box-shadow: 5px 5px var(--shadow);
