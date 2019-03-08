@@ -180,11 +180,15 @@ option {
     border-bottom-right-radius: 5px;
 }
 
-.grid-100:hover,
-.grid-100:focus,
-.grid-100:active {
+.grid-100:hover {
     outline: 0;
     background: var(--base-color-dark);
+    color: #232323;
+}
+
+.grid-100:active {
+    outline: 0;
+    background: var(--base-color);
     color: #232323;
 }
 
