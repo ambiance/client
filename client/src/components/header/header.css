@@ -1,0 +1,113 @@
+@import "./colorVariables.css";
+
+/*Header*/
+header {
+  height: 4rem; /*4 times the height of our base font*/
+  background-color: var(--black);
+  padding: 1rem;
+  color: #fff;
+  line-height: 3rem;
+  height: 2.5rem;
+  z-index: 1;
+  box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  font-weight: 200;
+  display: none;
+}
+
+header img {
+  height: 8rem;
+  margin-top: -2.2rem;
+}
+
+nav ul li:hover {
+  background-color: var(--base-color-dark);
+  height: 4rem;
+}
+
+header > * {
+  display: inline-block;
+}
+
+header h1,
+header h2 {
+  margin: 0;
+}
+
+nav {
+  height: 100%;
+  /*vertical-align: top;*/
+  float: right;
+  padding: 0px 25px;
+}
+
+/*Gets rid of dots*/
+nav ul {
+  list-style: none;
+  height: 100%;
+}
+
+/*Displays List side by side*/
+nav ul li {
+  display: inline-block;
+  background-color: var(--base-color);
+
+  /* background-color: rgba(90,187,158, 0.85); */
+  height: 100%;
+  padding: 0px 10px;
+  position: relative;
+
+  transition: background-color, height 350ms;
+  border-radius: 5px 5px 0px 0px;
+}
+
+/*Gets rid of underline*/
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.btnActive{
+  color: black;
+}
+
+.liActive{
+  background-color: var(--base-color-dark);
+}
+
+.liActive:hover{
+  height: 100%;
+}
+
+@media all and (max-width: 596px) {
+  header {
+    height: 6rem;
+    text-align: center;
+  }
+  header nav {
+    height: 55px;
+    float: none;
+    display: block;
+    padding: 0px 0px 0px;
+    margin-top: -3.1rem;
+  }
+  header img {
+    height: 7rem;
+    margin: 0;
+    margin-left: 0.1rem;
+    margin-top: -20px;
+    float: none;
+    padding: 0;
+  }
+  nav ul {
+    margin: 0px;
+    padding: 0px;
+    margin-top: -3rem;
+  }
+  nav ul li {
+    margin-left: 0rem;
+    margin-right: 0rem;
+  }
+}
