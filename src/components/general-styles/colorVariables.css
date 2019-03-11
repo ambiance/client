@@ -1,0 +1,6 @@
+:root {
+  --base-color: rgba(90, 187, 158, 0.85);
+  --base-color-text: rgba(90, 187, 158, 0.95);
+  --base-color-dark: rgba(65, 150, 124, 0.85);
+  --black: #272727;
+}
