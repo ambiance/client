@@ -1,4 +1,4 @@
-@import "./colorVariables.css";
+@import "../general-styles/colorVariables.css";
 
 /*Header*/
 header {
@@ -69,15 +69,15 @@ nav ul li a {
   text-decoration: none;
 }
 
-.btnActive{
+.btnActive {
   color: black;
 }
 
-.liActive{
+.liActive {
   background-color: var(--base-color-dark);
 }
 
-.liActive:hover{
+.liActive:hover {
   height: 100%;
 }
 
