@@ -1,6 +1,6 @@
-import React from "react";
-import "../css/header.css";
-import auraLogo from "../assets/img/auraLogo.png";
+import React from 'react';
+import '../css/header.css';
+import auraLogo from '../assets/img/auraLogo.png';
 
 class Footer extends React.Component {
   render() {
