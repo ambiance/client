@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../header/Header";
-import SearchForm from "../search-form/SearchForm";
+import Header from "./Header";
+import SearchForm from "./SearchForm";
 
 class AuraApp extends React.Component {
   render() {

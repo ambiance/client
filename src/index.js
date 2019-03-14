@@ -1,5 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import AuraApp from "./components/aura-app/AuraApp";
+import AuraApp from "./components/AuraApp";
 
 ReactDOM.render(<AuraApp />, document.getElementById("root"));

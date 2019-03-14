@@ -1,5 +1,6 @@
 import React from "react";
-import "./Header.css";
+import "../css/header.css";
+import auraLogo from "../assets/img/auraLogo.png";
 
 class Header extends React.Component {
   render() {
@@ -7,7 +8,7 @@ class Header extends React.Component {
       <header>
         <a href="index.html">
           <img
-            src="./assets/img/auraLogo.png"
+            src={auraLogo}
             alt="auraLogo"
             className="headerLogo"
             href="#home"
