@@ -3,6 +3,6 @@ import ReactDOM from "react-dom";
 // import AuraApp from "./components/AuraApp";
 
 // Delete below
-import Home from "./components/Home";
+import Contact from "./components/Contact";
 
-ReactDOM.render(<Home />, document.getElementById("root"));
+ReactDOM.render(<Contact />, document.getElementById("root"));
