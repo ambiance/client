@@ -69,13 +69,13 @@ nav ul li a {
   text-decoration: none;
 }
 
-.btnActive {
+/* .btnActive {
   color: black;
-}
+} */
 
-.liActive {
+/* .liActive {
   background-color: var(--base-color-dark);
-}
+} */
 
 .liActive:hover {
   height: 100%;
