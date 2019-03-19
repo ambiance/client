@@ -1,8 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
-// import AuraApp from "./components/AuraApp";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import AuraApp from './components/AuraApp';
 
 // Delete below
-import Contact from "./components/Contact";
+// import App from './components/AuraApp';
 
-ReactDOM.render(<Contact />, document.getElementById("root"));
+ReactDOM.render(<AuraApp />, document.getElementById('root'));
