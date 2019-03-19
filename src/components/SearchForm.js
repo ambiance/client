@@ -4,11 +4,22 @@ import "../css/SearchForm.css";
 import "../css/main.css";
 
 class SearchForm extends React.Component {
+  handleSearchSubmit = (event) => {
+    event.preventDefault();
+    this.props.onSearchSubmit();
+  };
+
   render() {
     return (
       <article>
         <section className="search-form">
-          <form action="" method="GET" name="search" role="search">
+          <form
+            action=""
+            method="GET"
+            name="search"
+            role="search"
+            onSubmit={this.handleSearchSubmit}
+          >
             <p className="inp-wrap cat-wrap">
               <select
                 name="search categories"
