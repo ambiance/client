@@ -1,9 +1,11 @@
+
 import React from "react";
 import axios from "axios";
 import Header from "./Header";
 import SearchForm from "./SearchForm";
 import SearchResults from "./SearchResults";
 import Footer from "./Footer";
+
 
 class Home extends React.Component {
   constructor(props) {
@@ -24,7 +26,6 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <Header />
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
         <SearchResults businesses={this.state.businesses} />
         <Footer />

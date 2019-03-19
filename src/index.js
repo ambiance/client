@@ -1,8 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
-// import AuraApp from "./components/AuraApp";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import AuraApp from './components/AuraApp';
 
-// Delete below
-import Home from "./components/Home";
+// import App from './components/AuraApp';
 
-ReactDOM.render(<Home />, document.getElementById("root"));
+ReactDOM.render(<AuraApp />, document.getElementById('root'));
