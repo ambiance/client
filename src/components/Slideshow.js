@@ -8,13 +8,17 @@ class Slideshow extends React.Component {
     this.showSlide(startingIndex);
   }
 
+  componentWillUnmount = () => {
+    if (this.timeout) clearTimeout(this.timeout);
+  };
+
   showSlide = startIndex => {
     let index = startIndex;
     const slides = document.querySelectorAll('.slides');
     if (index !== 0) slides[index - 1].style.display = 'none';
     if (index >= slides.length) index = 0;
     slides[index].style.display = 'block';
-    setTimeout(() => this.showSlide(index + 1), 3000);
+    this.timeout = setTimeout(() => this.showSlide(index + 1), 3000);
   };
 
   render() {
