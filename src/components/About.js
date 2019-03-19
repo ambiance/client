@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './Header';
 import Slideshow from './Slideshow';
 import FancyDivider1 from './FancyDivider1';
 import FancyDivider2 from './FancyDivider2';
@@ -10,7 +9,6 @@ class About extends React.Component {
   render() {
     return (
       <div className="about">
-        <Header />
         <Slideshow />
         <h1 className="splashHeader">What is your aura?</h1>
         <FancyDivider1 />
