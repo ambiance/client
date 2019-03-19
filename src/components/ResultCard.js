@@ -8,7 +8,7 @@ async function insertResults(event) {
   event.preventDefault();
   const resultsCardsObject = document.querySelector(".resultCards");
   const businessData = await fetch(
-    "https://aurelia-server.herokuapp.com/api/businessAPI"
+    "https://aurelia-server.herokuapp.com/api/resources"
   )
     .then(response => response.json())
     .then(myJson => myJson);
