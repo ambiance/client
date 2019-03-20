@@ -1,0 +1,14 @@
+@import "./palette.css";
+@import "./article.css";
+@import "./colorVariables.css";
+@import "./general.css";
+@import "./header.css";
+@import "./meetTeam.css";
+@import "./splash.css";
+@import "./aura_inputs.css";
+@import "./SearchForm.css";
+@import "./ResultCard.css";
+
+:root {
+  font-size: 18px;
+}
