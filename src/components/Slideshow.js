@@ -23,8 +23,10 @@ class Slideshow extends React.Component {
 
   showSlide = () => {
     this.timeout = setTimeout(() => {
-      console.log(this.state.activeSlide);
-      this.setState(prevState => ({ activeSlide: prevState.activeSlide + 1 }));
+      this.setState(prevState => {
+        const nextSlide = prevState.activeSlide + 2 <= slideImages.length ? prevState.activeSlide + 1 : 0;
+        return { activeSlide: nextSlide };
+      });
       this.showSlide();
     }, 2500);
   };
