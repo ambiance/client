@@ -3,11 +3,11 @@ import CardItem from "./CardItem";
 
 class SearchResults extends React.Component {
   render() {
-    const { businesses } = this.props;
+    const { businesses, resultsTitle } = this.props;
     return (
       <div>
-        <h2>Search Results</h2>
-
+        {/* <h2 className="searchResultsTitle">Search Results</h2> */}
+        {resultsTitle}
         <section id="searchResults">
           <div className="resultCards">
             {businesses.map(business => (

@@ -10,11 +10,15 @@ class Home extends React.Component {
 
     // set initial state
     this.state = {
+      resultsTitle: "",
       businesses: []
     };
   }
 
   handleSearchSubmit = () => {
+    // eslint-disable-next-line react/no-unescaped-entities
+    this.setState({ resultsTitle: <h2>"Search Results"</h2> });
+
     axios
       .get("https://aurelia-server.herokuapp.com/api/resources")
       .then(response => this.setState({ businesses: response.data }));
@@ -24,7 +28,10 @@ class Home extends React.Component {
     return (
       <div>
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
-        <SearchResults businesses={this.state.businesses} />
+        <SearchResults
+          businesses={this.state.businesses}
+          resultsTitle={this.state.resultsTitle}
+        />
         <Footer />
       </div>
     );
