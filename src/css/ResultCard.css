@@ -1,0 +1,49 @@
+.resultCards {
+  margin: 2rem 0rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  align-items: center;
+  justify-items: center;
+  grid-gap: 2rem;
+}
+
+.resultCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 20rem;
+  height: 20rem;
+  box-shadow: 5px 5px var(--shadow);
+  background-color: var(--mint);
+}
+
+.resultCardImageContainer {
+  height: 11rem;
+  overflow: hidden;
+}
+
+.resultCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.resultCardAura {
+  color: var(--off-white);
+  font-size: 1.2rem;
+  padding: 1rem 1rem;
+}
+
+.resultCardTitle {
+  color: var(--off-white);
+  padding: 1.2rem 1rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.resultCardSubtitle {
+  color: var(--off-white);
+  font-size: 1rem;
+  padding: 0rem 1rem;
+}
