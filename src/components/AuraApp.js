@@ -17,7 +17,7 @@ class AuraApp extends React.Component {
         <div className="App">
           <header>
             <NavLink to="/">
-              <img src={auraLogo} alt="auraLogo" className="headerLogo" href="#home" />
+              <img src={auraLogo} alt="auraLogo" className="headerLogo" />
             </NavLink>
 
             <nav>
