@@ -1,9 +1,9 @@
-import React from 'react';
-import Slideshow from './Slideshow';
-import FancyDivider1 from './FancyDivider1';
-import FancyDivider2 from './FancyDivider2';
-import Footer from './Footer';
-import '../css/main.css';
+import React from "react";
+import Slideshow from "./Slideshow";
+import FancyDivider1 from "./FancyDivider1";
+import FancyDivider2 from "./FancyDivider2";
+import Footer from "./Footer";
+import "../css/main.css";
 
 class About extends React.Component {
   render() {
@@ -14,16 +14,21 @@ class About extends React.Component {
         <FancyDivider1 />
         <section className="mint landing">
           <p>Everyone is unique.</p>
-          <p>People like different things and want to feel great wherever they are.</p>
+          <p>
+            People like different things and want to feel great wherever they
+            are.
+          </p>
         </section>
         <FancyDivider2 />
         <section className="light landing">
           <p>
             We'll show you where to go based on
-            <span className="bold">what you want to do</span> and the
-            <span className="bold">vibe you're going for</span>.
+            <span className="bold"> what you want to do</span> and the
+            <span className="bold"> vibe you're going for</span>.
           </p>
-          <p>Whether you want to study, socialize, or hold business meetings…</p>
+          <p>
+            Whether you want to study, socialize, or hold business meetings…
+          </p>
           <p>
             <span className="bold">Aura can get you there.</span>
           </p>
