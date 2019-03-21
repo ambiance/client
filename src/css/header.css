@@ -24,7 +24,6 @@ header img {
 
 nav ul li:hover {
   background-color: var(--base-color-dark);
-  height: 4rem;
 }
 
 header > * {
@@ -40,7 +39,7 @@ nav {
   height: 100%;
   /*vertical-align: top;*/
   float: right;
-  padding: 0px 25px;
+  padding: 0px 5px;
 }
 
 /*Gets rid of dots*/
@@ -61,6 +60,8 @@ nav ul li {
 
   transition: background-color, height 350ms;
   border-radius: 5px 5px 0px 0px;
+
+  margin-left: 0.2rem;
 }
 
 /*Gets rid of underline*/
@@ -110,4 +111,8 @@ nav ul li a {
     margin-left: 0rem;
     margin-right: 0rem;
   }
+}
+
+.active {
+  color: #000000;
 }

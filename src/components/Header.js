@@ -18,7 +18,7 @@ class Header extends React.Component {
         <nav>
           <ul>
             <li className="liActive">
-              <a className="btnActive" href="./index.html">
+              <a className="btn active" href="./index.html">
                 Home
               </a>
             </li>
