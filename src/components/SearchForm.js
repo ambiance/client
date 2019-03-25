@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import "../css/SearchForm.css";
-import "../css/main.css";
+import '../css/SearchForm.css';
+import '../css/main.css';
 
 class SearchForm extends React.Component {
-  handleSearchSubmit = (event) => {
+  handleSearchSubmit = event => {
     event.preventDefault();
     this.props.onSearchSubmit();
   };
@@ -13,19 +14,9 @@ class SearchForm extends React.Component {
     return (
       <article>
         <section className="search-form">
-          <form
-            action=""
-            method="GET"
-            name="search"
-            role="search"
-            onSubmit={this.handleSearchSubmit}
-          >
+          <form action="" method="GET" name="search" role="search" onSubmit={this.handleSearchSubmit}>
             <p className="inp-wrap cat-wrap">
-              <select
-                name="search categories"
-                id="categories"
-                className="grid-80"
-              >
+              <select name="search categories" id="categories" className="grid-80">
                 <option value="I" selected>
                   I
                 </option>
@@ -36,11 +27,7 @@ class SearchForm extends React.Component {
               <label htmlFor="categories" className="grid-80">
                 want to be
               </label>
-              <select
-                name="search categories"
-                id="categories"
-                className="grid-80"
-              >
+              <select name="search categories" id="categories" className="grid-80">
                 <option value="newyork" selected>
                   Cheerful
                 </option>
@@ -59,11 +46,7 @@ class SearchForm extends React.Component {
               <label htmlFor="categories" className="grid-20">
                 while
               </label>
-              <select
-                name="search categories"
-                id="categories"
-                className="grid-80"
-              >
+              <select name="search categories" id="categories" className="grid-80">
                 <option value="newyork" selected>
                   Eating
                 </option>
@@ -105,5 +88,9 @@ class SearchForm extends React.Component {
     );
   }
 }
+
+SearchForm.propTypes = {
+  onSearchSubmit: PropTypes.func.isRequired,
+};
 
 export default SearchForm;
