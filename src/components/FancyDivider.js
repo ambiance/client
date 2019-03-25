@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const FancyDivider = props => (
-  <div>
+  <div className={props.bottomDivider ? 'bottomDivider' : ''}>
     <svg
       id=""
       preserveAspectRatio="xMidYMax meet"
@@ -28,5 +29,9 @@ const FancyDivider = props => (
     </svg>
   </div>
 );
+
+FancyDivider.propTypes = {
+  bottomDivider: PropTypes.bool.isRequired,
+};
 
 export default FancyDivider;
