@@ -1,9 +1,9 @@
-import React from "react";
-import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
-import Home from "./Home";
-import About from "./About";
-import MeetTheTeam from "./MeetTheTeam";
-import auraLogo from "../assets/img/auraLogo.png";
+import React from 'react';
+import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import Home from './Home';
+import About from './About';
+import MeetTheTeam from './MeetTheTeam';
+import auraLogo from '../assets/img/auraLogo.png';
 
 class AuraApp extends React.Component {
   render() {
