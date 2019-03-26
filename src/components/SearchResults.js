@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import CardItem from './CardItem';
 
 class SearchResults extends React.Component {
