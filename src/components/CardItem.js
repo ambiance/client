@@ -4,7 +4,6 @@ import '../css/ResultCard.css';
 
 export default class CardItem extends React.Component {
   render() {
-    // consts here
     const { business } = this.props;
     return (
       <div className="resultCard">
@@ -16,18 +15,15 @@ export default class CardItem extends React.Component {
                 ? business.businessImage.src
                 : 'https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg'
             }
-            alt="Jon Azali"
+            alt={business.name}
           />
         </div>
 
         <span className="resultCardTitle">{business.name}</span>
-
         <span className="resultCardSubtitle">{business.address}</span>
-
         <span className="resultCardSubtitle">
           {business.city}, {business.state} {business.postalCode}
         </span>
-
         <span className="resultCardAura">{business.attributes.aura}</span>
       </div>
     );
@@ -36,7 +32,7 @@ export default class CardItem extends React.Component {
 
 CardItem.propTypes = {
   business: PropTypes.shape({
-    name: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
