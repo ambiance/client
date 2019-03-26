@@ -1,5 +1,5 @@
-import React from "react";
-import CardItem from "./CardItem";
+import React from 'react';
+import CardItem from './CardItem';
 
 class SearchResults extends React.Component {
   render() {

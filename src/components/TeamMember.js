@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import "../css/header.css";
-import "../css/main.css";
+import '../css/header.css';
+import '../css/main.css';
 
 class TeamMember extends React.Component {
   render() {
