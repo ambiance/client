@@ -17,14 +17,19 @@ class Home extends React.Component {
   handleSearchSubmit = () => {
     axios
       .get('https://aurelia-server.herokuapp.com/api/businesses')
-      .then(response => this.setState({ businesses: response.data }));
+      .then(response => this.setState({ businesses: response.data }))
+      .then(window.scroll({
+        top: 2500, 
+        left: 0, 
+        behavior: 'smooth'
+      }));
   };
 
   render() {
     return (
       <div>
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
-        <SearchResults businesses={this.state.businesses} />
+        <SearchResults businesses={this.state.businesses} id="results" />
         <Footer />
       </div>
     );
