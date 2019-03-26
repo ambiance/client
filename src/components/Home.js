@@ -1,8 +1,8 @@
-import React from "react";
-import axios from "axios";
-import SearchForm from "./SearchForm";
-import SearchResults from "./SearchResults";
-import Footer from "./Footer";
+import React from 'react';
+import axios from 'axios';
+import SearchForm from './SearchForm';
+import SearchResults from './SearchResults';
+import Footer from './Footer';
 
 class Home extends React.Component {
   constructor(props) {
@@ -10,13 +10,13 @@ class Home extends React.Component {
 
     // set initial state
     this.state = {
-      businesses: []
+      businesses: [],
     };
   }
 
   handleSearchSubmit = () => {
     axios
-      .get("https://aurelia-server.herokuapp.com/api/resources")
+      .get('https://aurelia-server.herokuapp.com/api/businesses')
       .then(response => this.setState({ businesses: response.data }));
   };
 
