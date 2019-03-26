@@ -15,7 +15,7 @@ class SearchForm extends React.Component {
       <article>
         <section className="search-form">
           <form action="" method="GET" name="search" role="search" onSubmit={this.handleSearchSubmit}>
-      
+          
             <span className="grid-80">I want to be</span>
             <p className="cat-wrap">
               <select name="search categories" className="grid-80">
