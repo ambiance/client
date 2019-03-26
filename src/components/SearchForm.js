@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import '../css/SearchForm.css';
 import '../css/main.css';
@@ -14,6 +15,7 @@ class SearchForm extends React.Component {
       <article>
         <section className="search-form">
           <form action="" method="GET" name="search" role="search" onSubmit={this.handleSearchSubmit}>
+      
             <span className="grid-80">I want to be</span>
             <p className="cat-wrap">
               <select name="search categories" className="grid-80">
@@ -79,5 +81,9 @@ class SearchForm extends React.Component {
     );
   }
 }
+
+SearchForm.propTypes = {
+  onSearchSubmit: PropTypes.func.isRequired,
+};
 
 export default SearchForm;

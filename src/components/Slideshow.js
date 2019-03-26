@@ -1,32 +1,42 @@
-import React from "react";
-import Slide from "./Slide";
-import slideImages from "./slideImages";
+import React from 'react';
+import Slide from './Slide';
+import slideImages from './slideImages';
 
 class Slideshow extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      activeSlide: 0,
+    };
+  }
+
   componentDidMount() {
     const startingIndex = Math.floor(Math.random() * 12);
-    this.showSlide(startingIndex);
+    this.setState({ activeSlide: startingIndex });
+    this.showSlide();
   }
 
   componentWillUnmount = () => {
     if (this.timeout) clearTimeout(this.timeout);
   };
 
-  showSlide = (startIndex) => {
-    let index = startIndex;
-    const slides = document.querySelectorAll(".slides");
-    if (index !== 0) slides[index - 1].style.display = "none";
-    if (index >= slides.length) index = 0;
-    slides[index].style.display = "block";
-    this.timeout = setTimeout(() => this.showSlide(index + 1), 3000);
+  showSlide = () => {
+    this.timeout = setTimeout(() => {
+      this.setState(prevState => {
+        const nextSlide = prevState.activeSlide + 2 <= slideImages.length ? prevState.activeSlide + 1 : 0;
+        return { activeSlide: nextSlide };
+      });
+      this.showSlide();
+    }, 2500);
   };
 
   render() {
     return (
       <div className="slideshow">
-        {slideImages.map(slide => (
-          <Slide img={slide.src} aura={slide.aura} key={slide.aura} />
-        ))}
+        {slideImages.map((slide, index) =>
+          index === this.state.activeSlide ? <Slide img={slide.src} aura={slide.aura} key={slide.aura} /> : ''
+        )}
       </div>
     );
   }

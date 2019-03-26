@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import '../css/header.css';
 import '../css/main.css';
@@ -20,5 +21,14 @@ class TeamMember extends React.Component {
     );
   }
 }
+
+TeamMember.propTypes = {
+  sectionId: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
+  fullName: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
+  aura: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+};
 
 export default TeamMember;

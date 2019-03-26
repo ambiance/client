@@ -1,5 +1,6 @@
-import React from "react";
-import "../css/ResultCard.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import '../css/ResultCard.css';
 
 export default class CardItem extends React.Component {
   render() {
@@ -13,7 +14,7 @@ export default class CardItem extends React.Component {
             src={
               business.img
                 ? business.img
-                : "https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg"
+                : 'https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg'
             }
             alt="Jon Azali"
           />
@@ -32,3 +33,16 @@ export default class CardItem extends React.Component {
     );
   }
 }
+
+CardItem.propTypes = {
+  business: PropTypes.shape({
+    name: PropTypes.number.isRequired,
+    address: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired,
+    postal_code: PropTypes.string.isRequired,
+    attributes: PropTypes.shape({
+      Aura: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
