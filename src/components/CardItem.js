@@ -12,11 +12,15 @@ export default class CardItem extends React.Component {
           <img
             className="resultCardImage"
             src={
-              business.businessImage
+              business.businessImage.src
                 ? business.businessImage.src
-                : 'https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg'
+                : 'http://mymodernmet.com/wp/wp-content/uploads/2017/10/azuki-camping-hedgehog-3.jpg'
             }
-            alt="Jon Azali"
+            alt={
+              business.businessImage.owner
+                ? business.businessImage.owner
+                : 'No image owner provided'
+            }
           />
         </div>
 
@@ -36,7 +40,7 @@ export default class CardItem extends React.Component {
 
 CardItem.propTypes = {
   business: PropTypes.shape({
-    name: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,

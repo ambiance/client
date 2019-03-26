@@ -14,11 +14,16 @@ class Home extends React.Component {
     };
   }
 
-  handleSearchSubmit = () => {
+  handleSearchSubmit = searchFormData => {
+    console.log(searchFormData);
     axios
-      .get('https://aurelia-server.herokuapp.com/api/businesses')
-      .then(response => this.setState({ businesses: response.data }))
-      .then(window.scroll({
+
+      .get('https://aurelia-server.herokuapp.com/api/businesses', {
+        params: {
+          aura: searchFormData.auraValue,
+        },
+      })
+      .then(response => this.setState({ businesses: response.data })).then(window.scroll({
         top: 2500, 
         left: 0, 
         behavior: 'smooth'
