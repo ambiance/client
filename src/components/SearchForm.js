@@ -28,6 +28,7 @@ class SearchForm extends React.Component {
     return (
       <article>
         <section className="search-form">
+
           <form
             action=""
             method="GET"
@@ -35,7 +36,9 @@ class SearchForm extends React.Component {
             role="search"
             onSubmit={this.handleSearchSubmit}
           >
+
             <span className="grid-80">I want to be</span>
+
             <p className="cat-wrap">
               <select
                 value={this.state.searchForm.auraValue}
@@ -55,7 +58,9 @@ class SearchForm extends React.Component {
                 <option value="touristy">Touristy</option>
               </select>
             </p>
+
             <span className="grid-40">while</span>
+
             <p className="cat-wrap">
               <select name="search categories" className="grid-80">
                 <option value="eating">Eating</option>
@@ -66,7 +71,9 @@ class SearchForm extends React.Component {
                 <option value="shopping">Shopping</option>
               </select>
             </p>
+
             <span className="grid-40">with</span>
+
             <p className="cat-wrap">
               <select name="search categories" className="grid-80">
                 <option value="I">Myself</option>
