@@ -15,49 +15,42 @@ class SearchForm extends React.Component {
       <article>
         <section className="search-form">
           <form action="" method="GET" name="search" role="search" onSubmit={this.handleSearchSubmit}>
-            <p className="inp-wrap cat-wrap">
-              <select name="search categories" id="categories" className="grid-80">
-                <option value="I" selected>
-                  I
-                </option>
-                <option value="we">We</option>
+      
+            <span className="grid-80">I want to be</span>
+            <p className="cat-wrap">
+              <select name="search categories" className="grid-80">
+                <option value="cheerful">Cheerful</option>
+                <option value="inspired">Inspired</option>
+                <option value="romantic">Romantic</option>
+                <option value="peaceful">Peaceful</option>
+                <option value="classy">Classy</option>
+                <option value="hipster">Hipster</option>
+                <option value="trendy">Trendy</option>
+                <option value="spiritual">Spiritual</option>
+                <option value="silly">Silly</option>
+                <option value="touristy">Touristy</option>
               </select>
             </p>
-            <p className="inp-wrap cat-wrap">
-              <label htmlFor="categories" className="grid-80">
-                want to be
-              </label>
-              <select name="search categories" id="categories" className="grid-80">
-                <option value="newyork" selected>
-                  Cheerful
-                </option>
-                <option value="chicago">Inspired</option>
-                <option value="losangeles">Romantic</option>
-                <option value="seattle">Peaceful</option>
-                <option value="dallas">Classy</option>
-                <option value="boston">Hipster</option>
-                <option value="sanfran">Trendy</option>
-                <option value="sanfran">Spiritual</option>
-                <option value="sanfran">Silly</option>
-                <option value="sanfran">Touristy</option>
+            <span className="grid-40">while</span>
+            <p className="cat-wrap">
+              <select name="search categories" className="grid-80">
+                <option value="eating">Eating</option>
+                <option value="studying">Studying</option>
+                <option value="dating">Dating</option>
+                <option value="relaxing">Relaxing</option>
+                <option value="drinking">Drinking</option>
+                <option value="shopping">Shopping</option>
               </select>
             </p>
-            <p className="inp-wrap cat-wrap">
-              <label htmlFor="categories" className="grid-20">
-                while
-              </label>
-              <select name="search categories" id="categories" className="grid-80">
-                <option value="newyork" selected>
-                  Eating
-                </option>
-                <option value="chicago">Studying</option>
-                <option value="losangeles">Dating</option>
-                <option value="seattle">Relaxing</option>
-                <option value="dallas">Drinking</option>
-                <option value="boston">Shopping</option>
+            <span className="grid-40">with</span>
+            <p className="cat-wrap">
+              <select name="search categories" className="grid-80">
+                <option value="I">Myself</option>
+                <option value="friends">Friends</option>
+                <option value="date">A Date</option>
               </select>
             </p>
-            <p className="inp-wrap submit-wrap" id="submitButtonContainer">
+            <p className="submit-wrap" id="submitButtonContainer">
               <button id="submitButton" className="grid-100 btn">
                 {/* import magnifying glass icon later */
                 /* <span class="search-icon-container">
