@@ -1,7 +1,6 @@
 import React from 'react';
 import Slideshow from './Slideshow';
 import FancyDivider from './FancyDivider';
-import Footer from './Footer';
 import '../css/main.css';
 
 class About extends React.Component {
@@ -19,8 +18,8 @@ class About extends React.Component {
         <section className="light landing">
           <p>
             We'll show you where to go based on
-            <span className="bold"> what you want to do</span> and the
-            <span className="bold"> vibe you're going for</span>.
+            <span className="bold"> what you want to do</span> and
+            <span className="bold"> what vibe you're going for</span>.
           </p>
           <p>Whether you want to study, socialize, or hold business meetings…</p>
           <p>
@@ -36,7 +35,6 @@ class About extends React.Component {
             <span className="bold">Aura finds the right vibe for you!</span>
           </p>
         </section>
-        <Footer />
       </div>
     );
   }
