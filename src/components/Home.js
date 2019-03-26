@@ -16,7 +16,7 @@ class Home extends React.Component {
 
   handleSearchSubmit = () => {
     axios
-      .get('https://aurelia-server.herokuapp.com/api/resources')
+      .get('https://aurelia-server.herokuapp.com/api/businesses')
       .then(response => this.setState({ businesses: response.data }));
   };
 

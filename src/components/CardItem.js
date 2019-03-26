@@ -12,8 +12,8 @@ export default class CardItem extends React.Component {
           <img
             className="resultCardImage"
             src={
-              business.img
-                ? business.img
+              business.businessImage
+                ? business.businessImage.src
                 : 'https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg'
             }
             alt="Jon Azali"
@@ -25,10 +25,10 @@ export default class CardItem extends React.Component {
         <span className="resultCardSubtitle">{business.address}</span>
 
         <span className="resultCardSubtitle">
-          {business.city}, {business.state} {business.postal_code}
+          {business.city}, {business.state} {business.postalCode}
         </span>
 
-        <span className="resultCardAura">{business.attributes.Aura}</span>
+        <span className="resultCardAura">{business.attributes.aura}</span>
       </div>
     );
   }
@@ -40,9 +40,9 @@ CardItem.propTypes = {
     address: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
-    postal_code: PropTypes.string.isRequired,
+    postalCode: PropTypes.string.isRequired,
     attributes: PropTypes.shape({
-      Aura: PropTypes.string.isRequired,
+      aura: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };
