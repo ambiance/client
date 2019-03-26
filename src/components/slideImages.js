@@ -10,7 +10,7 @@ const slideImages = [
   { src: './assets/img/slideshow/place9.jpg', aura: 'upscale' },
   { src: './assets/img/slideshow/place10.jpeg', aura: 'powerful' },
   { src: './assets/img/slideshow/place11.jpeg', aura: 'classy' },
-  { src: './assets/img/slideshow/place12.jpeg', aura: 'hipster' }
+  { src: './assets/img/slideshow/place12.jpeg', aura: 'hipster' },
 ];
 
 export default slideImages;
