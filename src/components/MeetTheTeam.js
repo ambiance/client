@@ -16,7 +16,7 @@ class MeetTheTeam extends React.Component {
               key={member.fullName}
               img={member.src}
               fullName={member.fullName}
-              role={member.fullName}
+              role={member.role}
               aura={member.aura}
               link={member.link}
             />
