@@ -24,7 +24,7 @@ class Home extends React.Component {
         },
       })
       .then(response => this.setState({ businesses: response.data })).then(window.scroll({
-        top: 2500, 
+        top: 635, 
         left: 0, 
         behavior: 'smooth'
       }));
