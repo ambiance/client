@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { HashRouter, Switch, Route, NavLink } from 'react-router-dom';
 import Home from './Home';
 import About from './About';
 import MeetTheTeam from './MeetTheTeam';
@@ -9,7 +9,7 @@ import Footer from './Footer';
 class AuraApp extends React.Component {
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <div className="App">
           <header>
             <NavLink to="/">
@@ -40,7 +40,7 @@ class AuraApp extends React.Component {
           </Switch>
           <Footer />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }
