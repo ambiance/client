@@ -9,7 +9,7 @@ class SearchForm extends React.Component {
 
     this.state = {
       searchForm: {
-        auraValue: 'cheerful',
+        auraValue: 'trendy',
       },
     };
   }
@@ -43,14 +43,12 @@ class SearchForm extends React.Component {
                 className="grid-80"
                 onChange={this.handleChange}
               >
-                <option value="cheerful">Cheerful</option>
+                <option value="trendy">Trendy</option>
                 <option value="inspired">Inspired</option>
                 <option value="romantic">Romantic</option>
                 <option value="peaceful">Peaceful</option>
                 <option value="classy">Classy</option>
                 <option value="hipster">Hipster</option>
-                <option value="trendy">Trendy</option>
-                <option value="spiritual">Spiritual</option>
                 <option value="silly">Silly</option>
                 <option value="touristy">Touristy</option>
               </select>

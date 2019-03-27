@@ -10,8 +10,8 @@ class SearchResults extends React.Component {
         <h2>Search Results</h2>
         <section id="searchResults">
           <div className="resultCards">
-            {businesses.map(business => (
-              <CardItem business={business} key={business.id} />
+            {businesses.map((business, i) => (
+              <CardItem key={i} business={business} />
             ))}
           </div>
         </section>
