@@ -47,3 +47,7 @@
   font-size: 1rem;
   padding: 0rem 1rem;
 }
+
+.expander {
+  display: none;
+}

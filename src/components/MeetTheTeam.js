@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import TeamMember from './TeamMember';
-import memberInfo from './memberInfo';
+import TeamMember from "./TeamMember";
+import memberInfo from "./memberInfo";
 
-import '../css/header.css';
-import '../css/main.css';
-import background from '../assets/img/trinityBackgroundWhite.png';
+import "../css/header.css";
+import "../css/main.css";
+import background from "../assets/img/trinityBackgroundWhite.png";
 
 class MeetTheTeam extends React.Component {
   render() {
@@ -17,7 +17,7 @@ class MeetTheTeam extends React.Component {
               sectionId={member.sectionId}
               img={member.src}
               fullName={member.fullName}
-              role={member.fullName}
+              role={member.role}
               aura={member.aura}
               link={member.link}
             />

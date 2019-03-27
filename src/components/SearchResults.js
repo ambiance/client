@@ -1,17 +1,17 @@
-import React from "react";
-import CardItem from "./CardItem";
+/* eslint-disable react/prop-types */
+import React from 'react';
+import CardItem from './CardItem';
 
 class SearchResults extends React.Component {
   render() {
-    const { businesses, resultsTitle } = this.props;
+    const { businesses, resultsTitle, onExpandDetails } = this.props;
     return (
       <div>
-        {/* <h2 className="searchResultsTitle">Search Results</h2> */}
         {resultsTitle}
-        <section id="searchResults">
-          <div className="resultCards">
+        <section id='searchResults'>
+          <div className='resultCards'>
             {businesses.map(business => (
-              <CardItem business={business} />
+              <CardItem business={business} onExpandDetails={onExpandDetails} />
             ))}
           </div>
         </section>

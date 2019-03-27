@@ -10,11 +10,6 @@ import auraLogo from "../assets/img/auraLogo.png";
 class AuraApp extends React.Component {
   render() {
     return (
-      // <body>
-      //   <Header />
-      //   <SearchForm />
-      //   <SearchResults />
-      // </body>
       <BrowserRouter>
         <div className="App">
           <header>
