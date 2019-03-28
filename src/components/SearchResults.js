@@ -11,7 +11,7 @@ class SearchResults extends React.Component {
       <div>
         <h2>Search Results</h2>
         {loading ? (
-          <Loader type="Triangle" color="#00BFFF" height="200" width="200" />
+          <Loader type="Triangle" color="#5abb9e" height="200" width="200" />
         ) : (
           <section id="searchResults">
             <div className="resultCards">
