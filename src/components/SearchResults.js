@@ -1,20 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 import CardItem from './CardItem';
+import '../css/SearchResults.css';
 
 class SearchResults extends React.Component {
   render() {
-    const { businesses } = this.props;
+    const { businesses, loading } = this.props;
     return (
       <div>
         <h2>Search Results</h2>
-        <section id="searchResults">
-          <div className="resultCards">
-            {businesses.map((business, i) => (
-              <CardItem key={i} business={business} />
-            ))}
-          </div>
-        </section>
+        {loading ? (
+          <Loader type="Triangle" color="#00BFFF" height="200" width="200" />
+        ) : (
+          <section id="searchResults">
+            <div className="resultCards">
+              {businesses.map((business, i) => (
+                <CardItem key={i} business={business} />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     );
   }
@@ -22,6 +28,7 @@ class SearchResults extends React.Component {
 
 SearchResults.propTypes = {
   businesses: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default SearchResults;
