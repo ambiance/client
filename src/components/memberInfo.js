@@ -1,7 +1,7 @@
 const memberInfo = [
   {
     sectionId: 'devon',
-    src: '../assets/img/team/Devon_Marantz.jpg',
+    src: `${process.env.PUBLIC_URL}/assets/img/team/Devon_Marantz.jpg`,
     fullName: 'Devon Marantz',
     role: 'Product Owner',
     aura: 'Imaginative',
@@ -9,7 +9,7 @@ const memberInfo = [
   },
   {
     sectionId: 'none',
-    src: '../assets/img/team/emily-yang.png',
+    src: `${process.env.PUBLIC_URL}/assets/img/team/Emily_Yang.png`,
     fullName: 'Emily Yang',
     role: 'Software Engineer',
     aura: 'Inspired',
@@ -17,7 +17,7 @@ const memberInfo = [
   },
   {
     sectionId: 'none',
-    src: '../assets/img/team/Scott_Roberts.png',
+    src: `${process.env.PUBLIC_URL}/assets/img/team/Scott_Roberts.png`,
     fullName: 'Scott Roberts',
     role: 'Software Engineer',
     aura: 'Peaceful',
@@ -25,7 +25,7 @@ const memberInfo = [
   },
   {
     sectionId: 'none',
-    src: '../assets/img/team/Kevin_Amarbayar.jpg',
+    src: `${process.env.PUBLIC_URL}/assets/img/team/Kevin_Amarbayar.jpg`,
     fullName: 'Kevin Amarbyar',
     role: 'Software Engineer',
     aura: 'Lively',
@@ -33,7 +33,7 @@ const memberInfo = [
   },
   {
     sectionId: 'none',
-    src: '../assets/img/team/Ervin_Mitra.jpg',
+    src: `${process.env.PUBLIC_URL}/assets/img/team/Ervin_Mitra.jpg`,
     fullName: 'Ervin Mitra',
     role: 'Software Engineer',
     aura: 'Hipster',
@@ -41,7 +41,7 @@ const memberInfo = [
   },
   {
     sectionId: 'none',
-    src: '../assets/img/team/Jon_Azali.jpg',
+    src: `${process.env.PUBLIC_URL}/assets/img/team/Jon_Azali.jpg`,
     fullName: 'Jonathan Azali',
     role: 'Software Engineer',
     aura: 'Silly',
@@ -49,7 +49,7 @@ const memberInfo = [
   },
   {
     sectionId: 'none',
-    src: '../assets/img/team/Brock_Jameson.png',
+    src: `${process.env.PUBLIC_URL}/assets/img/team/Brock_Jameson.png`,
     fullName: 'Brock Jameson',
     role: 'Software Engineer',
     aura: 'Groovy',
