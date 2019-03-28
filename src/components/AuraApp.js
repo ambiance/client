@@ -1,19 +1,15 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { HashRouter, Switch, Route, NavLink } from 'react-router-dom';
 import Home from './Home';
 import About from './About';
 import MeetTheTeam from './MeetTheTeam';
 import auraLogo from '../assets/img/auraLogo.png';
+import Footer from './Footer';
 
 class AuraApp extends React.Component {
   render() {
     return (
-      // <body>
-      //   <Header />
-      //   <SearchForm />
-      //   <SearchResults />
-      // </body>
-      <BrowserRouter>
+      <HashRouter>
         <div className="App">
           <header>
             <NavLink to="/">
@@ -23,23 +19,14 @@ class AuraApp extends React.Component {
             <nav>
               <ul>
                 <li className="liActive">
-                  {/* <a className="btnActive" href="./index.html">
-                  Home
-                </a> */}
                   <NavLink exact to="/">
                     Home
                   </NavLink>
                 </li>
                 <li>
-                  {/* <a className="btn" href="./about.html">
-                  About Aura
-                </a> */}
                   <NavLink to="/about">About Aura</NavLink>
                 </li>
                 <li>
-                  {/* <a className="btn" href="./meetTheTeam.html">
-                  Contact
-                </a> */}
                   <NavLink to="/meettheteam">Contact</NavLink>
                 </li>
               </ul>
@@ -51,8 +38,9 @@ class AuraApp extends React.Component {
             <Route path="/meettheteam" component={MeetTheTeam} />
             <Route render={() => <h1>Page Not Found</h1>} />
           </Switch>
+          <Footer />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

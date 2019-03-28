@@ -8,11 +8,10 @@ class SearchResults extends React.Component {
     return (
       <div>
         <h2>Search Results</h2>
-
         <section id="searchResults">
           <div className="resultCards">
-            {businesses.map(business => (
-              <CardItem business={business} />
+            {businesses.map((business, i) => (
+              <CardItem key={i} business={business} />
             ))}
           </div>
         </section>

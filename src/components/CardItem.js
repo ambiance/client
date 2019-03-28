@@ -4,7 +4,6 @@ import '../css/ResultCard.css';
 
 export default class CardItem extends React.Component {
   render() {
-    // consts here
     const { business } = this.props;
     return (
       <div className="resultCard">
@@ -25,13 +24,10 @@ export default class CardItem extends React.Component {
         </div>
 
         <span className="resultCardTitle">{business.name}</span>
-
         <span className="resultCardSubtitle">{business.address}</span>
-
         <span className="resultCardSubtitle">
           {business.city}, {business.state} {business.postalCode}
         </span>
-
         <span className="resultCardAura">{business.attributes.aura}</span>
       </div>
     );
