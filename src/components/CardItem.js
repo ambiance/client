@@ -4,9 +4,18 @@ import React from 'react';
 import '../css/ResultCard.css';
 
 export default class CardItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    // set initial state
+    this.state = {
+      expandDetails: ''
+    };
+  }
+
   render() {
     // consts here
-    const { business, onExpandDetails } = this.props;
+    const { business, onOpenModal } = this.props;
     return (
       <div key={business.id} className='resultCard'>
         <div className='resultCardImageContainer'>
@@ -31,10 +40,7 @@ export default class CardItem extends React.Component {
 
         <span className='resultCardAura'>{business.attributes.Aura}</span>
 
-        <button onClick={() => onExpandDetails(business.id)}>
-          Expand Below
-        </button>
-        <div className='expander'>{business.address}</div>
+        <button onClick={onOpenModal}>Expand Below</button>
       </div>
     );
   }

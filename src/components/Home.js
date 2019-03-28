@@ -6,6 +6,7 @@ import axios from 'axios';
 import SearchForm from './SearchForm';
 import SearchResults from './SearchResults';
 import Footer from './Footer';
+import Modal from './Modal';
 
 // Third Party Imports
 const shortid = require('shortid');
@@ -17,8 +18,9 @@ class Home extends React.Component {
     // set initial state
     this.state = {
       resultsTitle: '',
-      expandDetails: '',
-      businesses: []
+      modalDetails: '',
+      businesses: [],
+      isShowing: false
     };
   }
 
@@ -31,28 +33,38 @@ class Home extends React.Component {
         response.data.map(single => (single.id = shortid.generate()));
         return this.setState({ businesses: response.data });
       });
-
-    console.log(this.state.businesses);
   };
 
-  handleExpandDetails = id => {
-    const businessList = this.state.businesses;
-    const businessIndex = businessList.findIndex(
-      business => business.id === id
-    );
-    console.log(businessList[businessIndex]);
+  // Functions for Modals
+  openModalHandler = () => {
+    this.setState({
+      isShowing: true
+    });
+  };
 
-    document.querySelectorAll('expander').setAttribute('display', 'block');
+  closeModalHandler = () => {
+    this.setState({
+      isShowing: false
+    });
   };
 
   render() {
     return (
       <div>
+        <Modal
+          className='modal'
+          show={this.state.isShowing}
+          close={this.closeModalHandler}
+        >
+          {this.state.modalDetails}
+        </Modal>
+
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
+
         <SearchResults
           businesses={this.state.businesses}
           resultsTitle={this.state.resultsTitle}
-          onExpandDetails={this.handleExpandDetails}
+          onOpenModal={this.openModalHandler}
         />
         <Footer />
       </div>
