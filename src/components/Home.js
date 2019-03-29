@@ -15,6 +15,11 @@ class Home extends React.Component {
 
   handleSearchSubmit = searchFormData => {
     this.setState({ loading: true });
+    window.scroll({
+      top: 635,
+      left: 0,
+      behavior: 'smooth',
+    });
     axios
       .get('https://aurelia-server.herokuapp.com/api/businesses', {
         params: {
@@ -22,13 +27,6 @@ class Home extends React.Component {
         },
       })
       .then(response => this.setState({ businesses: response.data }))
-      .then(() =>
-        window.scroll({
-          top: 635,
-          left: 0,
-          behavior: 'smooth',
-        })
-      )
       .then(() => this.setState({ loading: false }));
   };
 
