@@ -6,7 +6,7 @@ import '../css/SearchResults.css';
 
 class SearchResults extends React.Component {
   render() {
-    const { businesses, loading } = this.props;
+    const { businesses, loading, onOpenModal } = this.props;
     if (loading) {
       return <Loader type="Triangle" color="#5abb9e" height="200" width="200" />;
     }
@@ -16,10 +16,13 @@ class SearchResults extends React.Component {
     return (
       <div>
         <h2>Search Results</h2>
-        <section id="searchResults">
-          <div className="resultCards">
+
+        <section id='searchResults'>
+          <div className='resultCards'>
             {businesses.map((business, i) => (
-              <CardItem key={i} business={business} />
+              <div>
+                <CardItem key={i} business={business} onOpenModal={onOpenModal} />
+              </div>
             ))}
           </div>
         </section>

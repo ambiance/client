@@ -1,15 +1,23 @@
+
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import axios from 'axios';
+
+// Components
 import SearchForm from './SearchForm';
 import SearchResults from './SearchResults';
+import Modal from './Modal';
+
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      modalDetails: '',
       businesses: [],
-      loading: false,
+      isShowing: false,
+      loading: false
     };
   }
 
@@ -30,13 +38,38 @@ class Home extends React.Component {
       .then(() => this.setState({ loading: false }));
   };
 
+  // Functions for Modals
+  openModalHandler = details => {
+    this.setState({
+      isShowing: true,
+      modalDetails: details
+    });
+  };
+
+  closeModalHandler = () => {
+    this.setState({
+      isShowing: false
+    });
+
+
+
   render() {
     return (
       <div>
+        <Modal
+          className='modal'
+          show={this.state.isShowing}
+          close={this.closeModalHandler}
+        >
+          {this.state.modalDetails}
+        </Modal>
+
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
+
         <SearchResults
           loading={this.state.loading}
           businesses={this.state.businesses}
+          onOpenModal={this.openModalHandler}
           id="results"
         />
       </div>

@@ -1,8 +1,13 @@
-.resultCards {
+#searchResults {
   margin: 2rem 0rem;
-  padding: 1rem;
+}
+
+.resultCards {
+  /* margin: 2rem 0rem;
+  padding: 1rem; */
+  padding: 0px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-columns: repeat(3, minmax(20rem, 1fr));
   align-items: center;
   justify-items: center;
   grid-gap: 2rem;
@@ -46,4 +51,9 @@
   color: var(--off-white);
   font-size: 1rem;
   padding: 0rem 1rem;
+}
+
+.expander {
+  border: 2px solid black;
+  grid-column: auto / span 3;
 }
