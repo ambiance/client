@@ -17,7 +17,6 @@ class Home extends React.Component {
 
     // set initial state
     this.state = {
-      resultsTitle: '',
       modalDetails: '',
       businesses: [],
       isShowing: false
@@ -26,6 +25,7 @@ class Home extends React.Component {
 
   handleSearchSubmit = () => {
     this.setState({ resultsTitle: <h2>"Search Results"</h2> });
+    this.setState({ searchResults: 'searchResults' });
     axios
       .get('https://aurelia-server.herokuapp.com/api/resources')
       .then(response => {
@@ -36,9 +36,10 @@ class Home extends React.Component {
   };
 
   // Functions for Modals
-  openModalHandler = () => {
+  openModalHandler = details => {
     this.setState({
-      isShowing: true
+      isShowing: true,
+      modalDetails: details
     });
   };
 
@@ -63,7 +64,6 @@ class Home extends React.Component {
 
         <SearchResults
           businesses={this.state.businesses}
-          resultsTitle={this.state.resultsTitle}
           onOpenModal={this.openModalHandler}
         />
         <Footer />

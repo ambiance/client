@@ -13,7 +13,7 @@ const modal = props => {
         }}
       >
         <div className='modal-header'>
-          <h3>Modal Header</h3>
+          <h3>Business Details</h3>
           <button className='close-modal-btn' onClick={props.close}>
             ×
           </button>
@@ -22,10 +22,10 @@ const modal = props => {
           <p>{props.children}</p>
         </div>
         <div className='modal-footer'>
-          <button className='btn-cancel' onClick={props.close}>
+          {/* <button className='btn-cancel' onClick={props.close}>
             CLOSE
           </button>
-          <button className='btn-continue'>CONTINUE</button>
+          <button className='btn-continue'>CONTINUE</button> */}
         </div>
       </div>
     </div>

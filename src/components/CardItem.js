@@ -40,7 +40,9 @@ export default class CardItem extends React.Component {
 
         <span className='resultCardAura'>{business.attributes.Aura}</span>
 
-        <button onClick={onOpenModal}>Expand Below</button>
+        <button onClick={() => onOpenModal(business.categories)}>
+          More Details
+        </button>
       </div>
     );
   }

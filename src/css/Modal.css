@@ -2,16 +2,18 @@
   background: white;
   border: 1px solid #d0cccc;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-  margin: 100px auto 0;
+  margin: 0px auto 0;
   transition: all 0.8s;
 
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
   width: 100%; /* Full width */
-  height: 32.5%; /* Full height */
+  height: 70%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .modal-header {
@@ -19,7 +21,7 @@
   height: 40px;
   line-height: 40px;
   padding: 5px 20px;
-  text-align: right;
+  text-align: center;
 }
 
 .modal-header h3 {

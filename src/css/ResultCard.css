@@ -1,6 +1,11 @@
-.resultCards {
+#searchResults {
   margin: 2rem 0rem;
-  padding: 1rem;
+}
+
+.resultCards {
+  /* margin: 2rem 0rem;
+  padding: 1rem; */
+  padding: 0px;
   display: grid;
   grid-template-columns: repeat(3, minmax(20rem, 1fr));
   align-items: center;
