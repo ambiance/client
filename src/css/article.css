@@ -1,7 +1,8 @@
 @import "./colorVariables.css";
 
 section.landing p {
-  font-size: 1em;
+  font-size: 1.5rem;
+  margin-top: -1rem;
   margin-bottom: 2rem;
 }
 
@@ -71,8 +72,34 @@ section.landing h3 {
   background-color: var(--base-color-text);
   /* margin-left: 4rem;
   margin-right: 4rem; */
-  /* border-radius: 15px; */
+  border-radius: 1.5rem;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.12);
+  margin: 1rem;
+  width: 30%;
+  height: 35vh;
+  font-size: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.content {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+
+.icons {
+  display: flex;
+}
+
+.icon {
+  border-radius: 10rem;
+  width: 5rem;
+  height: 5rem;
+  background: rgba(90, 187, 158);
+  margin-top: 1.5rem;
+  margin-left: 7rem;
+  margin-right: 7rem;
+  padding: 5px;
 }
 
 @media all and (max-width: 493px) {
