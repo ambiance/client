@@ -1,6 +1,7 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-restricted-globals */
+
+
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../css/ResultCard.css';
 
 export default class CardItem extends React.Component {
@@ -14,6 +15,7 @@ export default class CardItem extends React.Component {
   }
 
   render() {
+
     // consts here
     const { business, onOpenModal } = this.props;
     return (
@@ -22,24 +24,24 @@ export default class CardItem extends React.Component {
           <img
             className='resultCardImage'
             src={
-              business.img
-                ? business.img
-                : 'https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg'
+              business.businessImage.src
+                ? business.businessImage.src
+                : 'http://mymodernmet.com/wp/wp-content/uploads/2017/10/azuki-camping-hedgehog-3.jpg'
             }
-            alt='pic'
+            alt={
+              business.businessImage.owner
+                ? business.businessImage.owner
+                : 'No image owner provided'
+            }
           />
         </div>
 
-        <span className='resultCardTitle'>{business.name}</span>
-
-        <span className='resultCardSubtitle'>{business.address}</span>
-
-        <span className='resultCardSubtitle'>
-          {business.city}, {business.state} {business.postal_code}
+        <span className="resultCardTitle">{business.name}</span>
+        <span className="resultCardSubtitle">{business.address}</span>
+        <span className="resultCardSubtitle">
+          {business.city}, {business.state} {business.postalCode}
         </span>
-
-        <span className='resultCardAura'>{business.attributes.Aura}</span>
-
+        <span className="resultCardAura">{business.attributes.aura}</span>
         <button onClick={() => onOpenModal(business.categories)}>
           More Details
         </button>
@@ -47,3 +49,16 @@ export default class CardItem extends React.Component {
     );
   }
 }
+
+CardItem.propTypes = {
+  business: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired,
+    postalCode: PropTypes.string.isRequired,
+    attributes: PropTypes.shape({
+      aura: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};

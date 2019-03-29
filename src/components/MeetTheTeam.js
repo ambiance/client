@@ -1,20 +1,20 @@
-import React from "react";
 
-import TeamMember from "./TeamMember";
-import memberInfo from "./memberInfo";
-
-import "../css/header.css";
-import "../css/main.css";
-import background from "../assets/img/trinityBackgroundWhite.png";
+import React from 'react';
+import TeamMember from './TeamMember';
+import memberInfo from './memberInfo';
+import '../css/header.css';
+import '../css/main.css';
+import background from '../assets/img/trinityBackgroundWhite.png';
 
 class MeetTheTeam extends React.Component {
   render() {
     return (
-      <body background={background}>
+      <div background={background}>
         <section id="grid">
           {memberInfo.map(member => (
             <TeamMember
               sectionId={member.sectionId}
+              key={member.fullName}
               img={member.src}
               fullName={member.fullName}
               role={member.role}
@@ -23,7 +23,7 @@ class MeetTheTeam extends React.Component {
             />
           ))}
         </section>
-      </body>
+      </div>
     );
   }
 }
