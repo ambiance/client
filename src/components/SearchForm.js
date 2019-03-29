@@ -9,7 +9,7 @@ class SearchForm extends React.Component {
 
     this.state = {
       searchForm: {
-        auraValue: 'cheerful',
+        auraValue: 'trendy',
       },
     };
   }
@@ -27,15 +27,10 @@ class SearchForm extends React.Component {
     return (
       <article>
         <section className="search-form">
-          <form
-            action=""
-            method="GET"
-            name="search"
-            role="search"
-            onSubmit={this.handleSearchSubmit}
-          >
-            <span className="grid-80">I want to be</span>
-
+          <form action="" method="GET" name="search" role="search" onSubmit={this.handleSearchSubmit}>
+            <span id="want" className="grid-80">
+              I want to be
+            </span>
             <p className="cat-wrap">
               <select
                 value={this.state.searchForm.auraValue}
@@ -43,19 +38,16 @@ class SearchForm extends React.Component {
                 className="grid-80"
                 onChange={this.handleChange}
               >
-                <option value="cheerful">Cheerful</option>
+                <option value="trendy">Trendy</option>
                 <option value="inspired">Inspired</option>
                 <option value="romantic">Romantic</option>
                 <option value="peaceful">Peaceful</option>
                 <option value="classy">Classy</option>
                 <option value="hipster">Hipster</option>
-                <option value="trendy">Trendy</option>
-                <option value="spiritual">Spiritual</option>
                 <option value="silly">Silly</option>
                 <option value="touristy">Touristy</option>
               </select>
             </p>
-
             <span className="grid-40">while</span>
 
             <p className="cat-wrap">
@@ -68,7 +60,6 @@ class SearchForm extends React.Component {
                 <option value="shopping">Shopping</option>
               </select>
             </p>
-
             <span className="grid-40">with</span>
 
             <p className="cat-wrap">

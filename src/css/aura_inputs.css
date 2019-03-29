@@ -23,10 +23,6 @@ article::before {
     background: rgba(105, 102, 102, 0.6);
 }
 
-/* .inp-wrap {
-    display: inline-block;
-} */
-
 .search-form {
     position: absolute;
     top: 50%;
@@ -42,7 +38,6 @@ form {
     display: flex;
 }
 
-
 /* very messy "grid" styles */
 
 [class*="grid-"] {
@@ -51,12 +46,8 @@ form {
     font-size: 1.4rem;
 }
 
-.cat-wrap {
-    display: inline-block;
-}
-
 .grid-80 {
-    width: 9rem;
+    width: 8rem;
 }
 
 /* button width */
@@ -68,14 +59,12 @@ form {
 
 .search-form span {
     padding: 0 1rem;
-    display: inline-block;
     vertical-align: middle;
     line-height: 3.125rem;
     background: #2F2F2F;
     text-align: center;
     font-weight: 300;
     color: #fff;
-    /* transition: color 0.2s ease-in-out, background 0.2s ease-in-out; */
 }
 
 input,
@@ -114,9 +103,8 @@ select:focus {
 }
 
 select {
-    padding: 0.5rem 2rem 0.5rem 0.75rem;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    background-color: white;
+    padding: 0.5rem 1.5rem 0.5rem 0.75rem;
     appearance: none;
     border-radius: 0;
 }
@@ -138,15 +126,10 @@ option {
     border-bottom-right-radius: 5px;
 }
 
-.grid-100:hover {
-    outline: 0;
-    background: var(--base-color-dark);
-    color: #232323;
-}
-
+.grid-100:hover,
 .grid-100:active {
     outline: 0;
-    background: var(--base-color);
+    background: var(--base-color-dark);
     color: #232323;
 }
 
@@ -159,10 +142,57 @@ option {
     transform: translateY(1px);
 }
 
+
 @media screen and (max-width: 970px) {
     form {
         display: flex;
         flex-wrap: wrap;
         text-align: center;
+    }
+
+    .grid-100 {
+        width: 29.3vw;
+        min-width: 9rem;
+        border-radius: 5px;
+
+    }
+
+    [class*="grid-"] {
+        height: 3.125rem;
+        font-size: 1.1rem;
+    }
+
+    #want {
+        width: 25.5vw;
+    }
+
+    .cat-wrap select {
+        width: 29.2vw;
+        min-width: 9rem;
+
+    }
+
+    .search-form span {
+        width: 25.5vw;
+        min-width: 7rem;
+    }
+
+    .search-form {
+        position: center;
+        top: 50%;
+        left: 57%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+    select {
+        background-color: white;
+    }
+
+    .search-form {
+        position: center;
+        top: 50%;
+        left: 55%;
     }
 }
