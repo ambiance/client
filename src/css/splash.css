@@ -66,6 +66,8 @@
 .minty {
   padding: 0px 0px 0px 0px;
   margin: 0px 0px;
+  position: relative;
+  top: -5rem;
 }
 
 @media all and (max-width: 748px) {

@@ -76,15 +76,43 @@ section.landing h3 {
   box-shadow: 5px 5px rgba(0, 0, 0, 0.12);
   margin: 1rem;
   width: 30%;
-  height: 35vh;
+  height: 11rem;
   font-size: 2rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
 
+@media all and (max-width: 1044px) {
+  .mint.landing {
+    height: 13rem;
+  }
+}
+
+@media all and (max-width: 943px) {
+  .mint.landing {
+    height: 9rem;
+  }
+  section.landing p {
+    font-size: 21px;
+  }
+}
+
+@media all and (max-width: 860px) {
+  .content {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .mint.landing {
+    width: 13rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+}
+
 .content {
   display: flex;
   margin-bottom: 1.5rem;
+  margin-top: 5rem;
 }
 
 .icons {
@@ -96,10 +124,11 @@ section.landing h3 {
   width: 5rem;
   height: 5rem;
   background: rgba(90, 187, 158);
-  margin-top: 1.5rem;
-  margin-left: 7rem;
-  margin-right: 7rem;
+  position: relative;
+  top: -6rem;
   padding: 5px;
+  border-style: solid;
+  border-color: #fff;
 }
 
 @media all and (max-width: 493px) {
