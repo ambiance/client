@@ -185,6 +185,11 @@ option {
 }
 
 @media screen and (max-width: 550px) {
+
+    select {
+        background-color: white;
+    }
+
     .search-form {
         position: center;
         top: 50%;
