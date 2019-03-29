@@ -88,26 +88,37 @@ section.landing h3 {
   }
 }
 
-@media all and (max-width: 943px) {
+@media all and (max-width: 860px) {
   .mint.landing {
-    height: 9rem;
+    height: 6rem;
   }
   section.landing p {
     font-size: 21px;
   }
-}
-
-@media all and (max-width: 860px) {
   .content {
     flex-wrap: wrap;
     justify-content: center;
   }
   .mint.landing {
-    width: 13rem;
+    width: 17rem;
     margin-bottom: 2rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
 }
+
+@media all and (max-width: 712px) {
+  .mint.landing {
+    width: 21rem;
+  }
+}
+
+@media all and (max-width: 610px) {
+  .mint.landing {
+    width: 19rem;
+    height: 4rem;
+  }
+}
+
 
 .content {
   display: flex;

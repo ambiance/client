@@ -28,7 +28,7 @@ class About extends React.Component {
               className="icon"
               src="https://media.discordapp.net/attachments/540283031001235477/560874061996228628/People_White.png?width=512&height=450"
             />
-            <p className="minty">Everyone is unique.</p>
+            <p className="minty">Everyone is <span className="bold">unique</span>.</p>
             <p className="minty">
               People like different things and want to feel great wherever they
               are.
@@ -42,7 +42,7 @@ class About extends React.Component {
             <p className="minty">
               Whether you want to study, socialize, or hold business meetings…
             </p>
-            <p className="minty">Aura can get you there.</p>
+            <p className="minty"><span className="bold">Aura</span> can get you there.</p>
           </section>
 
           <section className="mint landing">

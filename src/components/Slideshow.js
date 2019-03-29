@@ -11,15 +11,15 @@ class Slideshow extends React.Component {
     };
   }
 
-  componentDidMount() {
-    const startingIndex = Math.floor(Math.random() * 12);
-    this.setState({ activeSlide: startingIndex });
-    this.showSlide();
-  }
+  // componentDidMount() {
+  //   const startingIndex = Math.floor(Math.random() * 12);
+  //   this.setState({ activeSlide: startingIndex });
+  //   this.showSlide();
+  // }
 
-  componentWillUnmount = () => {
-    if (this.timeout) clearTimeout(this.timeout);
-  };
+  // componentWillUnmount = () => {
+  //   if (this.timeout) clearTimeout(this.timeout);
+  // };
 
   showSlide = () => {
     this.timeout = setTimeout(() => {
