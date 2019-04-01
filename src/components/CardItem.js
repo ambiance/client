@@ -3,13 +3,23 @@ import PropTypes from 'prop-types';
 import '../css/ResultCard.css';
 
 export default class CardItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    // set initial state
+    this.state = {
+      expandDetails: ''
+    };
+  }
+
   render() {
-    const { business } = this.props;
+    // consts here
+    const { business, onOpenModal } = this.props;
     return (
-      <div className="resultCard">
-        <div className="resultCardImageContainer">
+      <div key={business.id} className='resultCard'>
+        <div className='resultCardImageContainer'>
           <img
-            className="resultCardImage"
+            className='resultCardImage'
             src={
               business.businessImage.src
                 ? business.businessImage.src
@@ -23,12 +33,13 @@ export default class CardItem extends React.Component {
           />
         </div>
 
-        <span className="resultCardTitle">{business.name}</span>
-        <span className="resultCardSubtitle">{business.address}</span>
-        <span className="resultCardSubtitle">
+        <span className='resultCardTitle'>{business.name}</span>
+        <span className='resultCardSubtitle'>{business.address}</span>
+        <span className='resultCardSubtitle'>
           {business.city}, {business.state} {business.postalCode}
         </span>
-        <span className="resultCardAura">{business.attributes.aura}</span>
+        <span className='resultCardAura'>{business.attributes.aura}</span>
+        <button onClick={() => onOpenModal(business.name)}>More Details</button>
       </div>
     );
   }
@@ -42,7 +53,7 @@ CardItem.propTypes = {
     state: PropTypes.string.isRequired,
     postalCode: PropTypes.string.isRequired,
     attributes: PropTypes.shape({
-      aura: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
+      aura: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired
 };
