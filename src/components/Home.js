@@ -1,4 +1,3 @@
-
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import axios from 'axios';
@@ -7,7 +6,6 @@ import axios from 'axios';
 import SearchForm from './SearchForm';
 import SearchResults from './SearchResults';
 import Modal from './Modal';
-
 
 class Home extends React.Component {
   constructor(props) {
@@ -26,13 +24,13 @@ class Home extends React.Component {
     window.scroll({
       top: 635,
       left: 0,
-      behavior: 'smooth',
+      behavior: 'smooth'
     });
     axios
       .get('https://aurelia-server.herokuapp.com/api/businesses', {
         params: {
-          aura: searchFormData.auraValue,
-        },
+          aura: searchFormData.auraValue
+        }
       })
       .then(response => this.setState({ businesses: response.data }))
       .then(() => this.setState({ loading: false }));
@@ -50,8 +48,7 @@ class Home extends React.Component {
     this.setState({
       isShowing: false
     });
-
-
+  };
 
   render() {
     return (
@@ -61,6 +58,7 @@ class Home extends React.Component {
           show={this.state.isShowing}
           close={this.closeModalHandler}
         >
+          {/* Can only take primitive data */}
           {this.state.modalDetails}
         </Modal>
 
@@ -70,7 +68,7 @@ class Home extends React.Component {
           loading={this.state.loading}
           businesses={this.state.businesses}
           onOpenModal={this.openModalHandler}
-          id="results"
+          id='results'
         />
       </div>
     );

@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../css/ResultCard.css';
@@ -15,7 +13,6 @@ export default class CardItem extends React.Component {
   }
 
   render() {
-
     // consts here
     const { business, onOpenModal } = this.props;
     return (
@@ -36,15 +33,13 @@ export default class CardItem extends React.Component {
           />
         </div>
 
-        <span className="resultCardTitle">{business.name}</span>
-        <span className="resultCardSubtitle">{business.address}</span>
-        <span className="resultCardSubtitle">
+        <span className='resultCardTitle'>{business.name}</span>
+        <span className='resultCardSubtitle'>{business.address}</span>
+        <span className='resultCardSubtitle'>
           {business.city}, {business.state} {business.postalCode}
         </span>
-        <span className="resultCardAura">{business.attributes.aura}</span>
-        <button onClick={() => onOpenModal(business.categories)}>
-          More Details
-        </button>
+        <span className='resultCardAura'>{business.attributes.aura}</span>
+        <button onClick={() => onOpenModal(business.name)}>More Details</button>
       </div>
     );
   }
@@ -58,7 +53,7 @@ CardItem.propTypes = {
     state: PropTypes.string.isRequired,
     postalCode: PropTypes.string.isRequired,
     attributes: PropTypes.shape({
-      aura: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
+      aura: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired
 };

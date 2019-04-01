@@ -8,7 +8,7 @@ const modal = props => {
       <div
         className='modal-wrapper'
         style={{
-          transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
+          transform: props.show ? 'translateY(0vh)' : 'translateY(-80vh)',
           opacity: props.show ? '1' : '0'
         }}
       >
@@ -21,12 +21,7 @@ const modal = props => {
         <div className='modal-body'>
           <p>{props.children}</p>
         </div>
-        <div className='modal-footer'>
-          {/* <button className='btn-cancel' onClick={props.close}>
-            CLOSE
-          </button>
-          <button className='btn-continue'>CONTINUE</button> */}
-        </div>
+        <div className='modal-footer' />
       </div>
     </div>
   );
