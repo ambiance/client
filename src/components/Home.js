@@ -1,18 +1,18 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
 
 // Components
-import SearchForm from './SearchForm';
-import SearchResults from './SearchResults';
-import Modal from './Modal';
+import SearchForm from "./SearchForm";
+import SearchResults from "./SearchResults";
+import Modal from "./Modal";
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      modalDetails: '',
+      modalDetails: "",
       businesses: [],
       isShowing: false,
       loading: false
@@ -24,10 +24,10 @@ class Home extends React.Component {
     window.scroll({
       top: 635,
       left: 0,
-      behavior: 'smooth'
+      behavior: "smooth"
     });
     axios
-      .get('https://aurelia-server.herokuapp.com/api/businesses', {
+      .get("https://aurelia-server.herokuapp.com/api/businesses", {
         params: {
           aura: searchFormData.auraValue
         }
@@ -40,7 +40,7 @@ class Home extends React.Component {
   openModalHandler = details => {
     this.setState({
       isShowing: true,
-      modalDetails: details
+      modalDetails: { details }
     });
   };
 
@@ -54,12 +54,12 @@ class Home extends React.Component {
     return (
       <div>
         <Modal
-          className='modal'
+          className="modal"
           show={this.state.isShowing}
           close={this.closeModalHandler}
+          details={this.state.modalDetails}
         >
           {/* Can only take primitive data */}
-          {this.state.modalDetails}
         </Modal>
 
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
@@ -68,7 +68,7 @@ class Home extends React.Component {
           loading={this.state.loading}
           businesses={this.state.businesses}
           onOpenModal={this.openModalHandler}
-          id='results'
+          id="results"
         />
       </div>
     );
