@@ -16,7 +16,7 @@ export default class CardItem extends React.Component {
     // consts here
     const { business, onOpenModal } = this.props;
     return (
-      <div key={business.id} className='resultCard'>
+      <div key={business.id} className='resultCard'  onClick={() => onOpenModal(business.name)}>
         <div className='resultCardImageContainer'>
           <img
             className='resultCardImage'
@@ -39,10 +39,11 @@ export default class CardItem extends React.Component {
           {business.city}, {business.state} {business.postalCode}
         </span>
         <span className='resultCardAura'>{business.attributes.aura}</span>
-        <button onClick={() => onOpenModal(business.name)}>More Details</button>
       </div>
     );
   }
+
+  // this.querySelector(".resultCard").onClick
 }
 
 CardItem.propTypes = {
