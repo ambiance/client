@@ -25,6 +25,7 @@ article::before {
 
 .search-form {
     position: absolute;
+    /* !! */
     top: 50%;
     left: 48%;
     transform: translate(-50%, -50%);
@@ -180,7 +181,7 @@ option {
     .search-form {
         position: center;
         top: 50%;
-        left: 57%;
+        left: 56%;
     }
 }
 
@@ -193,6 +194,6 @@ option {
     .search-form {
         position: center;
         top: 50%;
-        left: 55%;
+        left: 53.5%;
     }
 }

@@ -36,11 +36,7 @@ class Home extends React.Component {
     return (
       <div>
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
-        <SearchResults
-          loading={this.state.loading}
-          businesses={this.state.businesses}
-          id="results"
-        />
+        <SearchResults loading={this.state.loading} businesses={this.state.businesses} id="results" />
       </div>
     );
   }
