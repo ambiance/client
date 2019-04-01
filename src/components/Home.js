@@ -53,11 +53,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <Modal
-          className='modal'
-          show={this.state.isShowing}
-          close={this.closeModalHandler}
-        >
+        <Modal className="modal" show={this.state.isShowing} close={this.closeModalHandler}>
           {/* Can only take primitive data */}
           {this.state.modalDetails}
         </Modal>
