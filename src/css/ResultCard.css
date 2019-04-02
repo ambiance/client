@@ -57,3 +57,13 @@
   border: 2px solid black;
   grid-column: auto / span 3;
 }
+
+.resultCardStar {
+  position: inherit;
+  display: block;
+  z-index: 10;
+  width: 50%;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}

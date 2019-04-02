@@ -6,7 +6,7 @@
   transition: all 0.8s;
 
   position: fixed;
-  z-index: 1;
+  z-index: 20;
   width: 100%;
   height: 70%;
   overflow: auto;
