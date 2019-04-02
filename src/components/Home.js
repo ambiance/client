@@ -6,6 +6,7 @@ import axios from 'axios';
 import SearchForm from './SearchForm';
 import SearchResults from './SearchResults';
 import Modal from './Modal';
+import auraColorChange from './AuraColor';
 
 class Home extends React.Component {
   constructor(props) {
@@ -32,7 +33,13 @@ class Home extends React.Component {
           aura: searchFormData.auraValue,
         },
       })
-      .then(response => this.setState({ businesses: response.data }))
+      .then(response => {
+        const businesses = response.data;
+        businesses.forEach(business => {
+          business.categories.auraColor = 'blue';
+        });
+        this.setState({ businesses });
+      })
       .then(() => this.setState({ loading: false }));
   };
 
@@ -58,8 +65,14 @@ class Home extends React.Component {
           {this.state.modalDetails}
         </Modal>
 
-        <SearchForm onSearchSubmit={this.handleSearchSubmit} />
-        <SearchResults loading={this.state.loading} businesses={this.state.businesses} id="results" />
+        <SearchForm onSearchSubmit={this.handleSearchSubmit} onClick={() => auraColorChange()} />
+
+        <SearchResults
+          loading={this.state.loading}
+          businesses={this.state.businesses}
+          onOpenModal={this.openModalHandler}
+          id="results"
+        />
       </div>
     );
   }

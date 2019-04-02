@@ -8,9 +8,7 @@ class SearchResults extends React.Component {
   render() {
     const { businesses, loading, onOpenModal } = this.props;
     if (loading) {
-      return (
-        <Loader type='Triangle' color='#5abb9e' height='200' width='200' />
-      );
+      return <Loader type="Triangle" color="#5abb9e" height="200" width="200" />;
     }
     if (businesses.length === 0) {
       return <div />;
@@ -19,15 +17,11 @@ class SearchResults extends React.Component {
       <div>
         <h2>Search Results</h2>
 
-        <section id='searchResults'>
-          <div className='resultCards'>
+        <section id="searchResults">
+          <div className="resultCards">
             {businesses.map((business, i) => (
               <div>
-                <CardItem
-                  key={i}
-                  business={business}
-                  onOpenModal={onOpenModal}
-                />
+                <CardItem key={i} business={business} onOpenModal={onOpenModal} />
               </div>
             ))}
           </div>
@@ -39,7 +33,7 @@ class SearchResults extends React.Component {
 
 SearchResults.propTypes = {
   businesses: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
 };
 
 export default SearchResults;

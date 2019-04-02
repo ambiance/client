@@ -5,7 +5,6 @@ import '../css/SearchForm.css';
 import '../css/main.css';
 
 class SearchForm extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -28,7 +27,6 @@ class SearchForm extends React.Component {
   render() {
     return (
       <article>
-
         <section className="search-form">
           <form action="" method="GET" name="search" role="search" onSubmit={this.handleSearchSubmit}>
             <span id="want" className="grid-80">
