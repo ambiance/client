@@ -27,13 +27,13 @@ class Home extends React.Component {
       behavior: "smooth"
     });
     axios
-      .get("https://aurelia-server.herokuapp.com/api/businesses", {
-        params: {
-          aura: searchFormData.auraValue
-        }
-      })
-      .then(response => this.setState({ businesses: response.data }))
-      .then(() => this.setState({ loading: false }));
+    .get("https://aurelia-server.herokuapp.com/api/businesses", {
+      params: {
+        aura: searchFormData.auraValue
+      }
+    })
+    .then(response => this.setState({ businesses: response.data }))
+    .then(() => this.setState({ loading: false }));
   };
 
   // Functions for Modals
