@@ -2,7 +2,8 @@
 
 /*Header*/
 header {
-  height: 4rem; /*4 times the height of our base font*/
+  height: 4rem;
+  /*4 times the height of our base font*/
   background-color: var(--black);
   padding: 1rem;
   color: #fff;
@@ -26,7 +27,7 @@ nav ul li:hover {
   background-color: var(--base-color-dark);
 }
 
-header > * {
+header>* {
   display: inline-block;
 }
 
@@ -37,7 +38,6 @@ header h2 {
 
 nav {
   height: 100%;
-  /*vertical-align: top;*/
   float: right;
   padding: 0px 5px;
 }
@@ -53,7 +53,6 @@ nav ul li {
   display: inline-block;
   background-color: var(--base-color);
 
-  /* background-color: rgba(90,187,158, 0.85); */
   height: 100%;
   padding: 0px 10px;
   position: relative;
@@ -70,13 +69,11 @@ nav ul li a {
   text-decoration: none;
 }
 
-/* .btnActive {
-  color: black;
-} */
-
-/* .liActive {
-  background-color: var(--base-color-dark);
-} */
+@media all and (max-width: 345px){
+  nav ul li a {
+    font-size: 15px;
+  }
+}
 
 .liActive:hover {
   height: 100%;
@@ -87,6 +84,7 @@ nav ul li a {
     height: 6rem;
     text-align: center;
   }
+
   header nav {
     height: 55px;
     float: none;
@@ -94,6 +92,7 @@ nav ul li a {
     padding: 0px 0px 0px;
     margin-top: -3.1rem;
   }
+
   header img {
     height: 7rem;
     margin: 0;
@@ -102,13 +101,15 @@ nav ul li a {
     float: none;
     padding: 0;
   }
+
   nav ul {
     margin: 0px;
     padding: 0px;
     margin-top: -3rem;
   }
+
   nav ul li {
-    margin-left: 0rem;
+    margin-left: 0.1rem;
     margin-right: 0rem;
   }
 }
