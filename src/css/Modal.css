@@ -76,3 +76,11 @@
   width: 50px;
   height: 50px;
 }
+
+.modalStar {
+  margin-bottom: 1rem;
+  width: 10rem;
+  display: block;
+  text-align: center;
+  margin-left: 40%;
+}

@@ -1,8 +1,12 @@
 import React from "react";
 import Map from "./Map";
 import "../css/Modal.css";
+import starImages from './starImages';
+
 
 const modal = props => {
+  console.log(props.show ? props.details.details.stars : 0);
+  const starSrc = handleStars(props.show ? props.details.details.stars : 0);
   console.log(props);
   return (
     <div>
@@ -25,6 +29,7 @@ const modal = props => {
           <p>{props.show ? props.details.details.displayAddress[1] : ""}</p>
           <p>{props.show ? props.details.details.attributes.priceRange : ""}</p>
           <p>{props.show ? props.details.details.stars + " stars" : ""}</p>
+          <img className="modalStar" src={starSrc}/>
           {/* <p>{props.show ? props.details.details.categories : ""}</p> */}
           <a
             className="yelpLink"
@@ -39,5 +44,44 @@ const modal = props => {
     </div>
   );
 };
+
+const handleStars = stars => {
+  switch (stars) {
+    case 0.5:
+      return starImages[12].src;
+      break;
+    case 1:
+      return starImages[13].src;
+      break;
+    case 1.5:
+      return starImages[14].src;
+      break;
+    case 2:
+      return starImages[15].src;
+      break;
+    case 2.5:
+      return starImages[16].src;
+      break;
+    case 3:
+      return starImages[17].src;
+      break;
+    case 3.5:
+      return starImages[18].src;
+      break;
+    case 4:
+      return starImages[19].src;
+      break;
+    case 4.5:
+      return starImages[20].src;
+      break;
+    case 5:
+      return starImages[21].src;
+      break;
+
+    default:
+      return starImages[11].src;
+  }
+;}
+
 
 export default modal;
