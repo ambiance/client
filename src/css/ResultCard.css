@@ -23,6 +23,15 @@
   background-color: var(--mint);
 }
 
+@media all and (max-width: 360px) {
+  .resultCards {
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  }
+  .resultCard {
+    width: 15rem;
+  }
+}
+
 .resultCardImageContainer {
   height: 11rem;
   overflow: hidden;
