@@ -6,7 +6,6 @@ import starImages from './starImages';
 
 const modal = props => {
   const starSrc = handleStars(props.show ? props.details.details.stars : 0);
-  console.log(props);
   return (
     <div>
       <div
