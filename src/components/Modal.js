@@ -20,7 +20,7 @@ const modal = props => {
           </button>
         </div>
         <div className="modal-body">
-          {/* <Map /> */}
+          <Map className="modalMap" />
           <p>{props.show ? props.details.details.displayAddress[0] : ""}</p>
           <p>{props.show ? props.details.details.displayAddress[1] : ""}</p>
           <p>{props.show ? props.details.details.attributes.priceRange : ""}</p>
