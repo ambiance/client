@@ -11,7 +11,20 @@ class SearchForm extends React.Component {
       searchForm: {
         auraValue: 'trendy',
       },
+      scroll: 0,
+      top: 0,
     };
+  }
+
+  componentDidMount() {
+    const form = document.getElementById('search-form');
+    this.setState({ top: form.offsetTop, height: form.offsetHeight });
+    window.addEventListener('scroll', () => this.handleScroll());
+  }
+
+  componentDidUpdate() {
+    if (this.state.scroll > this.state.top) document.body.style.paddingTop = `${this.state.height}px`;
+    else document.body.style.paddingTop = 0;
   }
 
   handleSearchSubmit = event => {
@@ -23,10 +36,14 @@ class SearchForm extends React.Component {
     this.setState({ searchForm: { auraValue: event.target.value } });
   };
 
+  handleScroll() {
+    this.setState({ scroll: window.scrollY });
+  }
+
   render() {
     return (
       <article>
-        <section className="search-form">
+        <section id="search-form" className={this.state.scroll > this.state.top ? 'fixed' : ''}>
           <form action="" method="GET" name="search" role="search" onSubmit={this.handleSearchSubmit}>
             <span id="want" className="grid-80">
               I want to be
