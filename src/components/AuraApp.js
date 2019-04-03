@@ -6,8 +6,17 @@ import MeetTheTeam from './MeetTheTeam';
 import FourOhFour from './404';
 import auraLogo from '../assets/img/auraLogo.png';
 import Footer from './Footer';
+import slideImages from './slideImages';
 
 class AuraApp extends React.Component {
+  // force browser to preload slideshow images
+  componentDidMount() {
+    slideImages.forEach(slide => {
+      const img = new Image();
+      img.src = slide.src;
+    });
+  }
+
   render() {
     return (
       <BrowserRouter>
