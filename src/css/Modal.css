@@ -71,3 +71,11 @@
 .yelpLink {
   color: #000000;
 }
+
+.modalStar {
+  width: 10rem;
+  display: block;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 1rem;
+}

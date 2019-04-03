@@ -59,10 +59,10 @@ class SearchForm extends React.Component {
                 <option value="trendy">Trendy</option>
                 <option value="inspired">Inspired</option>
                 <option value="romantic">Romantic</option>
-                <option value="peaceful">Peaceful</option>
+                <option value="cheerful">Cheerful</option>
                 <option value="classy">Classy</option>
                 <option value="hipster">Hipster</option>
-                <option value="silly">Silly</option>
+                <option value="casual">Casual</option>
                 <option value="touristy">Touristy</option>
               </select>
             </p>
