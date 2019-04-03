@@ -84,6 +84,7 @@ a {
   }
 }
 
+
 @media all and (max-width: 355px) {
   #title {
     font-size: 0.7rem;
