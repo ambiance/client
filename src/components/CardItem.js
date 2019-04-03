@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../css/ResultCard.css';
-import '../css/auraColor.css';
-import './AuraColor';
 
 export default class CardItem extends React.Component {
   constructor(props) {
@@ -14,9 +12,58 @@ export default class CardItem extends React.Component {
     };
   }
 
+  auraColorChange = auraString => {
+    const auras = auraString.split(',');
+    // console.log(auras);
+    let colorString = '';
+    for (let i = 0; i < auras.length; i++) {
+      switch (auras[i]) {
+        case 'trendy':
+          colorString = `${colorString}var(--trendy), `;
+          break;
+        case 'romantic':
+          colorString = `${colorString}var(--romantic), `;
+          break;
+        case 'hipster':
+          colorString = `${colorString}var(--hipster), `;
+          break;
+        case 'casual':
+          colorString = `${colorString}var(--casual), `;
+          break;
+        case 'inspired':
+          colorString = `${colorString}var(--inspired), `;
+          break;
+        case 'classy':
+          colorString = `${colorString}var(--classy), `;
+          break;
+        case 'touristy':
+          colorString = `${colorString}var(--touristy), `;
+          break;
+        case 'cheerful':
+          colorString = `${colorString}var(--cheerful), `;
+          break;
+        default:
+          colorString = `${colorString}var(--mint), `;
+      }
+    }
+    colorString = colorString.substring(0, colorString.length - 2);
+
+    if (auras.length < 2) {
+      return { backgroundColor: colorString };
+    }
+    return { backgroundImage: `linear-gradient(to right, ${colorString})` };
+  };
+
+  auraSpace = auraString => {
+    const auras = auraString.split(',');
+    return auras.join(', ');
+  };
+
   render() {
     // consts here
     const { business, onOpenModal } = this.props;
+
+    const styleObject = this.auraColorChange(business.attributes.aura);
     return (
       <div key={business.id} className="resultCard">
         <div className="resultCardImageContainer">
@@ -36,7 +83,9 @@ export default class CardItem extends React.Component {
         <span className="resultCardSubtitle">
           {business.city}, {business.state} {business.postalCode}
         </span>
-        <span className="resultCardAura">{business.attributes.aura}</span>
+        <span className="resultCardAura" style={styleObject}>
+          {this.auraSpace(business.attributes.aura)}
+        </span>
         <button onClick={() => onOpenModal(business.name)}>More Details</button>
       </div>
     );

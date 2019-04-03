@@ -35,9 +35,6 @@ class Home extends React.Component {
       })
       .then(response => {
         const businesses = response.data;
-        businesses.forEach(business => {
-          business.categories.auraColor = 'blue';
-        });
         this.setState({ businesses });
       })
       .then(() => this.setState({ loading: false }));
@@ -65,7 +62,7 @@ class Home extends React.Component {
           {this.state.modalDetails}
         </Modal>
 
-        <SearchForm onSearchSubmit={this.handleSearchSubmit} onClick={() => auraColorChange()} />
+        <SearchForm onSearchSubmit={this.handleSearchSubmit} />
 
         <SearchResults
           loading={this.state.loading}
