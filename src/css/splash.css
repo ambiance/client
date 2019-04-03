@@ -139,7 +139,31 @@
     font-size: 2rem;
   }
   .splashOverlayAura {
-    height: 39vh;
+    height: 12rem;
     font-size: 1.5rem;
+    margin-left: -1rem;
+  }
+}
+
+@media all and (max-width: 360px) {
+  .slideshow {
+    height: 12rem;
+    margin-bottom: 3px;
+    margin-bottom: -3rem;
+  }
+
+  .splashHeader {
+    margin-bottom: 3rem;
+    margin-top: 7rem;
+    font-size: 4.5rem;
+  }
+
+  .splashOverlay {
+    font-size: 1.5rem;
+  }
+  .splashOverlayAura {
+    height: 10rem;
+    font-size: 1.5rem;
+    margin-left: -1rem;
   }
 }
