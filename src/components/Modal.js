@@ -29,6 +29,7 @@ const modal = props => {
           <a
             className="yelpLink"
             href={props.show ? props.details.details.url : ""}
+            target="_blank"
           >
             Link to Yelp!
           </a>

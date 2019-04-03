@@ -61,6 +61,7 @@ export default class CardItem extends React.Component {
         onClick={() => onOpenModal(business)}
       >
         <div className="resultCardImageContainer">
+          <span className="resultCardAura">{business.attributes.aura}</span>
           <img
             className="resultCardImage"
             src={

@@ -34,10 +34,23 @@
   object-fit: cover;
 }
 
+.pill {
+  text-align: right
+}
+
 .resultCardAura {
   color: var(--off-white);
-  font-size: 1.2rem;
-  padding: 1rem 1rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-top: 10px;
+  margin-left: 10px;
+  align-items: right;
+  display: block;
+  position: absolute;
+  border-color: white;
+  border-style: dotted;
+  background-color: rgba(90, 187, 158, 0.9);
+  border-radius: 33px;
 }
 
 .resultCardTitle {
@@ -62,7 +75,7 @@
   position: inherit;
   display: block;
   z-index: 10;
-  width: 50%;
+  width: 27%;
   margin-left: 1rem;
   margin-bottom: 1rem;
   margin-top: 1rem;

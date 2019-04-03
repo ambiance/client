@@ -17,7 +17,7 @@ class SearchResults extends React.Component {
     }
     return (
       <div>
-        <h2>Search Results</h2>
+        <h2 className="searchResultsHeader">Search Results</h2>
 
         <section id="searchResults">
           <div className="resultCards">
