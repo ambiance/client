@@ -7,6 +7,7 @@ import '../css/main.css';
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
+    this.formRef = React.createRef();
 
     this.state = {
       searchForm: {
@@ -18,7 +19,7 @@ class SearchForm extends React.Component {
   }
 
   componentDidMount() {
-    const form = document.getElementById('search-form');
+    const form = this.formRef.current;
     this.setState({ top: form.offsetTop, height: form.offsetHeight });
     window.addEventListener('scroll', () => this.handleScroll());
   }
@@ -44,7 +45,7 @@ class SearchForm extends React.Component {
   render() {
     return (
       <article>
-        <section id="search-form" className={this.state.scroll > this.state.top ? 'fixed' : ''}>
+        <section id="search-form" ref={this.formRef} className={this.state.scroll > this.state.top ? 'fixed' : ''}>
           <form action="" method="GET" name="search" role="search" onSubmit={this.handleSearchSubmit}>
             <span id="want" className="grid-80">
               I want to be
