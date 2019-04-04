@@ -70,6 +70,8 @@
 
 .yelpLink {
   color: #000000;
+  font-size: 12px;
+  text-decoration: none;
 }
 
 .modalStar {
@@ -79,3 +81,13 @@
   margin: auto;
   margin-bottom: 1rem;
 }
+
+.yelpPic {
+  width: 2.5rem;
+  display: block;
+  text-align: center;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+
