@@ -16,6 +16,12 @@
   justify-content: space-between;
 }
 
+@media screen and (max-width: 596px) {
+  .modal-wrapper {
+    margin-top: -3.45rem;
+  }
+}
+
 .modal-header {
   background: #263238;
   height: 40px;
