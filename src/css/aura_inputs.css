@@ -135,7 +135,7 @@ option {
 .grid-100 {
     font-size: 1.1rem;
     border: 0;
-    background: var(--base-color);
+    background: var(--base-color-dark);
     color: white;
     font-weight: 600;
     transition: background 0.25s ease-in-out;
@@ -146,7 +146,7 @@ option {
 .grid-100:hover,
 .grid-100:active {
     outline: 0;
-    background: var(--base-color-dark);
+    background: rgba(51, 116, 96, 0.85);
     color: #232323;
 }
 
