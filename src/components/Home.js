@@ -20,12 +20,14 @@ class Home extends React.Component {
   }
 
   handleSearchSubmit = searchFormData => {
-    this.setState({ loading: true });
-    window.scroll({
-      top: 635,
-      left: 0,
-      behavior: "smooth"
+    this.setState({ loading: true }, ()=> {
+      window.scroll({
+        top: 635,
+        left: 0,
+        behavior: "smooth"
+      });
     });
+    
     axios
     .get("https://aurelia-server.herokuapp.com/api/businesses", {
       params: {

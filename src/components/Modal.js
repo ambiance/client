@@ -5,7 +5,7 @@ import starImages from './starImages';
 
 
 const modal = props => {
-  const starSrc = handleStars(props.show ? props.details.details.stars : 0);
+  // const starSrc = handleStars(props.show ? props.details.details.stars : 0);
   return (
     <div>
       <div
@@ -26,8 +26,8 @@ const modal = props => {
           <p>{props.show ? props.details.details.displayAddress[0] : ""}</p>
           <p>{props.show ? props.details.details.displayAddress[1] : ""}</p>
           <p>{props.show ? props.details.details.attributes.priceRange : ""}</p>
-          {/* <p>{props.show ? props.details.details.stars + " stars" : ""}</p> */}
-          <img className="modalStar" src={starSrc}/>
+          <p>{props.show ? props.details.details.stars + " stars" : ""}</p>
+          {/* <img className="modalStar" src={starSrc}/> */}
           {/* <p>{props.show ? props.details.details.categories : ""}</p> */}
           <a
             className="yelpLink"
