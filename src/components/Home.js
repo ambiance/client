@@ -6,7 +6,6 @@ import axios from "axios";
 import SearchForm from './SearchForm';
 import SearchResults from './SearchResults';
 import Modal from './Modal';
-import auraColorChange from './AuraColor';
 
 class Home extends React.Component {
   constructor(props) {
