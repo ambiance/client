@@ -22,27 +22,23 @@ const modal = props => {
             ×
           </button>
         </div>
-        <div className="modal-body">
-          <section className="businessMap">
-            <Map className="modalMap" />
-          </section>
-          <section className="businessDetails">
-            <p>{props.show ? props.details.details.displayAddress[0] : ""}</p>
-            <p>{props.show ? props.details.details.displayAddress[1] : ""}</p>
-            <p>
-              {props.show ? props.details.details.attributes.priceRange : ""}
-            </p>
-            <p>{props.show ? props.details.details.stars + " stars" : ""}</p>
-            <img className="modalStar" src={starSrc} />
-            {/* <p>{props.show ? props.details.details.categories : ""}</p> */}
-            <a
-              className="yelpLink"
-              href={props.show ? props.details.details.url : ""}
-              target="_blank"
-            >
-              Link to Yelp!
-            </a>
-          </section>
+        <div className="businessMap">
+          <Map className="modalMap" details={props.details.details} />
+        </div>
+        <div className="businessDetails">
+          <p>{props.show ? props.details.details.displayAddress[0] : ""}</p>
+          <p>{props.show ? props.details.details.displayAddress[1] : ""}</p>
+          <p>{props.show ? props.details.details.attributes.priceRange : ""}</p>
+          <p>{props.show ? props.details.details.stars + " stars" : ""}</p>
+          <img className="modalStar" src={starSrc} />
+          {/* <p>{props.show ? props.details.details.categories : ""}</p> */}
+          <a
+            className="yelpLink"
+            href={props.show ? props.details.details.url : ""}
+            target="_blank"
+          >
+            Link to Yelp!
+          </a>
         </div>
         <div className="modal-footer" />
       </div>
