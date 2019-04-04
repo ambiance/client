@@ -14,7 +14,7 @@ class SearchForm extends React.Component {
         auraValue: 'trendy',
       },
       scroll: 0,
-      top: 15,
+      top: 10,
     };
   }
 
