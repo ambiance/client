@@ -16,7 +16,7 @@ class AuraApp extends React.Component {
     super(props);
 
     this.state = {
-      isAuthenticated: true,
+      isAuthenticated: false,
       user: {
         username: 'scott',
       },
@@ -30,6 +30,20 @@ class AuraApp extends React.Component {
       img.src = slide.src;
     });
   }
+
+  handleLogin = credentials => {
+    console.log(credentials);
+    // Make axios call to server to authenticate.
+    // Set response jwt to all further requests.
+    // set user and authentication in state.
+    // redirect User to their profile / home page.
+  };
+
+  handleLogout = () => {
+    // Revoke jwt from user requests
+    // set user and authentication to empty / false respectively
+    // redirect user to home page / login page.
+  };
 
   render() {
     const { isAuthenticated, user } = this.state;
@@ -54,9 +68,15 @@ class AuraApp extends React.Component {
                 <li>
                   <NavLink to="/meettheteam">Contact</NavLink>
                 </li>
-                <li>
-                  <NavLink to="/profile">Profile</NavLink>
-                </li>
+                {!isAuthenticated ? (
+                  <li>
+                    <NavLink to="/login">Login/Signup</NavLink>
+                  </li>
+                ) : (
+                  <li>
+                    <NavLink to="/profile">Profile</NavLink>
+                  </li>
+                )}
               </ul>
             </nav>
           </header>
@@ -64,7 +84,10 @@ class AuraApp extends React.Component {
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
             <Route path="/meettheteam" component={MeetTheTeam} />
-            <Route path="/login" component={Login} />
+            <Route
+              path="/login"
+              render={props => <Login {...props} handleLogin={this.handleLogin} />}
+            />
             <ProtectedRoute
               path="/profile"
               isAuthenticated={isAuthenticated}

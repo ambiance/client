@@ -29,26 +29,30 @@ class SignupForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
         <h1>Signup</h1>
-        <label>
+        <label htmlFor="usernameInputValue">
           Username:
           <input
             type="text"
             placeholder="username"
+            id="usernameInputValue"
             name="usernameInputValue"
             value={this.state.usernameInputValue}
             onChange={this.handleInputChange}
           />
         </label>
-        <label>
+        <label htmlFor="passwordInputValue">
           Password:
           <input
             type="text"
             placeholder="password"
+            id="passwordInputValue"
             name="passwordInputValue"
             value={this.state.passwordInputValue}
             onChange={this.handleInputChange}
           />
         </label>
+        {/* Need a button to acheive submit functionality, but don't use the button */}
+        <button type="submit" style={{ display: 'none' }} />
       </form>
     );
   }

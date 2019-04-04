@@ -15,7 +15,7 @@ class LoginPage extends React.Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, handleLogin } = this.props;
 
     console.log(this.props);
 
@@ -23,7 +23,7 @@ class LoginPage extends React.Component {
       // TODO: Create some type of alert to let them know they are not authenticated.
       <main style={{ display: 'flex' }}>
         <SignupForm />
-        <LoginForm />
+        <LoginForm handleLogin={handleLogin} />
       </main>
     );
   }
