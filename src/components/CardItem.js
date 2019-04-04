@@ -34,6 +34,9 @@ export default class CardItem extends React.Component {
         case 'inspired':
           colorString = `${colorString}var(--inspired), `;
           break;
+          case 'intimate':
+            colorString = `${colorString}var(--intimate), `;
+            break;
         case 'classy':
           colorString = `${colorString}var(--classy), `;
           break;
@@ -64,34 +67,24 @@ export default class CardItem extends React.Component {
     switch (stars) {
       case 0.5:
         return starImages[1].src;
-        break;
       case 1:
         return starImages[2].src;
-        break;
       case 1.5:
         return starImages[3].src;
-        break;
       case 2:
         return starImages[4].src;
-        break;
       case 2.5:
         return starImages[5].src;
-        break;
       case 3:
         return starImages[6].src;
-        break;
       case 3.5:
         return starImages[7].src;
-        break;
       case 4:
         return starImages[8].src;
-        break;
       case 4.5:
         return starImages[9].src;
-        break;
       case 5:
         return starImages[10].src;
-        break;
   
       default:
         return starImages[0].src;
