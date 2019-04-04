@@ -63,7 +63,7 @@ class SearchForm extends React.Component {
                 <option value="peaceful">Peaceful</option>
                 <option value="classy">Classy</option>
                 <option value="hipster">Hipster</option>
-                <option value="silly">Silly</option>
+                <option value="silly">Classy</option>
                 <option value="touristy">Touristy</option>
               </select>
             </p>

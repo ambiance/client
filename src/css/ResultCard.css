@@ -27,6 +27,7 @@
   .resultCards {
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   }
+
   .resultCard {
     width: 15rem;
   }
