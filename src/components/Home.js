@@ -3,9 +3,9 @@ import React from "react";
 import axios from "axios";
 
 // Components
-import SearchForm from "./SearchForm";
-import SearchResults from "./SearchResults";
-import Modal from "./Modal";
+import SearchForm from './SearchForm';
+import SearchResults from './SearchResults';
+import Modal from './Modal';
 
 class Home extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Home extends React.Component {
       modalDetails: "",
       businesses: [],
       isShowing: false,
-      loading: false
+      loading: false,
     };
   }
 
@@ -48,7 +48,7 @@ class Home extends React.Component {
 
   closeModalHandler = () => {
     this.setState({
-      isShowing: false
+      isShowing: false,
     });
   };
 
