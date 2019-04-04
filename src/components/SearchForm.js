@@ -5,16 +5,25 @@ import '../css/SearchForm.css';
 import '../css/main.css';
 
 class SearchForm extends React.Component {
-
   constructor(props) {
     super(props);
+    this.formRef = React.createRef();
 
     this.state = {
       searchForm: {
         auraValue: 'trendy',
       },
+      scroll: 0,
+      top: 0,
     };
   }
+
+  componentDidMount() {
+    const form = this.formRef.current;
+    this.setState({ top: form.offsetTop, height: form.offsetHeight });
+    window.addEventListener('scroll', () => this.handleScroll());
+  }
+
 
   handleSearchSubmit = event => {
     event.preventDefault();
@@ -25,11 +34,14 @@ class SearchForm extends React.Component {
     this.setState({ searchForm: { auraValue: event.target.value } });
   };
 
+  handleScroll() {
+    this.setState({ scroll: window.scrollY });
+  }
+
   render() {
     return (
       <article>
-
-        <section className="search-form">
+        <section id="search-form" ref={this.formRef} className={this.state.scroll > this.state.top ? 'fixed' : ''}>
           <form action="" method="GET" name="search" role="search" onSubmit={this.handleSearchSubmit}>
             <span id="want" className="grid-80">
               I want to be
@@ -44,10 +56,11 @@ class SearchForm extends React.Component {
                 <option value="trendy">Trendy</option>
                 <option value="inspired">Inspired</option>
                 <option value="romantic">Romantic</option>
-                <option value="peaceful">Peaceful</option>
+                <option value="cheerful">Cheerful</option>
+                <option value="intimate">Intimate</option>
                 <option value="classy">Classy</option>
                 <option value="hipster">Hipster</option>
-                <option value="silly">Silly</option>
+                <option value="casual">Casual</option>
                 <option value="touristy">Touristy</option>
               </select>
             </p>
