@@ -20,19 +20,25 @@ const modal = props => {
           </button>
         </div>
         <div className="modal-body">
-          <Map className="modalMap" />
-          <p>{props.show ? props.details.details.displayAddress[0] : ""}</p>
-          <p>{props.show ? props.details.details.displayAddress[1] : ""}</p>
-          <p>{props.show ? props.details.details.attributes.priceRange : ""}</p>
-          <p>{props.show ? props.details.details.stars + " stars" : ""}</p>
-          {/* <p>{props.show ? props.details.details.categories : ""}</p> */}
-          <a
-            className="yelpLink"
-            href={props.show ? props.details.details.url : ""}
-            target="_blank"
-          >
-            Link to Yelp!
-          </a>
+          <section className="businessMap">
+            <Map className="modalMap" />
+          </section>
+          <section className="businessDetails">
+            <p>{props.show ? props.details.details.displayAddress[0] : ""}</p>
+            <p>{props.show ? props.details.details.displayAddress[1] : ""}</p>
+            <p>
+              {props.show ? props.details.details.attributes.priceRange : ""}
+            </p>
+            <p>{props.show ? props.details.details.stars + " stars" : ""}</p>
+            {/* <p>{props.show ? props.details.details.categories : ""}</p> */}
+            <a
+              className="yelpLink"
+              href={props.show ? props.details.details.url : ""}
+              target="_blank"
+            >
+              Link to Yelp!
+            </a>
+          </section>
         </div>
         <div className="modal-footer" />
       </div>
