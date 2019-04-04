@@ -64,7 +64,7 @@ a {
 }
 
 /* @media all and (max-width: 493px) { */
-@media all and (max-width: 812px) {
+@media all and (max-width: 910px) {
   #grid {
     display: grid;
     grid-column: 1;
@@ -81,5 +81,11 @@ a {
   #title {
     font-size: 0.8rem;
     margin-left: 0.5rem;
+  }
+}
+
+@media all and (max-width: 355px) {
+  #title {
+    font-size: 0.7rem;
   }
 }

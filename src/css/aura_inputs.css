@@ -23,16 +23,32 @@ article::before {
     background: rgba(105, 102, 102, 0.6);
 }
 
-.search-form {
+#search-form {
     position: absolute;
     /* !! */
     top: 50%;
     left: 48%;
     transform: translate(-50%, -50%);
+    z-index: 20;
+}
+@media screen and (min-width: 970px) {
+    #search-form.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translateX(0);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #2F2F2F;
+        padding: 20px 0;;
+    }
+
 }
 
 form {
     /* font size 0 to remove inline-block whitespace*/
+
     font-size: 0;
     max-width: 100rem;
     margin: auto;
@@ -58,7 +74,7 @@ form {
 
 /* input and span styles*/
 
-.search-form span {
+#search-form span {
     padding: 0 1rem;
     vertical-align: middle;
     line-height: 3.125rem;
@@ -75,7 +91,7 @@ select {
     padding: 0 0 0 0.2em;
 }
 
-#search-field:focus,
+.search-field:focus,
 select:focus {
     outline: none;
     border: 0;
@@ -173,12 +189,12 @@ option {
 
     }
 
-    .search-form span {
+    #search-form span {
         width: 25.5vw;
         min-width: 7rem;
     }
 
-    .search-form {
+    #search-form {
         position: center;
         top: 50%;
         left: 56%;
@@ -191,7 +207,7 @@ option {
         background-color: white;
     }
 
-    .search-form {
+    #search-form {
         position: center;
         top: 50%;
         left: 53.5%;

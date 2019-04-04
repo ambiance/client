@@ -1,15 +1,25 @@
 import React from 'react';
-import { HashRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import Home from './Home';
 import About from './About';
 import MeetTheTeam from './MeetTheTeam';
+import FourOhFour from './404';
 import auraLogo from '../assets/img/auraLogo.png';
 import Footer from './Footer';
+import slideImages from './slideImages';
 
 class AuraApp extends React.Component {
+  // force browser to preload slideshow images
+  componentDidMount() {
+    slideImages.forEach(slide => {
+      const img = new Image();
+      img.src = slide.src;
+    });
+  }
+
   render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
         <div className="App">
           <header>
             <NavLink to="/">
@@ -36,11 +46,11 @@ class AuraApp extends React.Component {
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
             <Route path="/meettheteam" component={MeetTheTeam} />
-            <Route render={() => <h1>Page Not Found</h1>} />
+            <Route component={FourOhFour} />
           </Switch>
           <Footer />
         </div>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }
