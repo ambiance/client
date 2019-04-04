@@ -34,7 +34,8 @@ const modal = props => {
             href={props.show ? props.details.details.url : ""}
             target="_blank"
           >
-            Link to Yelp!
+            <img className='yelpPic' src='./assets/img/yelpButton.jpg' />
+            Click for more details!
           </a>
         </div>
         <div className="modal-footer" />

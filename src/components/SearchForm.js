@@ -14,7 +14,7 @@ class SearchForm extends React.Component {
         auraValue: 'trendy',
       },
       scroll: 0,
-      top: 0,
+      top: 15,
     };
   }
 
@@ -43,14 +43,12 @@ class SearchForm extends React.Component {
       <article>
         <section id="search-form" ref={this.formRef} className={this.state.scroll > this.state.top ? 'fixed' : ''}>
           <form action="" method="GET" name="search" role="search" onSubmit={this.handleSearchSubmit}>
-            <span id="want" className="grid-80">
-              I want to be
-            </span>
+            <span id="want" className="grid-80">I want to be</span>
             <p className="cat-wrap">
               <select
                 value={this.state.searchForm.auraValue}
                 name="search categories"
-                className="grid-80"
+                className="grid-80 corner"
                 onChange={this.handleChange}
               >
                 <option value="trendy">Trendy</option>
@@ -64,10 +62,10 @@ class SearchForm extends React.Component {
                 <option value="touristy">Touristy</option>
               </select>
             </p>
-            <span className="grid-40">while</span>
 
+            <span className="grid-40">while</span>
             <p className="cat-wrap">
-              <select name="search categories" className="grid-80">
+              <select name="search categories" className="grid-80 middle">
                 <option value="eating">Eating</option>
                 <option value="studying">Studying</option>
                 <option value="dating">Dating</option>
@@ -76,8 +74,8 @@ class SearchForm extends React.Component {
                 <option value="shopping">Shopping</option>
               </select>
             </p>
-            <span className="grid-40">with</span>
 
+            <span className="grid-40">with</span>
             <p className="cat-wrap">
               <select name="search categories" className="grid-80">
                 <option value="I">Myself</option>
