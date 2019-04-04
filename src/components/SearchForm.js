@@ -24,10 +24,6 @@ class SearchForm extends React.Component {
     window.addEventListener('scroll', () => this.handleScroll());
   }
 
-  componentDidUpdate() {
-    if (this.state.scroll > this.state.top) document.body.style.paddingTop = `${this.state.height}px`;
-    else document.body.style.paddingTop = 0;
-  }
 
   handleSearchSubmit = event => {
     event.preventDefault();
@@ -61,6 +57,7 @@ class SearchForm extends React.Component {
                 <option value="inspired">Inspired</option>
                 <option value="romantic">Romantic</option>
                 <option value="cheerful">Cheerful</option>
+                <option value="intimate">Intimate</option>
                 <option value="classy">Classy</option>
                 <option value="hipster">Hipster</option>
                 <option value="casual">Casual</option>
