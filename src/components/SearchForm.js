@@ -64,12 +64,7 @@ class SearchForm extends React.Component {
               I want to be
             </span>
             <p className="cat-wrap">
-              <select
-                value={this.state.searchForm.auraValue}
-                name="auraValue"
-                className="grid-80 corner"
-                onChange={this.handleChange}
-              >
+              <select name="auraValue" className="grid-80 corner" onChange={this.handleChange}>
                 <option value="trendy">Trendy</option>
                 <option value="inspired">Inspired</option>
                 <option value="romantic">Romantic</option>
