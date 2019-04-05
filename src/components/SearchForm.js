@@ -7,26 +7,23 @@ import '../css/main.css';
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
+    this.formRef = React.createRef();
 
     this.state = {
       searchForm: {
         auraValue: 'trendy',
       },
       scroll: 0,
-      top: 0,
+      top: 10,
     };
   }
 
   componentDidMount() {
-    const form = document.getElementById('search-form');
+    const form = this.formRef.current;
     this.setState({ top: form.offsetTop, height: form.offsetHeight });
     window.addEventListener('scroll', () => this.handleScroll());
   }
 
-  componentDidUpdate() {
-    if (this.state.scroll > this.state.top) document.body.style.paddingTop = `${this.state.height}px`;
-    else document.body.style.paddingTop = 0;
-  }
 
   handleSearchSubmit = event => {
     event.preventDefault();
@@ -44,32 +41,31 @@ class SearchForm extends React.Component {
   render() {
     return (
       <article>
-        <section id="search-form" className={this.state.scroll > this.state.top ? 'fixed' : ''}>
+        <section id="search-form" ref={this.formRef} className={this.state.scroll > this.state.top ? 'fixed' : ''}>
           <form action="" method="GET" name="search" role="search" onSubmit={this.handleSearchSubmit}>
-            <span id="want" className="grid-80">
-              I want to be
-            </span>
+            <span id="want" className="grid-80">I want to be</span>
             <p className="cat-wrap">
               <select
                 value={this.state.searchForm.auraValue}
                 name="search categories"
-                className="grid-80"
+                className="grid-80 corner"
                 onChange={this.handleChange}
               >
                 <option value="trendy">Trendy</option>
                 <option value="inspired">Inspired</option>
                 <option value="romantic">Romantic</option>
-                <option value="peaceful">Peaceful</option>
+                <option value="cheerful">Cheerful</option>
+                <option value="intimate">Intimate</option>
                 <option value="classy">Classy</option>
                 <option value="hipster">Hipster</option>
-                <option value="silly">Silly</option>
+                <option value="casual">Casual</option>
                 <option value="touristy">Touristy</option>
               </select>
             </p>
-            <span className="grid-40">while</span>
 
+            <span className="grid-40">while</span>
             <p className="cat-wrap">
-              <select name="search categories" className="grid-80">
+              <select name="search categories" className="grid-80 middle">
                 <option value="eating">Eating</option>
                 <option value="studying">Studying</option>
                 <option value="dating">Dating</option>
@@ -78,8 +74,8 @@ class SearchForm extends React.Component {
                 <option value="shopping">Shopping</option>
               </select>
             </p>
-            <span className="grid-40">with</span>
 
+            <span className="grid-40">with</span>
             <p className="cat-wrap">
               <select name="search categories" className="grid-80">
                 <option value="I">Myself</option>

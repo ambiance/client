@@ -23,11 +23,7 @@ class SearchResults extends React.Component {
           <div className="resultCards">
             {businesses.map((business, i) => (
               <div>
-                <CardItem
-                  key={i}
-                  business={business}
-                  onOpenModal={onOpenModal}
-                />
+                <CardItem key={i} business={business} onOpenModal={onOpenModal} />
               </div>
             ))}
           </div>
@@ -39,7 +35,7 @@ class SearchResults extends React.Component {
 
 SearchResults.propTypes = {
   businesses: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
 };
 
 export default SearchResults;
