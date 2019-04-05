@@ -13,7 +13,7 @@ class SearchForm extends React.Component {
       searchForm: {
         auraValue: 'trendy',
         categoryValue: 'eating',
-        groupValue: 'myself',
+        groupValue: 'whoever',
       },
       scroll: 0,
       top: 10,
@@ -124,9 +124,10 @@ class SearchForm extends React.Component {
                 className="grid-80"
                 onChange={this.handleGroupChange}
               >
-                <option value="I">Myself</option>
+                {/* <option value="I">Myself</option>
                 <option value="friends">Friends</option>
-                <option value="date">A Date</option>
+                <option value="date">A Date</option> */}
+                <option value="whoever">Whoever</option>
               </select>
             </p>
             <p className="submit-wrap" id="submitButtonContainer">
