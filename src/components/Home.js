@@ -20,7 +20,6 @@ class Home extends React.Component {
   }
 
   handleSearchSubmit = searchFormData => {
-    console.log(searchFormData);
     this.setState({ loading: true }, () => {
       window.scroll({
         top: 635,
