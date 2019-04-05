@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
-import axios from "axios";
+import React from 'react';
+import axios from 'axios';
 
 // Components
 import SearchForm from './SearchForm';
@@ -12,7 +12,7 @@ class Home extends React.Component {
     super(props);
 
     this.state = {
-      modalDetails: "",
+      modalDetails: '',
       businesses: [],
       isShowing: false,
       loading: false,
@@ -20,28 +20,29 @@ class Home extends React.Component {
   }
 
   handleSearchSubmit = searchFormData => {
-    this.setState({ loading: true }, ()=>{
+    this.setState({ loading: true }, () => {
       window.scroll({
         top: 635,
         left: 0,
-        behavior: "smooth"
+        behavior: 'smooth',
       });
     });
     axios
-    .get("https://aurelia-server.herokuapp.com/api/businesses", {
-      params: {
-        aura: searchFormData.auraValue
-      }
-    })
-    .then(response => this.setState({ businesses: response.data }))
-    .then(() => this.setState({ loading: false }));
+      .get('https://aurelia-server.herokuapp.com/api/businesses', {
+        params: {
+          aura: searchFormData.auraValue,
+          category: searchFormData.categoryValue,
+        },
+      })
+      .then(response => this.setState({ businesses: response.data }))
+      .then(() => this.setState({ loading: false }));
   };
 
   // Functions for Modals
   openModalHandler = details => {
     this.setState({
       isShowing: true,
-      modalDetails: { details }
+      modalDetails: { details },
     });
   };
 
