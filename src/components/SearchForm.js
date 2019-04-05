@@ -12,6 +12,8 @@ class SearchForm extends React.Component {
     this.state = {
       searchForm: {
         auraValue: 'trendy',
+        categoryValue: 'eating',
+        groupValue: 'whoever',
       },
       scroll: 0,
       top: 10,
@@ -24,14 +26,36 @@ class SearchForm extends React.Component {
     window.addEventListener('scroll', () => this.handleScroll());
   }
 
-
   handleSearchSubmit = event => {
     event.preventDefault();
     this.props.onSearchSubmit(this.state.searchForm);
   };
 
-  handleChange = event => {
-    this.setState({ searchForm: { auraValue: event.target.value } });
+  handleAuraChange = event => {
+    const { value } = event.target;
+    this.setState(prevState => {
+      const tempForm = prevState.searchForm;
+      tempForm.auraValue = value;
+      return { searchForm: tempForm };
+    });
+  };
+
+  handleCategoryChange = event => {
+    const { value } = event.target;
+    this.setState(prevState => {
+      const tempForm = prevState.searchForm;
+      tempForm.categoryValue = value;
+      return { searchForm: tempForm };
+    });
+  };
+
+  handleGroupChange = event => {
+    const { value } = event.target;
+    this.setState(prevState => {
+      const tempForm = prevState.searchForm;
+      tempForm.groupValue = value;
+      return { searchForm: tempForm };
+    });
   };
 
   handleScroll() {
@@ -41,15 +65,27 @@ class SearchForm extends React.Component {
   render() {
     return (
       <article>
-        <section id="search-form" ref={this.formRef} className={this.state.scroll > this.state.top ? 'fixed' : ''}>
-          <form action="" method="GET" name="search" role="search" onSubmit={this.handleSearchSubmit}>
-            <span id="want" className="grid-80">I want to be</span>
+        <section
+          id="search-form"
+          ref={this.formRef}
+          className={this.state.scroll > this.state.top ? 'fixed' : ''}
+        >
+          <form
+            action=""
+            method="GET"
+            name="search"
+            role="search"
+            onSubmit={this.handleSearchSubmit}
+          >
+            <span id="want" className="grid-80">
+              I want to be
+            </span>
             <p className="cat-wrap">
               <select
                 value={this.state.searchForm.auraValue}
-                name="search categories"
+                name="auraValue"
                 className="grid-80 corner"
-                onChange={this.handleChange}
+                onChange={this.handleAuraChange}
               >
                 <option value="trendy">Trendy</option>
                 <option value="inspired">Inspired</option>
@@ -65,22 +101,33 @@ class SearchForm extends React.Component {
 
             <span className="grid-40">while</span>
             <p className="cat-wrap">
-              <select name="search categories" className="grid-80 middle">
+              <select
+                value={this.state.searchForm.categoryValue}
+                name="categoryValue"
+                className="grid-80 middle"
+                onChange={this.handleCategoryChange}
+              >
                 <option value="eating">Eating</option>
                 <option value="studying">Studying</option>
                 <option value="dating">Dating</option>
-                <option value="relaxing">Relaxing</option>
+                {/* <option value="relaxing">Relaxing</option> */}
                 <option value="drinking">Drinking</option>
-                <option value="shopping">Shopping</option>
+                {/* <option value="shopping">Shopping</option> */}
               </select>
             </p>
 
             <span className="grid-40">with</span>
             <p className="cat-wrap">
-              <select name="search categories" className="grid-80">
-                <option value="I">Myself</option>
+              <select
+                value={this.state.searchForm.groupValue}
+                name="groupValue"
+                className="grid-80"
+                onChange={this.handleGroupChange}
+              >
+                {/* <option value="I">Myself</option>
                 <option value="friends">Friends</option>
-                <option value="date">A Date</option>
+                <option value="date">A Date</option> */}
+                <option value="whoever">Whoever</option>
               </select>
             </p>
             <p className="submit-wrap" id="submitButtonContainer">
