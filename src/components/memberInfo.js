@@ -26,7 +26,7 @@ const memberInfo = [
   {
     sectionId: 'none',
     src: `${process.env.PUBLIC_URL}/assets/img/team/Kevin_Amarbayar.jpg`,
-    fullName: 'Kevin Amarbyar',
+    fullName: 'Kevin Amarbayar',
     role: 'Software Engineer',
     aura: 'Lively',
     link: 'mailto: KAmarbayar@talentpath.com',
