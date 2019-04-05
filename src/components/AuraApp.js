@@ -1,6 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, NavLink, Redirect } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
+import API from './API';
 import Home from './Home';
 import About from './About';
 import MeetTheTeam from './MeetTheTeam';
@@ -34,9 +35,35 @@ class AuraApp extends React.Component {
   handleLogin = credentials => {
     console.log(credentials);
     // Make axios call to server to authenticate.
-    // Set response jwt to all further requests.
-    // set user and authentication in state.
-    // redirect User to their profile / home page.
+    API.post('auth/login', {
+      username: credentials.username,
+      password: credentials.password,
+    })
+      .then(response => {
+        // Set response jwt to all further requests.
+        API.defaults.headers.Authorization = response.data.token;
+        // set user and authentication in state.
+        // FIXME: Figure out what you need from the backend
+        this.setState({ isAuthenticated: true, user: { username: credentials.username } });
+        // redirect User to their profile / home page.
+        // FIXME: This is where you stopped last night... where can I call this to change routes?
+        this.history.push(`/`);
+      })
+      .catch(err => {
+        if (err.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(err.response.data);
+          console.log(err.response.status);
+          console.log(err.response.headers);
+        } else if (err.request) {
+          // The request was made but no response was received
+          console.log(err.request);
+        } else {
+          // Something went very wrong
+          console.log('Error', err.message);
+        }
+      });
   };
 
   handleLogout = () => {

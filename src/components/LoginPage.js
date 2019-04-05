@@ -4,9 +4,7 @@ import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 
 class LoginPage extends React.Component {
-  static propTypes = {
-    user: PropTypes.object.isRequired,
-  };
+  static propTypes = {};
 
   constructor(props) {
     super(props);
@@ -15,9 +13,7 @@ class LoginPage extends React.Component {
   }
 
   render() {
-    const { user, handleLogin } = this.props;
-
-    console.log(this.props);
+    const { handleLogin } = this.props;
 
     return (
       // TODO: Create some type of alert to let them know they are not authenticated.
