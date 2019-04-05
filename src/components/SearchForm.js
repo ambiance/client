@@ -59,6 +59,9 @@ class SearchForm extends React.Component {
             name="search"
             role="search"
             onSubmit={this.handleSearchSubmit}
+            
+            id="form-background"
+            className={this.state.scroll > this.state.top ? 'fixed' : ''}
           >
             <span id="want" className="grid-80">
               I want to be

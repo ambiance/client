@@ -31,6 +31,16 @@ article::before {
     transform: translate(-50%, -50%);
     z-index: 20;
 }
+
+form {
+    /* font size 0 to remove inline-block whitespace*/
+
+    font-size: 0;
+    max-width: 100rem;
+    margin: auto;
+    display: flex;
+}
+
 @media screen and (min-width: 834px) {
     #search-form.fixed {
         position: fixed;
@@ -44,16 +54,12 @@ article::before {
         padding: 5px 0px;
         border-radius: 0px 0px 12px 12px;
     }
+    form.fixed {
+        background-color: #2F2F2F;
+        border-radius: 12px;
+    }
 }
 
-form {
-    /* font size 0 to remove inline-block whitespace*/
-
-    font-size: 0;
-    max-width: 100rem;
-    margin: auto;
-    display: flex;
-}
 
 /* very messy "grid" styles */
 
@@ -139,8 +145,8 @@ option {
     color: white;
     font-weight: 600;
     transition: background 0.25s ease-in-out;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
 }
 
 .grid-100:hover,
