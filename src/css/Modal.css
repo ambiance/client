@@ -12,7 +12,7 @@
   /* overflow: auto; */
 
   display: grid;
-  /* grid-template-columns: 36% 64%; */
+  grid-template-columns: 45% 55%;
   grid-template-rows: 2rem, 6rem, 2rem;
   grid-template-areas:
     " head head "
@@ -73,7 +73,12 @@
   padding: 15px;
 }
 
-.close-modal-btn {
+.modalMap {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* .close-modal-btn {
   color: white;
   cursor: pointer;
   float: right;
@@ -83,7 +88,7 @@
 
 .close-modal-btn:hover {
   color: black;
-}
+} */
 
 .back-drop {
   background-color: rgba(48, 49, 48, 0.42);
@@ -93,7 +98,7 @@
   width: 100%;
 }
 
-.open-modal-btn {
+/* .open-modal-btn {
   margin: 15px;
   padding: 10px;
   font-weight: bold;
@@ -101,11 +106,6 @@
 
 .yelpLink {
   color: #000000;
-}
-
-.modalMap {
-  width: 3rem;
-  height: 3rem;
 }
 
 .leaflet-pane {

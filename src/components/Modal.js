@@ -1,5 +1,5 @@
 import React from "react";
-import Map from "./Map";
+import MapContainer from "./Map";
 import "../css/Modal.css";
 import starImages from "./starImages";
 
@@ -7,6 +7,11 @@ const modal = props => {
   console.log(props.show ? props.details.details.stars : 0);
   const starSrc = handleStars(props.show ? props.details.details.stars : 0);
   console.log(props);
+  const style = {
+    width: "10rem",
+    height: "10rem",
+    overflow: "hidden"
+  };
   return (
     <div>
       <div
@@ -23,7 +28,11 @@ const modal = props => {
           </button>
         </div>
         <div className="businessMap">
-          <Map className="modalMap" details={props.details.details} />
+          <MapContainer
+            className="modalMap"
+            style={style}
+            details={props.details.details}
+          />
         </div>
         <div className="businessDetails">
           <p>{props.show ? props.details.details.displayAddress[0] : ""}</p>
