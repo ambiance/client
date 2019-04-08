@@ -10,6 +10,7 @@ class SignupForm extends Component {
     this.state = {
       usernameInputValue: '',
       passwordInputValue: '',
+      passwordConfirmInputValue: '',
     };
   }
 
@@ -23,10 +24,20 @@ class SignupForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.handleSignup({
-      username: this.state.usernameInputValue,
-      password: this.state.passwordInputValue,
-    });
+    const { passwordInputValue, passwordConfirmInputValue } = this.state;
+    // FIXME: Create a validation middleware we can use instead of these checks here.
+    if (passwordInputValue.length < 8) {
+      // FIXME: Change from alerts to something better.
+      alert('Password length is too short...');
+    } else if (passwordInputValue !== passwordConfirmInputValue) {
+      // FIXME: Change from alerts to something better.
+      alert('Your passwords do not match');
+    } else {
+      this.props.handleSignup({
+        username: this.state.usernameInputValue,
+        password: this.state.passwordInputValue,
+      });
+    }
   };
 
   render() {
@@ -52,6 +63,17 @@ class SignupForm extends Component {
             id="passwordInputValue"
             name="passwordInputValue"
             value={this.state.passwordInputValue}
+            onChange={this.handleInputChange}
+          />
+        </label>
+        <label htmlFor="passwordConfirmInputValue">
+          Confirm Password:
+          <input
+            type="text"
+            placeholder="password"
+            id="passwordConfirmInputValue"
+            name="passwordConfirmInputValue"
+            value={this.state.passwordConfirmInputValue}
             onChange={this.handleInputChange}
           />
         </label>

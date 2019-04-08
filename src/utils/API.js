@@ -20,7 +20,7 @@ const headers = {
 const instance = Axios.create({
   // FIXME: Figure out a way to make calls to different servers based on the .env
   // TODO: Change this endpoint based on the environment you are using.
-  baseURL: endpoint.local,
+  baseURL: endpoint.production,
   timeout: 10000,
   headers,
   params: {},

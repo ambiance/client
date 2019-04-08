@@ -69,11 +69,7 @@ class AuraApp extends React.Component {
                 <li>
                   <NavLink to="/meettheteam">Contact</NavLink>
                 </li>
-                {!isAuthenticated ? (
-                  <li>
-                    <NavLink to="/login">Login/Signup</NavLink>
-                  </li>
-                ) : (
+                {isAuthenticated ? (
                   <React.Fragment>
                     <li>
                       <NavLink to="/dashboard">Dashboard</NavLink>
@@ -81,9 +77,15 @@ class AuraApp extends React.Component {
                     <li>
                       {/* FIXME: Does not logout yet, only takes you to home page. */}
                       {/* Try to connect this navlink to the handleLogout function */}
-                      <NavLink to="/">Logout</NavLink>
+                      <NavLink to="/" onClick={this.handleLogout}>
+                        Logout
+                      </NavLink>
                     </li>
                   </React.Fragment>
+                ) : (
+                  <li>
+                    <NavLink to="/login">Login/Signup</NavLink>
+                  </li>
                 )}
               </ul>
             </nav>
