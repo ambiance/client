@@ -21,6 +21,15 @@ class AuraApp extends React.Component {
       user: {},
     };
   }
+  componentWillMount() {
+    // Get the auth token from local storage and set the auth state to true.
+    const token = localStorage.getItem('auraUserToken');
+    if (token) {
+      API.defaults.headers.common.Authorization = token;
+      // FIXME: Not sure if we need to set the user here as well...
+      this.setState({ isAuthenticated: true });
+    }
+  }
 
   // force browser to preload slideshow images
   componentDidMount() {
@@ -40,6 +49,8 @@ class AuraApp extends React.Component {
   handleLogout = () => {
     // Revoke jwt from user requests
     API.defaults.headers.common.Authorization = '';
+    // Remove token from local storage
+    localStorage.removeItem('auraUserToken');
     // set user and authentication to empty / false respectively
     this.setState({ isAuthenticated: false, user: {} });
     // redirect user to home page / login page.
@@ -75,8 +86,7 @@ class AuraApp extends React.Component {
                       <NavLink to="/dashboard">Dashboard</NavLink>
                     </li>
                     <li>
-                      {/* FIXME: Does not logout yet, only takes you to home page. */}
-                      {/* Try to connect this navlink to the handleLogout function */}
+                      {/* FIXME: Still shows as active tab. */}
                       <NavLink to="/" onClick={this.handleLogout}>
                         Logout
                       </NavLink>

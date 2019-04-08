@@ -7,7 +7,12 @@ import LoginForm from './LoginForm';
 import API, { alertErrorHandler } from '../utils/API';
 
 class LoginPage extends React.Component {
-  static propTypes = {};
+  static propTypes = {
+    handleLogin: PropTypes.func.isRequired,
+    history: PropTypes.shape({
+      push: PropTypes.func.isRequired,
+    }),
+  };
 
   constructor(props) {
     super(props);
@@ -37,6 +42,9 @@ class LoginPage extends React.Component {
       .then(response => {
         // Set response jwt to all further requests.
         API.defaults.headers.common.Authorization = response.data.token;
+
+        // TODO: Set token to local storage.
+        localStorage.setItem('auraUserToken', response.data.token);
 
         // set user and authentication in state.
         // FIXME: Figure out what you need from the backend

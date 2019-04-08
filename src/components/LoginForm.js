@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class LoginForm extends Component {
-  static propTypes = {};
+  static propTypes = {
+    handleLogin: PropTypes.func.isRequired,
+  };
 
   constructor(props) {
     super(props);
