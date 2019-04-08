@@ -23,6 +23,10 @@ class SignupForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    this.props.handleSignup({
+      username: this.state.usernameInputValue,
+      password: this.state.passwordInputValue,
+    });
   };
 
   render() {

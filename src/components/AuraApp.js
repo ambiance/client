@@ -1,12 +1,12 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
-import API, { alertErrorHandler } from '../utils/API';
+import API from '../utils/API';
 import Home from './Home';
 import About from './About';
 import MeetTheTeam from './MeetTheTeam';
 import Login from './LoginPage';
-import Profile from './Profile';
+import Profile from './Dashboard';
 import FourOhFour from './404';
 import auraLogo from '../assets/img/auraLogo.png';
 import Footer from './Footer';
@@ -18,9 +18,7 @@ class AuraApp extends React.Component {
 
     this.state = {
       isAuthenticated: false,
-      user: {
-        username: 'scott',
-      },
+      user: {},
     };
   }
 
@@ -32,30 +30,20 @@ class AuraApp extends React.Component {
     });
   }
 
-  handleLogin = credentials => {
-    console.log(credentials);
-    // Make axios call to server to authenticate.
-    API.post('auth/login/', {
-      username: credentials.username,
-      password: credentials.password,
-    })
-      .then(response => {
-        // Set response jwt to all further requests.
-        API.defaults.headers.common.Authorization = response.data.token;
-        // set user and authentication in state.
-        // FIXME: Figure out what you need from the backend
-        this.setState({ isAuthenticated: true, user: { username: credentials.username } });
-        // redirect User to their profile / home page.
-        // FIXME: This is where you stopped last night... where can I call this to change routes?
-        // this.history.push(`/`);
-      })
-      .catch(err => alertErrorHandler(err));
+  // FIXME: Not sure if needed...
+  handleSignup = () => {};
+
+  handleLogin = user => {
+    this.setState({ isAuthenticated: true, user });
   };
 
   handleLogout = () => {
     // Revoke jwt from user requests
+    API.defaults.headers.common.Authorization = '';
     // set user and authentication to empty / false respectively
+    this.setState({ isAuthenticated: false, user: {} });
     // redirect user to home page / login page.
+    alert('Sorry to see you go...');
   };
 
   render() {
@@ -86,9 +74,16 @@ class AuraApp extends React.Component {
                     <NavLink to="/login">Login/Signup</NavLink>
                   </li>
                 ) : (
-                  <li>
-                    <NavLink to="/profile">Profile</NavLink>
-                  </li>
+                  <React.Fragment>
+                    <li>
+                      <NavLink to="/dashboard">Dashboard</NavLink>
+                    </li>
+                    <li>
+                      {/* FIXME: Does not logout yet, only takes you to home page. */}
+                      {/* Try to connect this navlink to the handleLogout function */}
+                      <NavLink to="/">Logout</NavLink>
+                    </li>
+                  </React.Fragment>
                 )}
               </ul>
             </nav>
@@ -99,10 +94,12 @@ class AuraApp extends React.Component {
             <Route path="/meettheteam" component={MeetTheTeam} />
             <Route
               path="/login"
-              render={props => <Login {...props} handleLogin={this.handleLogin} />}
+              render={props => (
+                <Login {...props} handleLogin={this.handleLogin} handleSignup={this.handleSignup} />
+              )}
             />
             <ProtectedRoute
-              path="/profile"
+              path="/dashboard"
               isAuthenticated={isAuthenticated}
               user={user}
               component={Profile}

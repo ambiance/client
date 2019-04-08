@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Profile extends React.Component {
+class Dashboard extends React.Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
   };
@@ -15,8 +15,8 @@ class Profile extends React.Component {
   render() {
     const { user } = this.props;
 
-    return <h1>Welcome, {user.username}</h1>;
+    return <h1>Welcome, {user.username ? user.username : 'Anon'}</h1>;
   }
 }
 
-export default Profile;
+export default Dashboard;
