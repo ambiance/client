@@ -16,7 +16,7 @@ class Home extends React.Component {
       modalDetails: '',
       businesses: [],
       isShowing: false,
-      loading: false,
+      loading: false
     };
   }
 
@@ -25,14 +25,16 @@ class Home extends React.Component {
       window.scroll({
         top: 635,
         left: 0,
-        behavior: 'smooth',
+        behavior: 'smooth'
       });
     });
 
     API.get('businesses', {
       params: {
         aura: searchFormData.auraValue,
-      },
+        category: searchFormData.categoryValue,
+        city: searchFormData.cityValue
+      }
     })
       .then(response => this.setState({ businesses: response.data }))
       .then(() => this.setState({ loading: false }))
@@ -43,13 +45,13 @@ class Home extends React.Component {
   openModalHandler = details => {
     this.setState({
       isShowing: true,
-      modalDetails: { details },
+      modalDetails: { details }
     });
   };
 
   closeModalHandler = () => {
     this.setState({
-      isShowing: false,
+      isShowing: false
     });
   };
 
@@ -57,7 +59,7 @@ class Home extends React.Component {
     return (
       <div>
         <Modal
-          className="modal"
+          className='modal'
           show={this.state.isShowing}
           close={this.closeModalHandler}
           details={this.state.modalDetails}
@@ -71,7 +73,7 @@ class Home extends React.Component {
           loading={this.state.loading}
           businesses={this.state.businesses}
           onOpenModal={this.openModalHandler}
-          id="results"
+          id='results'
         />
       </div>
     );
