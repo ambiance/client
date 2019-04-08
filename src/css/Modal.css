@@ -78,6 +78,10 @@
   height: 3rem;
 }
 
+.businessMap {
+  position: relative;
+}
+
 /* .close-modal-btn {
   color: white;
   cursor: pointer;
