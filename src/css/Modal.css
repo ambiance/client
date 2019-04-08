@@ -24,6 +24,21 @@
   justify-content: space-between; */
 }
 
+@media screen and (max-width: 812px) {
+  .modal-wrapper {
+    grid-template-areas:
+      " head head "
+      " map map "
+      " detail detail "
+      " foot foot ";
+    overflow: scroll;
+  }
+  .businessMap {
+    height: 12rem;
+  }
+
+}
+
 .modal-wrapper > .modal-header {
   grid-area: head;
 }
@@ -49,7 +64,7 @@
   height: 40px;
   line-height: 40px;
   padding: 5px 20px;
-  text-align: center;
+  text-align: right;
   grid-column-start: span 1;
   grid-area: span 1;
 }
