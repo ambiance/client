@@ -18,7 +18,7 @@ class LoginPage extends React.Component {
   handleSignup = credentials => {
     API.post('auth/signup/', {
       username: credentials.username,
-      password: credentials.password,
+      password: credentials.password
     })
       .then(response => {
         // FIXME: Successful signup workflow??
@@ -32,7 +32,7 @@ class LoginPage extends React.Component {
     // Make axios call to server to authenticate.
     API.post('auth/login/', {
       username: credentials.username,
-      password: credentials.password,
+      password: credentials.password
     })
       .then(response => {
         // Set response jwt to all further requests.
