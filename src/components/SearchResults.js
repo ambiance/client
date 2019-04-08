@@ -1,15 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Loader from "react-loader-spinner";
-import CardItem from "./CardItem";
-import "../css/SearchResults.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
+import CardItem from './CardItem';
+import '../css/SearchResults.css';
 
 class SearchResults extends React.Component {
   render() {
     const { businesses, loading, onOpenModal } = this.props;
     if (loading) {
       return (
-        <Loader type="Triangle" color="#5abb9e" height="200" width="200" />
+        <Loader type='Triangle' color='#5abb9e' height='500px' width='100%' />
       );
     }
     if (businesses.length === 0) {
@@ -17,13 +17,15 @@ class SearchResults extends React.Component {
     }
     return (
       <div>
-        <h2 className="searchResultsHeader">Search Results</h2>
-
-        <section id="searchResults">
-          <div className="resultCards">
+        <section id='searchResults'>
+          <div className='resultCards'>
             {businesses.map((business, i) => (
               <div>
-                <CardItem key={i} business={business} onOpenModal={onOpenModal} />
+                <CardItem
+                  key={i}
+                  business={business}
+                  onOpenModal={onOpenModal}
+                />
               </div>
             ))}
           </div>
@@ -35,7 +37,7 @@ class SearchResults extends React.Component {
 
 SearchResults.propTypes = {
   businesses: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
 export default SearchResults;
