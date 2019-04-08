@@ -13,7 +13,7 @@ class SearchForm extends React.Component {
       searchForm: {
         auraValue: 'trendy',
         categoryValue: 'eating',
-        groupValue: 'myself',
+        groupValue: 'whoever',
       },
       scroll: 0,
       top: 10,
@@ -31,15 +31,32 @@ class SearchForm extends React.Component {
     this.props.onSearchSubmit(this.state.searchForm);
   };
 
-  handleInputChange(event) {
-    const { target } = event;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const { name } = target;
-
-    this.setState({
-      [name]: value,
+  handleAuraChange = event => {
+    const { value } = event.target;
+    this.setState(prevState => {
+      const tempForm = prevState.searchForm;
+      tempForm.auraValue = value;
+      return { searchForm: tempForm };
     });
-  }
+  };
+
+  handleCategoryChange = event => {
+    const { value } = event.target;
+    this.setState(prevState => {
+      const tempForm = prevState.searchForm;
+      tempForm.categoryValue = value;
+      return { searchForm: tempForm };
+    });
+  };
+
+  handleGroupChange = event => {
+    const { value } = event.target;
+    this.setState(prevState => {
+      const tempForm = prevState.searchForm;
+      tempForm.groupValue = value;
+      return { searchForm: tempForm };
+    });
+  };
 
   handleScroll() {
     this.setState({ scroll: window.scrollY });
@@ -64,7 +81,12 @@ class SearchForm extends React.Component {
               I want to be
             </span>
             <p className="cat-wrap">
-              <select name="auraValue" className="grid-80 corner" onChange={this.handleChange}>
+              <select
+                value={this.state.searchForm.auraValue}
+                name="auraValue"
+                className="grid-80 corner"
+                onChange={this.handleAuraChange}
+              >
                 <option value="trendy">Trendy</option>
                 <option value="inspired">Inspired</option>
                 <option value="romantic">Romantic</option>
@@ -79,22 +101,33 @@ class SearchForm extends React.Component {
 
             <span className="grid-40">while</span>
             <p className="cat-wrap">
-              <select name="categoryValue" className="grid-80 middle">
+              <select
+                value={this.state.searchForm.categoryValue}
+                name="categoryValue"
+                className="grid-80 middle"
+                onChange={this.handleCategoryChange}
+              >
                 <option value="eating">Eating</option>
                 <option value="studying">Studying</option>
                 <option value="dating">Dating</option>
-                <option value="relaxing">Relaxing</option>
+                {/* <option value="relaxing">Relaxing</option> */}
                 <option value="drinking">Drinking</option>
-                <option value="shopping">Shopping</option>
+                {/* <option value="shopping">Shopping</option> */}
               </select>
             </p>
 
             <span className="grid-40">with</span>
             <p className="cat-wrap">
-              <select name="groupValue" className="grid-80">
-                <option value="I">Myself</option>
+              <select
+                value={this.state.searchForm.groupValue}
+                name="groupValue"
+                className="grid-80"
+                onChange={this.handleGroupChange}
+              >
+                {/* <option value="I">Myself</option>
                 <option value="friends">Friends</option>
-                <option value="date">A Date</option>
+                <option value="date">A Date</option> */}
+                <option value="whoever">Whoever</option>
               </select>
             </p>
             <p className="submit-wrap" id="submitButtonContainer">
