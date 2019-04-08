@@ -1,11 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
-import axios from 'axios';
 
 // Components
 import SearchForm from './SearchForm';
 import SearchResults from './SearchResults';
 import Modal from './Modal';
+
+import API, { alertErrorHandler } from '../utils/API';
 
 class Home extends React.Component {
   constructor(props) {
@@ -28,14 +29,14 @@ class Home extends React.Component {
       });
     });
 
-    axios
-      .get('https://aurelia-server.herokuapp.com/api/businesses', {
-        params: {
-          aura: searchFormData.auraValue,
-        },
-      })
+    API.get('businesses', {
+      params: {
+        aura: searchFormData.auraValue,
+      },
+    })
       .then(response => this.setState({ businesses: response.data }))
-      .then(() => this.setState({ loading: false }));
+      .then(() => this.setState({ loading: false }))
+      .catch(err => alertErrorHandler(err));
   };
 
   // Functions for Modals
