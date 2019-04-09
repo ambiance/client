@@ -25,26 +25,26 @@ article::before {
 }
 
 #search-form {
-    position: absolute;
-    /* !! */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 20;
+  position: absolute;
+  /* !! */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
 }
 @media screen and (min-width: 834px) {
-    #search-form.fixed {
-        position: fixed;
-        top: 0;
-        left: 0;
-        transform: translateX(0);
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        /* background-color: #2F2F2F; */
-        padding: 5px 0px;
-        border-radius: 0px 0px 12px 12px;
-    }
+  #search-form.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(0);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #2f2f2f;
+    padding: 20px 0px;
+    border-radius: 0px 0px px 0px;
+  }
 }
 
 form {
@@ -73,13 +73,13 @@ form {
 /* input and span styles*/
 
 #search-form span {
-    padding: 0 1rem;
-    vertical-align: middle;
-    line-height: 3.125rem;
-    background: rgba(47,47,47,0.9);
-    text-align: center;
-    font-weight: 300;
-    color: #fff;
+  padding: 0 1rem;
+  vertical-align: middle;
+  line-height: 3.125rem;
+  background: rgba(47, 47, 47, 1);
+  text-align: center;
+  font-weight: 300;
+  color: #fff;
 }
 
 input,
@@ -118,10 +118,10 @@ select:focus {
 }
 
 select {
-    background-color: rgba(255,255,255,0.9);
-    padding: 0.5rem 1.5rem 0.5rem 0.75rem;
-    appearance: none;
-    border-radius: 0;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 0.5rem 1.5rem 0.5rem 0.75rem;
+  appearance: none;
+  border-radius: 0;
 }
 
 option {
@@ -131,21 +131,21 @@ option {
 /* search button and icon styles */
 
 .grid-100 {
-    font-size: 1.1rem;
-    border: 0;
-    background: var(--base-color-dark);
-    color: white;
-    font-weight: 600;
-    transition: background 0.25s ease-in-out;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+  font-size: 1.1rem;
+  border: 0;
+  background: var(--base-color-dark);
+  color: white;
+  font-weight: 600;
+  transition: background 0.25s ease-in-out;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .grid-100:hover,
 .grid-100:active {
-    outline: 0;
-    background: rgba(51, 116, 96, 0.85);
-    color: #232323;
+  outline: 0;
+  background: rgba(51, 116, 96, 0.85);
+  color: #232323;
 }
 
 #submitButtonContainer {
@@ -158,36 +158,37 @@ option {
 }
 
 #want {
-    border-radius: 12px 0px 0px 12px;
+  border-radius: 12px 0px 0px 12px;
 }
 
-.corner, .middle {
-    width: 8.5rem;
+.corner,
+.middle {
+  width: 8.5rem;
 }
-
 
 @media screen and (max-width: 970px) {
-    [class*="grid-"] {
-        height: 3.125rem;
-        font-size: 20px;
-    }
+  [class*='grid-'] {
+    height: 3.125rem;
+    font-size: 20px;
+  }
 
-    .grid-80 {
-        width: 6rem;
-    }
+  .grid-80 {
+    width: 6rem;
+  }
 
-    .corner, .middle {
-        width: 7.3rem;
-    }
+  .corner,
+  .middle {
+    width: 7.3rem;
+  }
 }
 
 @media screen and (max-width: 834px) {
-    form {
-        display: flex;
-        flex-wrap: wrap;
-        text-align: center;
-        width: 30rem;
-    }
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    width: 30rem;
+  }
 
   .grid-100 {
     width: 29.3vw;
@@ -204,81 +205,78 @@ option {
     width: 25.5vw;
   }
 
-    #want {
-        border-radius: 12px 0px 0px 0px;
-    }
+  #want {
+    border-radius: 12px 0px 0px 0px;
+  }
 
-    .corner {
-        border-radius: 0px 12px 0px 0px;
-    }
+  .corner {
+    border-radius: 0px 12px 0px 0px;
+  }
 
-    #submitButton {
-        width: 24rem;
-        border-radius: 0px 0px 12px 12px;
-    }
+  #submitButton {
+    width: 24rem;
+    border-radius: 0px 0px 12px 12px;
+  }
 
-    .cat-wrap select {
-        width: 12rem;
-        min-width: 9rem;
+  .cat-wrap select {
+    width: 12rem;
+    min-width: 9rem;
+  }
 
-    }
+  #search-form span {
+    width: 10rem;
+    min-width: 7rem;
+  }
 
-    #search-form span {
-        width: 10rem;
-        min-width: 7rem;
-    }
-
-    #search-form {
-        position: center;
-        top: 50%;
-        left: 57%;
-    }
+  #search-form {
+    position: center;
+    top: 50%;
+    left: 57%;
+  }
 }
 
 @media screen and (max-width: 485px) {
-    form {  
-        width: 14rem;
-    }
+  form {
+    width: 14rem;
+  }
 
-    .grid-100 {
-        width: 29.3vw;
-        min-width: 9rem;
-        border-radius: 5px;
+  .grid-100 {
+    width: 29.3vw;
+    min-width: 9rem;
+    border-radius: 5px;
+  }
 
-    }
+  [class*='grid-'] {
+    height: 3.125rem;
+    font-size: 1.1rem;
+  }
 
-    [class*="grid-"] {
-        height: 3.125rem;
-        font-size: 1.1rem;
-    }
+  #want {
+    border-radius: 12px 12px 0px 0px;
+  }
 
-    #want {
-        border-radius: 12px 12px 0px 0px;
-    }
+  .corner {
+    border-radius: 0px;
+  }
 
-    .corner {
-        border-radius: 0px;
-    }
+  #submitButton {
+    width: 12rem;
+    border-radius: 0px 0px 12px 12px;
+  }
 
-    #submitButton {
-        width: 12rem;
-        border-radius: 0px 0px 12px 12px;
-    }
+  .cat-wrap select {
+    width: 12rem;
+    min-width: 9rem;
+  }
 
-    .cat-wrap select {
-        width: 12rem;
-        min-width: 9rem;
+  #search-form span {
+    width: 10rem;
+    min-width: 7rem;
+  }
 
-    }
-
-    #search-form span {
-        width: 10rem;
-        min-width: 7rem;
-    }
-
-    #search-form {
-        position: center;
-        top: 50%;
-        left: 53%;
-    }
+  #search-form {
+    position: center;
+    top: 50%;
+    left: 53%;
+  }
 }
