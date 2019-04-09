@@ -4,14 +4,7 @@ import "../css/Modal.css";
 import starImages from "./starImages";
 
 const modal = props => {
-  console.log(props.show ? props.details.details.stars : 0);
   const starSrc = handleStars(props.show ? props.details.details.stars : 0);
-  console.log(props);
-  const style = {
-    width: "10rem",
-    height: "10rem",
-    overflow: "hidden"
-  };
   return (
     <div>
       <div
@@ -28,19 +21,26 @@ const modal = props => {
           </button>
         </div>
         <div className="businessMap">
-          <MapContainer
-            className="modalMap"
-            style={style}
-            details={props.details.details}
-          />
+          <MapContainer className="modalMap" details={props.details.details} />
         </div>
         <div className="businessDetails">
-          <p>{props.show ? props.details.details.displayAddress[0] : ""}</p>
-          <p>{props.show ? props.details.details.displayAddress[1] : ""}</p>
-          <p>{props.show ? props.details.details.attributes.priceRange : ""}</p>
-          <p>{props.show ? props.details.details.stars + " stars" : ""}</p>
+          <ul className="categories">
+            {props.show
+              ? props.details.details.categories.map(category => {
+                  return <li>{category.title}</li>;
+                })
+              : ""}
+          </ul>
+          <p className="info">
+            {props.show ? props.details.details.displayAddress[0] : ""}
+          </p>
+          <p className="info">
+            {props.show ? props.details.details.displayAddress[1] : ""}
+          </p>
+          <p className="info">
+            {props.show ? props.details.details.attributes.priceRange : ""}
+          </p>
           <img className="modalStar" src={starSrc} />
-          {/* <p>{props.show ? props.details.details.categories : ""}</p> */}
           <a
             className="yelpLink"
             href={props.show ? props.details.details.url : ""}
