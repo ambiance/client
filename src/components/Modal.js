@@ -1,7 +1,7 @@
-import React from "react";
-import MapContainer from "./Map";
-import "../css/Modal.css";
-import starImages from "./starImages";
+import React from 'react';
+import MapContainer from './Map';
+import '../css/Modal.css';
+import starImages from './starImages';
 
 const modal = props => {
   const starSrc = handleStars(props.show ? props.details.details.stars : 0);
@@ -10,12 +10,12 @@ const modal = props => {
       <div
         className="modal-wrapper"
         style={{
-          transform: props.show ? "translateY(0vh)" : "translateY(-80vh)",
-          opacity: props.show ? "1" : "0"
+          transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
+          opacity: props.show ? '1' : '0',
         }}
       >
         <div className="modal-header">
-          <h3>{props.show ? props.details.details.name : ""}</h3>
+          <h3>{props.show ? props.details.details.name : ''}</h3>
           <button className="close-modal-btn" onClick={props.close}>
             ×
           </button>
@@ -25,28 +25,16 @@ const modal = props => {
         </div>
         <div className="businessDetails">
           <ul className="categories">
-            {props.show
-              ? props.details.details.categories.map(category => {
-                  return <li>{category.title}</li>;
-                })
-              : ""}
+            {props.show ? props.details.details.categories.map(category => <li>{category.title}</li>) : ''}
           </ul>
-          <p className="info">
-            {props.show ? props.details.details.displayAddress[0] : ""}
-          </p>
-          <p className="info">
-            {props.show ? props.details.details.displayAddress[1] : ""}
-          </p>
-          <p className="info">
-            {props.show ? props.details.details.attributes.priceRange : ""}
-          </p>
+          <p className="info">{props.show ? props.details.details.displayAddress[0] : ''}</p>
+          <p className="info">{props.show ? props.details.details.displayAddress[1] : ''}</p>
+          <p className="info">{props.show ? props.details.details.attributes.priceRange : ''}</p>
           <img className="modalStar" src={starSrc} />
-          <a
-            className="yelpLink"
-            href={props.show ? props.details.details.url : ""}
-            target="_blank"
-          >
-            Link to Yelp!
+          <a className="yelpLink" href={props.show ? props.details.details.url : ''} target="_blank">
+            <img className="yelpPic" src="./assets/img/yelpButton.jpg" />
+            Click for more details!
+            {/* <p className="yelpCall">Click for more details!</p> */}
           </a>
         </div>
         <div className="modal-footer" />
@@ -59,35 +47,24 @@ const handleStars = stars => {
   switch (stars) {
     case 0.5:
       return starImages[12].src;
-      break;
     case 1:
       return starImages[13].src;
-      break;
     case 1.5:
       return starImages[14].src;
-      break;
     case 2:
       return starImages[15].src;
-      break;
     case 2.5:
       return starImages[16].src;
-      break;
     case 3:
       return starImages[17].src;
-      break;
     case 3.5:
       return starImages[18].src;
-      break;
     case 4:
       return starImages[19].src;
-      break;
     case 4.5:
       return starImages[20].src;
-      break;
     case 5:
       return starImages[21].src;
-      break;
-
     default:
       return starImages[11].src;
   }

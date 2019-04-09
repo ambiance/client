@@ -4,6 +4,8 @@
   width: 100%;
 }
 
-.searchResultsHeader {
-  border-radius: 0px;
+.errorpage {
+  display: flex;
+  justify-content: center;
+  padding: 10rem;
 }

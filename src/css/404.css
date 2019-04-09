@@ -1,0 +1,16 @@
+.fourOhFourMain {
+  display: flex;
+  height: 80vh;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fourOhFourHeading {
+  text-align: center;
+  margin: 4rem 0;
+  font-size: 4rem;
+}
+
+.fourOhFourSubheading {
+  text-align: center;
+}

@@ -6,9 +6,9 @@
   transition: all 0.8s;
 
   position: fixed;
-  z-index: 20;
+  z-index: 30;
   width: 100%;
-  height: 64%;
+  height: 76%;
   /* overflow: auto; */
 
   display: grid;
@@ -56,6 +56,12 @@
 
 .modal-wrapper > .modal-footer {
   grid-area: foot;
+}
+
+@media screen and (max-width: 596px) {
+  .modal-wrapper {
+    margin-top: -3.45rem;
+  }
 }
 
 .modal-header {
@@ -116,38 +122,6 @@
   width: 100%;
 }
 
-/* .open-modal-btn {
-  margin: 15px;
-  padding: 10px;
-  font-weight: bold;
-}
-
-.yelpLink {
-  color: #000000;
-}
-
-.leaflet-pane {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.businessMap {
-  position: relative;
-}
-
-/* .leaflet-tooltip-pane {
-  display: none;
-}
-
-.leaflet-popup-pane {
-  display: none;
-}
-
-.leaflet-proxy {
-  display: none;
-} */
-
 .leaflet-marker-icon {
   width: 15px;
   height: 15px;
@@ -182,4 +156,25 @@
 
 .info {
   padding: 15px 40px;
+  margin: 0;
 }
+
+.yelpPic {
+  width: 2.5rem;
+  margin-bottom: -16px;
+  margin-right: 9px;
+  text-align: center;
+  margin-left: 40px;
+}
+
+.yelpLink {
+  margin-bottom: 1rem;
+  color: #263238;
+  display: inline-block;
+}
+
+/* .yelpCall {
+  margin-bottom: 0.5rem;
+  color: #263238;
+  display: inline-block;
+} */

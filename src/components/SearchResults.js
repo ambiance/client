@@ -1,15 +1,24 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Loader from "react-loader-spinner";
-import CardItem from "./CardItem";
-import "../css/SearchResults.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
+import CardItem from './CardItem';
+import '../css/SearchResults.css';
 
 class SearchResults extends React.Component {
   render() {
-    const { businesses, loading, onOpenModal } = this.props;
+    const { businesses, loading, noData, onOpenModal } = this.props;
     if (loading) {
       return (
-        <Loader type="Triangle" color="#5abb9e" height="200" width="200" />
+        <Loader type='Triangle' color='#5abb9e' height='100vh' width='100%' />
+      );
+    }
+    if (noData) {
+      return (
+        <div>
+          <section className='errorpage'>
+            No Results found try using a different Aura.
+          </section>
+        </div>
       );
     }
     if (businesses.length === 0) {
@@ -17,10 +26,8 @@ class SearchResults extends React.Component {
     }
     return (
       <div>
-        <h2 className="searchResultsHeader">Search Results</h2>
-
-        <section id="searchResults">
-          <div className="resultCards">
+        <section id='searchResults'>
+          <div className='resultCards'>
             {businesses.map((business, i) => (
               <div>
                 <CardItem
