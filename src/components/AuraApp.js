@@ -19,6 +19,8 @@ class AuraApp extends React.Component {
     this.state = {
       isAuthenticated: false,
       user: {},
+      isShowing: false,
+      modalDetails: '',
     };
   }
   componentWillMount() {
@@ -55,6 +57,20 @@ class AuraApp extends React.Component {
     this.setState({ isAuthenticated: false, user: {} });
     // redirect user to home page / login page.
     alert('Sorry to see you go...');
+  };
+
+  // Functions for Modals
+  openModalHandler = details => {
+    this.setState({
+      isShowing: true,
+      modalDetails: { details },
+    });
+  };
+
+  closeModalHandler = () => {
+    this.setState({
+      isShowing: false,
+    });
   };
 
   render() {
@@ -101,21 +117,26 @@ class AuraApp extends React.Component {
             </nav>
           </header>
           <Switch>
-            <Route path="/" exact component={Home} />
+            {/* <Route path="/" exact component={Home} /> */}
+            <Route
+              path="/"
+              exact
+              render={props => (
+                <Home
+                  modalDetails={this.state.modalDetails}
+                  isShowing={this.state.isShowing}
+                  openModal={this.openModalHandler}
+                  closeModal={this.closeModalHandler}
+                />
+              )}
+            />
             <Route path="/about" component={About} />
             <Route path="/meettheteam" component={MeetTheTeam} />
             <Route
               path="/login"
-              render={props => (
-                <Login {...props} handleLogin={this.handleLogin} handleSignup={this.handleSignup} />
-              )}
+              render={props => <Login {...props} handleLogin={this.handleLogin} handleSignup={this.handleSignup} />}
             />
-            <ProtectedRoute
-              path="/dashboard"
-              isAuthenticated={isAuthenticated}
-              user={user}
-              component={Profile}
-            />
+            <ProtectedRoute path="/dashboard" isAuthenticated={isAuthenticated} user={user} component={Profile} />
             <Route component={FourOhFour} />
           </Switch>
           <Footer />
