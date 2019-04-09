@@ -32,7 +32,7 @@ article::before {
   transform: translate(-50%, -50%);
   z-index: 20;
 }
-@media screen and (min-width: 834px) {
+@media screen and (min-width: 853px) {
   #search-form.fixed {
     position: fixed;
     top: 0;
@@ -42,7 +42,7 @@ article::before {
     display: flex;
     justify-content: center;
     background-color: #2f2f2f;
-    padding: 20px 0px;
+    padding: 13px 0px;
     border-radius: 0px 0px px 0px;
   }
 }
@@ -166,23 +166,30 @@ option {
   width: 8.5rem;
 }
 
-@media screen and (max-width: 970px) {
-  [class*='grid-'] {
-    height: 3.125rem;
-    font-size: 20px;
-  }
-
-  .grid-80 {
-    width: 6rem;
-  }
-
-  .corner,
-  .middle {
-    width: 7.3rem;
-  }
+.city {
+    width: 12.4rem;
 }
 
-@media screen and (max-width: 834px) {
+@media screen and (max-width: 985px) {
+    [class*='grid-'] {
+        height: 3.125rem;
+        font-size: 20px;
+    }
+
+    .grid-80 {
+        width: 6rem;
+    }
+
+    .corner,
+    .middle {
+        width: 7.3rem;
+    }
+    .city {
+        width: 10.3rem;
+    }
+}
+
+@media screen and (max-width: 852px) {
   form {
     display: flex;
     flex-wrap: wrap;
@@ -212,6 +219,7 @@ option {
   .corner {
     border-radius: 0px 12px 0px 0px;
   }
+  
 
   #submitButton {
     width: 24rem;
