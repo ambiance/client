@@ -9,6 +9,7 @@ const modal = props => {
     <div>
       <div
         className="modal-backdrop"
+        onClick={props.close}
         style={{
           // transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
           opacity: props.show ? '0.5' : '0',
