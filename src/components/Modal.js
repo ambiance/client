@@ -8,6 +8,14 @@ const modal = props => {
   return (
     <div>
       <div
+        className="modal-backdrop"
+        style={{
+          // transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
+          opacity: props.show ? '0.5' : '0',
+          position: props.show ? 'fixed' : 'absolute',
+        }}
+      />
+      <div
         className="modal-wrapper"
         style={{
           transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
