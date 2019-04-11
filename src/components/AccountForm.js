@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 import API from '../utils/API';
 
 class AccountForm extends React.Component {
+  static propTypes = {
+    user: PropTypes.object.isRequired,
+  };
+
   constructor(props) {
     super(props);
 
@@ -25,10 +29,11 @@ class AccountForm extends React.Component {
   handleSubmit = async event => {
     event.preventDefault();
     const { nameInputValue, passwordInputValue, newPasswordInputValue, confirmPasswordInputValue } = this.state;
+    const { user } = this.props;
     if (newPasswordInputValue !== confirmPasswordInputValue) {
       Swal.fire({
         type: 'error',
-        text: 'New passwords must match...',
+        text: 'New passwords must match',
         showConfirmButton: false,
         timer: 1200,
       });
@@ -37,28 +42,62 @@ class AccountForm extends React.Component {
 
     // TODO: Handle password change
     if (newPasswordInputValue) {
+      if (!passwordInputValue) {
+        Swal.fire({
+          type: 'error',
+          text: 'Please input old password',
+          showConfirmButton: false,
+          timer: 1200,
+        });
+        return;
+      }
+
       const data = {
+        username: `${user.username}`,
         password: `${passwordInputValue}`,
         newPassword: `${newPasswordInputValue}`,
       };
       const response = await API.post(`account/change-password`, data);
-      Swal.fire({
-        type: 'success',
-        text: 'Password successfully changed',
-      });
+      if (response.status === 200) {
+        Swal.fire({
+          type: 'success',
+          text: 'Password successfully changed',
+          showConfirmButton: false,
+          timer: 1200,
+        });
+      } else {
+        Swal.fire({
+          type: 'error',
+          text: 'Sorry, something went wrong...',
+        });
+      }
     }
     // TODO: Handle name change
     if (nameInputValue) {
-      Swal.fire({
-        type: 'success',
-        text: 'Name successfully changed',
-      });
+      const data = {
+        username: `${user.username}`,
+        displayName: `${nameInputValue}`,
+      };
+      const response = await API.post(`account/change-display-name`, data);
+      if (response.status === 200) {
+        Swal.fire({
+          type: 'success',
+          text: 'Name successfully changed',
+          showConfirmButton: false,
+          timer: 1200,
+        });
+      } else {
+        Swal.fire({
+          type: 'error',
+          text: 'Name was not changed',
+        });
+      }
     }
   };
 
   render() {
     return (
-      <div>
+      <div className="account-form">
         <form onSubmit={this.handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
           <label htmlFor="nameInputValue">
             Display name:
@@ -78,33 +117,35 @@ class AccountForm extends React.Component {
                 type="password"
                 id="newPasswordInputValue"
                 name="newPasswordInputValue"
+                minLength="8"
                 value={this.state.newPasswordInputValue}
                 onChange={this.handleInputChange}
               />
             </label>
 
             <label htmlFor="confirmPasswordInputValue">
-              Re-enter password:
+              Confirm new password:
               <input
                 type="password"
                 id="confirmPasswordInputValue"
                 name="confirmPasswordInputValue"
+                minLength="8"
                 value={this.state.confirmPasswordInputValue}
                 onChange={this.handleInputChange}
               />
             </label>
+            <label htmlFor="passwordInputValue">
+              Old password:
+              <input
+                type="password"
+                id="passwordInputValue"
+                name="passwordInputValue"
+                minLength="8"
+                value={this.state.passwordInputValue}
+                onChange={this.handleInputChange}
+              />
+            </label>
           </div>
-          <label htmlFor="passwordInputValue">
-            Old password:
-            <input
-              type="password"
-              id="passwordInputValue"
-              name="passwordInputValue"
-              value={this.state.passwordInputValue}
-              onChange={this.handleInputChange}
-              required
-            />
-          </label>
 
           <button type="submit">Submit</button>
         </form>
