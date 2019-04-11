@@ -11,7 +11,8 @@
     "react-loader-spinner": "^2.3.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-    "shortid": "^2.2.14"
+    "shortid": "^2.2.14",
+    "sweetalert2": "^8.8.3"
   },
   "homepage": "https://aura.community",
   "scripts": {

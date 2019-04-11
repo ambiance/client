@@ -3,3 +3,9 @@
   justify-items: center;
   width: 100%;
 }
+
+.errorpage {
+  display: flex;
+  justify-content: center;
+  padding: 10rem;
+}

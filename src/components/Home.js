@@ -16,8 +16,9 @@ class Home extends React.Component {
     this.state = {
       // modalDetails: '',
       businesses: [],
-      // isShowing: false,
+      isShowing: false,
       loading: false,
+      noData: false,
     };
   }
 
@@ -37,7 +38,16 @@ class Home extends React.Component {
         city: searchFormData.cityValue,
       },
     })
-      .then(response => this.setState({ businesses: response.data }))
+      // .then(response => this.setState({ businesses: response.data }))
+      .then(response => {
+        if (response.data.length === 0) {
+          this.setState({ noData: true });
+          this.setState({ businesses: response.data });
+        } else {
+          this.setState({ noData: false });
+          this.setState({ businesses: response.data });
+        }
+      })
       .then(() => this.setState({ loading: false }))
       .catch(err => alertErrorHandler(err));
   };
@@ -69,6 +79,7 @@ class Home extends React.Component {
         <SearchResults
           loading={this.state.loading}
           businesses={this.state.businesses}
+          noData={this.state.noData}
           onOpenModal={openModal}
           id="results"
         />

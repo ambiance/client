@@ -1,9 +1,9 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
+import API from '../utils/API';
 
 class AccountForm extends React.Component {
-  static propTypes = {};
-
   constructor(props) {
     super(props);
 
@@ -22,8 +22,38 @@ class AccountForm extends React.Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
+    const { nameInputValue, passwordInputValue, newPasswordInputValue, confirmPasswordInputValue } = this.state;
+    if (newPasswordInputValue !== confirmPasswordInputValue) {
+      Swal.fire({
+        type: 'error',
+        text: 'New passwords must match...',
+        showConfirmButton: false,
+        timer: 1200,
+      });
+      return;
+    }
+
+    // TODO: Handle password change
+    if (newPasswordInputValue) {
+      const data = {
+        password: `${passwordInputValue}`,
+        newPassword: `${newPasswordInputValue}`,
+      };
+      const response = await API.post(`account/change-password`, data);
+      Swal.fire({
+        type: 'success',
+        text: 'Password successfully changed',
+      });
+    }
+    // TODO: Handle name change
+    if (nameInputValue) {
+      Swal.fire({
+        type: 'success',
+        text: 'Name successfully changed',
+      });
+    }
   };
 
   render() {
@@ -31,6 +61,7 @@ class AccountForm extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
           <label htmlFor="nameInputValue">
+            Display name:
             <input
               type="text"
               id="nameInputValue"
@@ -38,10 +69,33 @@ class AccountForm extends React.Component {
               value={this.state.nameInputValue}
               onChange={this.handleInputChange}
             />
-            Display name:
           </label>
 
+          <div>
+            <label htmlFor="newPasswordInputValue">
+              New password:
+              <input
+                type="password"
+                id="newPasswordInputValue"
+                name="newPasswordInputValue"
+                value={this.state.newPasswordInputValue}
+                onChange={this.handleInputChange}
+              />
+            </label>
+
+            <label htmlFor="confirmPasswordInputValue">
+              Re-enter password:
+              <input
+                type="password"
+                id="confirmPasswordInputValue"
+                name="confirmPasswordInputValue"
+                value={this.state.confirmPasswordInputValue}
+                onChange={this.handleInputChange}
+              />
+            </label>
+          </div>
           <label htmlFor="passwordInputValue">
+            Old password:
             <input
               type="password"
               id="passwordInputValue"
@@ -50,29 +104,6 @@ class AccountForm extends React.Component {
               onChange={this.handleInputChange}
               required
             />
-            Old password:
-          </label>
-
-          <label htmlFor="newPasswordInputValue">
-            <input
-              type="password"
-              id="newPasswordInputValue"
-              name="newPasswordInputValue"
-              value={this.state.newPasswordInputValue}
-              onChange={this.handleInputChange}
-            />
-            New password:
-          </label>
-
-          <label htmlFor="confirmPasswordInputValue">
-            <input
-              type="password"
-              id="confirmPasswordInputValue"
-              name="confirmPasswordInputValue"
-              value={this.state.confirmPasswordInputValue}
-              onChange={this.handleInputChange}
-            />
-            Re-enter password:
           </label>
 
           <button type="submit">Submit</button>

@@ -19,7 +19,7 @@ class AuraApp extends React.Component {
     this.state = {
       isAuthenticated: false,
       user: {},
-      isShowing: false,
+      isModalShowing: false,
       modalDetails: '',
     };
   }
@@ -62,14 +62,14 @@ class AuraApp extends React.Component {
   // Functions for Modals
   openModalHandler = details => {
     this.setState({
-      isShowing: true,
+      isModalShowing: true,
       modalDetails: { details },
     });
   };
 
   closeModalHandler = () => {
     this.setState({
-      isShowing: false,
+      isModalShowing: false,
     });
   };
 
@@ -124,7 +124,7 @@ class AuraApp extends React.Component {
               render={props => (
                 <Home
                   modalDetails={this.state.modalDetails}
-                  isShowing={this.state.isShowing}
+                  isShowing={this.state.isModalShowing}
                   openModal={this.openModalHandler}
                   closeModal={this.closeModalHandler}
                 />
@@ -136,7 +136,16 @@ class AuraApp extends React.Component {
               path="/login"
               render={props => <Login {...props} handleLogin={this.handleLogin} handleSignup={this.handleSignup} />}
             />
-            <ProtectedRoute path="/dashboard" isAuthenticated={isAuthenticated} user={user} component={Profile} />
+            <ProtectedRoute
+              path="/dashboard"
+              isAuthenticated={isAuthenticated}
+              user={user}
+              component={Profile}
+              modalDetails={this.state.modalDetails}
+              isModalShowing={this.state.isModalShowing}
+              openModal={this.openModalHandler}
+              closeModal={this.closeModalHandler}
+            />
             <Route component={FourOhFour} />
           </Switch>
           <Footer />
