@@ -5,7 +5,7 @@ import '../css/main.css';
 const getColor = aura => {
   switch (aura) {
     case 'imaginative':
-      return '#74e0c0';
+      return '#02dbff';
     case 'lively':
       return '#f268ff';
     case 'intimate':
@@ -16,7 +16,7 @@ const getColor = aura => {
     case 'groovy':
       return '#e5e249';
     case 'inspired':
-      return '#93ffb4';
+      return '#89e87c';
     case 'upscale':
       return '#ea9409';
     case 'hipster':
