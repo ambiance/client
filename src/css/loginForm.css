@@ -38,3 +38,30 @@ input {
   width: 100%;
   margin-bottom: 0.5rem;
 }
+
+@media all and (max-width: 853px) {
+  /* main {
+    flex-direction: column;
+  } */
+  .loginForm {
+    height: 14rem;
+    width: 14rem;
+  }
+  .signupForm {
+    width: 14rem;
+  }
+}
+
+@media all and (max-width: 709px) {
+  main {
+    flex-direction: column;
+  }
+  .loginForm {
+    height: 14rem;
+    width: 14rem;
+  }
+  .signupForm {
+    width: 14rem;
+    margin-bottom: 0rem;
+  }
+}
