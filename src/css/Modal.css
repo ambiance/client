@@ -12,7 +12,7 @@
 
   display: grid;
   grid-template-columns: 45% 55%;
-  grid-template-rows: 2rem, 6rem, 2rem;
+  grid-template-rows: 1fr 2fr 1fr;
   grid-template-areas:
     " head head "
     " map detail "
@@ -70,12 +70,6 @@
   float: left;
   margin: 0;
   padding: 0;
-}
-
-.modal-body {
-  padding: 10px 15px;
-  text-align: center;
-  width: 100%;
 }
 
 .modal-footer {
