@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import ProtectedRoute from './ProtectedRoute';
 import API from '../utils/API';
 import Home from './Home';
@@ -56,7 +57,12 @@ class AuraApp extends React.Component {
     // set user and authentication to empty / false respectively
     this.setState({ isAuthenticated: false, user: {} });
     // redirect user to home page / login page.
-    alert('Sorry to see you go...');
+    Swal.fire({
+      position: 'top-end',
+      text: 'Sorry to see you go...',
+      showConfirmButton: false,
+      timer: 1200,
+    });
   };
 
   // Functions for Modals
@@ -100,12 +106,6 @@ class AuraApp extends React.Component {
                   <React.Fragment>
                     <li>
                       <NavLink to="/dashboard">Dashboard</NavLink>
-                    </li>
-                    <li>
-                      {/* FIXME: Still shows as active tab. */}
-                      <NavLink to="/" onClick={this.handleLogout}>
-                        Logout
-                      </NavLink>
                     </li>
                   </React.Fragment>
                 ) : (
