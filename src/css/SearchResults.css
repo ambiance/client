@@ -18,6 +18,20 @@
 
 @media all and (max-width: 770px) {
   .errorTitle {
+    font-size: 22px;
+  }
+}
+
+@media all and (max-width: 530px) {
+  .errorTitle {
     font-size: 18px;
+    padding: 7rem 3rem 12rem 3rem;
+  }
+}
+
+@media all and (max-width: 382px) {
+  .errorTitle {
+    font-size: 15px;
+    padding: 6rem 2.5rem 12rem 2.5rem;
   }
 }
