@@ -8,19 +8,9 @@ import '../css/palette.css';
 import starImages from './starImages';
 
 const Modal = props => {
-  // console.log(business);
   const starSrc = handleStars(props.show ? props.details.details.stars : 0);
-  // const styleObject = auraColorChange(props.details.details.attributes.aura);
-  // const newAuras = auraSpace();
   const styleObject = auraColorChange(props.show ? props.details.details.attributes.aura : '');
-  console.log(styleObject);
-  const array = auraSpace(props.show ? props.details.details.attributes.aura : '');
-  // const auras = colorChange.split(',');
-  // const arrAuras = auras.join(', ');
-  function auraSpace() {
-    // const auras = props.details.details.attributes.aura.split(',');
-    // return auras.join(', ');
-  }
+  // const array = auraSpace(props.show ? props.details.details.attributes.aura : '');
 
   function auraColorChange(auraString) {
     const auras = auraString.split(',');
@@ -71,6 +61,7 @@ const Modal = props => {
       <div
         className="modal-backdrop"
         onClick={props.close}
+        role="button"
         style={{
           // transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
           opacity: props.show ? '0.5' : '0',

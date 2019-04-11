@@ -1,14 +1,17 @@
 import React from 'react';
 import '../css/ResultCard.css';
+import '../css/palette.css';
 
 class AuraPills extends React.Component {
   render() {
-    const { aura } = this.props;
+    const { aura, backgroundColor } = this.props;
     // consts here
-    return <span className="resultCardAura">{aura}</span>;
+    return (
+      <div className="resultCardAura" style={{ background: backgroundColor }}>
+        {aura}
+      </div>
+    );
   }
-
-  // this.querySelector(".resultCard").onClick
 }
 
 export default AuraPills;
