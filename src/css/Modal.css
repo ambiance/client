@@ -8,19 +8,30 @@
   position: fixed;
   z-index: 30;
   width: 94%;
-  height: 82%;
+  height: 83.7%;
 
   display: grid;
   grid-template-columns: 45% 55%;
-  grid-template-rows: 1fr 2fr 1fr;
+  grid-template-rows: 60px 2fr 1fr;
   grid-template-areas:
     " head head "
     " map detail "
     " foot foot ";
 }
 
+@media screen and (max-width: 853px) {
+  .modal-wrapper {
+    margin: 0px auto 0px 5%;
+    width: 90%;
+    top: 10px;
+    height: 94%;
+    grid-template-rows: 60px 2fr 54px;
+  }
+}
+
 @media screen and (max-width: 812px) {
   .modal-wrapper {
+    grid-template-rows: 60px 1fr 1fr 54px;
     grid-template-areas:
       " head head "
       " map map "
@@ -32,6 +43,7 @@
     height: 12rem;
   }
 }
+
 
 .modal-wrapper > .modal-header {
   grid-area: head;
@@ -49,17 +61,11 @@
   grid-area: foot;
 }
 
-@media screen and (max-width: 596px) {
-  .modal-wrapper {
-    margin-top: -3.45rem;
-  }
-}
-
 .modal-header {
   background: #263238;
   height: 40px;
   line-height: 40px;
-  padding: 5px 20px;
+  padding: 10px 20px;
   text-align: right;
   grid-column-start: span 1;
   grid-area: span 1;
@@ -74,8 +80,22 @@
 
 .modal-footer {
   background: #263238;
-  height: 35px;
+  height: 44px;
   padding: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+@media screen and (max-width: 793px) {
+  .modal-footer {
+    height: 88px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .modal-footer {
+    height: 133px;
+  }
 }
 
 .modalMap {
@@ -151,12 +171,14 @@
 #touristybtn {
   background: green;
   border: 0.2rem solid white;
-  margin-right: 1rem;
+  margin-right: 10px;
   position: center;
   text-align: center;
   border: none;
   color: white;
   padding: 10px 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   border-radius: 40%;
   cursor: pointer;
 }
@@ -190,4 +212,20 @@ h1 {
   background-color: black;
   margin-top: -10rem;
   margin-left: 0px;
+}
+
+
+@media screen and (max-width: 510px) {
+  .categories, .info {
+    font-size: 15px;
+  }
+  .modalStar {
+    width: 7rem;
+  }
+  .yelpLink{
+    font-size: 13px;
+  }
+  .yelpPic{
+    width: 2.2rem;
+  }
 }
