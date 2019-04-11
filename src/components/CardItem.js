@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AuraPills from './AuraPills';
 import '../css/ResultCard.css';
 import starImages from './starImages';
 
@@ -9,12 +10,13 @@ export default class CardItem extends React.Component {
 
     // set initial state
     this.state = {
-      expandDetails: '',
+      aurasArr: [],
     };
   }
 
   auraColorChange = auraString => {
     const auras = auraString.split(',');
+    console.log(auras);
     // console.log(auras);
     let colorString = '';
     for (let i = 0; i < auras.length; i++) {
@@ -51,16 +53,10 @@ export default class CardItem extends React.Component {
       }
     }
     colorString = colorString.substring(0, colorString.length - 2);
-
-    if (auras.length < 2) {
-      return { backgroundColor: colorString };
-    }
-    return { backgroundImage: `linear-gradient(to right, ${colorString})` };
   };
 
   auraSpace = auraString => {
     const auras = auraString.split(',');
-    return auras.join(', ');
   };
 
   handleStars = stars => {
@@ -99,7 +95,9 @@ export default class CardItem extends React.Component {
     return (
       <div key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
         <div className="resultCardImageContainer">
-          <span className="resultCardAura">{business.attributes.aura}</span>
+          <span className="resultCardAura">{business.attributes.aura[0]}</span>
+          <span className="resultCardAura">{business.attributes.aura[1]}</span>
+
           <img
             className="resultCardImage"
             src={
@@ -120,9 +118,13 @@ export default class CardItem extends React.Component {
         <span className="resultCardSubtitle">
           {business.city}, {business.state} {business.postalCode}
         </span>
-        <span className="resultCardAura" style={styleObject}>
+        {/* <span className="resultCardAura" style={styleObject}>
+          {this.auraSpace(business.attributes.aura).map(aura => (
+            <AuraPills aura={aura} />
+          ))}
           {this.auraSpace(business.attributes.aura)}
-        </span>
+
+        </span> */}
         <img className="resultCardStar" src={this.handleStars(business.stars)} alt="Rating Stars" />
       </div>
     );

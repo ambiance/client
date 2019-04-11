@@ -27,6 +27,7 @@
   .resultCards {
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   }
+
   .resultCard {
     width: 15rem;
   }
@@ -55,7 +56,7 @@
   margin-left: 10px;
   align-items: right;
   display: block;
-  position: absolute;
+  /* position: absolute; */
   border-color: white;
   border-style: dotted;
   background-color: rgba(90, 187, 158, 0.9);
