@@ -58,6 +58,7 @@ class Home extends React.Component {
         <Modal
           className="modal"
           show={this.state.isShowing}
+          // business={this.state.business}
           close={this.closeModalHandler}
           details={this.state.modalDetails}
         >

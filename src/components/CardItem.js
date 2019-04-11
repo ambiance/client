@@ -1,7 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "../css/ResultCard.css";
-import starImages from "./starImages";
+import React from 'react';
+import PropTypes from 'prop-types';
+import AuraPills from './AuraPills';
+import '../css/ResultCard.css';
+import starImages from './starImages';
 
 export default class CardItem extends React.Component {
   constructor(props) {
@@ -9,12 +10,13 @@ export default class CardItem extends React.Component {
 
     // set initial state
     this.state = {
-      expandDetails: '',
+      aurasArr: [],
     };
   }
 
   auraColorChange = auraString => {
     const auras = auraString.split(',');
+    console.log(auras);
     // console.log(auras);
     let colorString = '';
     for (let i = 0; i < auras.length; i++) {
@@ -34,9 +36,9 @@ export default class CardItem extends React.Component {
         case 'inspired':
           colorString = `${colorString}var(--inspired), `;
           break;
-          case 'intimate':
-            colorString = `${colorString}var(--intimate), `;
-            break;
+        case 'intimate':
+          colorString = `${colorString}var(--intimate), `;
+          break;
         case 'classy':
           colorString = `${colorString}var(--classy), `;
           break;
@@ -51,19 +53,13 @@ export default class CardItem extends React.Component {
       }
     }
     colorString = colorString.substring(0, colorString.length - 2);
-
-    if (auras.length < 2) {
-      return { backgroundColor: colorString };
-    }
-    return { backgroundImage: `linear-gradient(to right, ${colorString})` };
   };
 
   auraSpace = auraString => {
     const auras = auraString.split(',');
-    return auras.join(', ');
   };
 
-  handleStars = (stars) => {
+  handleStars = stars => {
     switch (stars) {
       case 0.5:
         return starImages[1].src;
@@ -85,11 +81,11 @@ export default class CardItem extends React.Component {
         return starImages[9].src;
       case 5:
         return starImages[10].src;
-  
+
       default:
         return starImages[0].src;
     }
-  }
+  };
 
   render() {
     // consts here
@@ -97,19 +93,17 @@ export default class CardItem extends React.Component {
 
     const styleObject = this.auraColorChange(business.attributes.aura);
     return (
-      <div
-        key={business.id}
-        className="resultCard"
-        onClick={() => onOpenModal(business)}
-      >
+      <div key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
         <div className="resultCardImageContainer">
-          <span className="resultCardAura">{business.attributes.aura}</span>
+          <span className="resultCardAura">{business.attributes.aura[0]}</span>
+          <span className="resultCardAura">{business.attributes.aura[1]}</span>
+
           <img
             className="resultCardImage"
             src={
               business.businessImage.src
                 ? business.businessImage.src
-                : "http://mymodernmet.com/wp/wp-content/uploads/2017/10/azuki-camping-hedgehog-3.jpg"
+                : 'http://mymodernmet.com/wp/wp-content/uploads/2017/10/azuki-camping-hedgehog-3.jpg'
             }
             alt={business.businessImage.owner ? business.businessImage.owner : 'No image owner provided'}
           />
@@ -120,10 +114,13 @@ export default class CardItem extends React.Component {
         <span className="resultCardSubtitle">
           {business.city}, {business.state} {business.postalCode}
         </span>
-        <span className="resultCardAura" style={styleObject}>
+        {/* <span className="resultCardAura" style={styleObject}>
+          {this.auraSpace(business.attributes.aura).map(aura => (
+            <AuraPills aura={aura} />
+          ))}
           {this.auraSpace(business.attributes.aura)}
-        </span>
-        <img className="resultCardStar" src={this.handleStars(business.stars)}/>
+        </span> */}
+        <img className="resultCardStar" src={this.handleStars(business.stars)} />
       </div>
     );
   }
