@@ -1,21 +1,23 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
-import axios from 'axios';
+import React from "react";
 
 // Components
-import SearchForm from './SearchForm';
-import SearchResults from './SearchResults';
-import Modal from './Modal';
+import SearchForm from "./SearchForm";
+import SearchResults from "./SearchResults";
+import Modal from "./Modal";
+
+import API, { alertErrorHandler } from "../utils/API";
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      modalDetails: '',
+      modalDetails: "",
       businesses: [],
       isShowing: false,
       loading: false,
+      noData: false
     };
   }
 
@@ -24,31 +26,42 @@ class Home extends React.Component {
       window.scroll({
         top: 635,
         left: 0,
-        behavior: 'smooth',
+        behavior: "smooth"
       });
     });
-    axios
-      .get('https://aurelia-server.herokuapp.com/api/businesses', {
-        params: {
-          aura: searchFormData.auraValue,
-          category: searchFormData.categoryValue,
-        },
+
+    API.get("businesses", {
+      params: {
+        aura: searchFormData.auraValue,
+        category: searchFormData.categoryValue,
+        city: searchFormData.cityValue
+      }
+    })
+      // .then(response => this.setState({ businesses: response.data }))
+      .then(response => {
+        if (response.data.length === 0) {
+          this.setState({ noData: true });
+          this.setState({ businesses: response.data });
+        } else {
+          this.setState({ noData: false });
+          this.setState({ businesses: response.data });
+        }
       })
-      .then(response => this.setState({ businesses: response.data }))
-      .then(() => this.setState({ loading: false }));
+      .then(() => this.setState({ loading: false }))
+      .catch(err => alertErrorHandler(err));
   };
 
   // Functions for Modals
   openModalHandler = details => {
     this.setState({
       isShowing: true,
-      modalDetails: { details },
+      modalDetails: { details }
     });
   };
 
   closeModalHandler = () => {
     this.setState({
-      isShowing: false,
+      isShowing: false
     });
   };
 
@@ -61,6 +74,7 @@ class Home extends React.Component {
           // business={this.state.business}
           close={this.closeModalHandler}
           details={this.state.modalDetails}
+          shouldCloseOnOverlayClick={true}
         >
           {/* Can only take primitive data */}
         </Modal>
@@ -70,6 +84,7 @@ class Home extends React.Component {
         <SearchResults
           loading={this.state.loading}
           businesses={this.state.businesses}
+          noData={this.state.noData}
           onOpenModal={this.openModalHandler}
           id="results"
         />

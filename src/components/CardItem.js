@@ -105,7 +105,11 @@ export default class CardItem extends React.Component {
                 ? business.businessImage.src
                 : 'http://mymodernmet.com/wp/wp-content/uploads/2017/10/azuki-camping-hedgehog-3.jpg'
             }
-            alt={business.businessImage.owner ? business.businessImage.owner : 'No image owner provided'}
+            alt={
+              business.businessImage.owner
+                ? business.businessImage.owner
+                : 'No image owner provided'
+            }
           />
         </div>
 
@@ -119,8 +123,9 @@ export default class CardItem extends React.Component {
             <AuraPills aura={aura} />
           ))}
           {this.auraSpace(business.attributes.aura)}
+
         </span> */}
-        <img className="resultCardStar" src={this.handleStars(business.stars)} />
+        <img className="resultCardStar" src={this.handleStars(business.stars)} alt="Rating Stars" />
       </div>
     );
   }
