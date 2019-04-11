@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import CardItem from './CardItem';
 import Map from './Map';
-import MapContainer from './Map'
+import MapContainer from './Map';
 import '../css/Modal.css';
 import '../css/palette.css';
 import starImages from './starImages';
@@ -83,20 +83,20 @@ const Modal = props => {
           transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
           opacity: props.show ? '1' : '0',
         }}
-      >
-        <div className="modal-header">
-          <h3>{props.show ? props.details.details.name : ''}</h3>
-          {/* {props.details.details.attributes.aura.map((aura, i) => (
+      />
+      <div className="modal-header">
+        <h3>{props.show ? props.details.details.name : ''}</h3>
+        {/* {props.details.details.attributes.aura.map((aura, i) => (
             <span>
               <Pill key={i} aura={aura} />
             </span>
           ))} */}
-          <h1 style={styleObject}>{props.show ? props.details.details.attributes.aura : ''}</h1>
-          <button className="close-modal-btn" onClick={props.close}>
-            ×
-          </button>
-        </div>
-        <div className="modal-body">
+        <h1 style={styleObject}>{props.show ? props.details.details.attributes.aura : ''}</h1>
+        <button className="close-modal-btn" onClick={props.close}>
+          ×
+        </button>
+      </div>
+      <div className="modal-body">
         <div className="businessMap">
           <MapContainer className="modalMap" details={props.details.details} />
         </div>
@@ -168,7 +168,6 @@ Modal.propTypes = {
       aura: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-
 };
 
 export default Modal;
