@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../css/ResultCard.css';
 import starImages from './starImages';
+import heartIcon from '../assets/img/arrowHeartSolid.png';
 
 export default class CardItem extends React.Component {
   constructor(props) {
@@ -91,6 +92,11 @@ export default class CardItem extends React.Component {
     }
   };
 
+  handleLikeClick = (e) => {
+    e.preventDefault();
+    console.log(e.target.name);
+  }
+
   render() {
     // consts here
     const { business, onOpenModal } = this.props;
@@ -124,6 +130,11 @@ export default class CardItem extends React.Component {
           {this.auraSpace(business.attributes.aura)}
         </span>
         <img className="resultCardStar" src={this.handleStars(business.stars)} alt="Rating Stars" />
+        <div className="resultCardLikeCont">
+          <img className="resultCardLike" src={heartIcon} alt="heart"
+            onClick={this.handleLikeClick} name={business._id}
+          />
+        </div>
       </div>
     );
   }
