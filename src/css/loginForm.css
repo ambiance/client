@@ -1,0 +1,40 @@
+.loginForm {
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+  background: #5abb9e;
+  padding: 2rem;
+  border-radius: 2rem;
+  height: 12rem;
+}
+
+.signupForm {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  background: #5abb9e;
+  padding: 2rem;
+  padding-bottom: 0.8rem;
+  border-radius: 2rem;
+}
+
+.submitButton {
+  height: 1.5rem;
+  width: 50%;
+  margin-top: 0.5rem;
+  align-self: center;
+  border-radius: 1rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.loginTitle {
+  margin-left: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.7rem;
+  margin-top: -1rem;
+  padding: 0.5rem;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
