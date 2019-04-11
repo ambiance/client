@@ -10,44 +10,72 @@ class Dashboard extends React.Component {
     isModalShowing: PropTypes.bool,
     openModal: PropTypes.func,
     closeModal: PropTypes.func,
+    logout: PropTypes.func,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      active: 'main',
+      active: 'overview',
     };
   }
 
+  goToOverview = () => {
+    this.setState({ active: 'overview' });
+  };
+
+  goToAccountSettings = () => {
+    this.setState({ active: 'account' });
+  };
+
   render() {
-    const { user, modalDetails, isModalShowing, openModal, closeModal } = this.props;
+    const { user, modalDetails, isModalShowing, openModal, closeModal, logout } = this.props;
 
     return (
-      <div>
-        <div className="user-name">
+      <div className="dashboard">
+        <div className="account-menu">
           <ul>
-            <li>Overview</li>
-            <li>Account Settings</li>
-            <li>Logout</li>
+            <li>
+              {this.state.active === 'overview' ? (
+                'Overview'
+              ) : (
+                <a href="#" onClick={() => this.goToOverview()}>
+                  Overview
+                </a>
+              )}
+            </li>
+            <li>
+              {this.state.active === 'account' ? (
+                'Account Settings'
+              ) : (
+                <a href="#" onClick={() => this.goToAccountSettings()}>
+                  Account Settings
+                </a>
+              )}
+            </li>
+            <li onClick={() => logout()}>
+              <a href="#">Logout</a>
+            </li>
           </ul>
         </div>
-        {this.state.active === 'main' ? (
+        {this.state.active === 'overview' ? (
           <div className="dashboard-body">
             <h1>Welcome, {user.username ? user.username : 'Anon'}</h1>
-            <AccountForm />
+            <Favorites
+              modalDetails={modalDetails}
+              isShowing={isModalShowing}
+              openModal={openModal}
+              closeModal={closeModal}
+            />
           </div>
         ) : (
           ''
         )}
-
-        {this.state.active === 'favorites' ? (
-          <Favorites
-            modalDetails={modalDetails}
-            isShowing={isModalShowing}
-            openModal={openModal}
-            closeModal={closeModal}
-          />
+        {this.state.active === 'account' ? (
+          <div className="dashboard-body">
+            <AccountForm user={user} />
+          </div>
         ) : (
           ''
         )}

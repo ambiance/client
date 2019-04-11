@@ -145,6 +145,7 @@ class AuraApp extends React.Component {
               isModalShowing={this.state.isModalShowing}
               openModal={this.openModalHandler}
               closeModal={this.closeModalHandler}
+              logout={this.handleLogout}
             />
             <Route component={FourOhFour} />
           </Switch>
