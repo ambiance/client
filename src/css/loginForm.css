@@ -5,6 +5,7 @@
   padding: 2rem;
   border-radius: 2rem;
   height: 12rem;
+  text-align: left;
 }
 
 .signupForm {
@@ -14,6 +15,7 @@
   padding: 2rem;
   padding-bottom: 0.8rem;
   border-radius: 2rem;
+  text-align: left;
 }
 
 .submitButton {
@@ -32,6 +34,8 @@
   font-size: 1.7rem;
   margin-top: -1rem;
   padding: 0.5rem;
+  align-self: center;
+  border-style: none;
 }
 
 input {
@@ -40,9 +44,6 @@ input {
 }
 
 @media all and (max-width: 853px) {
-  /* main {
-    flex-direction: column;
-  } */
   .loginForm {
     height: 14rem;
     width: 14rem;
