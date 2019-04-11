@@ -9,14 +9,11 @@ export default class CardItem extends React.Component {
     super(props);
 
     // set initial state
-    this.state = {
-      aurasArr: [],
-    };
+    this.state = {};
   }
 
   auraColorChange = auraString => {
     const auras = auraString.split(',');
-    console.log(auras);
     // console.log(auras);
     let colorString = '';
     for (let i = 0; i < auras.length; i++) {
@@ -95,8 +92,9 @@ export default class CardItem extends React.Component {
     return (
       <div key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
         <div className="resultCardImageContainer">
-          <span className="resultCardAura">{business.attributes.aura[0]}</span>
-          <span className="resultCardAura">{business.attributes.aura[1]}</span>
+          {business.attributes.aura.split(',').map(auraSingleton => (
+            <AuraPills aura={auraSingleton} />
+          ))}
 
           <img
             className="resultCardImage"
@@ -105,11 +103,7 @@ export default class CardItem extends React.Component {
                 ? business.businessImage.src
                 : 'http://mymodernmet.com/wp/wp-content/uploads/2017/10/azuki-camping-hedgehog-3.jpg'
             }
-            alt={
-              business.businessImage.owner
-                ? business.businessImage.owner
-                : 'No image owner provided'
-            }
+            alt={business.businessImage.owner ? business.businessImage.owner : 'No image owner provided'}
           />
         </div>
 

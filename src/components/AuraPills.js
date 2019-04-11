@@ -5,10 +5,8 @@ class AuraPills extends React.Component {
   render() {
     const { aura } = this.props;
     // consts here
-    return <span className="resultCardAura">{aura}</span>;
+    return <div className="resultCardAura">{aura}</div>;
   }
-
-  // this.querySelector(".resultCard").onClick
 }
 
 export default AuraPills;

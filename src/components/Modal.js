@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React from 'react';
 import PropTypes from 'prop-types';
 // import CardItem from './CardItem';
@@ -8,19 +10,9 @@ import '../css/palette.css';
 import starImages from './starImages';
 
 const Modal = props => {
-  // console.log(business);
   const starSrc = handleStars(props.show ? props.details.details.stars : 0);
-  // const styleObject = auraColorChange(props.details.details.attributes.aura);
-  // const newAuras = auraSpace();
   const styleObject = auraColorChange(props.show ? props.details.details.attributes.aura : '');
-  console.log(styleObject);
-  const array = auraSpace(props.show ? props.details.details.attributes.aura : '');
-  // const auras = colorChange.split(',');
-  // const arrAuras = auras.join(', ');
-  function auraSpace() {
-    // const auras = props.details.details.attributes.aura.split(',');
-    // return auras.join(', ');
-  }
+  // const array = auraSpace(props.show ? props.details.details.attributes.aura : '');
 
   function auraColorChange(auraString) {
     const auras = auraString.split(',');
@@ -71,6 +63,7 @@ const Modal = props => {
       <div
         className="modal-backdrop"
         onClick={props.close}
+        role="button"
         style={{
           // transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
           opacity: props.show ? '0.5' : '0',
@@ -83,47 +76,43 @@ const Modal = props => {
           transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
           opacity: props.show ? '1' : '0',
         }}
-      />
-      <div className="modal-header">
-        <h3>{props.show ? props.details.details.name : ''}</h3>
-        {/* {props.details.details.attributes.aura.map((aura, i) => (
-            <span>
-              <Pill key={i} aura={aura} />
-            </span>
-          ))} */}
-        <h1 style={styleObject}>{props.show ? props.details.details.attributes.aura : ''}</h1>
-        <button className="close-modal-btn" onClick={props.close}>
-          ×
-        </button>
-      </div>
-      <div className="modal-body">
-        <div className="businessMap">
-          <MapContainer className="modalMap" details={props.details.details} />
+      >
+        <div className="modal-header">
+          <h3>{props.show ? props.details.details.name : ''}</h3>
+          <h1 style={styleObject}>{props.show ? props.details.details.attributes.aura : ''}</h1>
+          <button className="close-modal-btn" onClick={props.close}>
+            ×
+          </button>
         </div>
-        <div className="businessDetails">
-          <ul className="categories">
-            {props.show ? props.details.details.categories.map(category => <li>{category.title}</li>) : ''}
-          </ul>
-          <p className="info">{props.show ? props.details.details.displayAddress[0] : ''}</p>
-          <p className="info">{props.show ? props.details.details.displayAddress[1] : ''}</p>
-          <p className="info">{props.show ? props.details.details.attributes.priceRange : ''}</p>
-          <img className="modalStar" src={starSrc} />
-          <a className="yelpLink" href={props.show ? props.details.details.url : ''} target="_blank">
-            <img className="yelpPic" src="./assets/img/yelpButton.jpg" />
-            Click for more details!
-            {/* <p className="yelpCall">Click for more details!</p> */}
-          </a>
-        </div>
-        <div className="modal-footer">
-          <button id="trendybtn">Trendy</button>
-          <button id="inspiredbtn">Inspired</button>
-          <button id="romanticbtn">Romantic</button>
-          <button id="cheerfulbtn">Cheerful</button>
-          <button id="intimatebtn">Intimate</button>
-          <button id="classybtn">Classy</button>
-          <button id="hipsterbtn">Hipster</button>
-          <button id="casualbtn">Casual</button>
-          <button id="touristybtn">Touristy</button>
+        <div className="modal-body">
+          <div className="businessMap">
+            <MapContainer className="modalMap" details={props.details.details} />
+          </div>
+          <div className="businessDetails">
+            <ul className="categories">
+              {props.show ? props.details.details.categories.map(category => <li>{category.title}</li>) : ''}
+            </ul>
+            <p className="info">{props.show ? props.details.details.displayAddress[0] : ''}</p>
+            <p className="info">{props.show ? props.details.details.displayAddress[1] : ''}</p>
+            <p className="info">{props.show ? props.details.details.attributes.priceRange : ''}</p>
+            <img className="modalStar" src={starSrc} />
+            <a className="yelpLink" href={props.show ? props.details.details.url : ''} target="_blank">
+              <img className="yelpPic" src="./assets/img/yelpButton.jpg" />
+              Click for more details!
+              {/* <p className="yelpCall">Click for more details!</p> */}
+            </a>
+          </div>
+          <div className="modal-footer">
+            <button id="trendybtn">Trendy</button>
+            <button id="inspiredbtn">Inspired</button>
+            <button id="romanticbtn">Romantic</button>
+            <button id="cheerfulbtn">Cheerful</button>
+            <button id="intimatebtn">Intimate</button>
+            <button id="classybtn">Classy</button>
+            <button id="hipsterbtn">Hipster</button>
+            <button id="casualbtn">Casual</button>
+            <button id="touristybtn">Touristy</button>
+          </div>
         </div>
       </div>
     </div>
