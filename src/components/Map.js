@@ -29,12 +29,6 @@ export class MapContainer extends React.Component {
               : ""
           }
         />
-
-        <InfoWindow onClose={this.onInfoWindowClose}>
-          <div>
-            <h1>hey</h1>
-          </div>
-        </InfoWindow>
       </Map>
     );
   }

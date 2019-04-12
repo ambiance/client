@@ -120,7 +120,7 @@ const Modal = props => {
             target="_blank"
           >
             <img className="yelpPic" src="./assets/img/yelpButton.jpg" />
-            Click for more details!
+            <p className="yelpClick">Click for more details!</p>
             {/* <p className="yelpCall">Click for more details!</p> */}
           </a>
         </div>
