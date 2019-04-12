@@ -5,7 +5,7 @@ import Modal from './Modal';
 
 const Favorites = ({ favorites, isShowing, closeModal, openModal, modalDetails }) => (
   <div>
-    <h2>Favorites</h2>
+    <h3>Favorites</h3>
     <Modal className="modal" show={isShowing} close={closeModal} details={modalDetails} />
     <div className="resultCards">
       {favorites ? (

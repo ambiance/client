@@ -7,26 +7,26 @@ const DashboardMenu = ({ user, activeView, showOverview, showSettings, logout })
     <ul>
       <li>
         {activeView === 'overview' ? (
-          'Overview'
+          <span className="active-view">Overview</span>
         ) : (
-          <a href="#" onClick={() => showOverview()}>
+          <button type="button" className="link-button" onClick={() => showOverview()}>
             Overview
-          </a>
+          </button>
         )}
       </li>
       <li>
-        {activeView === 'account' ? (
-          'Account Settings'
+        {activeView === 'settings' ? (
+          <span className="active-view">Account Settings</span>
         ) : (
-          <a href="#" onClick={() => showSettings()}>
+          <button type="button" className="link-button" onClick={() => showSettings()}>
             Account Settings
-          </a>
+          </button>
         )}
       </li>
       <li>
-        <a href="#" onClick={() => logout()}>
+        <button type="button" className="link-button" onClick={() => logout()}>
           Logout
-        </a>
+        </button>
       </li>
     </ul>
   </div>

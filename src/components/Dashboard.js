@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DashboardMenu from './DashboardMenu';
-import AccountForm from './AccountForm';
+import AccountSettings from './AccountSettings';
 import Favorites from './Favorites';
 
 class Dashboard extends React.Component {
@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
   };
 
   goToSettings = () => {
-    this.setState({ active: 'account' });
+    this.setState({ active: 'settings' });
   };
 
   render() {
@@ -44,7 +44,7 @@ class Dashboard extends React.Component {
         />
         {this.state.active === 'overview' ? (
           <div className="dashboard-body">
-            <h1>Welcome, {user.username ? user.username : 'Anon'}</h1>
+            <h1>Welcome, {user.username ? user.username : 'Anon'}!</h1>
             <Favorites
               modalDetails={modalDetails}
               isShowing={isModalShowing}
@@ -55,9 +55,10 @@ class Dashboard extends React.Component {
         ) : (
           ''
         )}
-        {this.state.active === 'account' ? (
+        {this.state.active === 'settings' ? (
           <div className="dashboard-body">
-            <AccountForm user={user} />
+            <h1>Account Settings</h1>
+            <AccountSettings user={user} />
           </div>
         ) : (
           ''
