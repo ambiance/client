@@ -140,11 +140,12 @@
 }
 
 .modalStar {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   width: 10rem;
   display: block;
   text-align: center;
   margin-left: 40px;
+  margin: auto;
 }
 
 .leaflet-container {
@@ -155,19 +156,39 @@
 
 .categories {
   list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  padding-left: 0;
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+
+.address {
+  list-style: none;
+  display: flex;
+  margin-bottom: 2rem;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  align-items: center;
+  font-weight: 500;
 }
 
 .info {
-  padding: 15px 40px;
-  margin: 0;
+  color: rgba(90, 187, 158, 0.9);
+  display: flex;
+  align-self: center;
+  width: max-content;
 }
 
 .yelpPic {
   width: 2.5rem;
-  margin-bottom: -16px;
-  margin-right: 9px;
-  text-align: center;
-  margin-left: 40px;
+  align-self: center;
+}
+
+.yelpClick {
+  margin: auto;
+  font-size: 1rem;
 }
 
 #trendybtn,
@@ -209,9 +230,11 @@ h1 {
 }
 
 .yelpLink {
-  margin-bottom: 1rem;
+  margin-top: 1.4rem;
   color: #263238;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  height: 5rem;
 }
 
 .modal-backdrop {

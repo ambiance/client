@@ -9,29 +9,31 @@ export class MapContainer extends React.Component {
         google={this.props.google}
         zoom={14}
         center={
-          (this.props.details ? { lat: this.props.details.latitude } : "",
-          this.props.details ? { lng: this.props.details.longitude } : "")
+          this.props.details
+            ? {
+                lat: this.props.details.latitude,
+                lng: this.props.details.longitude
+              }
+            : ""
         }
       >
         <Marker
           onClick={this.onMarkerClick}
           name="Current location"
-          initialCenter={
-            (this.props.details ? { lat: this.props.details.latitude } : "",
-            this.props.details ? { lng: this.props.details.longitude } : "")
+          position={
+            this.props.details
+              ? {
+                  lat: this.props.details.latitude,
+                  lng: this.props.details.longitude
+                }
+              : ""
           }
         />
-
-        <InfoWindow onClose={this.onInfoWindowClose}>
-          <div>
-            <h1>hey</h1>
-          </div>
-        </InfoWindow>
       </Map>
     );
   }
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo"
+  apiKey: "AIzaSyDjyph6WMcRSUDfFu-tnGiBzn9n5uXlpKc"
 })(MapContainer);
