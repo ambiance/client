@@ -7,17 +7,17 @@ const Favorites = ({ favorites, isShowing, closeModal, openModal, modalDetails }
   <div>
     <h3>Favorites</h3>
     <Modal className="modal" show={isShowing} close={closeModal} details={modalDetails} />
-    <div className="resultCards">
-      {favorites ? (
-        favorites.map((favorite, i) => (
+    {favorites ? (
+      <div className="resultCards">
+        {favorites.map((favorite, i) => (
           <div>
             <CardItem key={i} business={favorite} onOpenModal={openModal} />
           </div>
-        ))
-      ) : (
-        <p>You do not have any favorites</p>
-      )}
-    </div>
+        ))}
+      </div>
+    ) : (
+      <p>You do not have any favorites saved.</p>
+    )}
   </div>
 );
 
