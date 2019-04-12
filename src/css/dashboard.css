@@ -57,7 +57,8 @@ text-decoration: underline;
 
 .account-forms {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .account-forms form {
@@ -77,7 +78,7 @@ text-decoration: underline;
 
 .account-forms form button {
   font-size: 18px;
-  margin-top: 20px;
+  margin: 20px 10px;
   max-width: 200px;
   font-family: "Comfortaa", cursive;
   background-color: var(--dark-mint)
