@@ -2,17 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AuraPills from './AuraPills.js';
 // import CardItem from './CardItem';
-import Map from './Map';
-import MapContainer from './Map';
-import '../css/Modal.css';
-import '../css/palette.css';
-import starImages from './starImages';
+import Map from "./Map";
+import MapContainer from "./Map";
+import "../css/Modal.css";
+import "../css/palette.css";
+import starImages from "./starImages";
 
 const Modal = props => {
   const starSrc = handleStars(props.show ? props.details.details.stars : 0);
-  // const styleObject = auraColorChange(
-  //   props.show ? props.details.details.attributes.aura : ''
-  // );
 
   function auraColorChange(auraString) {
     let colorString = ``;
@@ -59,9 +56,9 @@ const Modal = props => {
         role='button'
         style={{
           // transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
-          opacity: props.show ? '0.5' : '0',
-          position: props.show ? 'fixed' : 'absolute',
-          zIndex: props.show ? '15' : '-5'
+          opacity: props.show ? "0.5" : "0",
+          position: props.show ? "fixed" : "absolute",
+          zIndex: props.show ? "15" : "-5"
         }}
       />
 
@@ -98,32 +95,32 @@ const Modal = props => {
         <div className='businessMap'>
           <MapContainer className='modalMap' details={props.details.details} />
         </div>
-        <div className='businessDetails'>
-          <ul className='categories'>
+        <div className="businessDetails">
+          <ul className="categories">
             {props.show
               ? props.details.details.categories.map(category => (
-                <li>{category.title}</li>
+                  <li>{category.title}</li>
                 ))
-              : ''}
+              : ""}
           </ul>
-          <ul className='address'>
+          <ul className="address">
             {props.show
               ? props.details.details.displayAddress.map(addr => (
-                <li>{addr}</li>
+                  <li>{addr}</li>
                 ))
-              : ''}
+              : ""}
           </ul>
-          <p className='info'>
-            {props.show ? props.details.details.attributes.priceRange : ''}
+          <p className="info">
+            {props.show ? props.details.details.attributes.priceRange : ""}
           </p>
-          <img className='modalStar' src={starSrc} />
+          <img className="modalStar" src={starSrc} />
           <a
-            className='yelpLink'
-            href={props.show ? props.details.details.url : ''}
-            target='_blank'
+            className="yelpLink"
+            href={props.show ? props.details.details.url : ""}
+            target="_blank"
           >
-            <img className='yelpPic' src='./assets/img/yelpButton.jpg' />
-            <p className='yelpClick'>Click for more details!</p>
+            <img className="yelpPic" src="./assets/img/yelpButton.jpg" />
+            <p className="yelpClick">Click for more details!</p>
             {/* <p className="yelpCall">Click for more details!</p> */}
           </a>
         </div>
