@@ -88,7 +88,7 @@ class AccountSettings extends React.Component {
 
   render() {
     return (
-      <div className="account-form">
+      <div className="account-forms">
         <form onSubmit={this.handleNameChangeSubmit}>
           <label htmlFor="nameInputValue">
             Display name:
@@ -105,6 +105,18 @@ class AccountSettings extends React.Component {
         </form>
 
         <form onSubmit={this.handlePasswordChangeSubmit}>
+          <label htmlFor="passwordInputValue">
+            Old password:
+            <input
+              type="password"
+              id="passwordInputValue"
+              name="passwordInputValue"
+              minLength="8"
+              value={this.state.passwordInputValue}
+              onChange={this.handleInputChange}
+              required
+            />
+          </label>
           <label htmlFor="newPasswordInputValue">
             New password:
             <input
@@ -119,25 +131,13 @@ class AccountSettings extends React.Component {
           </label>
 
           <label htmlFor="confirmPasswordInputValue">
-            Confirm new password:
+            Confirm password:
             <input
               type="password"
               id="confirmPasswordInputValue"
               name="confirmPasswordInputValue"
               minLength="8"
               value={this.state.confirmPasswordInputValue}
-              onChange={this.handleInputChange}
-              required
-            />
-          </label>
-          <label htmlFor="passwordInputValue">
-            Old password:
-            <input
-              type="password"
-              id="passwordInputValue"
-              name="passwordInputValue"
-              minLength="8"
-              value={this.state.passwordInputValue}
               onChange={this.handleInputChange}
               required
             />
