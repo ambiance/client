@@ -44,7 +44,6 @@
   }
 }
 
-
 .modal-wrapper > .modal-header {
   grid-area: head;
 }
@@ -130,7 +129,7 @@
 }
 
 .modalStar {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   width: 10rem;
   display: block;
   text-align: center;
@@ -145,11 +144,22 @@
 
 .categories {
   list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  padding-left: 0;
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+
+.address {
+  list-style: none;
+  margin-bottom: 2rem;
 }
 
 .info {
   padding: 15px 40px;
-  margin: 0;
+  margin-bottom: 2rem;
+  color: rgba(90, 187, 158, 0.9);
 }
 
 .yelpPic {
@@ -199,7 +209,7 @@ h1 {
 }
 
 .yelpLink {
-  margin-bottom: 1rem;
+  margin-top: 1rem;
   color: #263238;
   display: inline-block;
 }
@@ -214,18 +224,18 @@ h1 {
   margin-left: 0px;
 }
 
-
 @media screen and (max-width: 510px) {
-  .categories, .info {
+  .categories,
+  .info {
     font-size: 15px;
   }
   .modalStar {
     width: 7rem;
   }
-  .yelpLink{
+  .yelpLink {
     font-size: 13px;
   }
-  .yelpPic{
+  .yelpPic {
     width: 2.2rem;
   }
 }
