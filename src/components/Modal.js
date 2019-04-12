@@ -89,7 +89,7 @@ const Modal = props => {
             {props.show ? props.details.details.attributes.aura : ""}
           </h1>
           <button className="close-modal-btn" onClick={props.close}>
-            ×
+            &times;
           </button>
         </div>
         <div className="businessMap">

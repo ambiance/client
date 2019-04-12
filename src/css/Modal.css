@@ -17,6 +17,8 @@
     " head head "
     " map detail "
     " foot foot ";
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 @media screen and (max-width: 853px) {
@@ -37,7 +39,8 @@
       " map map "
       " detail detail "
       " foot foot ";
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
   .businessMap {
     height: 12rem;
@@ -135,12 +138,6 @@
   text-align: center;
   margin-left: 40px;
   margin: auto;
-}
-
-.leaflet-container {
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
 }
 
 .categories {
