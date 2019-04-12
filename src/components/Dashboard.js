@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DashboardMenu from './DashboardMenu';
 import AccountForm from './AccountForm';
 import Favorites from './Favorites';
 
@@ -25,7 +26,7 @@ class Dashboard extends React.Component {
     this.setState({ active: 'overview' });
   };
 
-  goToAccountSettings = () => {
+  goToSettings = () => {
     this.setState({ active: 'account' });
   };
 
@@ -34,31 +35,13 @@ class Dashboard extends React.Component {
 
     return (
       <div className="dashboard">
-        <div className="account-menu">
-          <ul>
-            <li>
-              {this.state.active === 'overview' ? (
-                'Overview'
-              ) : (
-                <a href="#" onClick={() => this.goToOverview()}>
-                  Overview
-                </a>
-              )}
-            </li>
-            <li>
-              {this.state.active === 'account' ? (
-                'Account Settings'
-              ) : (
-                <a href="#" onClick={() => this.goToAccountSettings()}>
-                  Account Settings
-                </a>
-              )}
-            </li>
-            <li onClick={() => logout()}>
-              <a href="#">Logout</a>
-            </li>
-          </ul>
-        </div>
+        <DashboardMenu
+          user={user}
+          activeView={this.state.active}
+          showOverview={this.goToOverview}
+          showSettings={this.goToSettings}
+          logout={logout}
+        />
         {this.state.active === 'overview' ? (
           <div className="dashboard-body">
             <h1>Welcome, {user.username ? user.username : 'Anon'}</h1>
