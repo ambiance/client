@@ -14,9 +14,9 @@
   grid-template-columns: 45% 55%;
   grid-template-rows: 60px 2fr 1fr;
   grid-template-areas:
-    " head head "
-    " map detail "
-    " foot foot ";
+    ' head head '
+    ' map detail '
+    ' foot foot ';
 }
 
 @media screen and (max-width: 853px) {
@@ -33,17 +33,16 @@
   .modal-wrapper {
     grid-template-rows: 60px 1fr 1fr 54px;
     grid-template-areas:
-      " head head "
-      " map map "
-      " detail detail "
-      " foot foot ";
+      ' head head '
+      ' map map '
+      ' detail detail '
+      ' foot foot ';
     overflow: scroll;
   }
   .businessMap {
     height: 12rem;
   }
 }
-
 
 .modal-wrapper > .modal-header {
   grid-area: head;
@@ -64,26 +63,37 @@
 .modal-header {
   background: #263238;
   height: 40px;
-  line-height: 40px;
+  /* line-height: 40px; */
   padding: 10px 20px;
   text-align: right;
+  display: flex;
+  justify-content: space-between;
   grid-column-start: span 1;
   grid-area: span 1;
 }
 
 .modal-header h3 {
   color: white;
-  float: left;
   margin: 0;
   padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.modalPillsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  margin-top: -10px;
+  margin-left: 15px;
+}
+
+.close-modal-btn {
 }
 
 .modal-footer {
   background: #263238;
-  height: 44px;
   padding: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
 }
 
 @media screen and (max-width: 793px) {
@@ -214,18 +224,18 @@ h1 {
   margin-left: 0px;
 }
 
-
 @media screen and (max-width: 510px) {
-  .categories, .info {
+  .categories,
+  .info {
     font-size: 15px;
   }
   .modalStar {
     width: 7rem;
   }
-  .yelpLink{
+  .yelpLink {
     font-size: 13px;
   }
-  .yelpPic{
+  .yelpPic {
     width: 2.2rem;
   }
 }
