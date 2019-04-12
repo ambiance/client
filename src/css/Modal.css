@@ -66,26 +66,37 @@
 .modal-header {
   background: #263238;
   height: 40px;
-  line-height: 40px;
+  /* line-height: 40px; */
   padding: 10px 20px;
   text-align: right;
+  display: flex;
+  justify-content: space-between;
   grid-column-start: span 1;
   grid-area: span 1;
 }
 
 .modal-header h3 {
   color: white;
-  float: left;
   margin: 0;
   padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.modalPillsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  margin-top: -10px;
+  margin-left: 15px;
+}
+
+.close-modal-btn {
 }
 
 .modal-footer {
   background: #263238;
-  height: 44px;
   padding: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
 }
 
 @media screen and (max-width: 793px) {
@@ -152,6 +163,15 @@
 .address {
   list-style: none;
   display: flex;
+  justify-content: space-evenly;
+  padding-left: 0;
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+
+.address {
+  list-style: none;
+  display: flex;
   margin-bottom: 2rem;
   flex-direction: column;
   width: 100%;
@@ -175,8 +195,6 @@
 .yelpClick {
   margin: auto;
   font-size: 1rem;
-  margin-top: -10px;
-  font-size: 12px;
 }
 
 #trendybtn,
@@ -251,6 +269,7 @@ h1 {
   }
 }
 
+
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px white;
   background-color: white;
@@ -266,3 +285,4 @@ h1 {
   background-image: rgba(90, 187, 158, 0.4);
   border-radius: 0.6rem;
 }
+
