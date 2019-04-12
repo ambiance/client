@@ -175,6 +175,8 @@
 .yelpClick {
   margin: auto;
   font-size: 1rem;
+  margin-top: -10px;
+  font-size: 12px;
 }
 
 #trendybtn,
