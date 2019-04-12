@@ -66,8 +66,6 @@ class AccountSettings extends React.Component {
     }
 
     const data = {
-      username: `${user.username}`,
-      password: `${passwordInputValue}`,
       newPassword: `${newPasswordInputValue}`,
     };
     const response = await API.post(`account/change-password`, data);
@@ -90,6 +88,7 @@ class AccountSettings extends React.Component {
     return (
       <div className="account-forms">
         <form onSubmit={this.handleNameChangeSubmit}>
+          <h3>Update display name</h3>
           <label htmlFor="nameInputValue">
             Display name:
             <input
@@ -105,6 +104,7 @@ class AccountSettings extends React.Component {
         </form>
 
         <form onSubmit={this.handlePasswordChangeSubmit}>
+          <h3>Update password</h3>
           <label htmlFor="passwordInputValue">
             Old password:
             <input
