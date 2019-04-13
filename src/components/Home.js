@@ -1,19 +1,19 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
+import React from "react";
 
 // Components
-import SearchForm from './SearchForm';
-import SearchResults from './SearchResults';
-import Modal from './Modal';
+import SearchForm from "./SearchForm";
+import SearchResults from "./SearchResults";
+import Modal from "./Modal";
 
-import API, { alertErrorHandler } from '../utils/API';
+import API, { alertErrorHandler } from "../utils/API";
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      modalDetails: '',
+      modalDetails: "",
       businesses: [],
       isShowing: false,
       loading: false,
@@ -26,11 +26,11 @@ class Home extends React.Component {
       window.scroll({
         top: 635,
         left: 0,
-        behavior: 'smooth'
+        behavior: "smooth"
       });
     });
 
-    API.get('businesses', {
+    API.get("businesses", {
       params: {
         aura: searchFormData.auraValue,
         category: searchFormData.categoryValue,
@@ -68,10 +68,12 @@ class Home extends React.Component {
     return (
       <div>
         <Modal
-          className='modal'
+          className="modal"
           show={this.state.isShowing}
+          // business={this.state.business}
           close={this.closeModalHandler}
           details={this.state.modalDetails}
+          shouldCloseOnOverlayClick={true}
         >
           {/* Can only take primitive data */}
         </Modal>
@@ -83,7 +85,7 @@ class Home extends React.Component {
           businesses={this.state.businesses}
           noData={this.state.noData}
           onOpenModal={this.openModalHandler}
-          id='results'
+          id="results"
         />
       </div>
     );
