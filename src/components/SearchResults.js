@@ -18,6 +18,16 @@ class SearchResults extends React.Component {
       );
     }
     if (businesses.length === 0) {
+      if (noData) {
+        return (
+          <div>
+            <h2 className='errorTitle'>
+              Sorry but our database does not have the information you are
+              looking for, please search again using different filters.
+            </h2>
+          </div>
+        );
+      }
       return <div />;
     }
     return (
