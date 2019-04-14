@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import "../css/loginForm.css";
 
 class LoginForm extends Component {
   static propTypes = {
-    handleLogin: PropTypes.func.isRequired,
+    handleLogin: PropTypes.func.isRequired
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      usernameInputValue: '',
-      passwordInputValue: '',
+      usernameInputValue: "",
+      passwordInputValue: ""
     };
   }
 
@@ -26,17 +27,22 @@ class LoginForm extends Component {
     event.preventDefault();
     this.props.handleLogin({
       username: this.state.usernameInputValue,
-      password: this.state.passwordInputValue,
+      password: this.state.passwordInputValue
     });
   };
 
   render() {
     return (
-      <form onSubmit={this.handleLogin} style={{ display: 'flex', flexDirection: 'column' }}>
-        <h1>Login</h1>
+      <form
+        className="loginForm"
+        onSubmit={this.handleLogin}
+        style={{ display: "flex", flexDirection: "column" }}
+      >
+        <h1 className="loginTitle">Login</h1>
         <label htmlFor="usernameInputValue">
           Username:
           <input
+            className="usernameSignin"
             type="text"
             id="usernameInputValue"
             name="usernameInputValue"
@@ -49,6 +55,7 @@ class LoginForm extends Component {
         <label htmlFor="passwordInputValue">
           Password:
           <input
+            className="passwordSignin"
             type="text"
             placeholder="password"
             id="passwordInputValue"
@@ -58,7 +65,9 @@ class LoginForm extends Component {
           />
         </label>
         {/* Need a button to acheive submit functionality, but don't use the button */}
-        <button type="submit" style={{ display: 'none' }} />
+        <button className="submitButton" type="submit">
+          Submit
+        </button>
       </form>
     );
   }

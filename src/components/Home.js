@@ -69,7 +69,13 @@ class Home extends React.Component {
     const { isShowing, modalDetails, openModal, closeModal } = this.props;
     return (
       <div>
-        <Modal className="modal" show={isShowing} close={closeModal} details={modalDetails}>
+        <Modal
+          className="modal"
+          show={isShowing}
+          close={closeModal}
+          details={modalDetails}
+          shouldCloseOnOverlayClick={true}
+        >
           {/* Can only take primitive data */}
         </Modal>
 
