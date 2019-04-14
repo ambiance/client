@@ -1,23 +1,24 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from "react";
+import React from 'react';
 
 // Components
-import SearchForm from "./SearchForm";
-import SearchResults from "./SearchResults";
-import Modal from "./Modal";
+import PropTypes from 'prop-types';
+import SearchForm from './SearchForm';
+import SearchResults from './SearchResults';
+import Modal from './Modal';
 
-import API, { alertErrorHandler } from "../utils/API";
+import API, { alertErrorHandler } from '../utils/API';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      modalDetails: "",
+      // modalDetails: '',
       businesses: [],
       isShowing: false,
       loading: false,
-      noData: false
+      noData: false,
     };
   }
 
@@ -26,16 +27,16 @@ class Home extends React.Component {
       window.scroll({
         top: 635,
         left: 0,
-        behavior: "smooth"
+        behavior: 'smooth',
       });
     });
 
-    API.get("businesses", {
+    API.get('businesses', {
       params: {
         aura: searchFormData.auraValue,
         category: searchFormData.categoryValue,
-        city: searchFormData.cityValue
-      }
+        city: searchFormData.cityValue,
+      },
     })
       // .then(response => this.setState({ businesses: response.data }))
       .then(response => {
@@ -50,29 +51,29 @@ class Home extends React.Component {
       .catch(err => alertErrorHandler(err));
   };
 
-  // Functions for Modals
-  openModalHandler = details => {
-    this.setState({
-      isShowing: true,
-      modalDetails: { details }
-    });
-  };
+  // // Functions for Modals
+  // openModalHandler = details => {
+  //   this.setState({
+  //     isShowing: true,
+  //     modalDetails: { details }
+  //   });
+  // };
 
-  closeModalHandler = () => {
-    this.setState({
-      isShowing: false
-    });
-  };
+  // closeModalHandler = () => {
+  //   this.setState({
+  //     isShowing: false
+  //   });
+  // };
 
   render() {
+    const { isShowing, modalDetails, openModal, closeModal } = this.props;
     return (
       <div>
         <Modal
           className="modal"
-          show={this.state.isShowing}
-          // business={this.state.business}
-          close={this.closeModalHandler}
-          details={this.state.modalDetails}
+          show={isShowing}
+          close={closeModal}
+          details={modalDetails}
           shouldCloseOnOverlayClick={true}
         >
           {/* Can only take primitive data */}
@@ -84,12 +85,19 @@ class Home extends React.Component {
           loading={this.state.loading}
           businesses={this.state.businesses}
           noData={this.state.noData}
-          onOpenModal={this.openModalHandler}
+          onOpenModal={openModal}
           id="results"
         />
       </div>
     );
   }
 }
+
+Home.propTypes = {
+  modalDetails: PropTypes.string,
+  isShowing: PropTypes.bool,
+  openModal: PropTypes.func,
+  closeModal: PropTypes.func,
+};
 
 export default Home;

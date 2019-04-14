@@ -1,0 +1,86 @@
+@import './palette.css';
+
+.dashboard {
+  display: flex;
+  min-height: calc(100vh - 175px);
+}
+
+.dashboard-body {
+  padding: 50px;
+  flex: 1;
+}
+
+.dashboard .active-view {
+  font-weight: bolder;
+  color: var(--light-mint);
+}
+
+.account-menu {
+  padding: 30px;
+  background-color: var(--mint);
+}
+
+.account-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.account-menu ul li {
+  margin-bottom: 15px;
+}
+
+.account-menu .active-view {
+  color: var(--light-mint);
+}
+
+.link-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-family: "Comfortaa", cursive;
+}
+
+.link-button:hover,
+.link-button:focus {
+text-decoration: underline;
+
+}
+
+.account-settings {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-forms {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.account-forms form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0;
+}
+
+.account-forms form input {
+  margin: 10px;
+  padding: 0 15px;
+  min-width: 200px;
+  background-color: var(--light-mint);
+  outline: none;
+}
+
+.account-forms form button {
+  font-size: 18px;
+  margin: 20px 10px;
+  max-width: 200px;
+  font-family: "Comfortaa", cursive;
+  background-color: var(--dark-mint)
+}
+

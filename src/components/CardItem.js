@@ -87,46 +87,35 @@ export default class CardItem extends React.Component {
 
     const styleObject = this.auraColorChange();
     return (
-      <div
-        key={business.id}
-        className='resultCard'
-        onClick={() => onOpenModal(business)}
-      >
-        <div className='resultCardImageContainer'>
-          <div className='pillsContainer'>
+      <div key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
+        <div className="resultCardImageContainer">
+          <div className="pillsContainer">
             {business.attributes.aura.split(',').map(auraSingleton => (
               <AuraPills
                 aura={auraSingleton}
                 backgroundColor={this.auraColorChange(auraSingleton)}
+                key={auraSingleton}
               />
             ))}
           </div>
 
           <img
-            className='resultCardImage'
+            className="resultCardImage"
             src={
               business.businessImage.src
                 ? business.businessImage.src
                 : 'http://mymodernmet.com/wp/wp-content/uploads/2017/10/azuki-camping-hedgehog-3.jpg'
             }
-            alt={
-              business.businessImage.owner
-                ? business.businessImage.owner
-                : 'No image owner provided'
-            }
+            alt={business.businessImage.owner ? business.businessImage.owner : 'No image owner provided'}
           />
         </div>
 
-        <span className='resultCardTitle'>{business.name}</span>
-        <span className='resultCardSubtitle'>{business.address}</span>
-        <span className='resultCardSubtitle'>
+        <span className="resultCardTitle">{business.name}</span>
+        <span className="resultCardSubtitle">{business.address}</span>
+        <span className="resultCardSubtitle">
           {business.city}, {business.state} {business.postalCode}
         </span>
-        <img
-          className='resultCardStar'
-          src={this.handleStars(business.stars)}
-          alt='Rating Stars'
-        />
+        <img className="resultCardStar" src={this.handleStars(business.stars)} alt="Rating Stars" />
       </div>
     );
   }
@@ -140,7 +129,7 @@ CardItem.propTypes = {
     state: PropTypes.string.isRequired,
     postalCode: PropTypes.string.isRequired,
     attributes: PropTypes.shape({
-      aura: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired
+      aura: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
