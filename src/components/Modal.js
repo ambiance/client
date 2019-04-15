@@ -69,24 +69,20 @@ const Modal = props => {
         }}
       >
         <div className="modal-header">
-          <h3>
-            {props.show ? props.details.details.name : ''}
-
-            <span className="modalPillsContainer">
-              {props.show
-                ? props.details.details.attributes.aura
-                    .split(',')
-                    .map(auraSingleton => (
-                      <AuraPills
-                        key={auraSingleton}
-                        aura={auraSingleton}
-                        backgroundColor={auraColorChange(auraSingleton)}
-                      />
-                    ))
-                : ''}
-            </span>
-          </h3>
-
+          <h3>{props.show ? props.details.details.name : ''}</h3>
+          <span className="modalPillsContainer">
+            {props.show
+              ? props.details.details.attributes.aura
+                  .split(',')
+                  .map(auraSingleton => (
+                    <AuraPills
+                      key={auraSingleton}
+                      aura={auraSingleton}
+                      backgroundColor={auraColorChange(auraSingleton)}
+                    />
+                  ))
+              : ''}
+          </span>
           <button className="close-modal-btn" onClick={props.close}>
             ×
           </button>
