@@ -16,7 +16,6 @@ class Home extends React.Component {
     this.state = {
       // modalDetails: '',
       businesses: [],
-      isShowing: false,
       loading: false,
       noData: false,
     };
@@ -38,7 +37,6 @@ class Home extends React.Component {
         city: searchFormData.cityValue,
       },
     })
-      // .then(response => this.setState({ businesses: response.data }))
       .then(response => {
         this.setState({ businesses: response.data });
         if (response.data.length === 0) {
@@ -51,33 +49,11 @@ class Home extends React.Component {
       .catch(err => alertErrorHandler(err));
   };
 
-  // // Functions for Modals
-  // openModalHandler = details => {
-  //   this.setState({
-  //     isShowing: true,
-  //     modalDetails: { details }
-  //   });
-  // };
-
-  // closeModalHandler = () => {
-  //   this.setState({
-  //     isShowing: false
-  //   });
-  // };
-
   render() {
     const { isShowing, modalDetails, openModal, closeModal } = this.props;
     return (
       <div>
-        <Modal
-          className="modal"
-          show={isShowing}
-          close={closeModal}
-          details={modalDetails}
-          shouldCloseOnOverlayClick={true}
-        >
-          {/* Can only take primitive data */}
-        </Modal>
+        <Modal className="modal" show={isShowing} close={closeModal} details={modalDetails} shouldCloseOnOverlayClick />
 
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
 
@@ -94,7 +70,7 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-  modalDetails: PropTypes.string,
+  modalDetails: PropTypes.object,
   isShowing: PropTypes.bool,
   openModal: PropTypes.func,
   closeModal: PropTypes.func,

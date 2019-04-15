@@ -1,25 +1,26 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import "../css/loginForm.css";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Swal from 'sweetalert2';
+import '../css/loginForm.css';
 
 class SignupForm extends Component {
   static propTypes = {
-    handleSignup: PropTypes.func.isRequired
+    handleSignup: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      usernameInputValue: "",
-      passwordInputValue: "",
-      passwordConfirmInputValue: ""
+      usernameInputValue: '',
+      passwordInputValue: '',
+      passwordConfirmInputValue: '',
     };
   }
 
   handleInputChange = event => {
     const { target } = event;
-    const value = target.type === "checkbox" ? target.checked : target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const { name } = target;
 
     this.setState({ [name]: value });
@@ -29,27 +30,25 @@ class SignupForm extends Component {
     event.preventDefault();
     const { passwordInputValue, passwordConfirmInputValue } = this.state;
     // FIXME: Create a validation middleware we can use instead of these checks here.
-    if (passwordInputValue.length < 8) {
+    if (passwordInputValue !== passwordConfirmInputValue) {
       // FIXME: Change from alerts to something better.
-      alert("Password length is too short...");
-    } else if (passwordInputValue !== passwordConfirmInputValue) {
-      // FIXME: Change from alerts to something better.
-      alert("Your passwords do not match");
+      Swal.fire({
+        type: 'error',
+        text: 'New passwords must match',
+        showConfirmButton: false,
+        timer: 1200,
+      });
     } else {
       this.props.handleSignup({
         username: this.state.usernameInputValue,
-        password: this.state.passwordInputValue
+        password: this.state.passwordInputValue,
       });
     }
   };
 
   render() {
     return (
-      <form
-        className="signupForm"
-        onSubmit={this.handleSubmit}
-        style={{ display: "flex", flexDirection: "column" }}
-      >
+      <form className="signupForm" onSubmit={this.handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
         <h1 className="loginTitle">Signup</h1>
         <label htmlFor="usernameInputValue">
           Username:
@@ -69,6 +68,7 @@ class SignupForm extends Component {
             placeholder="password"
             id="passwordInputValue"
             name="passwordInputValue"
+            minLength="8"
             value={this.state.passwordInputValue}
             onChange={this.handleInputChange}
           />
@@ -80,6 +80,7 @@ class SignupForm extends Component {
             placeholder="password"
             id="passwordConfirmInputValue"
             name="passwordConfirmInputValue"
+            minLength="8"
             value={this.state.passwordConfirmInputValue}
             onChange={this.handleInputChange}
           />

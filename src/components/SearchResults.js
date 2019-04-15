@@ -21,9 +21,9 @@ class SearchResults extends React.Component {
       if (noData) {
         return (
           <div>
-            <h2 className='errorTitle'>
-              Sorry but our database does not have the information you are
-              looking for, please search again using different filters.
+            <h2 className="errorTitle">
+              Sorry but our database does not have the information you are looking for, please search again using
+              different filters.
             </h2>
           </div>
         );
@@ -35,8 +35,8 @@ class SearchResults extends React.Component {
         <section id="searchResults">
           <div className="resultCards">
             {businesses.map((business, i) => (
-              <div>
-                <CardItem key={i} business={business} onOpenModal={onOpenModal} />
+              <div key={i}>
+                <CardItem business={business} onOpenModal={onOpenModal} />
               </div>
             ))}
           </div>
@@ -49,6 +49,8 @@ class SearchResults extends React.Component {
 SearchResults.propTypes = {
   businesses: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
+  onOpenModal: PropTypes.func.isRequired,
+  noData: PropTypes.bool.isRequired,
 };
 
 export default SearchResults;

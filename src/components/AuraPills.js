@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../css/ResultCard.css';
 import '../css/palette.css';
 
@@ -13,5 +14,10 @@ class AuraPills extends React.Component {
     );
   }
 }
+
+AuraPills.propTypes = {
+  aura: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string.isRequired,
+};
 
 export default AuraPills;
