@@ -1,7 +1,7 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
-import API from '../utils/API';
+import API, { alertErrorHandler } from '../utils/API';
 
 class AccountSettings extends React.Component {
   static propTypes = {
@@ -35,19 +35,18 @@ class AccountSettings extends React.Component {
       username: `${user.username}`,
       displayName: `${nameInputValue}`,
     };
-    const response = await API.post(`account/change-display-name`, data);
-    if (response.status === 200) {
-      Swal.fire({
-        type: 'success',
-        text: 'Name successfully changed',
-        showConfirmButton: false,
-        timer: 1200,
-      });
-    } else {
-      Swal.fire({
-        type: 'error',
-        text: 'Sorry, something went wrong. Name was not changed',
-      });
+    try {
+      const response = await API.patch(`account/change-display-name`, data);
+      if (response.status === 200) {
+        Swal.fire({
+          type: 'success',
+          text: 'Name successfully changed',
+          showConfirmButton: false,
+          timer: 1200,
+        });
+      }
+    } catch (err) {
+      alertErrorHandler(err);
     }
   };
 
@@ -68,19 +67,18 @@ class AccountSettings extends React.Component {
     const data = {
       newPassword: `${newPasswordInputValue}`,
     };
-    const response = await API.post(`account/change-password`, data);
-    if (response.status === 200) {
-      Swal.fire({
-        type: 'success',
-        text: 'Password successfully changed',
-        showConfirmButton: false,
-        timer: 1200,
-      });
-    } else {
-      Swal.fire({
-        type: 'error',
-        text: 'Sorry, something went wrong. Password was not changed.',
-      });
+    try {
+      const response = await API.patch(`account/change-password`, data);
+      if (response.status === 200) {
+        Swal.fire({
+          type: 'success',
+          text: 'Password successfully changed',
+          showConfirmButton: false,
+          timer: 1200,
+        });
+      }
+    } catch (err) {
+      alertErrorHandler(err);
     }
   };
 
