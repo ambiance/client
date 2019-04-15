@@ -26,7 +26,7 @@ Favorites.propTypes = {
   isShowing: PropTypes.bool.isRequired,
   openModal: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
-  modalDetails: PropTypes.string.isRequired,
+  modalDetails: PropTypes.object.isRequired,
 };
 
 export default Favorites;
