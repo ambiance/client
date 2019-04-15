@@ -13,7 +13,7 @@ class SearchForm extends React.Component {
       searchForm: {
         auraValue: 'trendy',
         categoryValue: 'eating',
-        groupValue: 'whoever',
+        cityValue: 'Los Angeles',
       },
       scroll: 0,
       top: 10,
@@ -22,7 +22,7 @@ class SearchForm extends React.Component {
 
   componentDidMount() {
     const form = this.formRef.current;
-    this.setState({ top: form.offsetTop, height: form.offsetHeight });
+    this.setState({ top: form.offsetTop });
     window.addEventListener('scroll', () => this.handleScroll());
   }
 
@@ -49,11 +49,11 @@ class SearchForm extends React.Component {
     });
   };
 
-  handleGroupChange = event => {
+  handleCityChange = event => {
     const { value } = event.target;
     this.setState(prevState => {
       const tempForm = prevState.searchForm;
-      tempForm.groupValue = value;
+      tempForm.cityValue = value;
       return { searchForm: tempForm };
     });
   };
@@ -65,18 +65,8 @@ class SearchForm extends React.Component {
   render() {
     return (
       <article>
-        <section
-          id="search-form"
-          ref={this.formRef}
-          className={this.state.scroll > this.state.top ? 'fixed' : ''}
-        >
-          <form
-            action=""
-            method="GET"
-            name="search"
-            role="search"
-            onSubmit={this.handleSearchSubmit}
-          >
+        <section id="search-form" ref={this.formRef} className={this.state.scroll > this.state.top ? 'fixed' : ''}>
+          <form action="" method="GET" name="search" role="search" onSubmit={this.handleSearchSubmit}>
             <span id="want" className="grid-80">
               I want to be
             </span>
@@ -116,18 +106,23 @@ class SearchForm extends React.Component {
               </select>
             </p>
 
-            <span className="grid-40">with</span>
+            <span className="grid-40">in</span>
             <p className="cat-wrap">
               <select
-                value={this.state.searchForm.groupValue}
-                name="groupValue"
-                className="grid-80"
-                onChange={this.handleGroupChange}
+                value={this.state.searchForm.cityValue}
+                name="cityValue"
+                className="grid-80 city"
+                onChange={this.handleCityChange}
               >
-                {/* <option value="I">Myself</option>
-                <option value="friends">Friends</option>
-                <option value="date">A Date</option> */}
-                <option value="whoever">Whoever</option>
+                <option value="Santa Monica">Santa Monica</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="Venice">Venice</option>
+                <option value="Culver City">Culver City</option>
+                <option value="Beverly Hills">Beverly Hills</option>
+                <option value="Marina Del Rey">Marina Del Rey</option>
+                <option value="Inglewood">Inglewood</option>
+                <option value="Hollywood">Hollywood</option>
+                <option value="Burbank">Burbank</option>
               </select>
             </p>
             <p className="submit-wrap" id="submitButtonContainer">

@@ -4,6 +4,34 @@
   width: 100%;
 }
 
-.searchResultsHeader {
-  border-radius: 0px;
+.errorpage {
+  display: flex;
+  justify-content: center;
+  padding: 10rem;
+}
+
+.errorTitle {
+  color: black;
+  padding: 8rem 5rem 12rem 5rem;
+  line-height: 2rem;
+}
+
+@media all and (max-width: 770px) {
+  .errorTitle {
+    font-size: 22px;
+  }
+}
+
+@media all and (max-width: 530px) {
+  .errorTitle {
+    font-size: 18px;
+    padding: 7rem 3rem 12rem 3rem;
+  }
+}
+
+@media all and (max-width: 382px) {
+  .errorTitle {
+    font-size: 15px;
+    padding: 6rem 2.5rem 12rem 2.5rem;
+  }
 }

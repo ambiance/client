@@ -1,41 +1,115 @@
-import React from "react";
-import Map from "./Map";
-import "../css/Modal.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import AuraPills from './AuraPills.js';
+import Map from './Map';
+import MapContainer from './Map';
+import '../css/Modal.css';
+import '../css/palette.css';
 import starImages from './starImages';
 
-
-const modal = props => {
+const Modal = props => {
   const starSrc = handleStars(props.show ? props.details.details.stars : 0);
+
+  function auraColorChange(auraString) {
+    let colorString = ``;
+    switch (auraString) {
+      case 'trendy':
+        colorString = `var(--trendy)`;
+        break;
+      case 'romantic':
+        colorString = `var(--romantic)`;
+        break;
+      case 'hipster':
+        colorString = `var(--hipster)`;
+        break;
+      case 'casual':
+        colorString = `var(--casual)`;
+        break;
+      case 'inspired':
+        colorString = `var(--inspired)`;
+        break;
+      case 'intimate':
+        colorString = `var(--intimate)`;
+        break;
+      case 'classy':
+        colorString = `var(--classy)`;
+        break;
+      case 'touristy':
+        colorString = `var(--touristy)`;
+        break;
+      case 'cheerful':
+        colorString = `var(--cheerful)`;
+        break;
+      default:
+        colorString = `var(--mint)`;
+    }
+    const style = colorString;
+    return style;
+  }
+
   return (
     <div>
       <div
+        className="modal-backdrop"
+        onClick={props.close}
+        role="button"
+        style={{
+          // transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
+          opacity: props.show ? '0.5' : '0',
+          position: props.show ? 'fixed' : 'absolute',
+          zIndex: props.show ? '15' : '-5',
+        }}
+      />
+
+      <div
         className="modal-wrapper"
         style={{
-          transform: props.show ? "translateY(0vh)" : "translateY(-100vh)",
-          opacity: props.show ? "1" : "0"
+          transform: props.show ? 'translateY(0vh)' : 'translateY(-200vh)',
+          opacity: props.show ? '1' : '0',
         }}
       >
         <div className="modal-header">
-          <h3>{props.show ? props.details.details.name : ""}</h3>
+          <h3>
+            {props.show ? props.details.details.name : ''}
+
+            <span className="modalPillsContainer">
+              {props.show
+                ? props.details.details.attributes.aura
+                    .split(',')
+                    .map(auraSingleton => (
+                      <AuraPills
+                        key={auraSingleton}
+                        aura={auraSingleton}
+                        backgroundColor={auraColorChange(auraSingleton)}
+                      />
+                    ))
+                : ''}
+            </span>
+          </h3>
+
           <button className="close-modal-btn" onClick={props.close}>
             ×
           </button>
         </div>
-        <div className="modal-body">
-          {/* <Map /> */}
-          <p>{props.show ? props.details.details.displayAddress[0] : ""}</p>
-          <p>{props.show ? props.details.details.displayAddress[1] : ""}</p>
-          <p>{props.show ? props.details.details.attributes.priceRange : ""}</p>
-          {/* <p>{props.show ? props.details.details.stars + " stars" : ""}</p> */}
-          <img className="modalStar" src={starSrc}/>
-          {/* <p>{props.show ? props.details.details.categories : ""}</p> */}
-          <a
-            className="yelpLink"
-            href={props.show ? props.details.details.url : ""}
-            target="_blank"
-          >
-            <img className='yelpPic' src='./assets/img/yelpButton.jpg' />
-            Click for more details!
+
+        <div className="businessMap">
+          <MapContainer className="modalMap" details={props.details.details} />
+        </div>
+        <div className="businessDetails">
+          <ul className="categories">
+            {props.show
+              ? props.details.details.categories.map(category => <li key={category.title}>{category.title}</li>)
+              : ''}
+          </ul>
+          <ul className="address">
+            {props.show ? props.details.details.displayAddress.map(addr => <li key={addr}>{addr}</li>) : ''}
+          </ul>
+          <p className="info">{props.show ? props.details.details.attributes.priceRange : ''}</p>
+          <img className="modalStar" src={starSrc} alt="stars" />
+          <a className="yelpLink" href={props.show ? props.details.details.url : ''} target="_blank">
+            <img className="yelpPic" src="./assets/img/yelpButton.jpg" alt="yelp" />
+            <p className="yelpClick">Click for more details!</p>
+            {/* <p className="yelpCall">Click for more details!</p> */}
           </a>
         </div>
         <div className="modal-footer" />
@@ -44,7 +118,7 @@ const modal = props => {
   );
 };
 
-const handleStars = stars => {
+function handleStars(stars) {
   switch (stars) {
     case 0.5:
       return starImages[12].src;
@@ -68,7 +142,13 @@ const handleStars = stars => {
       return starImages[21].src;
     default:
       return starImages[11].src;
-  };
+  }
+}
+
+Modal.propTypes = {
+  show: PropTypes.bool.isRequired,
+  details: PropTypes.object.isRequired,
+  close: PropTypes.func.isRequired,
 };
 
-export default modal;
+export default Modal;
