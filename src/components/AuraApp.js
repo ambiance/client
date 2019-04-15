@@ -21,7 +21,7 @@ class AuraApp extends React.Component {
       isAuthenticated: false,
       user: {},
       isModalShowing: false,
-      modalDetails: '',
+      modalDetails: {},
     };
   }
   componentWillMount() {

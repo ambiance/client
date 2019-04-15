@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AuraPills from './AuraPills.js';
-// import CardItem from './CardItem';
 import Map from './Map';
 import MapContainer from './Map';
 import '../css/Modal.css';
@@ -58,7 +57,7 @@ const Modal = props => {
           // transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
           opacity: props.show ? '0.5' : '0',
           position: props.show ? 'fixed' : 'absolute',
-          zIndex: props.show ? '15' : '-5'
+          zIndex: props.show ? '15' : '-5',
         }}
       />
 
@@ -66,7 +65,7 @@ const Modal = props => {
         className="modal-wrapper"
         style={{
           transform: props.show ? 'translateY(0vh)' : 'translateY(-200vh)',
-          opacity: props.show ? '1' : '0'
+          opacity: props.show ? '1' : '0',
         }}
       >
         <div className="modal-header">
@@ -78,7 +77,11 @@ const Modal = props => {
                 ? props.details.details.attributes.aura
                     .split(',')
                     .map(auraSingleton => (
-                      <AuraPills aura={auraSingleton} backgroundColor={auraColorChange(auraSingleton)} />
+                      <AuraPills
+                        key={auraSingleton}
+                        aura={auraSingleton}
+                        backgroundColor={auraColorChange(auraSingleton)}
+                      />
                     ))
                 : ''}
             </span>
@@ -94,15 +97,17 @@ const Modal = props => {
         </div>
         <div className="businessDetails">
           <ul className="categories">
-            {props.show ? props.details.details.categories.map(category => <li>{category.title}</li>) : ''}
+            {props.show
+              ? props.details.details.categories.map(category => <li key={category.title}>{category.title}</li>)
+              : ''}
           </ul>
           <ul className="address">
-            {props.show ? props.details.details.displayAddress.map(addr => <li>{addr}</li>) : ''}
+            {props.show ? props.details.details.displayAddress.map(addr => <li key={addr}>{addr}</li>) : ''}
           </ul>
           <p className="info">{props.show ? props.details.details.attributes.priceRange : ''}</p>
-          <img className="modalStar" src={starSrc} />
+          <img className="modalStar" src={starSrc} alt="stars" />
           <a className="yelpLink" href={props.show ? props.details.details.url : ''} target="_blank">
-            <img className="yelpPic" src="./assets/img/yelpButton.jpg" />
+            <img className="yelpPic" src="./assets/img/yelpButton.jpg" alt="yelp" />
             <p className="yelpClick">Click for more details!</p>
             {/* <p className="yelpCall">Click for more details!</p> */}
           </a>
@@ -113,7 +118,7 @@ const Modal = props => {
   );
 };
 
-const handleStars = stars => {
+function handleStars(stars) {
   switch (stars) {
     case 0.5:
       return starImages[12].src;
@@ -138,19 +143,12 @@ const handleStars = stars => {
     default:
       return starImages[11].src;
   }
-};
+}
 
 Modal.propTypes = {
-  business: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    address: PropTypes.string.isRequired,
-    city: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-    postalCode: PropTypes.string.isRequired,
-    attributes: PropTypes.shape({
-      aura: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
+  show: PropTypes.bool.isRequired,
+  details: PropTypes.object.isRequired,
+  close: PropTypes.func.isRequired,
 };
 
 export default Modal;

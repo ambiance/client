@@ -7,7 +7,7 @@ import Favorites from './Favorites';
 class Dashboard extends React.Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
-    modalDetails: PropTypes.string,
+    modalDetails: PropTypes.object,
     isModalShowing: PropTypes.bool,
     openModal: PropTypes.func,
     closeModal: PropTypes.func,

@@ -53,7 +53,7 @@ class AccountSettings extends React.Component {
 
   handlePasswordChangeSubmit = async event => {
     event.preventDefault();
-    const { passwordInputValue, newPasswordInputValue, confirmPasswordInputValue } = this.state;
+    const { newPasswordInputValue, confirmPasswordInputValue } = this.state;
     const { user } = this.props;
     if (newPasswordInputValue !== confirmPasswordInputValue) {
       Swal.fire({
