@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import ProtectedRoute from './ProtectedRoute';
 import API from '../utils/API';
 import Home from './Home';
@@ -19,6 +20,8 @@ class AuraApp extends React.Component {
     this.state = {
       isAuthenticated: false,
       user: {},
+      isModalShowing: false,
+      modalDetails: '',
     };
   }
   componentWillMount() {
@@ -54,7 +57,26 @@ class AuraApp extends React.Component {
     // set user and authentication to empty / false respectively
     this.setState({ isAuthenticated: false, user: {} });
     // redirect user to home page / login page.
-    alert('Sorry to see you go...');
+    Swal.fire({
+      position: 'top-end',
+      text: 'Sorry to see you go...',
+      showConfirmButton: false,
+      timer: 1200,
+    });
+  };
+
+  // Functions for Modals
+  openModalHandler = details => {
+    this.setState({
+      isModalShowing: true,
+      modalDetails: { details },
+    });
+  };
+
+  closeModalHandler = () => {
+    this.setState({
+      isModalShowing: false,
+    });
   };
 
   render() {
@@ -85,12 +107,6 @@ class AuraApp extends React.Component {
                     <li>
                       <NavLink to="/dashboard">Dashboard</NavLink>
                     </li>
-                    <li>
-                      {/* FIXME: Still shows as active tab. */}
-                      <NavLink to="/" onClick={this.handleLogout}>
-                        Logout
-                      </NavLink>
-                    </li>
                   </React.Fragment>
                 ) : (
                   <li>
@@ -101,20 +117,35 @@ class AuraApp extends React.Component {
             </nav>
           </header>
           <Switch>
-            <Route path="/" exact component={Home} />
+            {/* <Route path="/" exact component={Home} /> */}
+            <Route
+              path="/"
+              exact
+              render={props => (
+                <Home
+                  modalDetails={this.state.modalDetails}
+                  isShowing={this.state.isModalShowing}
+                  openModal={this.openModalHandler}
+                  closeModal={this.closeModalHandler}
+                />
+              )}
+            />
             <Route path="/about" component={About} />
             <Route path="/meettheteam" component={MeetTheTeam} />
             <Route
               path="/login"
-              render={props => (
-                <Login {...props} handleLogin={this.handleLogin} handleSignup={this.handleSignup} />
-              )}
+              render={props => <Login {...props} handleLogin={this.handleLogin} handleSignup={this.handleSignup} />}
             />
             <ProtectedRoute
               path="/dashboard"
               isAuthenticated={isAuthenticated}
               user={user}
               component={Profile}
+              modalDetails={this.state.modalDetails}
+              isModalShowing={this.state.isModalShowing}
+              openModal={this.openModalHandler}
+              closeModal={this.closeModalHandler}
+              logout={this.handleLogout}
             />
             <Route component={FourOhFour} />
           </Switch>

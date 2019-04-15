@@ -2,6 +2,7 @@
 import React from 'react';
 
 // Components
+import PropTypes from 'prop-types';
 import SearchForm from './SearchForm';
 import SearchResults from './SearchResults';
 import Modal from './Modal';
@@ -13,11 +14,11 @@ class Home extends React.Component {
     super(props);
 
     this.state = {
-      modalDetails: '',
+      // modalDetails: '',
       businesses: [],
       isShowing: false,
       loading: false,
-      noData: false
+      noData: false,
     };
   }
 
@@ -26,7 +27,7 @@ class Home extends React.Component {
       window.scroll({
         top: 635,
         left: 0,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     });
 
@@ -34,45 +35,46 @@ class Home extends React.Component {
       params: {
         aura: searchFormData.auraValue,
         category: searchFormData.categoryValue,
-        city: searchFormData.cityValue
-      }
+        city: searchFormData.cityValue,
+      },
     })
       // .then(response => this.setState({ businesses: response.data }))
       .then(response => {
+        this.setState({ businesses: response.data });
         if (response.data.length === 0) {
           this.setState({ noData: true });
-          this.setState({ businesses: response.data });
         } else {
           this.setState({ noData: false });
-          this.setState({ businesses: response.data });
         }
       })
       .then(() => this.setState({ loading: false }))
       .catch(err => alertErrorHandler(err));
   };
 
-  // Functions for Modals
-  openModalHandler = details => {
-    this.setState({
-      isShowing: true,
-      modalDetails: { details }
-    });
-  };
+  // // Functions for Modals
+  // openModalHandler = details => {
+  //   this.setState({
+  //     isShowing: true,
+  //     modalDetails: { details }
+  //   });
+  // };
 
-  closeModalHandler = () => {
-    this.setState({
-      isShowing: false
-    });
-  };
+  // closeModalHandler = () => {
+  //   this.setState({
+  //     isShowing: false
+  //   });
+  // };
 
   render() {
+    const { isShowing, modalDetails, openModal, closeModal } = this.props;
     return (
       <div>
         <Modal
-          className='modal'
-          show={this.state.isShowing}
-          close={this.closeModalHandler}
-          details={this.state.modalDetails}
+          className="modal"
+          show={isShowing}
+          close={closeModal}
+          details={modalDetails}
+          shouldCloseOnOverlayClick={true}
         >
           {/* Can only take primitive data */}
         </Modal>
@@ -83,12 +85,19 @@ class Home extends React.Component {
           loading={this.state.loading}
           businesses={this.state.businesses}
           noData={this.state.noData}
-          onOpenModal={this.openModalHandler}
-          id='results'
+          onOpenModal={openModal}
+          id="results"
         />
       </div>
     );
   }
 }
+
+Home.propTypes = {
+  modalDetails: PropTypes.string,
+  isShowing: PropTypes.bool,
+  openModal: PropTypes.func,
+  closeModal: PropTypes.func,
+};
 
 export default Home;
