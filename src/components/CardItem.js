@@ -85,7 +85,7 @@ export default class CardItem extends React.Component {
     // consts here
     const { business, onOpenModal } = this.props;
 
-    const styleObject = this.auraColorChange();
+    // const styleObject = this.auraColorChange();
     return (
       <div key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
         <div className="resultCardImageContainer">
