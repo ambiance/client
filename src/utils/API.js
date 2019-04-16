@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 // Various endpoints to call in our backend depending on environment
 const endpoint = {
   local: 'http://localhost:3500/api/',
+  staging: 'https://aurelia-server-staging.herokuapp.com/api/',
   production: 'https://aurelia-server.herokuapp.com/api/',
 };
 
@@ -21,7 +22,7 @@ const headers = {
 const instance = Axios.create({
   // FIXME: Figure out a way to make calls to different servers based on the .env
   // TODO: Change this endpoint based on the environment you are using.
-  baseURL: endpoint.production,
+  baseURL: endpoint.staging,
   timeout: 10000,
   headers,
   params: {},

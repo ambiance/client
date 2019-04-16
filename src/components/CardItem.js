@@ -4,6 +4,7 @@ import AuraPills from './AuraPills';
 import '../css/ResultCard.css';
 import starImages from './starImages';
 import heartIcon from '../assets/img/arrowHeartSolid.png';
+import API from '../utils/API';
 
 export default class CardItem extends React.Component {
   constructor(props) {
@@ -82,7 +83,12 @@ export default class CardItem extends React.Component {
     e.preventDefault();
     console.log(e.target.name);
     // send the business ID back to the server
-    // 
+    //API.patch('account/add-to-favorites);
+    API.patch(`account/add-to-favorites`, {
+      body: {
+        business_id = e.target.name,
+      },
+    });
   }
 
   render() {
