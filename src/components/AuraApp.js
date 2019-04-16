@@ -18,7 +18,9 @@ class AuraApp extends React.Component {
 
     this.state = {
       isAuthenticated: false,
-      user: {},
+      user: {
+        id: null,
+      },
     };
   }
   componentWillMount() {

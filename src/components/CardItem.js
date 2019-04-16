@@ -95,6 +95,8 @@ export default class CardItem extends React.Component {
   handleLikeClick = (e) => {
     e.preventDefault();
     console.log(e.target.name);
+    // send the business ID back to the server
+    // 
   }
 
   render() {
