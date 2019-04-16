@@ -86,7 +86,7 @@ export default class CardItem extends React.Component {
     //API.patch('account/add-to-favorites);
     API.patch(`account/add-to-favorites`, {
       body: {
-        business_id = e.target.name,
+        business_id: e.target.name,
       },
     });
   }
