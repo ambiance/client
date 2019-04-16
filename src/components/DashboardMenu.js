@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const DashboardMenu = ({ user, activeView, showOverview, showSettings, logout }) => (
   <div className="account-menu">
-    <h1>{user.username || 'User'}</h1>
+    <h1 className="dashboard-header">{user.username || 'User'}</h1>
     <ul>
       <li>
         {activeView === 'overview' ? (
