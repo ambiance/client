@@ -22,7 +22,7 @@ class SearchForm extends React.Component {
 
   componentDidMount() {
     const form = this.formRef.current;
-    this.setState({ top: form.offsetTop, height: form.offsetHeight });
+    this.setState({ top: form.offsetTop });
     window.addEventListener('scroll', () => this.handleScroll());
   }
 

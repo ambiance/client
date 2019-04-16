@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AuraPills from './AuraPills';
 import '../css/ResultCard.css';
 import starImages from './starImages';
 import heartIcon from '../assets/img/arrowHeartSolid.png';
@@ -9,59 +10,44 @@ export default class CardItem extends React.Component {
     super(props);
 
     // set initial state
-    this.state = {
-      expandDetails: '',
-    };
+    this.state = {};
   }
 
   auraColorChange = auraString => {
-    const auras = auraString.split(',');
-    // console.log(auras);
-    let colorString = '';
-    for (let i = 0; i < auras.length; i++) {
-      switch (auras[i]) {
-        case 'trendy':
-          colorString = `${colorString}var(--trendy), `;
-          break;
-        case 'romantic':
-          colorString = `${colorString}var(--romantic), `;
-          break;
-        case 'hipster':
-          colorString = `${colorString}var(--hipster), `;
-          break;
-        case 'casual':
-          colorString = `${colorString}var(--casual), `;
-          break;
-        case 'inspired':
-          colorString = `${colorString}var(--inspired), `;
-          break;
-        case 'intimate':
-          colorString = `${colorString}var(--intimate), `;
-          break;
-        case 'classy':
-          colorString = `${colorString}var(--classy), `;
-          break;
-        case 'touristy':
-          colorString = `${colorString}var(--touristy), `;
-          break;
-        case 'cheerful':
-          colorString = `${colorString}var(--cheerful), `;
-          break;
-        default:
-          colorString = `${colorString}var(--mint), `;
-      }
+    let colorString = ``;
+    switch (auraString) {
+      case 'trendy':
+        colorString = `var(--trendy)`;
+        break;
+      case 'romantic':
+        colorString = `var(--romantic)`;
+        break;
+      case 'hipster':
+        colorString = `var(--hipster)`;
+        break;
+      case 'casual':
+        colorString = `var(--casual)`;
+        break;
+      case 'inspired':
+        colorString = `var(--inspired)`;
+        break;
+      case 'intimate':
+        colorString = `var(--intimate)`;
+        break;
+      case 'classy':
+        colorString = `var(--classy)`;
+        break;
+      case 'touristy':
+        colorString = `var(--touristy)`;
+        break;
+      case 'cheerful':
+        colorString = `var(--cheerful)`;
+        break;
+      default:
+        colorString = `var(--mint)`;
     }
-    colorString = colorString.substring(0, colorString.length - 2);
-
-    if (auras.length < 2) {
-      return { backgroundColor: colorString };
-    }
-    return { backgroundImage: `linear-gradient(to right, ${colorString})` };
-  };
-
-  auraSpace = auraString => {
-    const auras = auraString.split(',');
-    return auras.join(', ');
+    const style = colorString;
+    return style;
   };
 
   handleStars = stars => {
@@ -103,11 +89,19 @@ export default class CardItem extends React.Component {
     // consts here
     const { business, onOpenModal } = this.props;
 
-    const styleObject = this.auraColorChange(business.attributes.aura);
     return (
       <div key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
         <div className="resultCardImageContainer">
-          <span className="resultCardAura">{business.attributes.aura}</span>
+          <div className="pillsContainer">
+            {business.attributes.aura.split(',').map(auraSingleton => (
+              <AuraPills
+                aura={auraSingleton}
+                backgroundColor={this.auraColorChange(auraSingleton)}
+                key={auraSingleton}
+              />
+            ))}
+          </div>
+
           <img
             className="resultCardImage"
             src={
@@ -115,11 +109,7 @@ export default class CardItem extends React.Component {
                 ? business.businessImage.src
                 : 'http://mymodernmet.com/wp/wp-content/uploads/2017/10/azuki-camping-hedgehog-3.jpg'
             }
-            alt={
-              business.businessImage.owner
-                ? business.businessImage.owner
-                : 'No image owner provided'
-            }
+            alt={business.businessImage.owner ? business.businessImage.owner : 'No image owner provided'}
           />
         </div>
 
@@ -127,9 +117,6 @@ export default class CardItem extends React.Component {
         <span className="resultCardSubtitle">{business.address}</span>
         <span className="resultCardSubtitle">
           {business.city}, {business.state} {business.postalCode}
-        </span>
-        <span className="resultCardAura" style={styleObject}>
-          {this.auraSpace(business.attributes.aura)}
         </span>
         <img className="resultCardStar" src={this.handleStars(business.stars)} alt="Rating Stars" />
         <div className="resultCardLikeCont">
@@ -140,8 +127,6 @@ export default class CardItem extends React.Component {
       </div>
     );
   }
-
-  // this.querySelector(".resultCard").onClick
 }
 
 CardItem.propTypes = {
@@ -155,4 +140,5 @@ CardItem.propTypes = {
       aura: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  onOpenModal: PropTypes.func.isRequired,
 };

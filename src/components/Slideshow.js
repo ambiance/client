@@ -1,13 +1,13 @@
-import React from "react";
-import Slide from "./Slide";
-import slideImages from "./slideImages";
+import React from 'react';
+import Slide from './Slide';
+import slideImages from './slideImages';
 
 class Slideshow extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      activeSlide: 0
+      activeSlide: 0,
     };
   }
 
@@ -24,10 +24,7 @@ class Slideshow extends React.Component {
   showSlide = () => {
     this.timeout = setTimeout(() => {
       this.setState(prevState => {
-        const nextSlide =
-          prevState.activeSlide + 2 <= slideImages.length
-            ? prevState.activeSlide + 1
-            : 0;
+        const nextSlide = prevState.activeSlide + 2 <= slideImages.length ? prevState.activeSlide + 1 : 0;
         return { activeSlide: nextSlide };
       });
       this.showSlide();
@@ -39,14 +36,9 @@ class Slideshow extends React.Component {
       <div className="slideshow">
         {slideImages.map((slide, index) =>
           index === this.state.activeSlide ? (
-            <Slide
-              img={slide.src}
-              aura={slide.aura}
-              question={slide.question}
-              key={slide.aura}
-            />
+            <Slide img={slide.src} aura={slide.aura} question={slide.question} key={slide.aura} />
           ) : (
-            ""
+            ''
           )
         )}
       </div>
