@@ -28,7 +28,7 @@ class Slideshow extends React.Component {
         return { activeSlide: nextSlide };
       });
       this.showSlide();
-    }, 2500);
+    }, 4000);
   };
 
   render() {

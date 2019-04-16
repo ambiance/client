@@ -11,9 +11,9 @@ class SearchForm extends React.Component {
 
     this.state = {
       searchForm: {
-        auraValue: 'trendy',
-        categoryValue: 'eating',
-        cityValue: 'Los Angeles',
+        auraValue: '',
+        categoryValue: '',
+        cityValue: '',
       },
       scroll: 0,
       top: 10,
@@ -24,6 +24,10 @@ class SearchForm extends React.Component {
     const form = this.formRef.current;
     this.setState({ top: form.offsetTop });
     window.addEventListener('scroll', () => this.handleScroll());
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', () => this.handleScroll());
   }
 
   handleSearchSubmit = event => {
@@ -77,6 +81,7 @@ class SearchForm extends React.Component {
                 className="grid-80 corner"
                 onChange={this.handleAuraChange}
               >
+                <option value="">Any Aura</option>
                 <option value="trendy">Trendy</option>
                 <option value="inspired">Inspired</option>
                 <option value="romantic">Romantic</option>
@@ -97,6 +102,7 @@ class SearchForm extends React.Component {
                 className="grid-80 middle"
                 onChange={this.handleCategoryChange}
               >
+                <option value="">Going Out</option>
                 <option value="eating">Eating</option>
                 <option value="studying">Studying</option>
                 <option value="dating">Dating</option>
@@ -114,6 +120,7 @@ class SearchForm extends React.Component {
                 className="grid-80 city"
                 onChange={this.handleCityChange}
               >
+                <option value="">Any Place</option>
                 <option value="Santa Monica">Santa Monica</option>
                 <option value="Los Angeles">Los Angeles</option>
                 <option value="Venice">Venice</option>
