@@ -5,9 +5,25 @@
   min-height: calc(100vh - 175px);
 }
 
+.dashboard-header {
+  display: block;
+  background-color: transparent;
+  color: var(--off-black);
+  border: none;
+  font-size: 1.5rem;
+  padding: 0;
+  float: none;
+  margin-left: 0;
+}
+
 .dashboard-body {
   padding: 50px;
   flex: 1;
+}
+
+.dashboard-body p {
+  padding: 15px 0;
+  margin: 0;
 }
 
 .dashboard .active-view {
@@ -66,21 +82,30 @@ text-decoration: underline;
   flex-direction: column;
   flex: 1;
   margin: 0;
+  padding-right: 30px;
 }
 
 .account-forms form input {
-  margin: 10px;
-  padding: 0 15px;
+  margin: 10px 0;
+  padding-left: 20px;
   min-width: 200px;
   background-color: var(--light-mint);
   outline: none;
+  font-size: 1rem;
+  font-family: 'Comfortaa', cursive;
 }
 
 .account-forms form button {
   font-size: 18px;
-  margin: 20px 10px;
+  margin: 20px 0;
   max-width: 200px;
   font-family: "Comfortaa", cursive;
-  background-color: var(--dark-mint)
+  background-color: var(--dark-mint);
+  outline: none;
+}
+
+.account-forms form button:active {
+  outline: 1px solid var(--off-black);
+  outline-offset: -4px;
 }
 
