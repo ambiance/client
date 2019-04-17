@@ -33,7 +33,7 @@ const instance = Axios.create({
   // FIXME: Figure out a way to make calls to different servers based on the .env
   // TODO: Change this endpoint based on the environment you are using.
   baseURL: endpoint(process.env.NODE_ENV),
-  timeout: 10000,
+  timeout: 20000,
   headers,
   params: {},
 });

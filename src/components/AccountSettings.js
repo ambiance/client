@@ -85,7 +85,7 @@ class AccountSettings extends React.Component {
   render() {
     return (
       <div className="account-forms">
-        <form onSubmit={this.handleNameChangeSubmit}>
+        {/* <form onSubmit={this.handleNameChangeSubmit}>
           <h3>Update display name</h3>
           <label htmlFor="nameInputValue">
             Display name:
@@ -99,7 +99,7 @@ class AccountSettings extends React.Component {
             />
           </label>
           <button type="submit">Submit</button>
-        </form>
+        </form> */}
 
         <form onSubmit={this.handlePasswordChangeSubmit}>
           <h3>Update password</h3>

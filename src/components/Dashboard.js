@@ -45,12 +45,13 @@ class Dashboard extends React.Component {
         {this.state.active === 'overview' ? (
           <div className="dashboard-body">
             <h1 className="dashboard-header">Welcome, {user.username ? user.username : 'Anon'}!</h1>
-            <Favorites
+            {/* <Favorites
               modalDetails={modalDetails}
               isShowing={isModalShowing}
               openModal={openModal}
               closeModal={closeModal}
-            />
+            /> */}
+            <h3>You do not have any favorites saved.</h3>
           </div>
         ) : (
           ''

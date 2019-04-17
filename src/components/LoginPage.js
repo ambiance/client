@@ -54,7 +54,7 @@ class LoginPage extends React.Component {
 
         // set user and authentication in state.
         // FIXME: Figure out what you need from the backend
-        this.props.handleLogin({ username: credentials.username });
+        this.props.handleLogin(response.data.user);
 
         // redirect User to their dashboard / home page.
         this.props.history.push('/dashboard');
