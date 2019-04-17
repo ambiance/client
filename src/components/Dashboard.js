@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DashboardMenu from './DashboardMenu';
 import AccountSettings from './AccountSettings';
-import Favorites from './Favorites';
 
 class Dashboard extends React.Component {
   static propTypes = {
