@@ -7,10 +7,21 @@ import Swal from 'sweetalert2';
 
 // -------------------------- Aura API ---------------------------------
 
-// Various endpoints to call in our backend depending on environment
-const endpoint = {
-  local: 'http://localhost:3500/api/',
-  production: 'https://aurelia-server.herokuapp.com/api/',
+/**
+ * Various endpoints to call in our backend depending on environment
+ * @param {} environment NODE Environment String
+ */
+const endpoint = environment => {
+  switch (environment) {
+    case 'development':
+      return 'https://aurelia-server-staging.herokuapp.com/api/';
+    case 'test':
+      return 'https://aurelia-server-staging.herokuapp.com/api/';
+    case 'production':
+      return 'https://aurelia-server.herokuapp.com/api/';
+    default:
+      return 'http://localhost:3500/api/';
+  }
 };
 
 // Headers required to make calls to the backend
@@ -21,8 +32,8 @@ const headers = {
 const instance = Axios.create({
   // FIXME: Figure out a way to make calls to different servers based on the .env
   // TODO: Change this endpoint based on the environment you are using.
-  baseURL: endpoint.production,
-  timeout: 10000,
+  baseURL: endpoint(process.env.NODE_ENV),
+  timeout: 20000,
   headers,
   params: {},
 });
