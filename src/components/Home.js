@@ -27,6 +27,7 @@ class Home extends React.Component {
         top: 635,
         left: 0,
         behavior: 'smooth',
+        passive: true,
       });
     });
 

@@ -12,9 +12,9 @@ class SignupForm extends Component {
     super(props);
 
     this.state = {
-      usernameInputValue: '',
-      passwordInputValue: '',
-      passwordConfirmInputValue: '',
+      signupUsernameInputValue: '',
+      signupPasswordInputValue: '',
+      signupPasswordConfirmInputValue: '',
     };
   }
 
@@ -28,9 +28,9 @@ class SignupForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const { passwordInputValue, passwordConfirmInputValue } = this.state;
+    const { signupPasswordInputValue, signupPasswordConfirmInputValue } = this.state;
     // FIXME: Create a validation middleware we can use instead of these checks here.
-    if (passwordInputValue !== passwordConfirmInputValue) {
+    if (signupPasswordInputValue !== signupPasswordConfirmInputValue) {
       Swal.fire({
         type: 'error',
         text: 'New passwords must match',
@@ -39,8 +39,8 @@ class SignupForm extends Component {
       });
     } else {
       this.props.handleSignup({
-        username: this.state.usernameInputValue,
-        password: this.state.passwordInputValue,
+        username: this.state.signupUsernameInputValue,
+        password: this.state.signupPasswordInputValue,
       });
     }
   };
@@ -53,38 +53,41 @@ class SignupForm extends Component {
         style={{ display: 'flex', flexDirection: 'column' }}
       >
         <h1 className="loginTitle">Signup</h1>
-        <label htmlFor="usernameInputValue">
+        <label htmlFor="signupUsernameInputValue">
           Username:
           <input
             type="text"
             placeholder="username"
-            id="usernameInputValue"
-            name="usernameInputValue"
-            value={this.state.usernameInputValue}
+            id="signupUsernameInputValue"
+            name="signupUsernameInputValue"
+            autoComplete="username"
+            value={this.state.signupUsernameInputValue}
             onChange={this.handleInputChange}
           />
         </label>
-        <label htmlFor="passwordInputValue">
+        <label htmlFor="signupPasswordInputValue">
           Password:
           <input
             type="password"
             placeholder="password"
-            id="passwordInputValue"
-            name="passwordInputValue"
+            id="signupPasswordInputValue"
+            name="signupPasswordInputValue"
+            autoComplete="new-password"
             minLength="8"
-            value={this.state.passwordInputValue}
+            value={this.state.signupPasswordInputValue}
             onChange={this.handleInputChange}
           />
         </label>
-        <label htmlFor="passwordConfirmInputValue">
+        <label htmlFor="signupPasswordConfirmInputValue">
           Confirm Password:
           <input
             type="password"
             placeholder="password"
-            id="passwordConfirmInputValue"
-            name="passwordConfirmInputValue"
+            id="signupPasswordConfirmInputValue"
+            name="signupPasswordConfirmInputValue"
+            autoComplete="new-password"
             minLength="8"
-            value={this.state.passwordConfirmInputValue}
+            value={this.state.signupPasswordConfirmInputValue}
             onChange={this.handleInputChange}
           />
         </label>

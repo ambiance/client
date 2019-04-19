@@ -109,6 +109,7 @@ class AccountSettings extends React.Component {
               type="password"
               id="passwordInputValue"
               name="passwordInputValue"
+              autoComplete="current-password"
               minLength="8"
               value={this.state.passwordInputValue}
               onChange={this.handleInputChange}
@@ -121,6 +122,7 @@ class AccountSettings extends React.Component {
               type="password"
               id="newPasswordInputValue"
               name="newPasswordInputValue"
+              autoComplete="new-password"
               minLength="8"
               value={this.state.newPasswordInputValue}
               onChange={this.handleInputChange}
@@ -134,6 +136,7 @@ class AccountSettings extends React.Component {
               type="password"
               id="confirmPasswordInputValue"
               name="confirmPasswordInputValue"
+              autoComplete="new-password"
               minLength="8"
               value={this.state.confirmPasswordInputValue}
               onChange={this.handleInputChange}
