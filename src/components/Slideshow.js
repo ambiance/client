@@ -1,6 +1,6 @@
 import React from 'react';
 import Slide from './Slide';
-import slideImages from './slideImages';
+import slideImages from '../data/slideImages';
 
 class Slideshow extends React.Component {
   constructor() {
@@ -24,7 +24,8 @@ class Slideshow extends React.Component {
   showSlide = () => {
     this.timeout = setTimeout(() => {
       this.setState(prevState => {
-        const nextSlide = prevState.activeSlide + 2 <= slideImages.length ? prevState.activeSlide + 1 : 0;
+        const nextSlide =
+          prevState.activeSlide + 2 <= slideImages.length ? prevState.activeSlide + 1 : 0;
         return { activeSlide: nextSlide };
       });
       this.showSlide();

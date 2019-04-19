@@ -1,7 +1,6 @@
-
 import React from 'react';
 import TeamMember from './TeamMember';
-import memberInfo from './memberInfo';
+import memberInfo from '../data/memberInfo';
 import '../css/header.css';
 import '../css/main.css';
 import background from '../assets/img/trinityBackgroundWhite.png';

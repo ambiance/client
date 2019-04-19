@@ -12,7 +12,7 @@ import Profile from './Dashboard';
 import FourOhFour from './404';
 import auraLogo from '../assets/img/auraLogo.png';
 import Footer from './Footer';
-import slideImages from './slideImages';
+import slideImages from '../data/slideImages';
 
 class AuraApp extends React.Component {
   constructor(props) {

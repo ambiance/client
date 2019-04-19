@@ -31,7 +31,6 @@ class SignupForm extends Component {
     const { passwordInputValue, passwordConfirmInputValue } = this.state;
     // FIXME: Create a validation middleware we can use instead of these checks here.
     if (passwordInputValue !== passwordConfirmInputValue) {
-      // FIXME: Change from alerts to something better.
       Swal.fire({
         type: 'error',
         text: 'New passwords must match',

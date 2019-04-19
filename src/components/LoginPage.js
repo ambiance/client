@@ -27,7 +27,6 @@ class LoginPage extends React.Component {
       password: credentials.password,
     })
       .then(response => {
-        // FIXME: Successful signup workflow??
         this.handleLogin(credentials);
         Swal.fire({
           type: 'success',
@@ -49,11 +48,10 @@ class LoginPage extends React.Component {
         // Set response jwt to all further requests.
         API.defaults.headers.common.Authorization = response.data.token;
 
-        // TODO: Set token to local storage.
+        // Set token to local storage.
         localStorage.setItem('auraUserToken', response.data.token);
 
         // set user and authentication in state.
-        // FIXME: Figure out what you need from the backend
         this.props.handleLogin(response.data.user);
 
         // redirect User to their dashboard / home page.
@@ -64,7 +62,6 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      // TODO: Create some type of alert to let them know they are not authenticated.
       <main style={{ display: 'flex' }}>
         <SignupForm handleSignup={this.handleSignup} />
         <LoginForm handleLogin={this.handleLogin} />

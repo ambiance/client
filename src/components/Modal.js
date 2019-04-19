@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AuraPills from './AuraPills.js';
 import Map from './Map';
-import MapContainer from './Map';
 import '../css/Modal.css';
 import '../css/palette.css';
-import starImages from './starImages';
+import starImages from '../data/starImages';
 
 const Modal = props => {
   const starSrc = handleStars(props.show ? props.details.details.stars : 0);
@@ -89,20 +88,30 @@ const Modal = props => {
         </div>
 
         <div className="businessMap">
-          <MapContainer className="modalMap" details={props.details.details} />
+          {/* BROCK: This was changed from 'MapContainer' to 'Map' because of your 
+        naming in the MapContainer component */}
+          <Map className="modalMap" details={props.details.details} />
         </div>
         <div className="businessDetails">
           <ul className="categories">
             {props.show
-              ? props.details.details.categories.map(category => <li key={category.title}>{category.title}</li>)
+              ? props.details.details.categories.map(category => (
+                  <li key={category.title}>{category.title}</li>
+                ))
               : ''}
           </ul>
           <ul className="address">
-            {props.show ? props.details.details.displayAddress.map(addr => <li key={addr}>{addr}</li>) : ''}
+            {props.show
+              ? props.details.details.displayAddress.map(addr => <li key={addr}>{addr}</li>)
+              : ''}
           </ul>
           <p className="info">{props.show ? props.details.details.attributes.priceRange : ''}</p>
           <img className="modalStar" src={starSrc} alt="stars" />
-          <a className="yelpLink" href={props.show ? props.details.details.url : ''} target="_blank">
+          <a
+            className="yelpLink"
+            href={props.show ? props.details.details.url : ''}
+            target="_blank"
+          >
             <img className="yelpPic" src="./assets/img/yelpButton.jpg" alt="yelp" />
             <p className="yelpClick">Click for more details!</p>
             {/* <p className="yelpCall">Click for more details!</p> */}

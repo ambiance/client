@@ -69,8 +69,18 @@ class SearchForm extends React.Component {
   render() {
     return (
       <article>
-        <section id="search-form" ref={this.formRef} className={this.state.scroll > this.state.top ? 'fixed' : ''}>
-          <form action="" method="GET" name="search" role="search" onSubmit={this.handleSearchSubmit}>
+        <section
+          id="search-form"
+          ref={this.formRef}
+          className={this.state.scroll > this.state.top ? 'fixed' : ''}
+        >
+          <form
+            action=""
+            method="GET"
+            name="search"
+            role="search"
+            onSubmit={this.handleSearchSubmit}
+          >
             <span id="want" className="grid-80">
               I want to be
             </span>
