@@ -6,11 +6,11 @@ import AccountSettings from './AccountSettings';
 class Dashboard extends React.Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
-    modalDetails: PropTypes.object,
-    isModalShowing: PropTypes.bool,
-    openModal: PropTypes.func,
-    closeModal: PropTypes.func,
     logout: PropTypes.func,
+    // modalDetails: PropTypes.object,
+    // isModalShowing: PropTypes.bool,
+    // openModal: PropTypes.func,
+    // closeModal: PropTypes.func,
   };
 
   constructor(props) {
@@ -30,7 +30,7 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    const { user, modalDetails, isModalShowing, openModal, closeModal, logout } = this.props;
+    const { user, logout } = this.props;
 
     return (
       <div className="dashboard">

@@ -62,9 +62,6 @@ class AuraApp extends React.Component {
     });
   }
 
-  // FIXME: Not sure if needed...
-  handleSignup = () => {};
-
   handleLogin = user => {
     this.setState({ isAuthenticated: true, user });
   };

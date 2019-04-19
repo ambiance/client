@@ -17,10 +17,13 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding: 0;
+  border: 0;
   width: 20rem;
   height: 20rem;
   box-shadow: 5px 5px var(--shadow);
   background-color: var(--mint);
+  text-align: left;
 }
 
 @media all and (max-width: 360px) {

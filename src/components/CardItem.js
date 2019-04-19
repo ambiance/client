@@ -82,7 +82,7 @@ export default class CardItem extends React.Component {
     const { business, onOpenModal } = this.props;
 
     return (
-      <div key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
+      <button key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
         <div className="resultCardImageContainer">
           <div className="pillsContainer">
             {business.attributes.aura.split(',').map(auraSingleton => (
@@ -115,7 +115,7 @@ export default class CardItem extends React.Component {
           {business.city}, {business.state} {business.postalCode}
         </span>
         <img className="resultCardStar" src={this.handleStars(business.stars)} alt="Rating Stars" />
-      </div>
+      </button>
     );
   }
 }

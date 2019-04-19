@@ -48,10 +48,9 @@ const Modal = props => {
 
   return (
     <div>
-      <div
+      <button
         className="modal-backdrop"
         onClick={props.close}
-        role="button"
         style={{
           // transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
           opacity: props.show ? '0.5' : '0',
@@ -109,12 +108,12 @@ const Modal = props => {
           <img className="modalStar" src={starSrc} alt="stars" />
           <a
             className="yelpLink"
-            href={props.show ? props.details.details.url : ''}
             target="_blank"
+            rel="noopener noreferrer"
+            href={props.show ? props.details.details.url : ''}
           >
             <img className="yelpPic" src="./assets/img/yelpButton.jpg" alt="yelp" />
             <p className="yelpClick">Click for more details!</p>
-            {/* <p className="yelpCall">Click for more details!</p> */}
           </a>
         </div>
         <div className="modal-footer" />
