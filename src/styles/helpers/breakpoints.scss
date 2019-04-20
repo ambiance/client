@@ -1,3 +1,4 @@
+@import './typeChecking.scss';
 /*
   // Example usage
   .selector {
@@ -39,6 +40,11 @@ $breakpoints: (
     @media screen and (max-width: map-get($breakpoints, $breakpoint)) {
       @content;
     }
+  } @else if is-length($breakpoint) {
+    // Prints a media query based on the value
+    @media screen and (max-width: $breakpoint) {
+      @content;
+    }
   }
 
   // If the key doesn't exist in the map
@@ -57,6 +63,11 @@ $breakpoints: (
   @if map-has-key($breakpoints, $breakpoint) {
     // Prints a media query based on the value
     @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else if is-length($breakpoint) {
+    // Prints a media query based on the value
+    @media screen and (max-width: $breakpoint) {
       @content;
     }
   }

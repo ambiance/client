@@ -2,7 +2,7 @@
 header {
   height: 4rem;
   /*4 times the height of our base font*/
-  background-color: var(--black);
+  background-color: var(--off-black);
   padding: 1rem;
   color: #fff;
   line-height: 3rem;
@@ -22,7 +22,7 @@ header img {
 }
 
 nav ul li:hover {
-  background-color: var(--base-color-dark);
+  background-color: var(--dark-mint);
 }
 
 header > * {
@@ -49,7 +49,7 @@ nav ul {
 /*Displays List side by side*/
 nav ul li {
   display: inline-block;
-  background-color: var(--base-color);
+  background-color: var(--mint);
 
   height: 100%;
   padding: 0px 10px;
