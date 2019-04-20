@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 import CardItem from './CardItem';
-import '../css/SearchResults.css';
+import '../styles/SearchResults.scss';
 
 class SearchResults extends React.Component {
   render() {

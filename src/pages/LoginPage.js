@@ -2,10 +2,11 @@ import React from 'react';
 import Swal from 'sweetalert2';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import SignupForm from './SignupForm';
-import LoginForm from './LoginForm';
+import SignupForm from '../components/SignupForm';
+import LoginForm from '../components/LoginForm';
+import '../styles/LoginForm.scss';
 
-import API, { alertErrorHandler } from '../utils/API';
+import API, { alertErrorHandler } from '../services/API';
 
 class LoginPage extends React.Component {
   static propTypes = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
-import API, { alertErrorHandler } from '../utils/API';
+import API, { alertErrorHandler } from '../services/API';
 
 class AccountSettings extends React.Component {
   static propTypes = {

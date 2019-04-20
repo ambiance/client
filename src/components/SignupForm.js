@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
-import '../css/loginForm.css';
+import '../styles/LoginForm.scss';
 
 class SignupForm extends Component {
   static propTypes = {

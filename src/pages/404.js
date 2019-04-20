@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/404.css';
+import '../styles/404.scss';
 
 const FourOhFour = () => (
   <main className="fourOhFourMain">

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AuraPills from './AuraPills';
-import '../css/ResultCard.css';
 import starImages from '../data/starImages';
+import '../styles/CardItem.scss';
 
 export default class CardItem extends React.Component {
   constructor(props) {

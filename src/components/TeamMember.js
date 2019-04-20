@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../css/header.css';
-import '../css/main.css';
 
 class TeamMember extends React.Component {
   render() {

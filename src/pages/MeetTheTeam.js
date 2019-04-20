@@ -1,9 +1,8 @@
 import React from 'react';
-import TeamMember from './TeamMember';
+import TeamMember from '../components/TeamMember';
 import memberInfo from '../data/memberInfo';
-import '../css/header.css';
-import '../css/main.css';
 import background from '../assets/img/trinityBackgroundWhite.png';
+import '../styles/MeetTheTeam.scss';
 
 class MeetTheTeam extends React.Component {
   render() {

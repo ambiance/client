@@ -3,11 +3,11 @@ import React from 'react';
 
 // Components
 import PropTypes from 'prop-types';
-import SearchForm from './SearchForm';
-import SearchResults from './SearchResults';
-import Modal from './Modal';
+import SearchForm from '../components/SearchForm';
+import SearchResults from '../components/SearchResults';
+import Modal from '../components/Modal';
 
-import API, { alertErrorHandler } from '../utils/API';
+import API, { alertErrorHandler } from '../services/API';
 
 class Home extends React.Component {
   constructor(props) {

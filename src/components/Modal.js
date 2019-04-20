@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AuraPills from './AuraPills.js';
 import Map from './Map';
-import '../css/Modal.css';
-import '../css/palette.css';
 import starImages from '../data/starImages';
+import '../styles/Modal.scss';
 
 const Modal = props => {
   const starSrc = handleStars(props.show ? props.details.details.stars : 0);

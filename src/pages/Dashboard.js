@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DashboardMenu from './DashboardMenu';
-import AccountSettings from './AccountSettings';
+import DashboardMenu from '../components/DashboardMenu';
+import AccountSettings from '../components/AccountSettings';
+import '../styles/Dashboard.scss';
 
 class Dashboard extends React.Component {
   static propTypes = {

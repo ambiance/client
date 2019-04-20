@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import '../css/loginForm.css';
+import '../styles/LoginForm.scss';
 
 class LoginForm extends Component {
   static propTypes = {
