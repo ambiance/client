@@ -49,10 +49,6 @@ export default class CardItem extends React.Component {
     return style;
   };
 
-  auraSpace = auraString => {
-    const auras = auraString.split(',');
-  };
-
   handleStars = stars => {
     switch (stars) {
       case 0.5:
@@ -85,7 +81,6 @@ export default class CardItem extends React.Component {
     // consts here
     const { business, onOpenModal } = this.props;
 
-    // const styleObject = this.auraColorChange();
     return (
       <div key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
         <div className="resultCardImageContainer">
@@ -132,4 +127,5 @@ CardItem.propTypes = {
       aura: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  onOpenModal: PropTypes.func.isRequired,
 };

@@ -163,30 +163,30 @@ option {
 
 .corner,
 .middle {
-  width: 8.5rem;
+  width: 8.9rem;
 }
 
 .city {
-    width: 12.4rem;
+  width: 12.4rem;
 }
 
 @media screen and (max-width: 985px) {
-    [class*='grid-'] {
-        height: 3.125rem;
-        font-size: 20px;
-    }
+  [class*='grid-'] {
+    height: 3.125rem;
+    font-size: 20px;
+  }
 
-    .grid-80 {
-        width: 6rem;
-    }
+  .grid-80 {
+    width: 6rem;
+  }
 
-    .corner,
-    .middle {
-        width: 7.3rem;
-    }
-    .city {
-        width: 10.3rem;
-    }
+  .corner,
+  .middle {
+    width: 7.6rem;
+  }
+  .city {
+    width: 10.3rem;
+  }
 }
 
 @media screen and (max-width: 852px) {
@@ -219,7 +219,6 @@ option {
   .corner {
     border-radius: 0px 12px 0px 0px;
   }
-  
 
   #submitButton {
     width: 24rem;

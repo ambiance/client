@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import jwt from 'jsonwebtoken';
 import ProtectedRoute from './ProtectedRoute';
 import API from '../utils/API';
 import Home from './Home';
@@ -21,16 +22,35 @@ class AuraApp extends React.Component {
       isAuthenticated: false,
       user: {},
       isModalShowing: false,
-      modalDetails: '',
+      modalDetails: {},
     };
   }
   componentWillMount() {
     // Get the auth token from local storage and set the auth state to true.
     const token = localStorage.getItem('auraUserToken');
     if (token) {
-      API.defaults.headers.common.Authorization = token;
-      // FIXME: Not sure if we need to set the user here as well...
-      this.setState({ isAuthenticated: true });
+      const tokenString = token.split(' ');
+      const decodedToken = jwt.decode(tokenString[1], { complete: true });
+      const { exp } = decodedToken.payload;
+      const currentTime = Math.floor(Date.now() / 1000);
+      if (currentTime <= exp) {
+        API.defaults.headers.common.Authorization = token;
+        this.setState({ isAuthenticated: true });
+
+        // Log the user in with token
+        API.get('auth/login').then(response => {
+          this.setState({ user: response.data.user });
+        });
+      } else {
+        // Remove the token from local storage
+        localStorage.removeItem('auraUserToken');
+        // Warn the user that they have been logged out and need to log back in.
+        Swal.fire(
+          'Logout Warning',
+          'You have been logged out due to an expired account token. Please login for continued account access.',
+          'warning'
+        );
+      }
     }
   }
 
@@ -134,7 +154,9 @@ class AuraApp extends React.Component {
             <Route path="/meettheteam" component={MeetTheTeam} />
             <Route
               path="/login"
-              render={props => <Login {...props} handleLogin={this.handleLogin} handleSignup={this.handleSignup} />}
+              render={props => (
+                <Login {...props} handleLogin={this.handleLogin} handleSignup={this.handleSignup} />
+              )}
             />
             <ProtectedRoute
               path="/dashboard"

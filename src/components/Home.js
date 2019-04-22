@@ -16,9 +16,8 @@ class Home extends React.Component {
     this.state = {
       // modalDetails: '',
       businesses: [],
-      isShowing: false,
       loading: false,
-      noData: false,
+      noData: false
     };
   }
 
@@ -27,18 +26,29 @@ class Home extends React.Component {
       window.scroll({
         top: 635,
         left: 0,
-        behavior: 'smooth',
+        behavior: 'smooth'
       });
     });
 
+    const params = {};
+    if (searchFormData.auraValue !== '') {
+      params.aura = searchFormData.auraValue;
+    }
+    if (searchFormData.categoryValue !== '') {
+      params.category = searchFormData.categoryValue;
+    }
+    if (searchFormData.cityValue !== '') {
+      params.city = searchFormData.cityValue;
+    }
+
     API.get('businesses', {
-      params: {
-        aura: searchFormData.auraValue,
-        category: searchFormData.categoryValue,
-        city: searchFormData.cityValue,
-      },
+      params
+      // params: {
+      //   aura: searchFormData.auraValue,
+      //   category: searchFormData.categoryValue,
+      //   city: searchFormData.cityValue
+      // }
     })
-      // .then(response => this.setState({ businesses: response.data }))
       .then(response => {
         this.setState({ businesses: response.data });
         if (response.data.length === 0) {
@@ -51,33 +61,17 @@ class Home extends React.Component {
       .catch(err => alertErrorHandler(err));
   };
 
-  // // Functions for Modals
-  // openModalHandler = details => {
-  //   this.setState({
-  //     isShowing: true,
-  //     modalDetails: { details }
-  //   });
-  // };
-
-  // closeModalHandler = () => {
-  //   this.setState({
-  //     isShowing: false
-  //   });
-  // };
-
   render() {
     const { isShowing, modalDetails, openModal, closeModal } = this.props;
     return (
       <div>
         <Modal
-          className="modal"
+          className='modal'
           show={isShowing}
           close={closeModal}
           details={modalDetails}
-          shouldCloseOnOverlayClick={true}
-        >
-          {/* Can only take primitive data */}
-        </Modal>
+          shouldCloseOnOverlayClick
+        />
 
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
 
@@ -86,7 +80,7 @@ class Home extends React.Component {
           businesses={this.state.businesses}
           noData={this.state.noData}
           onOpenModal={openModal}
-          id="results"
+          id='results'
         />
       </div>
     );
@@ -94,10 +88,10 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-  modalDetails: PropTypes.string,
+  modalDetails: PropTypes.object,
   isShowing: PropTypes.bool,
   openModal: PropTypes.func,
-  closeModal: PropTypes.func,
+  closeModal: PropTypes.func
 };
 
 export default Home;

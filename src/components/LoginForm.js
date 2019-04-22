@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import "../css/loginForm.css";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import '../css/loginForm.css';
 
 class LoginForm extends Component {
   static propTypes = {
-    handleLogin: PropTypes.func.isRequired
+    handleLogin: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      usernameInputValue: "",
-      passwordInputValue: ""
+      usernameInputValue: '',
+      passwordInputValue: '',
     };
   }
 
@@ -27,7 +27,7 @@ class LoginForm extends Component {
     event.preventDefault();
     this.props.handleLogin({
       username: this.state.usernameInputValue,
-      password: this.state.passwordInputValue
+      password: this.state.passwordInputValue,
     });
   };
 
@@ -36,7 +36,7 @@ class LoginForm extends Component {
       <form
         className="loginForm"
         onSubmit={this.handleLogin}
-        style={{ display: "flex", flexDirection: "column" }}
+        style={{ display: 'flex', flexDirection: 'column' }}
       >
         <h1 className="loginTitle">Login</h1>
         <label htmlFor="usernameInputValue">
@@ -56,7 +56,7 @@ class LoginForm extends Component {
           Password:
           <input
             className="passwordSignin"
-            type="text"
+            type="password"
             placeholder="password"
             id="passwordInputValue"
             name="passwordInputValue"
