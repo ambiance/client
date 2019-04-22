@@ -22,7 +22,7 @@ class TeamMember extends React.Component {
       case 'Casual':
         colorString = `var(--casual)`;
         break;
-      case 'inspired':
+      case 'Inspired':
         colorString = `var(--inspired)`;
         break;
       case 'Intimate':
