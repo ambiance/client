@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import '../css/loginForm.css';
+import '../styles/LoginForm.scss';
 
 class LoginForm extends Component {
   static propTypes = {
@@ -11,8 +11,8 @@ class LoginForm extends Component {
     super(props);
 
     this.state = {
-      usernameInputValue: '',
-      passwordInputValue: '',
+      loginUsernameInputValue: '',
+      loginPasswordInputValue: '',
     };
   }
 
@@ -26,8 +26,8 @@ class LoginForm extends Component {
   handleLogin = event => {
     event.preventDefault();
     this.props.handleLogin({
-      username: this.state.usernameInputValue,
-      password: this.state.passwordInputValue,
+      username: this.state.loginUsernameInputValue,
+      password: this.state.loginPasswordInputValue,
     });
   };
 
@@ -39,28 +39,30 @@ class LoginForm extends Component {
         style={{ display: 'flex', flexDirection: 'column' }}
       >
         <h1 className="loginTitle">Login</h1>
-        <label htmlFor="usernameInputValue">
+        <label htmlFor="loginUsernameInputValue">
           Username:
           <input
             className="usernameSignin"
             type="text"
-            id="usernameInputValue"
-            name="usernameInputValue"
+            id="loginUsernameInputValue"
+            autoComplete="username"
+            name="loginUsernameInputValue"
             placeholder="username"
-            value={this.state.usernameInputValue}
+            value={this.state.loginUsernameInputValue}
             onChange={this.handleInputChange}
           />
         </label>
 
-        <label htmlFor="passwordInputValue">
+        <label htmlFor="loginPasswordInputValue">
           Password:
           <input
             className="passwordSignin"
             type="password"
             placeholder="password"
-            id="passwordInputValue"
-            name="passwordInputValue"
-            value={this.state.passwordInputValue}
+            id="loginPasswordInputValue"
+            autoComplete="current-password"
+            name="loginPasswordInputValue"
+            value={this.state.loginPasswordInputValue}
             onChange={this.handleInputChange}
           />
         </label>

@@ -1,13 +1,12 @@
-/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
 // Components
 import PropTypes from 'prop-types';
-import SearchForm from './SearchForm';
-import SearchResults from './SearchResults';
-import Modal from './Modal';
+import SearchForm from '../components/SearchForm';
+import SearchResults from '../components/SearchResults';
+import Modal from '../components/Modal';
 
-import API, { alertErrorHandler } from '../utils/API';
+import API, { alertErrorHandler } from '../services/API';
 
 class Home extends React.Component {
   constructor(props) {
@@ -17,7 +16,7 @@ class Home extends React.Component {
       // modalDetails: '',
       businesses: [],
       loading: false,
-      noData: false
+      noData: false,
     };
   }
 
@@ -26,7 +25,8 @@ class Home extends React.Component {
       window.scroll({
         top: 635,
         left: 0,
-        behavior: 'smooth'
+        behavior: 'smooth',
+        passive: true,
       });
     });
 
@@ -42,7 +42,7 @@ class Home extends React.Component {
     }
 
     API.get('businesses', {
-      params
+      params,
       // params: {
       //   aura: searchFormData.auraValue,
       //   category: searchFormData.categoryValue,
@@ -66,7 +66,7 @@ class Home extends React.Component {
     return (
       <div>
         <Modal
-          className='modal'
+          className="modal"
           show={isShowing}
           close={closeModal}
           details={modalDetails}
@@ -80,7 +80,7 @@ class Home extends React.Component {
           businesses={this.state.businesses}
           noData={this.state.noData}
           onOpenModal={openModal}
-          id='results'
+          id="results"
         />
       </div>
     );
@@ -91,7 +91,7 @@ Home.propTypes = {
   modalDetails: PropTypes.object,
   isShowing: PropTypes.bool,
   openModal: PropTypes.func,
-  closeModal: PropTypes.func
+  closeModal: PropTypes.func,
 };
 
 export default Home;

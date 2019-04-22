@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../css/palette.css';
-import '../css/header.css';
-import '../css/main.css';
 import AuraPills from './AuraPills';
-// import CardItem from './CardItem';
 
 class TeamMember extends React.Component {
   auraColorChange = auraString => {

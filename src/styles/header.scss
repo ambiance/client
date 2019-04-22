@@ -1,10 +1,8 @@
-@import "./colorVariables.css";
-
 /*Header*/
 header {
   height: 4rem;
   /*4 times the height of our base font*/
-  background-color: var(--black);
+  background-color: var(--off-black);
   padding: 1rem;
   color: #fff;
   line-height: 3rem;
@@ -24,10 +22,10 @@ header img {
 }
 
 nav ul li:hover {
-  background-color: var(--base-color-dark);
+  background-color: var(--dark-mint);
 }
 
-header>* {
+header > * {
   display: inline-block;
 }
 
@@ -51,7 +49,7 @@ nav ul {
 /*Displays List side by side*/
 nav ul li {
   display: inline-block;
-  background-color: var(--base-color);
+  background-color: var(--mint);
 
   height: 100%;
   padding: 0px 10px;
@@ -69,7 +67,7 @@ nav ul li a {
   text-decoration: none;
 }
 
-@media all and (max-width: 490px){
+@media all and (max-width: 490px) {
   nav ul li a {
     font-size: 15px;
   }
@@ -78,13 +76,13 @@ nav ul li a {
   }
 }
 
-@media all and (max-width: 398px){
+@media all and (max-width: 398px) {
   nav ul li a {
     font-size: 13px;
   }
 }
 
-@media all and (max-width: 356px){
+@media all and (max-width: 356px) {
   nav ul li a {
     font-size: 12px;
   }
@@ -98,7 +96,7 @@ nav ul li a {
   header {
     height: 6rem;
     text-align: center;
-    padding: 10px
+    padding: 10px;
   }
 
   header nav {

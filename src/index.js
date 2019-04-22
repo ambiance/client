@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AuraApp from './components/AuraApp';
+import AuraApp from './AuraApp';
 
 // import App from './components/AuraApp';
 

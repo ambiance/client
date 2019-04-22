@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../css/main.css';
 
 const getColor = aura => {
   switch (aura) {
@@ -40,7 +39,7 @@ const Slide = props => (
       <b
         style={{
           color: getColor(props.aura),
-          textShadow: props.aura == 'classy' ? '2px 2px 4px #ffffff' : '2px 2px 4px #000000c7',
+          textShadow: props.aura === 'classy' ? '2px 2px 4px #ffffff' : '2px 2px 4px #000000c7',
         }}
       >
         aura
@@ -51,7 +50,7 @@ const Slide = props => (
       className="splashOverlayAura"
       style={{
         color: getColor(props.aura),
-        textShadow: props.aura == 'classy' ? '2px 2px 4px #ffffff' : '2px 2px 4px #000000c7',
+        textShadow: props.aura === 'classy' ? '2px 2px 4px #ffffff' : '2px 2px 4px #000000c7',
       }}
     >
       {props.aura}
@@ -63,7 +62,7 @@ const Slide = props => (
 Slide.propTypes = {
   aura: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
-  question: PropTypes.string.isRequired,
+  // question: PropTypes.string.isRequired,
 };
 
 export default Slide;
