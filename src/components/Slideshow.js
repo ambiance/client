@@ -1,4 +1,7 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
+import { Glide } from 'react-glide';
+import 'react-glide/lib/reactGlide.css';
 import Slide from './Slide';
 import slideImages from '../data/slideImages';
 
@@ -6,42 +9,19 @@ class Slideshow extends React.Component {
   constructor() {
     super();
 
-    this.state = {
-      activeSlide: 0,
-    };
+    this.state = {};
   }
-
-  componentDidMount() {
-    const startingIndex = Math.floor(Math.random() * 12);
-    this.setState({ activeSlide: startingIndex });
-    this.showSlide();
-  }
-
-  componentWillUnmount = () => {
-    if (this.timeout) clearTimeout(this.timeout);
-  };
-
-  showSlide = () => {
-    this.timeout = setTimeout(() => {
-      this.setState(prevState => {
-        const nextSlide =
-          prevState.activeSlide + 2 <= slideImages.length ? prevState.activeSlide + 1 : 0;
-        return { activeSlide: nextSlide };
-      });
-      this.showSlide();
-    }, 4000);
-  };
 
   render() {
     return (
       <div className="slideshow">
-        {slideImages.map((slide, index) =>
-          index === this.state.activeSlide ? (
-            <Slide img={slide.src} aura={slide.aura} question={slide.question} key={slide.aura} />
-          ) : (
-            ''
-          )
-        )}
+        <Glide autoPlay autoPlaySpeed={4000} infinite>
+          {slideImages.map(slide => (
+            <div>
+              <Slide img={slide.src} aura={slide.aura} question={slide.question} key={slide.aura} />
+            </div>
+          ))}
+        </Glide>
       </div>
     );
   }
