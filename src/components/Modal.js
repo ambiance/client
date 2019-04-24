@@ -1,9 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import AuraPills from './AuraPills.js';
-import Map from './Map';
-import starImages from '../data/starImages';
-import '../styles/Modal.scss';
+import React from "react";
+import PropTypes from "prop-types";
+import AuraPills from "./AuraPills.js";
+import Map from "./Map";
+import starImages from "../data/starImages";
+import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
+import "../styles/Modal.scss";
+import ModalWindow from "./ModalWindow.js";
 
 const Modal = props => {
   const starSrc = handleStars(props.show ? props.details.details.stars : 0);
@@ -11,31 +13,31 @@ const Modal = props => {
   function auraColorChange(auraString) {
     let colorString = ``;
     switch (auraString) {
-      case 'trendy':
+      case "trendy":
         colorString = `var(--trendy)`;
         break;
-      case 'romantic':
+      case "romantic":
         colorString = `var(--romantic)`;
         break;
-      case 'hipster':
+      case "hipster":
         colorString = `var(--hipster)`;
         break;
-      case 'casual':
+      case "casual":
         colorString = `var(--casual)`;
         break;
-      case 'inspired':
+      case "inspired":
         colorString = `var(--inspired)`;
         break;
-      case 'intimate':
+      case "intimate":
         colorString = `var(--intimate)`;
         break;
-      case 'classy':
+      case "classy":
         colorString = `var(--classy)`;
         break;
-      case 'touristy':
+      case "touristy":
         colorString = `var(--touristy)`;
         break;
-      case 'cheerful':
+      case "cheerful":
         colorString = `var(--cheerful)`;
         break;
       default:
@@ -52,21 +54,21 @@ const Modal = props => {
         onClick={props.close}
         style={{
           // transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
-          opacity: props.show ? '0.5' : '0',
-          position: props.show ? 'fixed' : 'absolute',
-          zIndex: props.show ? '15' : '-5',
+          opacity: props.show ? "0.5" : "0",
+          position: props.show ? "fixed" : "absolute",
+          zIndex: props.show ? "15" : "-5"
         }}
       />
 
       <div
         className="modal-wrapper"
         style={{
-          transform: props.show ? 'translateY(0vh)' : 'translateY(-200vh)',
-          opacity: props.show ? '1' : '0',
+          transform: props.show ? "translateY(0vh)" : "translateY(-200vh)",
+          opacity: props.show ? "1" : "0"
         }}
       >
         <div className="modal-header">
-          <h3>{props.show ? props.details.details.name : ''}</h3>
+          {/* <h3>{props.show ? props.details.details.name : ''}</h3>
           <span className="modalPillsContainer">
             {props.show
               ? props.details.details.attributes.aura
@@ -79,19 +81,33 @@ const Modal = props => {
                     />
                   ))
               : ''}
-          </span>
+          </span> */}
           <button className="close-modal-btn" onClick={props.close}>
             ×
           </button>
         </div>
 
-        <div className="businessMap">
+        <div className="navBar">
           {/* BROCK: This was changed from 'MapContainer' to 'Map' because of your 
         naming in the MapContainer component */}
-          <Map className="modalMap" details={props.details.details} />
+          <div>
+            <ul>
+              <li>
+                <button>Description</button>
+              </li>
+              <li>
+                <button>Map</button>
+              </li>
+              <li>
+                <button>Feedback</button>
+              </li>
+            </ul>
+          </div>
+          {/* <Map className="modalMap" details={props.details.details} /> */}
         </div>
         <div className="businessDetails">
-          <ul className="categories">
+          <ModalWindow />
+          {/* <ul className="categories">
             {props.show
               ? props.details.details.categories.map(category => (
                   <li key={category.title}>{category.title}</li>
@@ -113,9 +129,8 @@ const Modal = props => {
           >
             <img className="yelpPic" src="./assets/img/yelpButton.jpg" alt="yelp" />
             <p className="yelpClick">Click for more details!</p>
-          </a>
+          </a> */}
         </div>
-        <div className="modal-footer" />
       </div>
     </div>
   );
@@ -151,7 +166,7 @@ function handleStars(stars) {
 Modal.propTypes = {
   show: PropTypes.bool.isRequired,
   details: PropTypes.object.isRequired,
-  close: PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired
 };
 
 export default Modal;
