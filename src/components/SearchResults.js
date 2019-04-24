@@ -8,7 +8,7 @@ class SearchResults extends React.Component {
   render() {
     const { businesses, loading, noData, onOpenModal } = this.props;
     if (loading) {
-      return <Loader type="Triangle" color="#5abb9e" height="100vh" width="100%" />;
+      return <Loader type="Triangle" color="#5abb9e" height="50vh" width="100%" />;
     }
     if (noData) {
       return (

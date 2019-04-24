@@ -9,6 +9,15 @@ article {
   margin-right: 15%; */
 }
 
+#searchWrapper {
+  display: none;
+}
+
+#searchWrapper.show {
+  height: 100vh;
+  display: block;
+}
+
 .formHeader {
   font-family: Comfortaa;
   text-align: center;
