@@ -1,0 +1,43 @@
+.glide--item {
+  opacity: 0;
+}
+.glide--item,
+.glide--item.current {
+  position: absolute;
+  left: 0;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+.glide--item.current {
+  opacity: 1;
+}
+
+.glide--next-btn {
+  right: 0;
+  position: absolute;
+  z-index: 10;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  height: 60px;
+  width: 35px;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+  top: 45%;
+  outline: none;
+}
+.glide--prev-btn {
+  position: absolute;
+  z-index: 10;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  height: 60px;
+  width: 35px;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+  top: 45%;
+  outline: none;
+}
