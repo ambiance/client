@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 export class MapContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.markerRef = React.createRef();
 
     this.state = {
       showingInfoWindow: false,
@@ -63,7 +62,6 @@ export class MapContainer extends React.Component {
                 }
               : {}
           }
-          ref={this.markerRef}
         />
         <InfoWindow visible={this.state.showingInfoWindow} marker={this.state.activeMarker}>
           {details ? (
