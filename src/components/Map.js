@@ -1,11 +1,45 @@
-import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import React from 'react';
 import PropTypes from 'prop-types';
 
 export class MapContainer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showingInfoWindow: false,
+      activeMarker: {},
+    };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.details !== prevProps.details) {
+      this.setState({
+        showingInfoWindow: false,
+      });
+    }
+  }
+
+  onMarkerClick = (props, marker, e) =>
+    this.setState({
+      activeMarker: marker,
+      showingInfoWindow: true,
+    });
+
+  onMapClicked = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null,
+      });
+    }
+  };
+
   render() {
+    const { details } = this.props;
     return (
       <Map
+        onClick={this.onMapClicked}
         google={this.props.google}
         zoom={14}
         center={
@@ -29,6 +63,17 @@ export class MapContainer extends React.Component {
               : {}
           }
         />
+        <InfoWindow visible={this.state.showingInfoWindow} marker={this.state.activeMarker}>
+          {details ? (
+            <p>
+              {details.address}
+              <br />
+              {details.city}, {details.state} {details.postalCode}
+            </p>
+          ) : (
+            ''
+          )}
+        </InfoWindow>
       </Map>
     );
   }
