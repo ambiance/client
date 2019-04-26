@@ -8,9 +8,17 @@ export class MapContainer extends React.Component {
     this.markerRef = React.createRef();
 
     this.state = {
-      showingInfoWindow: true,
+      showingInfoWindow: false,
       activeMarker: {},
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.details !== prevProps.details) {
+      this.setState({
+        showingInfoWindow: false,
+      });
+    }
   }
 
   onMarkerClick = (props, marker, e) =>
