@@ -1,6 +1,6 @@
 import React from 'react';
-import Slideshow from './Slideshow';
-import '../css/main.css';
+import Slideshow from '../components/Slideshow';
+import '../styles/About.scss';
 
 class About extends React.Component {
   render() {
@@ -17,7 +17,9 @@ class About extends React.Component {
             <p className="minty">
               Everyone is <span className="bold">unique</span>.
             </p>
-            <p className="minty">People like different things and want to feel great wherever they are.</p>
+            <p className="minty">
+              People like different things and want to feel great wherever they are.
+            </p>
           </section>
           <section className="mint landing">
             <img
@@ -25,7 +27,9 @@ class About extends React.Component {
               src="https://media.discordapp.net/attachments/540283031001235477/560871549674979338/Question_Head_White.png?width=450&height=450"
               alt="Person questioning something"
             />
-            <p className="minty">Whether you want to study, socialize, or hold business meetings…</p>
+            <p className="minty">
+              Whether you want to study, socialize, or hold business meetings…
+            </p>
             <p className="minty">
               <span className="bold">Aura</span> can get you there.
             </p>

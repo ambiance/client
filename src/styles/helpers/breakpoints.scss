@@ -1,0 +1,101 @@
+@import './typeChecking.scss';
+/*
+  // Example usage
+  .selector {
+    color: red;
+  }
+  @include max-width-breakpoint('mobile-small') {
+    color: blue;
+  }
+
+  // Another example --> Same result
+  .selector {
+    color: red;
+    
+    @include max-width-breakpoint('mobile-small') {
+      color: blue;
+    }
+  }
+*/
+
+$breakpoints: (
+  'mobile-small': 320px,
+  'mobile-medium': 375px,
+  'mobile-large': 425px,
+  'tablet': 768px,
+  'laptop': 1024px,
+  'laptop-large': 1444px,
+  'four-k': 2560px,
+) !default;
+
+/// @credit https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/
+/// Mixin to manage responsive breakpoints
+/// @author Hugo Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin max-width-breakpoint($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media screen and (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else if is-length($breakpoint) {
+    // Prints a media query based on the value
+    @media screen and (max-width: $breakpoint) {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+/// Mixin to manage responsive breakpoints
+/// @author Scott Roberts
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin min-width-breakpoint($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else if is-length($breakpoint) {
+    // Prints a media query based on the value
+    @media screen and (max-width: $breakpoint) {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+/// Mixin to manage responsive breakpoints
+/// @author Scott Roberts
+/// @param {String} $breakpointStart - Min width breakpoint name
+/// @param {String} $breakpointEnd - Max width breakpoint name
+/// @require $breakpoints
+@mixin full-width-breakpoint($breakpointStart, $breakpointEnd) {
+  // If the key exists in the map
+  @if (map-has-key($breakpoints, $breakpointStart) and map-has-key($breakpoints, $breakpointEnd)) {
+    // Prints a media query based on the value
+    @media screen and (min-width: map-get($breakpoints, $breakpointStart)) and (max-width: map-get($breakpoints, $breakpointEnd )) {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}

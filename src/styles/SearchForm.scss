@@ -1,6 +1,40 @@
-::selection {
-  color: #fff;
-  background: #e10db1;
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+article {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  /* margin-left: 15%;
+  margin-right: 15%; */
+}
+
+.formHeader {
+  font-family: Comfortaa;
+  text-align: center;
+  background-color: rgba(65, 150, 124, 0.85);
+  padding: 2%;
+  border-radius: 25px;
+  border: solid black 1px;
+}
+
+select {
+  height: 100px;
+  width: 50%;
+  border: solid black 2px;
+  text-align: center;
+}
+
+input {
+  height: 50px;
+  width: 100px;
+  border-radius: 15px;
+  border: solid black 2px;
+  align-self: center;
+}
+
+.forms {
+  margin: 2rem;
 }
 
 article {
@@ -10,7 +44,7 @@ article {
   background: url('https://images.pexels.com/photos/1307698/pexels-photo-1307698.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
     no-repeat center / cover;
   position: relative;
-  color: #232323;
+  color: var(--off-black);
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -76,10 +110,10 @@ form {
   padding: 0 1rem;
   vertical-align: middle;
   line-height: 3.125rem;
-  background: rgba(47, 47, 47, 1);
+  background: var(--off-black);
   text-align: center;
   font-weight: 300;
-  color: #fff;
+  color: var(--off-white);
 }
 
 input,
@@ -118,7 +152,7 @@ select:focus {
 }
 
 select {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--off-white);
   padding: 0.5rem 1.5rem 0.5rem 0.75rem;
   appearance: none;
   border-radius: 0;
@@ -133,8 +167,8 @@ option {
 .grid-100 {
   font-size: 1.1rem;
   border: 0;
-  background: var(--base-color-dark);
-  color: white;
+  background: var(--dark-mint);
+  color: var(--off-white);
   font-weight: 600;
   transition: background 0.25s ease-in-out;
   border-top-right-radius: 5px;
@@ -145,7 +179,7 @@ option {
 .grid-100:active {
   outline: 0;
   background: rgba(51, 116, 96, 0.85);
-  color: #232323;
+  color: var(--off-black);
 }
 
 #submitButtonContainer {

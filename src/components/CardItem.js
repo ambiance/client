@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AuraPills from './AuraPills';
-import '../css/ResultCard.css';
-import starImages from './starImages';
+import starImages from '../data/starImages';
+import '../styles/CardItem.scss';
 
 export default class CardItem extends React.Component {
   constructor(props) {
@@ -82,7 +82,7 @@ export default class CardItem extends React.Component {
     const { business, onOpenModal } = this.props;
 
     return (
-      <div key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
+      <button key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
         <div className="resultCardImageContainer">
           <div className="pillsContainer">
             {business.attributes.aura.split(',').map(auraSingleton => (
@@ -101,7 +101,11 @@ export default class CardItem extends React.Component {
                 ? business.businessImage.src
                 : 'http://mymodernmet.com/wp/wp-content/uploads/2017/10/azuki-camping-hedgehog-3.jpg'
             }
-            alt={business.businessImage.owner ? business.businessImage.owner : 'No image owner provided'}
+            alt={
+              business.businessImage.owner
+                ? business.businessImage.owner
+                : 'No image owner provided'
+            }
           />
         </div>
 
@@ -111,7 +115,7 @@ export default class CardItem extends React.Component {
           {business.city}, {business.state} {business.postalCode}
         </span>
         <img className="resultCardStar" src={this.handleStars(business.stars)} alt="Rating Stars" />
-      </div>
+      </button>
     );
   }
 }

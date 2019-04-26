@@ -1,7 +1,5 @@
-@import "./colorVariables.css";
-
 .halfpics {
-  background-color: var(--base-color);
+  background-color: var(--mint);
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 1rem;
@@ -11,13 +9,21 @@
   justify-content: flex-start;
 }
 
+.halfpics .resultCardAura {
+  margin-left: 0;
+  width: 4rem;
+  text-align: center;
+}
+
+
+
 #title {
   font-weight: bold;
   padding-left: 0.6rem;
   /* width: 100%; */
   list-style: none;
   padding-bottom: 5px;
-  margin-top: 0;
+  margin-top: 10px;
   margin-left: 1rem;
 }
 
@@ -29,6 +35,7 @@
 .role {
   font-weight: normal;
   padding-bottom: 2vh;
+  margin-top: 10px;
 }
 
 .fav {
@@ -73,11 +80,13 @@ a {
     margin-bottom: 3rem;
     margin-top: 3rem;
   }
+
   #devon {
     grid-column-start: span 1;
     margin-left: 1rem;
     margin-right: 1rem;
   }
+
   #title {
     font-size: 0.8rem;
     margin-left: 0.5rem;

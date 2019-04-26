@@ -1,7 +1,7 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
-import API, { alertErrorHandler } from '../utils/API';
+import API, { alertErrorHandler } from '../services/API';
 
 class AccountSettings extends React.Component {
   static propTypes = {
@@ -53,7 +53,7 @@ class AccountSettings extends React.Component {
   handlePasswordChangeSubmit = async event => {
     event.preventDefault();
     const { newPasswordInputValue, confirmPasswordInputValue } = this.state;
-    const { user } = this.props;
+    // TODO: const { user } = this.props;
     if (newPasswordInputValue !== confirmPasswordInputValue) {
       Swal.fire({
         type: 'error',
@@ -109,6 +109,7 @@ class AccountSettings extends React.Component {
               type="password"
               id="passwordInputValue"
               name="passwordInputValue"
+              autoComplete="current-password"
               minLength="8"
               value={this.state.passwordInputValue}
               onChange={this.handleInputChange}
@@ -121,6 +122,7 @@ class AccountSettings extends React.Component {
               type="password"
               id="newPasswordInputValue"
               name="newPasswordInputValue"
+              autoComplete="new-password"
               minLength="8"
               value={this.state.newPasswordInputValue}
               onChange={this.handleInputChange}
@@ -134,6 +136,7 @@ class AccountSettings extends React.Component {
               type="password"
               id="confirmPasswordInputValue"
               name="confirmPasswordInputValue"
+              autoComplete="new-password"
               minLength="8"
               value={this.state.confirmPasswordInputValue}
               onChange={this.handleInputChange}

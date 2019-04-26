@@ -2,17 +2,13 @@ import React from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import jwt from 'jsonwebtoken';
-import ProtectedRoute from './ProtectedRoute';
-import API from '../utils/API';
-import Home from './Home';
-import About from './About';
-import MeetTheTeam from './MeetTheTeam';
-import Login from './LoginPage';
-import Profile from './Dashboard';
-import FourOhFour from './404';
-import auraLogo from '../assets/img/auraLogo.png';
-import Footer from './Footer';
-import slideImages from './slideImages';
+import { Home, About, MeetTheTeam, Login, Dashboard, FourOhFour } from './pages';
+import ProtectedRoute from './components/ProtectedRoute';
+import Footer from './components/Footer';
+import API from './services/API';
+import slideImages from './data/slideImages';
+import auraLogo from './assets/img/auraLogo.png';
+import './styles/main.scss';
 
 class AuraApp extends React.Component {
   constructor(props) {
@@ -61,9 +57,6 @@ class AuraApp extends React.Component {
       img.src = slide.src;
     });
   }
-
-  // FIXME: Not sure if needed...
-  handleSignup = () => {};
 
   handleLogin = user => {
     this.setState({ isAuthenticated: true, user });
@@ -162,7 +155,7 @@ class AuraApp extends React.Component {
               path="/dashboard"
               isAuthenticated={isAuthenticated}
               user={user}
-              component={Profile}
+              component={Dashboard}
               modalDetails={this.state.modalDetails}
               isModalShowing={this.state.isModalShowing}
               openModal={this.openModalHandler}

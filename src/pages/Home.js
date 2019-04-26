@@ -1,32 +1,34 @@
-/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
 // Components
 import PropTypes from 'prop-types';
-import SearchForm from './SearchForm';
-import SearchResults from './SearchResults';
-import Modal from './Modal';
+import SearchForm from '../components/SearchForm';
+import SearchResults from '../components/SearchResults';
+import Modal from '../components/Modal';
 
-import API, { alertErrorHandler } from '../utils/API';
+import API, { alertErrorHandler } from '../services/API';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
 
+    this.searchRef = React.createRef();
+
     this.state = {
       // modalDetails: '',
       businesses: [],
       loading: false,
-      noData: false
+      noData: false,
+      showResults: false,
     };
   }
 
   handleSearchSubmit = searchFormData => {
-    this.setState({ loading: true }, () => {
+    this.setState({ showResults: true, loading: true }, () => {
       window.scroll({
-        top: 635,
+        top: this.searchRef.current.offsetTop - 50,
         left: 0,
-        behavior: 'smooth'
+        passive: true,
       });
     });
 
@@ -42,7 +44,7 @@ class Home extends React.Component {
     }
 
     API.get('businesses', {
-      params
+      params,
       // params: {
       //   aura: searchFormData.auraValue,
       //   category: searchFormData.categoryValue,
@@ -66,22 +68,26 @@ class Home extends React.Component {
     return (
       <div>
         <Modal
-          className='modal'
+          className="modal"
           show={isShowing}
           close={closeModal}
           details={modalDetails}
           shouldCloseOnOverlayClick
         />
-
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
-
-        <SearchResults
-          loading={this.state.loading}
-          businesses={this.state.businesses}
-          noData={this.state.noData}
-          onOpenModal={openModal}
-          id='results'
-        />
+        <div
+          ref={this.searchRef}
+          id="searchWrapper"
+          className={this.state.showResults ? 'show' : ''}
+        >
+          <SearchResults
+            loading={this.state.loading}
+            businesses={this.state.businesses}
+            noData={this.state.noData}
+            onOpenModal={openModal}
+            id="results"
+          />
+        </div>
       </div>
     );
   }
@@ -91,7 +97,7 @@ Home.propTypes = {
   modalDetails: PropTypes.object,
   isShowing: PropTypes.bool,
   openModal: PropTypes.func,
-  closeModal: PropTypes.func
+  closeModal: PropTypes.func,
 };
 
 export default Home;
