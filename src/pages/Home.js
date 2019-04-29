@@ -12,20 +12,22 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
 
+    this.searchRef = React.createRef();
+
     this.state = {
       // modalDetails: '',
       businesses: [],
       loading: false,
       noData: false,
+      showResults: false,
     };
   }
 
   handleSearchSubmit = searchFormData => {
-    this.setState({ loading: true }, () => {
+    this.setState({ showResults: true, loading: true }, () => {
       window.scroll({
-        top: 635,
+        top: this.searchRef.current.offsetTop - 50,
         left: 0,
-        behavior: 'smooth',
         passive: true,
       });
     });
@@ -72,16 +74,20 @@ class Home extends React.Component {
           details={modalDetails}
           shouldCloseOnOverlayClick
         />
-
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
-
-        <SearchResults
-          loading={this.state.loading}
-          businesses={this.state.businesses}
-          noData={this.state.noData}
-          onOpenModal={openModal}
-          id="results"
-        />
+        <div
+          ref={this.searchRef}
+          id="searchWrapper"
+          className={this.state.showResults ? 'show' : ''}
+        >
+          <SearchResults
+            loading={this.state.loading}
+            businesses={this.state.businesses}
+            noData={this.state.noData}
+            onOpenModal={openModal}
+            id="results"
+          />
+        </div>
       </div>
     );
   }

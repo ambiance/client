@@ -4,6 +4,23 @@
   width: 100%;
 }
 
+#searchWrapper {
+  display: none;
+}
+
+#searchWrapper.show {
+  min-height: 100vh;
+  height: 100%;
+  display: block;
+}
+
+.loaderWrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .errorpage {
   display: flex;
   justify-content: center;
