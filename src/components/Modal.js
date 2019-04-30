@@ -56,7 +56,6 @@ const Modal = props => {
         className="modal-backdrop"
         onClick={props.close}
         style={{
-          // transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
           opacity: props.show ? '0.5' : '0',
           position: props.show ? 'fixed' : 'absolute',
           zIndex: props.show ? '15' : '-5',
@@ -172,7 +171,7 @@ Modal.propTypes = {
   close: PropTypes.func.isRequired,
   description: PropTypes.bool.isRequired,
   map: PropTypes.bool.isRequired,
-  aurafeedback: PropTypes.bool.isRequired,
+  // aurafeedback: PropTypes.bool.isRequired,
 };
 
 export default Modal;
