@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import AuraPills from './AuraPills.js';
-import Map from './Map';
-import starImages from '../data/starImages';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import AuraPills from "./AuraPills.js";
+import Map from "./Map";
+import starImages from "../data/starImages";
 // import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
-import '../styles/Modal.scss';
-import ModalWindow from './ModalWindow';
-import BusinessDescription from './BusinessDescription';
-import Feedback from './Feedback';
+import "../styles/Modal.scss";
+import ModalWindow from "./ModalWindow";
+import BusinessDescription from "./BusinessDescription";
+import Feedback from "./Feedback";
 
 const Modal = props => {
   const starSrc = handleStars(props.show ? props.details.details.stars : 0);
@@ -16,31 +16,31 @@ const Modal = props => {
   function auraColorChange(auraString) {
     let colorString = ``;
     switch (auraString) {
-      case 'trendy':
+      case "trendy":
         colorString = `var(--trendy)`;
         break;
-      case 'romantic':
+      case "romantic":
         colorString = `var(--romantic)`;
         break;
-      case 'hipster':
+      case "hipster":
         colorString = `var(--hipster)`;
         break;
-      case 'casual':
+      case "casual":
         colorString = `var(--casual)`;
         break;
-      case 'inspired':
+      case "inspired":
         colorString = `var(--inspired)`;
         break;
-      case 'intimate':
+      case "intimate":
         colorString = `var(--intimate)`;
         break;
-      case 'classy':
+      case "classy":
         colorString = `var(--classy)`;
         break;
-      case 'touristy':
+      case "touristy":
         colorString = `var(--touristy)`;
         break;
-      case 'cheerful':
+      case "cheerful":
         colorString = `var(--cheerful)`;
         break;
       default:
@@ -57,25 +57,25 @@ const Modal = props => {
         onClick={props.close}
         style={{
           // transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
-          opacity: props.show ? '0.5' : '0',
-          position: props.show ? 'fixed' : 'absolute',
-          zIndex: props.show ? '15' : '-5',
+          opacity: props.show ? "0.5" : "0",
+          position: props.show ? "fixed" : "absolute",
+          zIndex: props.show ? "15" : "-5"
         }}
       />
 
       <div
         className="modal-wrapper"
         style={{
-          transform: props.show ? 'translateY(0vh)' : 'translateY(-200vh)',
-          opacity: props.show ? '1' : '0',
+          transform: props.show ? "translateY(0vh)" : "translateY(-200vh)",
+          opacity: props.show ? "1" : "0"
         }}
       >
         <div className="modal-header">
-          <h3>{props.show ? props.details.details.name : ''}</h3>
+          <h3>{props.show ? props.details.details.name : ""}</h3>
           <span className="modalPillsContainer">
             {props.show
               ? props.details.details.attributes.aura
-                  .split(',')
+                  .split(",")
                   .map(auraSingleton => (
                     <AuraPills
                       key={auraSingleton}
@@ -83,10 +83,10 @@ const Modal = props => {
                       backgroundColor={auraColorChange(auraSingleton)}
                     />
                   ))
-              : ''}
+              : ""}
           </span>
           <button className="close-modal-btn" onClick={props.close}>
-            ×
+            &#9587;
           </button>
         </div>
 
@@ -94,15 +94,30 @@ const Modal = props => {
           {/* BROCK: This was changed from 'MapContainer' to 'Map' because of your 
         naming in the MapContainer component */}
           <div>
-            <ul>
-              <li>
-                <button onClick={() => setComponent(<BusinessDescription />)}>Description</button>
+            <ul className="navContainer">
+              <li className="modalLI">
+                <button
+                  className="modalNav"
+                  onClick={() => setComponent(<BusinessDescription />)}
+                >
+                  Description
+                </button>
               </li>
-              <li>
-                <button onClick={() => setComponent(<Map />)}>Map</button>
+              <li className="modalLI">
+                <button
+                  className="modalNav"
+                  onClick={() => setComponent(<Map />)}
+                >
+                  Map
+                </button>
               </li>
-              <li>
-                <button onClick={() => setComponent(<Feedback />)}>Feedback</button>
+              <li className="modalLI">
+                <button
+                  className="modalNav"
+                  onClick={() => setComponent(<Feedback />)}
+                >
+                  Feedback
+                </button>
               </li>
             </ul>
           </div>
@@ -172,7 +187,7 @@ Modal.propTypes = {
   close: PropTypes.func.isRequired,
   description: PropTypes.bool.isRequired,
   map: PropTypes.bool.isRequired,
-  aurafeedback: PropTypes.bool.isRequired,
+  aurafeedback: PropTypes.bool.isRequired
 };
 
 export default Modal;

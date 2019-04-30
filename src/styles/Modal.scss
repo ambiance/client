@@ -133,6 +133,10 @@
 
 .close-modal-btn {
   height: 40px;
+  background-color: transparent;
+  border: none;
+  width: 1rem;
+  color: white;
 }
 
 .modal-footer {
@@ -147,6 +151,7 @@
 
 .navBar {
   position: relative;
+  background-color: #263238;
 }
 
 .back-drop {
@@ -313,4 +318,27 @@ h1 {
   background-color: rgba(90, 187, 158, 0.8);
   background-image: rgba(90, 187, 158, 0.4);
   border-radius: 0.6rem;
+}
+
+.navContainer {
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.modalNav {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  outline: none;
+  text-decoration: none;
+  color: #818181;
+}
+
+.modalNav:hover {
+  color: #f1f1f1;
+}
+
+.modalLI {
+  list-style: none;
+  padding-top: 5%;
 }
