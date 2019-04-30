@@ -66,7 +66,7 @@ const Modal = props => {
         className="modal-wrapper"
         style={{
           transform: props.show ? 'translateY(0vh)' : 'translateY(-200vh)',
-          opacity: props.show ? '1' : '0',
+          opacity: props.show ? '1' : '0'
         }}
       >
         <div className="modal-header">
@@ -85,7 +85,7 @@ const Modal = props => {
               : ''}
           </span>
           <button className="close-modal-btn" onClick={props.close}>
-            ×
+            &#9587;
           </button>
         </div>
 
@@ -93,15 +93,21 @@ const Modal = props => {
           {/* BROCK: This was changed from 'MapContainer' to 'Map' because of your 
         naming in the MapContainer component */}
           <div>
-            <ul>
-              <li>
-                <button onClick={() => setComponent(<BusinessDescription />)}>Description</button>
+            <ul className="navContainer">
+              <li className="modalLI">
+                <button className="modalNav" onClick={() => setComponent(<BusinessDescription />)}>
+                  Description
+                </button>
               </li>
-              <li>
-                <button onClick={() => setComponent(<Map />)}>Map</button>
+              <li className="modalLI">
+                <button className="modalNav" onClick={() => setComponent(<Map />)}>
+                  Map
+                </button>
               </li>
-              <li>
-                <button onClick={() => setComponent(<Feedback />)}>Feedback</button>
+              <li className="modalLI">
+                <button className="modalNav" onClick={() => setComponent(<Feedback />)}>
+                  Feedback
+                </button>
               </li>
             </ul>
           </div>
