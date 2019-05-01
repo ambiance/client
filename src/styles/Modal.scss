@@ -4,7 +4,6 @@
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
   margin: 0px auto 0px 3%;
   transition: all 0.8s;
-
   position: fixed;
   z-index: 30;
   width: 94%;
@@ -18,6 +17,7 @@
     " map detail ";
   overflow-x: hidden;
   overflow-y: hidden;
+  border: none;
 }
 
 @media screen and (max-width: 853px) {
@@ -26,7 +26,7 @@
     width: 90%;
     top: 10px;
     height: 94%;
-    grid-template-rows: 60px 2fr 54px;
+    grid-template-rows: 60px 2fr;
   }
 }
 
@@ -41,25 +41,22 @@
     overflow-x: hidden;
     overflow-y: scroll;
   }
+
   .navBar {
     height: 12rem;
   }
 }
 
-.modal-wrapper > .modal-header {
+.modal-wrapper>.modal-header {
   grid-area: head;
 }
 
-.modal-wrapper > .navBar {
+.modal-wrapper>.navBar {
   grid-area: map;
 }
 
-.modal-wrapper > .businessDetails {
+.modal-wrapper>.businessDetails {
   grid-area: detail;
-}
-
-.modal-wrapper > .modal-footer {
-  grid-area: foot;
 }
 
 .modal-header {
@@ -96,6 +93,7 @@
   .modal-wrapper {
     grid-template-rows: 108px 1fr 1fr 54px;
   }
+
   .modal-header {
     height: 100px;
     padding: 10px;
@@ -106,21 +104,25 @@
       " title title button "
       " pills pills pills ";
   }
+
   .modal-header h3 {
     height: 40px;
   }
+
   .modalPillsContainer {
     margin-left: -10px;
     margin-top: -6px;
   }
 
-  .modal-header > h3 {
+  .modal-header>h3 {
     grid-area: title;
   }
-  .modal-header > .modalPillsContainer {
+
+  .modal-header>.modalPillsContainer {
     grid-area: pills;
   }
-  .modal-header > .close-modal-btn {
+
+  .modal-header>.close-modal-btn {
     grid-area: button;
   }
 }
@@ -289,16 +291,20 @@ h1 {
 }
 
 @media screen and (max-width: 510px) {
+
   .categories,
   .info {
     font-size: 15px;
   }
+
   .modalStar {
     width: 7rem;
   }
+
   .yelpLink {
     font-size: 13px;
   }
+
   .yelpPic {
     width: 2.2rem;
   }

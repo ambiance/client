@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import AuraPills from './AuraPills.js';
 import Map from './Map';
@@ -9,10 +9,10 @@ import ModalWindow from './ModalWindow';
 import BusinessDescription from './BusinessDescription';
 import Feedback from './Feedback';
 
-const Modal = props => {
-  const starSrc = handleStars(props.show ? props.details.details.stars : 0);
-  const [component, setComponent] = useState(<BusinessDescription />);
+const Modal = ({ show, details, close }) => {
+  const [component, setComponent] = useState(0);
 
+  useEffect(() => setComponent(<BusinessDescription show={show} details={details.details} />));
   function auraColorChange(auraString) {
     let colorString = ``;
     switch (auraString) {
@@ -54,26 +54,26 @@ const Modal = props => {
     <div>
       <button
         className="modal-backdrop"
-        onClick={props.close}
+        onClick={close}
         style={{
-          opacity: props.show ? '0.5' : '0',
-          position: props.show ? 'fixed' : 'absolute',
-          zIndex: props.show ? '15' : '-5',
+          opacity: show ? '0.5' : '0',
+          position: show ? 'fixed' : 'absolute',
+          zIndex: show ? '15' : '-5',
         }}
       />
 
       <div
         className="modal-wrapper"
         style={{
-          transform: props.show ? 'translateY(0vh)' : 'translateY(-200vh)',
-          opacity: props.show ? '1' : '0'
+          transform: show ? 'translateY(0vh)' : 'translateY(-200vh)',
+          opacity: show ? '1' : '0',
         }}
       >
         <div className="modal-header">
-          <h3>{props.show ? props.details.details.name : ''}</h3>
+          <h3>{show ? details.details.name : ''}</h3>
           <span className="modalPillsContainer">
-            {props.show
-              ? props.details.details.attributes.aura
+            {show
+              ? details.details.attributes.aura
                   .split(',')
                   .map(auraSingleton => (
                     <AuraPills
@@ -84,7 +84,7 @@ const Modal = props => {
                   ))
               : ''}
           </span>
-          <button className="close-modal-btn" onClick={props.close}>
+          <button className="close-modal-btn" onClick={close}>
             &#9587;
           </button>
         </div>
@@ -95,7 +95,12 @@ const Modal = props => {
           <div>
             <ul className="navContainer">
               <li className="modalLI">
-                <button className="modalNav" onClick={() => setComponent(<BusinessDescription />)}>
+                <button
+                  className="modalNav"
+                  onClick={() =>
+                    setComponent(<BusinessDescription show={show} details={details.details} />)
+                  }
+                >
                   Description
                 </button>
               </li>
@@ -111,36 +116,10 @@ const Modal = props => {
               </li>
             </ul>
           </div>
-          {/* <Map className="modalMap" details={props.details.details} /> */}
         </div>
-        {/* <div className="businessDetails"> */}
         <ModalWindow component={component} />
-        {/* <ul className="categories">
-            {props.show
-              ? props.details.details.categories.map(category => (
-                  <li key={category.title}>{category.title}</li>
-                ))
-              : ''}
-          </ul>
-          <ul className="address">
-            {props.show
-              ? props.details.details.displayAddress.map(addr => <li key={addr}>{addr}</li>)
-              : ''}
-          </ul>
-          <p className="info">{props.show ? props.details.details.attributes.priceRange : ''}</p>
-          <img className="modalStar" src={starSrc} alt="stars" />
-          <a
-            className="yelpLink"
-            target="_blank"
-            rel="noopener noreferrer"
-            href={props.show ? props.details.details.url : ''}
-          >
-            <img className="yelpPic" src="./assets/img/yelpButton.jpg" alt="yelp" />
-            <p className="yelpClick">Click for more details!</p>
-          </a> */}
       </div>
     </div>
-    // </div>
   );
 };
 
@@ -175,9 +154,7 @@ Modal.propTypes = {
   show: PropTypes.bool.isRequired,
   details: PropTypes.object.isRequired,
   close: PropTypes.func.isRequired,
-  description: PropTypes.bool.isRequired,
-  map: PropTypes.bool.isRequired,
-  // aurafeedback: PropTypes.bool.isRequired,
+  // map: PropTypes.bool.isRequired,
 };
 
 export default Modal;
