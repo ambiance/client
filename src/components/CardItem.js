@@ -1,8 +1,9 @@
+/* eslint-disable no-useless-return */
 import React from 'react';
 import PropTypes from 'prop-types';
 import AuraPills from './AuraPills';
 import starImages from '../data/starImages';
-import locations from '../data/locations';
+import locations from '../data/LALocations';
 import '../styles/CardItem.scss';
 
 export default class CardItem extends React.Component {
@@ -16,7 +17,9 @@ export default class CardItem extends React.Component {
   }
 
   componentDidMount() {
-    this.getNeighborhood(this.props.business.postalCode);
+    const { postalCode, city } = this.props.business;
+    if (city !== 'Los Angeles') this.setState({ neighborhood: city });
+    else this.setNeighborhood(postalCode);
   }
 
   auraColorChange = auraString => {
@@ -84,13 +87,13 @@ export default class CardItem extends React.Component {
     }
   };
 
-  getNeighborhood = postalCode => {
+  setNeighborhood = postalCode => {
     Object.keys(locations).forEach(location => {
       if (locations[location].includes(parseInt(postalCode))) {
         this.setState({ neighborhood: location });
+        return;
       }
     });
-    // if (!this.state.neighborhood) this.setState({ neighborhood: this.props.business.city });
   };
 
   render() {
@@ -126,7 +129,7 @@ export default class CardItem extends React.Component {
 
         <span className="resultCardTitle">{business.name}</span>
         <span className="resultCardSubtitle">
-          NEIGHBORHOOD: {this.state.neighborhood} {<br />} ADDRESS: {business.city}
+          NEIGHBORHOOD: {this.state.neighborhood || business.city} {<br />} ADDRESS: {business.city}
           {<br />}
           {business.postalCode}
         </span>
