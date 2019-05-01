@@ -99,6 +99,7 @@ export default class CardItem extends React.Component {
   render() {
     // consts here
     const { business, onOpenModal } = this.props;
+    const categories = business.categories.map(category => category.title).join(', ');
     return (
       <button key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
         <div className="resultCardImageContainer">
@@ -129,9 +130,10 @@ export default class CardItem extends React.Component {
 
         <span className="resultCardTitle">{business.name}</span>
         <span className="resultCardSubtitle">
-          NEIGHBORHOOD: {this.state.neighborhood || business.city} {<br />} ADDRESS: {business.city}
-          {<br />}
-          {business.postalCode}
+          {this.state.neighborhood || business.city}
+          <br />
+          <br />
+          {categories}
         </span>
         <img className="resultCardStar" src={this.handleStars(business.stars)} alt="Rating Stars" />
       </button>
