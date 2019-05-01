@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import AuraPills from "./AuraPills.js";
 import Map from "./Map";
@@ -9,10 +9,12 @@ import ModalWindow from "./ModalWindow";
 import BusinessDescription from "./BusinessDescription";
 import Feedback from "./Feedback";
 
-const Modal = props => {
-  const starSrc = handleStars(props.show ? props.details.details.stars : 0);
-  const [component, setComponent] = useState(<BusinessDescription />);
+const Modal = ({ show, details, close }) => {
+  const [component, setComponent] = useState(0);
 
+  useEffect(() =>
+    setComponent(<BusinessDescription show={show} details={details.details} />)
+  );
   function auraColorChange(auraString) {
     let colorString = ``;
     switch (auraString) {
@@ -54,27 +56,26 @@ const Modal = props => {
     <div>
       <button
         className="modal-backdrop"
-        onClick={props.close}
+        onClick={close}
         style={{
-          // transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
-          opacity: props.show ? "0.5" : "0",
-          position: props.show ? "fixed" : "absolute",
-          zIndex: props.show ? "15" : "-5"
+          opacity: show ? "0.5" : "0",
+          position: show ? "fixed" : "absolute",
+          zIndex: show ? "15" : "-5"
         }}
       />
 
       <div
         className="modal-wrapper"
         style={{
-          transform: props.show ? "translateY(0vh)" : "translateY(-200vh)",
-          opacity: props.show ? "1" : "0"
+          transform: show ? "translateY(0vh)" : "translateY(-200vh)",
+          opacity: show ? "1" : "0"
         }}
       >
         <div className="modal-header">
-          <h3>{props.show ? props.details.details.name : ""}</h3>
+          <h3>{show ? details.details.name : ""}</h3>
           <span className="modalPillsContainer">
-            {props.show
-              ? props.details.details.attributes.aura
+            {show
+              ? details.details.attributes.aura
                   .split(",")
                   .map(auraSingleton => (
                     <AuraPills
@@ -85,7 +86,7 @@ const Modal = props => {
                   ))
               : ""}
           </span>
-          <button className="close-modal-btn" onClick={props.close}>
+          <button className="close-modal-btn" onClick={close}>
             &#9587;
           </button>
         </div>
@@ -98,7 +99,14 @@ const Modal = props => {
               <li className="modalLI">
                 <button
                   className="modalNav"
-                  onClick={() => setComponent(<BusinessDescription />)}
+                  onClick={() =>
+                    setComponent(
+                      <BusinessDescription
+                        show={show}
+                        details={details.details}
+                      />
+                    )
+                  }
                 >
                   Description
                 </button>
@@ -123,7 +131,6 @@ const Modal = props => {
               </li>
             </ul>
           </div>
-          {/* <Map className="modalMap" details={props.details.details} /> */}
         </div>
         {/* <div className="businessDetails"> */}
         <div className="componentWindow">
@@ -154,7 +161,6 @@ const Modal = props => {
           </a> */}
       </div>
     </div>
-    // </div>
   );
 };
 
@@ -188,10 +194,8 @@ function handleStars(stars) {
 Modal.propTypes = {
   show: PropTypes.bool.isRequired,
   details: PropTypes.object.isRequired,
-  close: PropTypes.func.isRequired,
-  description: PropTypes.bool.isRequired,
-  map: PropTypes.bool.isRequired,
-  aurafeedback: PropTypes.bool.isRequired
+  close: PropTypes.func.isRequired
+  // map: PropTypes.bool.isRequired,
 };
 
 export default Modal;
