@@ -106,7 +106,9 @@ const Modal = props => {
               <li className="modalLI">
                 <button
                   className="modalNav"
-                  onClick={() => setComponent(<Map />)}
+                  onClick={() =>
+                    setComponent(<Map details={props.details.details} />)
+                  }
                 >
                   Map
                 </button>
@@ -124,7 +126,9 @@ const Modal = props => {
           {/* <Map className="modalMap" details={props.details.details} /> */}
         </div>
         {/* <div className="businessDetails"> */}
-        <ModalWindow component={component} />
+        <div className="componentWindow">
+          <ModalWindow component={component} />
+        </div>
         {/* <ul className="categories">
             {props.show
               ? props.details.details.categories.map(category => (
