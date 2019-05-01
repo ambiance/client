@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AuraPills from './AuraPills';
 import starImages from '../data/starImages';
+import locations from '../data/locations';
 import '../styles/CardItem.scss';
 
 export default class CardItem extends React.Component {
@@ -9,7 +10,13 @@ export default class CardItem extends React.Component {
     super(props);
 
     // set initial state
-    this.state = {};
+    this.state = {
+      neighborhood: null,
+    };
+  }
+
+  componentDidMount() {
+    this.getNeighborhood(this.props.business.postalCode);
   }
 
   auraColorChange = auraString => {
@@ -77,10 +84,18 @@ export default class CardItem extends React.Component {
     }
   };
 
+  getNeighborhood = postalCode => {
+    Object.keys(locations).forEach(location => {
+      if (locations[location].includes(parseInt(postalCode))) {
+        this.setState({ neighborhood: location });
+      }
+    });
+    // if (!this.state.neighborhood) this.setState({ neighborhood: this.props.business.city });
+  };
+
   render() {
     // consts here
     const { business, onOpenModal } = this.props;
-
     return (
       <button key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
         <div className="resultCardImageContainer">
@@ -110,9 +125,10 @@ export default class CardItem extends React.Component {
         </div>
 
         <span className="resultCardTitle">{business.name}</span>
-        <span className="resultCardSubtitle">{business.address}</span>
         <span className="resultCardSubtitle">
-          {business.city}, {business.state} {business.postalCode}
+          NEIGHBORHOOD: {this.state.neighborhood} {<br />} ADDRESS: {business.city}
+          {<br />}
+          {business.postalCode}
         </span>
         <img className="resultCardStar" src={this.handleStars(business.stars)} alt="Rating Stars" />
       </button>
