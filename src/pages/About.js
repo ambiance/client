@@ -4,8 +4,6 @@ import Accordion from '../components/Accordion';
 import auraDescriptions from '../data/auraDescriptions';
 import '../styles/About.scss';
 
-import CardItem from '../components/CardItem';
-
 class About extends React.Component {
   openModel = business => {
     alert(business);
@@ -61,28 +59,29 @@ class About extends React.Component {
               <h3>{item.definition}</h3>
               <hr />
               <p>{item.description}</p>
-              {item.examples.map((business, j) =>
-                business._id ? (
-                  <div className="resultCardImageContainer">
-                    <img
-                      className="resultCardImage"
-                      style={{ width: '10rem', height: '10rem' }}
-                      src={
-                        business.businessImage.src
-                          ? business.businessImage.src
-                          : 'http://mymodernmet.com/wp/wp-content/uploads/2017/10/azuki-camping-hedgehog-3.jpg'
-                      }
-                      alt={
-                        business.businessImage.owner
-                          ? business.businessImage.owner
-                          : 'No image owner provided'
-                      }
-                    />
-                  </div>
-                ) : (
-                  ''
-                )
-              )}
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                {item.examples.map((business, j) =>
+                  business.businessImage ? (
+                    <div key={j} className="accordionImageContainer">
+                      <img
+                        className="accordionImage"
+                        src={
+                          business.businessImage.src
+                            ? business.businessImage.src
+                            : 'http://mymodernmet.com/wp/wp-content/uploads/2017/10/azuki-camping-hedgehog-3.jpg'
+                        }
+                        alt={
+                          business.businessImage.owner
+                            ? business.businessImage.owner
+                            : 'No image owner provided'
+                        }
+                      />
+                    </div>
+                  ) : (
+                    ''
+                  )
+                )}
+              </div>
             </div>
           ))}
         </Accordion>
