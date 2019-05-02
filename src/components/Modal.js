@@ -1,58 +1,17 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
-import PropTypes from "prop-types";
-import AuraPills from "./AuraPills.js";
-import Map from "./Map";
-import starImages from "../data/starImages";
-// import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
-import "../styles/Modal.scss";
-import ModalWindow from "./ModalWindow";
-import BusinessDescription from "./BusinessDescription";
-import Feedback from "./Feedback";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import AuraPills from './AuraPills.js';
+import Map from './Map';
+import ModalWindow from './ModalWindow';
+import BusinessDescription from './BusinessDescription';
+import Feedback from './Feedback';
+import starImages from '../data/starImages';
+import '../styles/Modal.scss';
 
 const Modal = ({ show, details, close }) => {
-  console.log(details);
-  const [component, setComponent] = useState(
-    <BusinessDescription show={show} details={details} />
-  );
+  const [component, setComponent] = useState(<BusinessDescription show={show} details={details} />);
 
-  useEffect(() => console.log("Mounted once"), []);
-
-  function auraColorChange(auraString) {
-    let colorString = ``;
-    switch (auraString) {
-      case "trendy":
-        colorString = `var(--trendy)`;
-        break;
-      case "romantic":
-        colorString = `var(--romantic)`;
-        break;
-      case "hipster":
-        colorString = `var(--hipster)`;
-        break;
-      case "casual":
-        colorString = `var(--casual)`;
-        break;
-      case "inspired":
-        colorString = `var(--inspired)`;
-        break;
-      case "intimate":
-        colorString = `var(--intimate)`;
-        break;
-      case "classy":
-        colorString = `var(--classy)`;
-        break;
-      case "touristy":
-        colorString = `var(--touristy)`;
-        break;
-      case "cheerful":
-        colorString = `var(--cheerful)`;
-        break;
-      default:
-        colorString = `var(--mint)`;
-    }
-    const style = colorString;
-    return style;
-  }
+  useEffect(() => setComponent(<BusinessDescription show={show} details={details} />), [show]);
 
   return (
     <div>
@@ -60,25 +19,25 @@ const Modal = ({ show, details, close }) => {
         className="modal-backdrop"
         onClick={close}
         style={{
-          opacity: show ? "0.5" : "0",
-          position: show ? "fixed" : "absolute",
-          zIndex: show ? "15" : "-5"
+          opacity: show ? '0.5' : '0',
+          position: show ? 'fixed' : 'absolute',
+          zIndex: show ? '15' : '-5',
         }}
       />
 
       <div
         className="modal-wrapper"
         style={{
-          transform: show ? "translateY(0vh)" : "translateY(-200vh)",
-          opacity: show ? "1" : "0"
+          transform: show ? 'translateY(0vh)' : 'translateY(-200vh)',
+          opacity: show ? '1' : '0',
         }}
       >
         <div className="modal-header">
-          <h3>{show ? details.name : ""}</h3>
+          <h3>{show ? details.name : ''}</h3>
           <span className="modalPillsContainer">
             {show
               ? details.attributes.aura
-                  .split(",")
+                  .split(',')
                   .map(auraSingleton => (
                     <AuraPills
                       key={auraSingleton}
@@ -86,7 +45,7 @@ const Modal = ({ show, details, close }) => {
                       backgroundColor={auraColorChange(auraSingleton)}
                     />
                   ))
-              : ""}
+              : ''}
           </span>
           <button className="close-modal-btn" onClick={close}>
             &#9587;
@@ -94,17 +53,13 @@ const Modal = ({ show, details, close }) => {
         </div>
 
         <div className="navBar">
-          {/* BROCK: This was changed from 'MapContainer' to 'Map' because of your 
-        naming in the MapContainer component */}
           <div>
             <ul className="navContainer">
               <li className="modalLI">
                 <button
                   className="modalNav"
                   onClick={() =>
-                    setComponent(
-                      <BusinessDescription show={show} details={details} />
-                    )
+                    setComponent(<BusinessDescription show={show} details={details} />)
                   }
                 >
                   Description
@@ -113,18 +68,13 @@ const Modal = ({ show, details, close }) => {
               <li className="modalLI">
                 <button
                   className="modalNav"
-                  onClick={() =>
-                    setComponent(<Map show={show} details={details} />)
-                  }
+                  onClick={() => setComponent(<Map show={show} details={details} />)}
                 >
                   Map
                 </button>
               </li>
               <li className="modalLI">
-                <button
-                  className="modalNav"
-                  onClick={() => setComponent(<Feedback />)}
-                >
+                <button className="modalNav" onClick={() => setComponent(<Feedback />)}>
                   Feedback
                 </button>
               </li>
@@ -163,6 +113,43 @@ const Modal = ({ show, details, close }) => {
   );
 };
 
+function auraColorChange(auraString) {
+  let colorString = ``;
+  switch (auraString) {
+    case 'trendy':
+      colorString = `var(--trendy)`;
+      break;
+    case 'romantic':
+      colorString = `var(--romantic)`;
+      break;
+    case 'hipster':
+      colorString = `var(--hipster)`;
+      break;
+    case 'casual':
+      colorString = `var(--casual)`;
+      break;
+    case 'inspired':
+      colorString = `var(--inspired)`;
+      break;
+    case 'intimate':
+      colorString = `var(--intimate)`;
+      break;
+    case 'classy':
+      colorString = `var(--classy)`;
+      break;
+    case 'touristy':
+      colorString = `var(--touristy)`;
+      break;
+    case 'cheerful':
+      colorString = `var(--cheerful)`;
+      break;
+    default:
+      colorString = `var(--mint)`;
+  }
+  const style = colorString;
+  return style;
+}
+
 function handleStars(stars) {
   switch (stars) {
     case 0.5:
@@ -193,7 +180,7 @@ function handleStars(stars) {
 Modal.propTypes = {
   show: PropTypes.bool.isRequired,
   details: PropTypes.object.isRequired,
-  close: PropTypes.func.isRequired
+  close: PropTypes.func.isRequired,
   // map: PropTypes.bool.isRequired,
 };
 

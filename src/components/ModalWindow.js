@@ -1,9 +1,7 @@
-import React from "react";
-import BusinessDescription from "../components/BusinessDescription";
+import React from 'react';
+import BusinessDescription from './BusinessDescription';
 
-const ModalWindow = ({ show, details, component }) => {
-  return component;
-};
+const ModalWindow = ({ show, details, component }) => component;
 
 /*
 if (component) {
