@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import PropTypes from "prop-types";
 import AuraPills from "./AuraPills.js";
 import Map from "./Map";
@@ -10,11 +10,13 @@ import BusinessDescription from "./BusinessDescription";
 import Feedback from "./Feedback";
 
 const Modal = ({ show, details, close }) => {
-  const [component, setComponent] = useState(0);
-
-  useEffect(() =>
-    setComponent(<BusinessDescription show={show} details={details.details} />)
+  console.log(details);
+  const [component, setComponent] = useState(
+    <BusinessDescription show={show} details={details} />
   );
+
+  useEffect(() => console.log("Mounted once"), []);
+
   function auraColorChange(auraString) {
     let colorString = ``;
     switch (auraString) {
@@ -72,10 +74,10 @@ const Modal = ({ show, details, close }) => {
         }}
       >
         <div className="modal-header">
-          <h3>{show ? details.details.name : ""}</h3>
+          <h3>{show ? details.name : ""}</h3>
           <span className="modalPillsContainer">
             {show
-              ? details.details.attributes.aura
+              ? details.attributes.aura
                   .split(",")
                   .map(auraSingleton => (
                     <AuraPills
@@ -101,10 +103,7 @@ const Modal = ({ show, details, close }) => {
                   className="modalNav"
                   onClick={() =>
                     setComponent(
-                      <BusinessDescription
-                        show={show}
-                        details={details.details}
-                      />
+                      <BusinessDescription show={show} details={details} />
                     )
                   }
                 >
@@ -115,7 +114,7 @@ const Modal = ({ show, details, close }) => {
                 <button
                   className="modalNav"
                   onClick={() =>
-                    setComponent(<Map details={props.details.details} />)
+                    setComponent(<Map show={show} details={details} />)
                   }
                 >
                   Map
@@ -134,11 +133,11 @@ const Modal = ({ show, details, close }) => {
         </div>
         {/* <div className="businessDetails"> */}
         <div className="componentWindow">
-          <ModalWindow component={component} />
+          <ModalWindow details={details} show={show} component={component} />
         </div>
         {/* <ul className="categories">
             {props.show
-              ? props.details.details.categories.map(category => (
+              ? props.details.categories.map(category => (
                   <li key={category.title}>{category.title}</li>
                 ))
               : ''}
