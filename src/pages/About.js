@@ -59,7 +59,7 @@ class About extends React.Component {
               <h3>{item.definition}</h3>
               <hr />
               <p>{item.description}</p>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <div className="accordionImages">
                 {item.examples.map((business, j) =>
                   business.businessImage ? (
                     <div key={j} className="accordionImageContainer">

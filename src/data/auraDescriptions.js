@@ -185,6 +185,58 @@ const auraDescriptions = [
     ],
   },
   {
+    aura: 'touristy',
+    definition:
+      'Relating to, appealing to, or visited by tourists (often used to suggest tawdriness or lack of authenticity)',
+    description: '',
+    examples: [
+      {
+        businessImage: {
+          src: 'https://s3-media2.fl.yelpcdn.com/bphoto/Di1aXt1jnj8r2BjGZim5zw/o.jpg',
+          owner: 'Yelp',
+        },
+      },
+      {
+        businessImage: {
+          src: 'https://modernhiker.com/wp-content/uploads/2013/01/baldwin-hills-overlook-11.jpg',
+          owner: 'Modern Hiker',
+        },
+      },
+      {
+        businessImage: {
+          src: 'https://s3-media2.fl.yelpcdn.com/bphoto/rAImnKvUNcNY8i6qEDWrZA/o.jpg',
+          owner: 'Yelp',
+        },
+      },
+    ],
+  },
+  {
+    aura: 'casual',
+    definition: 'Relaxed and unconcerned.',
+    description: '',
+    examples: [
+      {
+        businessImage: {
+          src: 'https://www.tarashimalayancuisine.com/image/venice_front.jpg',
+          owner: 'Taras Himalayan Cuisine',
+        },
+      },
+      {
+        businessImage: {
+          src: 'https://s3-media1.fl.yelpcdn.com/bphoto/1kslcOrxT5tGTD5z66yPgg/o.jpg',
+          owner: 'Yelp',
+        },
+      },
+      {
+        businessImage: {
+          src: 'https://cdn.workfrom.co/files/2014/11/funnel-mill-santa-monica-12.jpg',
+          owner: 'Funnel Mill',
+        },
+      },
+    ],
+  },
+
+  {
     aura: 'powerful',
     definition: 'Having great power or strength.',
     description: "'With great power comes great responsibility' - Ben Parker",

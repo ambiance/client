@@ -68,6 +68,11 @@
   color: var(--off-white) !important;
 }
 
+.accordionImages {
+  display: flex;
+  justify-content: center;
+}
+
 .accordionImageContainer {
   height: 10rem;
   min-width: 10rem;
