@@ -130,12 +130,11 @@ export default class CardItem extends React.Component {
 
         <span className="resultCardTitle">{business.name}</span>
         <span className="resultCardSubtitle">
-          <strong>{this.state.neighborhood || business.city}</strong>
-          <br />
-          <br />
-          {categories}
+          <p>
+            <strong>{this.state.neighborhood || business.city}</strong>
+          </p>
+          <p>{categories}</p>
         </span>
-        <img className="resultCardStar" src={this.handleStars(business.stars)} alt="Rating Stars" />
       </button>
     );
   }
