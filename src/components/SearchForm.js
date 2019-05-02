@@ -129,15 +129,12 @@ class SearchForm extends React.Component {
                 onChange={this.handleCityChange}
               >
                 <option value="">Any Place</option>
-                <option value="Santa Monica">Santa Monica</option>
-                <option value="Los Angeles">Los Angeles</option>
-                <option value="Venice">Venice</option>
-                <option value="Culver City">Culver City</option>
-                <option value="Beverly Hills">Beverly Hills</option>
-                <option value="Marina Del Rey">Marina Del Rey</option>
-                <option value="Inglewood">Inglewood</option>
-                <option value="Hollywood">Hollywood</option>
-                <option value="Burbank">Burbank</option>
+                <option value="santa monica">Santa Monica</option>
+                <option value="downtown la">Downtown LA</option>
+                <option value="culver city">Culver City</option>
+                <option value="beverly hills">Beverly Hills</option>
+                <option value="hollywood">Hollywood</option>
+                <option value="la brea">La Brea</option>
               </select>
             </p>
             <p className="submit-wrap" id="submitButtonContainer">
