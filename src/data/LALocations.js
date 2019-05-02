@@ -1,5 +1,5 @@
 const locations = {
-  Downtown: [
+  'Downtown LA': [
     90014,
     90015,
     90013,

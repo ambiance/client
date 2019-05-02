@@ -130,7 +130,7 @@ export default class CardItem extends React.Component {
 
         <span className="resultCardTitle">{business.name}</span>
         <span className="resultCardSubtitle">
-          {this.state.neighborhood || business.city}
+          <strong>{this.state.neighborhood || business.city}</strong>
           <br />
           <br />
           {categories}
