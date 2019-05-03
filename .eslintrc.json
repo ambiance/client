@@ -75,13 +75,6 @@
     "react/react-in-jsx-scope": 0,
     "react/prefer-stateless-function": 0,
     "react/forbid-prop-types": 0,
-    "react/destructuring-assignment": [
-      true,
-      "always",
-      {
-        "ignoreClassFields": true
-      }
-    ],
     "react/no-unescaped-entities": 0,
     "react/button-has-type": false,
     "jsx-a11y/accessible-emoji": 0,

@@ -99,7 +99,9 @@ export default class CardItem extends React.Component {
   render() {
     // consts here
     const { business, onOpenModal } = this.props;
-    const categories = business.categories.map(category => category.title).join(', ');
+    // We cannot guarentee that the categories will not overflow in the cards with multiple categories.
+    // FIXME: const categories = business.categories.map(category => category.title).join(', ');
+    const categories = business.categories[0].title;
     return (
       <button key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
         <div className="resultCardImageContainer">
