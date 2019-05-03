@@ -1,76 +1,48 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import AuraPills from './AuraPills.js';
-import Map from './Map';
-import starImages from '../data/starImages';
-import '../styles/Modal.scss';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import AuraPills from "./AuraPills.js";
+import Map from "./Map";
+import ModalWindow from "./ModalWindow";
+import BusinessDescription from "./BusinessDescription";
+import Feedback from "./Feedback";
+import starImages from "../data/starImages";
+import "../styles/Modal.scss";
 
-const Modal = props => {
-  const starSrc = handleStars(props.show ? props.details.details.stars : 0);
+const Modal = ({ show, details, close }) => {
+  const [component, setComponent] = useState(
+    <BusinessDescription show={show} details={details} />
+  );
 
-  function auraColorChange(auraString) {
-    let colorString = ``;
-    switch (auraString) {
-      case 'trendy':
-        colorString = `var(--trendy)`;
-        break;
-      case 'romantic':
-        colorString = `var(--romantic)`;
-        break;
-      case 'hipster':
-        colorString = `var(--hipster)`;
-        break;
-      case 'casual':
-        colorString = `var(--casual)`;
-        break;
-      case 'inspired':
-        colorString = `var(--inspired)`;
-        break;
-      case 'intimate':
-        colorString = `var(--intimate)`;
-        break;
-      case 'classy':
-        colorString = `var(--classy)`;
-        break;
-      case 'touristy':
-        colorString = `var(--touristy)`;
-        break;
-      case 'cheerful':
-        colorString = `var(--cheerful)`;
-        break;
-      default:
-        colorString = `var(--mint)`;
-    }
-    const style = colorString;
-    return style;
-  }
+  useEffect(
+    () => setComponent(<BusinessDescription show={show} details={details} />),
+    [show]
+  );
 
   return (
     <div>
       <button
         className="modal-backdrop"
-        onClick={props.close}
+        onClick={close}
         style={{
-          // transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
-          opacity: props.show ? '0.5' : '0',
-          position: props.show ? 'fixed' : 'absolute',
-          zIndex: props.show ? '15' : '-5',
+          opacity: show ? "0.5" : "0",
+          position: show ? "fixed" : "absolute",
+          zIndex: show ? "15" : "-5"
         }}
       />
 
       <div
         className="modal-wrapper"
         style={{
-          transform: props.show ? 'translateY(0vh)' : 'translateY(-200vh)',
-          opacity: props.show ? '1' : '0',
+          transform: show ? "translateY(0vh)" : "translateY(-200vh)",
+          opacity: show ? "1" : "0"
         }}
       >
         <div className="modal-header">
-          <h3>{props.show ? props.details.details.name : ''}</h3>
+          <h3>{show ? details.name : ""}</h3>
           <span className="modalPillsContainer">
-            {props.show
-              ? props.details.details.attributes.aura
-                  .split(',')
+            {show
+              ? details.attributes.aura
+                  .split(",")
                   .map(auraSingleton => (
                     <AuraPills
                       key={auraSingleton}
@@ -78,22 +50,56 @@ const Modal = props => {
                       backgroundColor={auraColorChange(auraSingleton)}
                     />
                   ))
-              : ''}
+              : ""}
           </span>
-          <button className="close-modal-btn" onClick={props.close}>
-            ×
+          <button className="close-modal-btn" onClick={close}>
+            &#9587;
           </button>
         </div>
 
-        <div className="businessMap">
-          {/* BROCK: This was changed from 'MapContainer' to 'Map' because of your 
-        naming in the MapContainer component */}
-          <Map className="modalMap" details={props.details.details} />
+        <div className="navBar">
+          <div>
+            <ul className="navContainer">
+              <li className="modalLI">
+                <button
+                  className="modalNav"
+                  onClick={() =>
+                    setComponent(
+                      <BusinessDescription show={show} details={details} />
+                    )
+                  }
+                >
+                  Description
+                </button>
+              </li>
+              <li className="modalLI">
+                <button
+                  className="modalNav"
+                  onClick={() =>
+                    setComponent(<Map show={show} details={details} />)
+                  }
+                >
+                  Map
+                </button>
+              </li>
+              <li className="modalLI">
+                <button
+                  className="modalNav"
+                  onClick={() => setComponent(<Feedback />)}
+                >
+                  Feedback
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="businessDetails">
-          <ul className="categories">
+        {/* <div className="businessDetails"> */}
+        <div className="componentWindow">
+          <ModalWindow details={details} show={show} component={component} />
+        </div>
+        {/* <ul className="categories">
             {props.show
-              ? props.details.details.categories.map(category => (
+              ? props.details.categories.map(category => (
                   <li key={category.title}>{category.title}</li>
                 ))
               : ''}
@@ -113,13 +119,48 @@ const Modal = props => {
           >
             <img className="yelpPic" src="./assets/img/yelpButton.jpg" alt="yelp" />
             <p className="yelpClick">Click for more details!</p>
-          </a>
-        </div>
-        <div className="modal-footer" />
+          </a> */}
       </div>
     </div>
   );
 };
+
+function auraColorChange(auraString) {
+  let colorString = ``;
+  switch (auraString) {
+    case "trendy":
+      colorString = `var(--trendy)`;
+      break;
+    case "romantic":
+      colorString = `var(--romantic)`;
+      break;
+    case "hipster":
+      colorString = `var(--hipster)`;
+      break;
+    case "casual":
+      colorString = `var(--casual)`;
+      break;
+    case "inspired":
+      colorString = `var(--inspired)`;
+      break;
+    case "intimate":
+      colorString = `var(--intimate)`;
+      break;
+    case "classy":
+      colorString = `var(--classy)`;
+      break;
+    case "touristy":
+      colorString = `var(--touristy)`;
+      break;
+    case "cheerful":
+      colorString = `var(--cheerful)`;
+      break;
+    default:
+      colorString = `var(--mint)`;
+  }
+  const style = colorString;
+  return style;
+}
 
 function handleStars(stars) {
   switch (stars) {
@@ -151,7 +192,8 @@ function handleStars(stars) {
 Modal.propTypes = {
   show: PropTypes.bool.isRequired,
   details: PropTypes.object.isRequired,
-  close: PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired
+  // map: PropTypes.bool.isRequired,
 };
 
 export default Modal;
