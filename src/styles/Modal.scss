@@ -30,23 +30,6 @@
   }
 }
 
-@media screen and (max-width: 812px) {
-  .modal-wrapper {
-    grid-template-rows: 60px 1fr 1fr 54px;
-    grid-template-areas:
-      " head head "
-      " map map "
-      " detail detail "
-      " foot foot ";
-    overflow-x: hidden;
-    overflow-y: scroll;
-  }
-
-  .navBar {
-    height: 12rem;
-  }
-}
-
 .modal-wrapper > .modal-header {
   grid-area: head;
 }
@@ -60,7 +43,7 @@
 }
 
 .modal-header {
-  background: #263238;
+  background: var(--dark-mint);
   height: 40px;
   /* line-height: 40px; */
   padding: 10px 20px;
@@ -91,11 +74,17 @@
 
 @media screen and (max-width: 570px) {
   .modal-wrapper {
-    grid-template-rows: 108px 1fr 1fr 54px;
+    grid-template-rows: 97px 1fr;
   }
 
+  .businessDetails {
+    font-size: 14px;
+  }
+
+
+
   .modal-header {
-    height: 100px;
+    height: 77px;
     padding: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 30px;
@@ -235,6 +224,33 @@
   font-size: 0.5rem;
 }
 
+.yelpLink {
+  margin-top: 1.4rem;
+  color: #263238;
+  display: flex;
+  flex-direction: column;
+  height: 5rem;
+}
+
+@media screen and (max-width: 815px) {
+  .categories {
+    margin-bottom: 0rem;
+  }
+  .address {
+    margin-bottom: 0rem;
+    margin-top: 0.5rem;
+  }
+  .info {
+    padding: 0.5rem;
+  }
+  .modalStar{
+    width: 6rem;
+  }
+  .yelpLink{
+    margin-top: 1rem;
+  }
+}
+
 #trendybtn,
 #inspiredbtn,
 #romanticbtn,
@@ -271,14 +287,6 @@ h1 {
   border-style: dotted;
   background-color: rgba(90, 187, 158, 0.9);
   border-radius: 33px;
-}
-
-.yelpLink {
-  margin-top: 1.4rem;
-  color: #263238;
-  display: flex;
-  flex-direction: column;
-  height: 5rem;
 }
 
 .modal-backdrop {
@@ -346,6 +354,12 @@ h1 {
 
 .modalNav:focus {
   color: #f1f1f1;
+}
+
+@media screen and (max-width: 434px) {
+  .modalNav{
+    font-size: 10px;
+  }
 }
 
 .modalLI {
