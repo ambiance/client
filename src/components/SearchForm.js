@@ -135,6 +135,13 @@ class SearchForm extends React.Component {
                 <option value="beverly hills">Beverly Hills</option>
                 <option value="hollywood">Hollywood</option>
                 <option value="la brea">La Brea</option>
+                <option value="van nuys">Van Nuys</option>
+                <option value="pasadena">Pasadena</option>
+                <option value="newport beach">Newport Beach</option>
+                <option value="anaheim">Anaheim</option>
+                <option value="rowland heights">Rowland Heights</option>
+                <option value="laguna">Laguna</option>
+                <option value="brea">Brea</option>
               </select>
             </p>
             <p className="submit-wrap" id="submitButtonContainer">
