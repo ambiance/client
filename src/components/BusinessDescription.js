@@ -4,7 +4,6 @@ import starImages from "../data/starImages";
 
 const BusinessDescription = ({ show, details }) => {
   const starSrc = handleStars(show ? details.stars : 0);
-  console.log("Businsess Description", details);
   return (
     <div className="businessDetails">
       <ul className="categories">

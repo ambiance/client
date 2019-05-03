@@ -37,7 +37,6 @@ export class MapContainer extends React.Component {
 
   render() {
     const { details } = this.props;
-    console.log(this.props);
     return (
       <Map
         onClick={this.onMapClicked}
@@ -77,7 +76,7 @@ export class MapContainer extends React.Component {
           marker={this.state.activeMarker}
         >
           {details ? (
-            <p>
+            <p style={{ padding: "0" }}>
               {details.address}
               <br />
               {details.city}, {details.state} {details.postalCode}
