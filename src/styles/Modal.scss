@@ -30,23 +30,6 @@
   }
 }
 
-// @media screen and (max-width: 812px) {
-//   .modal-wrapper {
-//     grid-template-rows: 60px 1fr 1fr 54px;
-//     grid-template-areas:
-//       " head head "
-//       " map map "
-//       " detail detail "
-//       " foot foot ";
-//     overflow-x: hidden;
-//     overflow-y: scroll;
-//   }
-
-//   .navBar {
-//     height: 12rem;
-//   }
-// }
-
 .modal-wrapper > .modal-header {
   grid-area: head;
 }
