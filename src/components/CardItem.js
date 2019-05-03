@@ -1,7 +1,9 @@
+/* eslint-disable no-useless-return */
 import React from 'react';
 import PropTypes from 'prop-types';
 import AuraPills from './AuraPills';
 import starImages from '../data/starImages';
+import locations from '../data/LALocations';
 import '../styles/CardItem.scss';
 
 export default class CardItem extends React.Component {
@@ -9,7 +11,15 @@ export default class CardItem extends React.Component {
     super(props);
 
     // set initial state
-    this.state = {};
+    this.state = {
+      neighborhood: null,
+    };
+  }
+
+  componentDidMount() {
+    const { postalCode, city } = this.props.business;
+    if (city !== 'Los Angeles') this.setState({ neighborhood: city });
+    else this.setNeighborhood(postalCode);
   }
 
   auraColorChange = auraString => {
@@ -77,10 +87,19 @@ export default class CardItem extends React.Component {
     }
   };
 
+  setNeighborhood = postalCode => {
+    Object.keys(locations).forEach(location => {
+      if (locations[location].includes(parseInt(postalCode))) {
+        this.setState({ neighborhood: location });
+        return;
+      }
+    });
+  };
+
   render() {
     // consts here
     const { business, onOpenModal } = this.props;
-
+    const categories = business.categories.map(category => category.title).join(', ');
     return (
       <button key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
         <div className="resultCardImageContainer">
@@ -110,11 +129,12 @@ export default class CardItem extends React.Component {
         </div>
 
         <span className="resultCardTitle">{business.name}</span>
-        <span className="resultCardSubtitle">{business.address}</span>
         <span className="resultCardSubtitle">
-          {business.city}, {business.state} {business.postalCode}
+          <p>
+            <strong>{this.state.neighborhood || business.city}</strong>
+          </p>
+          <p>{categories}</p>
         </span>
-        <img className="resultCardStar" src={this.handleStars(business.stars)} alt="Rating Stars" />
       </button>
     );
   }
