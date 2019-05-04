@@ -17,7 +17,7 @@ const Modal = ({ show, details, close }) => {
   return (
     <div>
       <button
-        className="modal-backdrop"
+        className="modalBackdrop"
         onClick={close}
         style={{
           opacity: show ? '0.5' : '0',
@@ -27,13 +27,13 @@ const Modal = ({ show, details, close }) => {
       />
 
       <div
-        className="modal-wrapper"
+        className="modalWrapper"
         style={{
           transform: show ? 'translateY(0vh)' : 'translateY(-200vh)',
           opacity: show ? '1' : '0',
         }}
       >
-        <header className="modal-header">
+        <header className="modalHeader">
           <h3>{show ? details.name : ''}</h3>
           <div className="modalPillsContainer">
             {show
@@ -49,7 +49,7 @@ const Modal = ({ show, details, close }) => {
                 })
               : ''}
           </div>
-          <button className="close-modal-btn" onClick={close}>
+          <button className="closeModalBtn" onClick={close}>
             &#9587;
           </button>
         </header>

@@ -1,4 +1,4 @@
-.modal-wrapper {
+.modalWrapper {
   background: white;
   border: 1px solid #d0cccc;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
@@ -21,7 +21,7 @@
 }
 
 @media screen and (max-width: 853px) {
-  .modal-wrapper {
+  .modalWrapper {
     margin: 0px auto 0px 5%;
     width: 90%;
     top: 10px;
@@ -30,19 +30,19 @@
   }
 }
 
-.modal-wrapper > .modal-header {
+.modalWrapper > .modalHeader {
   grid-area: head;
 }
 
-.modal-wrapper > .navBar {
+.modalWrapper > .navBar {
   grid-area: map;
 }
 
-.modal-wrapper > .businessDetails {
+.modalWrapper > .businessDetails {
   grid-area: detail;
 }
 
-.modal-header {
+.modalHeader {
   background: var(--dark-mint);
   height: 40px;
   line-height: 0.8rem;
@@ -54,7 +54,7 @@
   grid-area: span 1;
 }
 
-.modal-header h3 {
+.modalHeader h3 {
   color: white;
   margin: 0;
   padding: 0;
@@ -73,7 +73,7 @@
 }
 
 @media screen and (max-width: 570px) {
-  .modal-wrapper {
+  .modalWrapper {
     grid-template-rows: 97px 1fr;
   }
 
@@ -81,7 +81,7 @@
     font-size: 14px;
   }
 
-  .modal-header {
+  .modalHeader {
     height: 77px;
     padding: 10px;
     display: grid;
@@ -92,7 +92,7 @@
       ' pills pills pills ';
   }
 
-  .modal-header h3 {
+  .modalHeader h3 {
     height: 40px;
   }
 
@@ -101,26 +101,26 @@
   //   margin-top: -6px;
   // }
 
-  .modal-header > h3 {
+  .modalHeader > h3 {
     grid-area: title;
   }
 
-  .modal-header > .modalPillsContainer {
+  .modalHeader > .modalPillsContainer {
     grid-area: pills;
   }
 
-  .modal-header > .close-modal-btn {
+  .modalHeader > .closeModalBtn {
     grid-area: button;
   }
 }
 
 @media all and (max-width: 373px) {
-  .modal-header h3 {
+  .modalHeader h3 {
     font-size: 17px;
   }
 }
 
-.close-modal-btn {
+.closeModalBtn {
   height: 40px;
   background-color: transparent;
   border: none;
@@ -130,7 +130,7 @@
   cursor: pointer;
 }
 
-.modal-footer {
+.modalFooter {
   background: #263238;
   padding: 15px;
 }
@@ -145,7 +145,7 @@
   background-color: #263238;
 }
 
-.back-drop {
+.backDrop {
   background-color: rgba(48, 49, 48, 0.42);
   height: 100%;
   position: fixed;
@@ -153,7 +153,7 @@
   width: 100%;
 }
 
-.leaflet-marker-icon {
+.leafletMarkerIcon {
   width: 15px;
   height: 15px;
   transform: translate3d(25px, 25px, 0px);
@@ -287,7 +287,7 @@ h1 {
   border-radius: 33px;
 }
 
-.modal-backdrop {
+.modalBackdrop {
   width: 100%;
   height: 125%;
   z-index: 15;
