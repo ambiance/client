@@ -43,8 +43,8 @@ class Dashboard extends React.Component {
           logout={logout}
         />
         {this.state.active === 'overview' ? (
-          <div className="dashboard-body">
-            <h1 className="dashboard-header">Welcome, {user.username ? user.username : 'Anon'}!</h1>
+          <div className="dashboardBody">
+            <h1 className="dashboardHeader">Welcome, {user.username ? user.username : 'Anon'}!</h1>
             {/* <Favorites
               modalDetails={modalDetails}
               isShowing={isModalShowing}
@@ -57,8 +57,8 @@ class Dashboard extends React.Component {
           ''
         )}
         {this.state.active === 'settings' ? (
-          <div className="dashboard-body">
-            <h1 className="dashboard-header">Account Settings</h1>
+          <div className="dashboardBody">
+            <h1 className="dashboardHeader">Account Settings</h1>
             <AccountSettings user={user} />
           </div>
         ) : (

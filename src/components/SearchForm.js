@@ -66,7 +66,7 @@ class SearchForm extends React.Component {
 
   render() {
     return (
-      // FIXME: This article tag does not make sense.
+      // FIXME: This article tag does not make sense. I don't think this would be considered an article...
       <article>
         <section
           id="search-form"
@@ -92,6 +92,7 @@ class SearchForm extends React.Component {
               >
                 <option value="">Any Aura</option>
                 <option value="trendy">Trendy</option>
+                <option value="lively">Lively</option>
                 <option value="inspired">Inspired</option>
                 <option value="romantic">Romantic</option>
                 <option value="cheerful">Cheerful</option>

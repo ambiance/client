@@ -1,15 +1,11 @@
 .accordion {
-  margin: 5rem 8rem;
+  margin: 2.5rem 8rem;
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.12);
 }
 
-.accordion-section:last-child {
-  border-bottom: 0;
-}
-
-.accordion-header {
+.accordionHeader {
   background-color: var(--mint-text);
   padding: 1rem 2rem;
   margin: 0;
@@ -25,7 +21,7 @@
   overflow: hidden;
 }
 
-.accordion-section {
+.accordionSection {
   background-color: var(--mint);
   color: white;
   p {
@@ -35,7 +31,11 @@
   border-bottom: 1px solid black;
 }
 
-.accordion-button {
+.accordionSection:last-child {
+  border-bottom: 0;
+}
+
+.accordionButton {
   font-family: 'Comfortaa', cursive;
   background-color: var(--off-white);
   cursor: pointer;
@@ -59,11 +59,11 @@
   }
 }
 
-.accordion-button:last-child {
+.accordionButton:last-child {
   border-bottom: 0;
 }
 
-.accordion-button:hover {
+.accordionButton:hover {
   background-color: var(--shadow);
   color: var(--off-white) !important;
 }
@@ -86,19 +86,19 @@
   object-fit: cover;
 }
 
+@media all and (max-width: 700px) {
+  .accordion {
+    margin: 2.5rem 1.5rem;
+  }
+}
+
 @media all and (max-width: 860px) {
-  .accordion-button,
-  .accordion-section {
+  .accordionButton,
+  .accordionSection {
     font-size: 1rem;
   }
   .accordionImageContainer {
     min-width: 0;
     width: 10rem;
-  }
-}
-
-@media all and (max-width: 700px) {
-  .accordion {
-    margin: 5rem 1.5rem;
   }
 }

@@ -81,7 +81,7 @@ class Accordion extends Component {
     return (
       <section className="accordion">
         {/* Optional Title */}
-        {title ? <h3 className="accordion-header">{title}</h3> : ''}
+        {title ? <h3 className="accordionHeader">{title}</h3> : ''}
         {/* Check for one or many AccordianSection children */}
         {Array.isArray(children) ? (
           children.map((child, i) => (

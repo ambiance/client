@@ -22,10 +22,10 @@ class AccordionSection extends Component {
     } = this;
 
     return (
-      <div className="accordion-section" style={{ backgroundColor: `var(--${label || 'white'})` }}>
+      <div className="accordionSection" style={{ backgroundColor: `var(--${label || 'white'})` }}>
         <button
           onClick={onClick}
-          className="accordion-button"
+          className="accordionButton"
           style={{ color: `var(--${label || 'off-black'})` }}
         >
           {label}

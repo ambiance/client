@@ -37,15 +37,16 @@ const Modal = ({ show, details, close }) => {
           <h3>{show ? details.name : ''}</h3>
           <div className="modalPillsContainer">
             {show
-              ? details.attributes.aura
-                  .split(',')
-                  .map(auraSingleton => (
+              ? details.attributes.aura.split(',').map(auraSingleton => {
+                  const sanitizedAura = auraSingleton.trim().toLowerCase();
+                  return (
                     <AuraPills
+                      aura={sanitizedAura}
+                      backgroundColor={getColor(sanitizedAura)}
                       key={auraSingleton}
-                      aura={auraSingleton}
-                      backgroundColor={getColor(auraSingleton)}
                     />
-                  ))
+                  );
+                })
               : ''}
           </div>
           <button className="close-modal-btn" onClick={close}>

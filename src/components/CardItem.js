@@ -42,11 +42,11 @@ export default class CardItem extends React.Component {
         <div className="resultCardImageContainer">
           <div className="pillsContainer">
             {business.attributes.aura.split(',').map(auraSingleton => {
-              const trimmedAura = auraSingleton.trim().toLowerCase();
+              const sanitizedAura = auraSingleton.trim().toLowerCase();
               return (
                 <AuraPills
-                  aura={trimmedAura}
-                  backgroundColor={getColor(trimmedAura)}
+                  aura={sanitizedAura}
+                  backgroundColor={getColor(sanitizedAura)}
                   key={auraSingleton}
                 />
               );

@@ -21,6 +21,7 @@ class AuraApp extends React.Component {
       modalDetails: {},
     };
   }
+  // FIXME: Might be throwing memory leaks if the request does not work... check this out...
   componentWillMount() {
     // Get the auth token from local storage and set the auth state to true.
     const token = localStorage.getItem('auraUserToken');

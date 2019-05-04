@@ -13,6 +13,7 @@ class About extends React.Component {
       <div className="about">
         <Slideshow />
 
+        {/* TODO: Candidate for a component */}
         <section className="content">
           <section className="mint landing">
             <img
