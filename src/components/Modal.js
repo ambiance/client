@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import AuraPills from "./AuraPills.js";
-import Map from "./Map";
-import ModalWindow from "./ModalWindow";
-import BusinessDescription from "./BusinessDescription";
-import Feedback from "./Feedback";
-import starImages from "../data/starImages";
-import "../styles/Modal.scss";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import AuraPills from './AuraPills.js';
+import Map from './Map';
+import ModalWindow from './ModalWindow';
+import BusinessDescription from './BusinessDescription';
+// import Feedback from './Feedback';
+import { getColor } from './helpers/auraColors';
+// import { handleStars } from './helpers/stars';
+import '../styles/Modal.scss';
 
 const Modal = ({ show, details, close }) => {
-  const [component, setComponent] = useState(
-    <BusinessDescription show={show} details={details} />
-  );
+  const [component, setComponent] = useState(<BusinessDescription show={show} details={details} />);
 
-  useEffect(
-    () => setComponent(<BusinessDescription show={show} details={details} />),
-    [show]
-  );
+  useEffect(() => setComponent(<BusinessDescription show={show} details={details} />), [show]);
 
   return (
     <div>
@@ -24,75 +20,64 @@ const Modal = ({ show, details, close }) => {
         className="modal-backdrop"
         onClick={close}
         style={{
-          opacity: show ? "0.5" : "0",
-          position: show ? "fixed" : "absolute",
-          zIndex: show ? "15" : "-5"
+          opacity: show ? '0.5' : '0',
+          position: show ? 'fixed' : 'absolute',
+          zIndex: show ? '15' : '-5',
         }}
       />
 
       <div
         className="modal-wrapper"
         style={{
-          transform: show ? "translateY(0vh)" : "translateY(-200vh)",
-          opacity: show ? "1" : "0"
+          transform: show ? 'translateY(0vh)' : 'translateY(-200vh)',
+          opacity: show ? '1' : '0',
         }}
       >
-        <div className="modal-header">
-          <h3>{show ? details.name : ""}</h3>
+        <header className="modal-header">
+          <h3>{show ? details.name : ''}</h3>
           <span className="modalPillsContainer">
             {show
               ? details.attributes.aura
-                  .split(",")
+                  .split(',')
                   .map(auraSingleton => (
                     <AuraPills
                       key={auraSingleton}
                       aura={auraSingleton}
-                      backgroundColor={auraColorChange(auraSingleton)}
+                      backgroundColor={getColor(auraSingleton)}
                     />
                   ))
-              : ""}
+              : ''}
           </span>
           <button className="close-modal-btn" onClick={close}>
             &#9587;
           </button>
-        </div>
+        </header>
 
-        <div className="navBar">
-          <div>
-            <ul className="navContainer">
-              <li className="modalLI">
-                <button
-                  className="modalNav"
-                  onClick={() =>
-                    setComponent(
-                      <BusinessDescription show={show} details={details} />
-                    )
-                  }
-                >
-                  Description
-                </button>
-              </li>
-              <li className="modalLI">
-                <button
-                  className="modalNav"
-                  onClick={() =>
-                    setComponent(<Map show={show} details={details} />)
-                  }
-                >
-                  Map
-                </button>
-              </li>
-              <li className="modalLI">
-                <button
-                  className="modalNav"
-                  onClick={() => setComponent(<Feedback />)}
-                >
-                  Feedback
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <nav className="navBar">
+          <ul className="navContainer">
+            <li className="modalLI">
+              <button
+                className="modalNav"
+                onClick={() => setComponent(<BusinessDescription show={show} details={details} />)}
+              >
+                Description
+              </button>
+            </li>
+            <li className="modalLI">
+              <button
+                className="modalNav"
+                onClick={() => setComponent(<Map show={show} details={details} />)}
+              >
+                Map
+              </button>
+            </li>
+            {/* <li className="modalLI">
+              <button className="modalNav" onClick={() => setComponent(<Feedback />)}>
+                Feedback
+              </button>
+            </li> */}
+          </ul>
+        </nav>
         {/* <div className="businessDetails"> */}
         <div className="componentWindow">
           <ModalWindow details={details} show={show} component={component} />
@@ -125,74 +110,10 @@ const Modal = ({ show, details, close }) => {
   );
 };
 
-function auraColorChange(auraString) {
-  let colorString = ``;
-  switch (auraString) {
-    case "trendy":
-      colorString = `var(--trendy)`;
-      break;
-    case "romantic":
-      colorString = `var(--romantic)`;
-      break;
-    case "hipster":
-      colorString = `var(--hipster)`;
-      break;
-    case "casual":
-      colorString = `var(--casual)`;
-      break;
-    case "inspired":
-      colorString = `var(--inspired)`;
-      break;
-    case "intimate":
-      colorString = `var(--intimate)`;
-      break;
-    case "classy":
-      colorString = `var(--classy)`;
-      break;
-    case "touristy":
-      colorString = `var(--touristy)`;
-      break;
-    case "cheerful":
-      colorString = `var(--cheerful)`;
-      break;
-    default:
-      colorString = `var(--mint)`;
-  }
-  const style = colorString;
-  return style;
-}
-
-function handleStars(stars) {
-  switch (stars) {
-    case 0.5:
-      return starImages[12].src;
-    case 1:
-      return starImages[13].src;
-    case 1.5:
-      return starImages[14].src;
-    case 2:
-      return starImages[15].src;
-    case 2.5:
-      return starImages[16].src;
-    case 3:
-      return starImages[17].src;
-    case 3.5:
-      return starImages[18].src;
-    case 4:
-      return starImages[19].src;
-    case 4.5:
-      return starImages[20].src;
-    case 5:
-      return starImages[21].src;
-    default:
-      return starImages[11].src;
-  }
-}
-
 Modal.propTypes = {
   show: PropTypes.bool.isRequired,
   details: PropTypes.object.isRequired,
-  close: PropTypes.func.isRequired
+  close: PropTypes.func.isRequired,
   // map: PropTypes.bool.isRequired,
 };
 

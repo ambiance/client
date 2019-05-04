@@ -18,7 +18,7 @@ class AccordionSection extends Component {
   render() {
     const {
       onClick,
-      props: { isOpen, label },
+      props: { isOpen, label, children },
     } = this;
 
     return (
@@ -34,7 +34,7 @@ class AccordionSection extends Component {
             {isOpen && <span>&#8595;</span>}
           </div>
         </button>
-        {isOpen && <section style={{ padding: '2rem' }}>{this.props.children}</section>}
+        {isOpen && <section style={{ padding: '2rem' }}>{children}</section>}
       </div>
     );
   }

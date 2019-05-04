@@ -35,17 +35,15 @@ class SearchResults extends React.Component {
       return <div />;
     }
     return (
-      <div>
-        <section id="searchResults">
-          <div className="resultCards">
-            {businesses.map((business, i) => (
-              <div key={i}>
-                <CardItem business={business} onOpenModal={onOpenModal} />
-              </div>
-            ))}
-          </div>
-        </section>
-      </div>
+      <section id="searchResults">
+        <div className="resultCards">
+          {businesses.map((business, i) => (
+            <div key={i}>
+              <CardItem business={business} onOpenModal={onOpenModal} />
+            </div>
+          ))}
+        </div>
+      </section>
     );
   }
 }

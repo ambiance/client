@@ -1,49 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AuraPills from './AuraPills';
+import { getColor } from './helpers/auraColors';
 
 class TeamMember extends React.Component {
-  auraColorChange = auraString => {
-    let colorString = ``;
-    switch (auraString) {
-      case 'Trendy':
-        colorString = `var(--trendy)`;
-        break;
-      case 'Romantic':
-        colorString = `var(--romantic)`;
-        break;
-      case 'Hipster':
-        colorString = `var(--hipster)`;
-        break;
-      case 'Casual':
-        colorString = `var(--casual)`;
-        break;
-      case 'Inspired':
-        colorString = `var(--inspired)`;
-        break;
-      case 'Intimate':
-        colorString = `var(--intimate)`;
-        break;
-      case 'Classy':
-        colorString = `var(--classy)`;
-        break;
-      case 'Touristy':
-        colorString = `var(--touristy)`;
-        break;
-      case 'Cheerful':
-        colorString = `var(--cheerful)`;
-        break;
-      default:
-        colorString = `var(--mint)`;
-    }
-    const style = colorString;
-    return style;
-  };
   render() {
     const { sectionId, img, fullName, role, aura, link } = this.props;
-    // const auraStyle = {
-    //   margin-left: -10px,
-    // }
 
     return (
       <section id={sectionId} className="halfpics">
@@ -58,7 +20,7 @@ class TeamMember extends React.Component {
             <AuraPills
               id="pills"
               aura={aura}
-              backgroundColor={this.auraColorChange(aura)}
+              backgroundColor={getColor(aura)}
               style={{ 'margin-left': 0 }}
             />
           </li>

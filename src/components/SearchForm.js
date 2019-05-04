@@ -66,6 +66,7 @@ class SearchForm extends React.Component {
 
   render() {
     return (
+      // FIXME: This article tag does not make sense.
       <article>
         <section
           id="search-form"

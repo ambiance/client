@@ -91,7 +91,6 @@ class SignupForm extends Component {
             onChange={this.handleInputChange}
           />
         </label>
-        {/* Need a button to acheive submit functionality, but don't use the button */}
         <button className="submitButton" type="submit">
           Sign up!
         </button>

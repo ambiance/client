@@ -1,16 +1,8 @@
-import React from 'react';
-import BusinessDescription from './BusinessDescription';
-
-const ModalWindow = ({ show, details, component }) => component;
-
-/*
-if (component) {
-    return component;
-  } else if (details) {
-    return <BusinessDescription show={show} details={details} />;
-  } else {
-    return <h1>Nothing is here...</h1>;
-  }
-*/
+/**
+ * Custom frame to render any component in Modal.
+ * @param {Object} props Passed data values
+ * @param {Symbol} props.component Displayed component
+ */
+const ModalWindow = ({ component }) => component;
 
 export default ModalWindow;
