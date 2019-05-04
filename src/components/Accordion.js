@@ -29,7 +29,6 @@ class Accordion extends Component {
     const openSections = {};
 
     const { children } = this.props;
-    console.log(this.props);
     // Check for one or many AccordianSection children
     if (Array.isArray(children)) {
       children.forEach(child => {

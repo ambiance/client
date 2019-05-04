@@ -13,8 +13,8 @@
   grid-template-columns: 20% 80%;
   grid-template-rows: 60px 1fr;
   grid-template-areas:
-    " head head "
-    " map detail ";
+    ' head head '
+    ' map detail ';
   overflow-x: hidden;
   overflow-y: hidden;
   border: none;
@@ -81,8 +81,6 @@
     font-size: 14px;
   }
 
-
-
   .modal-header {
     height: 77px;
     padding: 10px;
@@ -90,18 +88,18 @@
     grid-template-columns: 1fr 1fr 30px;
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
-      " title title button "
-      " pills pills pills ";
+      ' title title button '
+      ' pills pills pills ';
   }
 
   .modal-header h3 {
     height: 40px;
   }
 
-  .modalPillsContainer {
-    margin-left: -10px;
-    margin-top: -6px;
-  }
+  // .modalPillsContainer {
+  //   margin-left: -10px;
+  //   margin-top: -6px;
+  // }
 
   .modal-header > h3 {
     grid-area: title;
@@ -129,6 +127,7 @@
   width: 1rem;
   color: white;
   outline: none;
+  cursor: pointer;
 }
 
 .modal-footer {
@@ -209,8 +208,8 @@
 .info {
   color: rgba(90, 187, 158, 0.9);
   display: flex;
-  align-self: center;
   width: max-content;
+  margin: 1rem auto;
 }
 
 .yelpPic {
@@ -220,7 +219,6 @@
 
 .yelpClick {
   margin: auto;
-  margin-top: -10px;
   font-size: 0.5rem;
 }
 
@@ -243,10 +241,10 @@
   .info {
     padding: 0.5rem;
   }
-  .modalStar{
+  .modalStar {
     width: 6rem;
   }
-  .yelpLink{
+  .yelpLink {
     margin-top: 1rem;
   }
 }
@@ -344,8 +342,10 @@ h1 {
   background-color: rgba(0, 0, 0, 0);
   border: none;
   outline: none;
+  font-size: 0.8rem;
   text-decoration: none;
   color: #818181;
+  cursor: pointer;
 }
 
 .modalNav:hover {
@@ -357,7 +357,7 @@ h1 {
 }
 
 @media screen and (max-width: 434px) {
-  .modalNav{
+  .modalNav {
     font-size: 10px;
   }
 }

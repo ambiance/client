@@ -35,7 +35,7 @@ const Modal = ({ show, details, close }) => {
       >
         <header className="modal-header">
           <h3>{show ? details.name : ''}</h3>
-          <span className="modalPillsContainer">
+          <div className="modalPillsContainer">
             {show
               ? details.attributes.aura
                   .split(',')
@@ -47,13 +47,13 @@ const Modal = ({ show, details, close }) => {
                     />
                   ))
               : ''}
-          </span>
+          </div>
           <button className="close-modal-btn" onClick={close}>
             &#9587;
           </button>
         </header>
 
-        <nav className="navBar">
+        <div className="navBar">
           <ul className="navContainer">
             <li className="modalLI">
               <button
@@ -77,7 +77,7 @@ const Modal = ({ show, details, close }) => {
               </button>
             </li> */}
           </ul>
-        </nav>
+        </div>
         {/* <div className="businessDetails"> */}
         <div className="componentWindow">
           <ModalWindow details={details} show={show} component={component} />
