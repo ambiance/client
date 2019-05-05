@@ -5,8 +5,8 @@ article {
   flex-direction: column;
   text-align: center;
 
-  /* margin-left: 15%;
-  margin-right: 15%; */
+  // margin-left: 15%;
+  // margin-right: 15%;
 }
 
 .formHeader {
@@ -228,7 +228,6 @@ option {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
-    width: 30rem;
   }
 
   .grid-100 {
@@ -272,15 +271,10 @@ option {
   #search-form {
     position: center;
     top: 50%;
-    left: 57%;
   }
 }
 
 @media screen and (max-width: 485px) {
-  form {
-    width: 14rem;
-  }
-
   .grid-100 {
     width: 29.3vw;
     min-width: 9rem;
@@ -313,11 +307,5 @@ option {
   #search-form span {
     width: 10rem;
     min-width: 7rem;
-  }
-
-  #search-form {
-    position: center;
-    top: 50%;
-    left: 53%;
   }
 }

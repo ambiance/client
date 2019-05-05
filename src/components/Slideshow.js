@@ -1,8 +1,8 @@
 import React from 'react';
 import { Glide } from 'react-glide';
-import '../styles/glide.scss';
 import Slide from './Slide';
 import slideImages from '../data/slideImages';
+import '../styles/glide.scss';
 
 class Slideshow extends React.Component {
   constructor() {

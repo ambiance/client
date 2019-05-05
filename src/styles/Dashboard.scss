@@ -1,3 +1,5 @@
+//TODO: Resolve class names to be camelCase or kabob-case
+
 .dashboard {
   display: flex;
   min-height: calc(100vh - 175px);
@@ -10,25 +12,25 @@
     text-align: center;
   }
 
-  .account-forms form {
+  .accountForms form {
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .account-forms form label input {
+  .accountForms form label input {
     margin: 10px 0;
   }
 
-  .account-forms form button {
+  .accountForms form button {
     margin: 20px auto;
     width: 100%;
     max-width: 2000px;
   }
 }
 
-.dashboard-header {
+.dashboardHeader {
   display: block;
   background-color: transparent;
   color: var(--off-black);
@@ -39,40 +41,40 @@
   margin-left: 0;
 }
 
-.dashboard-body {
+.dashboardBody {
   padding: 50px;
   flex: 1;
 }
 
-.dashboard-body p {
+.dashboardBody p {
   padding: 15px 0;
   margin: 0;
 }
 
-.dashboard .active-view {
+.dashboard .activeView {
   font-weight: bolder;
   color: var(--light-mint);
 }
 
-.account-menu {
+.accountMenu {
   padding: 30px;
   background-color: var(--mint);
 }
 
-.account-menu ul {
+.accountMenu ul {
   list-style: none;
   padding: 0;
 }
 
-.account-menu ul li {
+.accountMenu ul li {
   margin-bottom: 15px;
 }
 
-.account-menu .active-view {
+.accountMenu .activeView {
   color: var(--light-mint);
 }
 
-.link-button {
+.linkButton {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -83,23 +85,23 @@
   font-family: 'Comfortaa', cursive;
 }
 
-.link-button:hover,
-.link-button:focus {
+.linkButton:hover,
+.linkButton:focus {
   text-decoration: underline;
 }
 
-.account-settings {
+.accountSettings {
   display: flex;
   flex-direction: column;
 }
 
-.account-forms {
+.accountForms {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
-.account-forms form {
+.accountForms form {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -107,7 +109,7 @@
   padding-right: 30px;
 }
 
-.account-forms form input {
+.accountForms form input {
   display: block;
   margin: 10px;
   padding-left: 20px;
@@ -119,7 +121,7 @@
   font-family: 'Comfortaa', cursive;
 }
 
-.account-forms form button {
+.accountForms form button {
   font-size: 18px;
   margin: 20px 0;
   max-width: 200px;
@@ -128,7 +130,7 @@
   outline: none;
 }
 
-.account-forms form button:active {
+.accountForms form button:active {
   outline: 1px solid var(--off-black);
   outline-offset: -4px;
 }

@@ -18,14 +18,14 @@ class AccordionSection extends Component {
   render() {
     const {
       onClick,
-      props: { isOpen, label },
+      props: { isOpen, label, children },
     } = this;
 
     return (
-      <div className="accordion-section" style={{ backgroundColor: `var(--${label || 'white'})` }}>
+      <div className="accordionSection" style={{ backgroundColor: `var(--${label || 'white'})` }}>
         <button
           onClick={onClick}
-          className="accordion-button"
+          className="accordionButton"
           style={{ color: `var(--${label || 'off-black'})` }}
         >
           {label}
@@ -34,7 +34,7 @@ class AccordionSection extends Component {
             {isOpen && <span>&#8595;</span>}
           </div>
         </button>
-        {isOpen && <section style={{ padding: '2rem' }}>{this.props.children}</section>}
+        {isOpen && <section style={{ padding: '2rem' }}>{children}</section>}
       </div>
     );
   }

@@ -4,7 +4,7 @@ import '../styles/404.scss';
 const FourOhFour = () => (
   <main className="fourOhFourMain">
     <h1 className="fourOhFourHeading">404 Error</h1>
-    <h3 className="fourOhFourSubheading">Page Not Found</h3>
+    <h2 className="fourOhFourSubheading">Page Not Found</h2>
   </main>
 );
 

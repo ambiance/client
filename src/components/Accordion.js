@@ -29,7 +29,6 @@ class Accordion extends Component {
     const openSections = {};
 
     const { children } = this.props;
-    console.log(this.props);
     // Check for one or many AccordianSection children
     if (Array.isArray(children)) {
       children.forEach(child => {
@@ -82,7 +81,7 @@ class Accordion extends Component {
     return (
       <section className="accordion">
         {/* Optional Title */}
-        {title ? <h3 className="accordion-header">{title}</h3> : ''}
+        {title ? <h3 className="accordionHeader">{title}</h3> : ''}
         {/* Check for one or many AccordianSection children */}
         {Array.isArray(children) ? (
           children.map((child, i) => (

@@ -53,7 +53,6 @@ class AccountSettings extends React.Component {
   handlePasswordChangeSubmit = async event => {
     event.preventDefault();
     const { newPasswordInputValue, confirmPasswordInputValue } = this.state;
-    // TODO: const { user } = this.props;
     if (newPasswordInputValue !== confirmPasswordInputValue) {
       Swal.fire({
         type: 'error',
@@ -84,7 +83,7 @@ class AccountSettings extends React.Component {
 
   render() {
     return (
-      <div className="account-forms">
+      <div className="accountForms">
         {/* <form onSubmit={this.handleNameChangeSubmit}>
           <h3>Update display name</h3>
           <label htmlFor="nameInputValue">
