@@ -1,13 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Comfortaa');
-
-article {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-
-  // margin-left: 15%;
-  // margin-right: 15%;
-}
+// TODO: This file needs major work.
 
 .formHeader {
   font-family: Comfortaa;
@@ -18,25 +9,11 @@ article {
   border: solid black 1px;
 }
 
-select {
-  height: 100px;
-  width: 50%;
-  border: solid black 2px;
-  text-align: center;
-}
-
-input {
-  height: 50px;
-  width: 100px;
-  border-radius: 15px;
-  border: solid black 2px;
-  align-self: center;
-}
-
 .forms {
   margin: 2rem;
 }
 
+// FIXME: This should not be styling the whole article...
 article {
   min-height: 100vh;
   padding: 0;
@@ -58,7 +35,7 @@ article::before {
   background: rgba(105, 102, 102, 0.6);
 }
 
-#search-form {
+#searchSection {
   position: absolute;
   /* !! */
   top: 50%;
@@ -67,7 +44,7 @@ article::before {
   z-index: 20;
 }
 @media screen and (min-width: 853px) {
-  #search-form.fixed {
+  #searchSection.fixed {
     position: fixed;
     top: 0;
     left: 0;
@@ -81,7 +58,7 @@ article::before {
   }
 }
 
-form {
+.searchForm {
   max-width: 100rem;
   margin: auto;
   display: flex;
@@ -106,7 +83,7 @@ form {
 
 /* input and span styles*/
 
-#search-form span {
+#searchSection span {
   padding: 0 1rem;
   vertical-align: middle;
   line-height: 3.125rem;
@@ -116,6 +93,7 @@ form {
   color: var(--off-white);
 }
 
+// FIXME: This should not be styling all of these components...
 input,
 select {
   transition: box-shadow 0.2s ease-in-out;
@@ -151,6 +129,7 @@ select:focus {
   pointer-events: none;
 }
 
+// FIXME: Should this be styling all of these components?
 select {
   background-color: var(--off-white);
   padding: 0.5rem 1.5rem 0.5rem 0.75rem;
@@ -224,7 +203,7 @@ option {
 }
 
 @media screen and (max-width: 852px) {
-  form {
+  .searchForm {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
@@ -263,12 +242,12 @@ option {
     min-width: 9rem;
   }
 
-  #search-form span {
+  #searchSection span {
     width: 10rem;
     min-width: 7rem;
   }
 
-  #search-form {
+  #searchSection {
     position: center;
     top: 50%;
   }
@@ -304,7 +283,7 @@ option {
     min-width: 9rem;
   }
 
-  #search-form span {
+  #searchSection span {
     width: 10rem;
     min-width: 7rem;
   }

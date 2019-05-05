@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SignupForm from '../components/SignupForm';
 import LoginForm from '../components/LoginForm';
-import '../styles/LoginForm.scss';
+import '../styles/LoginPage.scss';
 
 import API, { alertErrorHandler } from '../services/API';
 
@@ -63,7 +63,7 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <main style={{ display: 'flex' }}>
+      <main className="loginPage">
         <SignupForm handleSignup={this.handleSignup} />
         <LoginForm handleLogin={this.handleLogin} />
       </main>

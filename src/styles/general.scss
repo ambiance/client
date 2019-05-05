@@ -14,14 +14,14 @@ body {
   margin: 0;
 }
 
-h2 {
-  margin: 0;
-  height: 1rem;
-  padding: 1rem;
-  color: #fff;
-  line-height: 1rem;
-  display: block;
+// TODO: Figure out if we need this in all of our articles...
+article {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+
+  // margin-left: 15%;
+  // margin-right: 15%;
 }
 
 h1,
@@ -33,6 +33,21 @@ h6 {
   margin-bottom: 1rem;
   border-radius: 15px 15px 0px 0px;
   font-size: 26px;
+}
+
+h2 {
+  margin: 0;
+  height: 1rem;
+  padding: 1rem;
+  color: #fff;
+  line-height: 1rem;
+  display: block;
+  text-align: center;
+}
+
+input {
+  height: 1.5rem;
+  border-radius: 10px;
 }
 
 .bold {

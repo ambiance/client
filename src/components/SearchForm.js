@@ -69,11 +69,12 @@ class SearchForm extends React.Component {
       // FIXME: This article tag does not make sense. I don't think this would be considered an article...
       <article>
         <section
-          id="search-form"
+          id="searchSection"
           ref={this.formRef}
           className={this.state.scroll > this.state.top ? 'fixed' : ''}
         >
           <form
+            className="searchForm"
             action=""
             method="GET"
             name="search"
