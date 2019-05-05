@@ -1,6 +1,6 @@
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
-import React from "react";
-import PropTypes from "prop-types";
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export class MapContainer extends React.Component {
   constructor(props) {
@@ -8,29 +8,31 @@ export class MapContainer extends React.Component {
 
     this.state = {
       showingInfoWindow: false,
-      activeMarker: {}
+      activeMarker: {},
     };
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.details !== prevProps.details) {
-      this.setState({
-        showingInfoWindow: false
-      });
-    }
+    this.onUpdate(() => {
+      if (this.props.details !== prevProps.details) {
+        this.setState({
+          showingInfoWindow: false,
+        });
+      }
+    });
   }
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
       activeMarker: marker,
-      showingInfoWindow: true
+      showingInfoWindow: true,
     });
 
   onMapClicked = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null
+        activeMarker: null,
       });
     }
   };
@@ -46,7 +48,7 @@ export class MapContainer extends React.Component {
           this.props.details
             ? {
                 lat: this.props.details.latitude,
-                lng: this.props.details.longitude
+                lng: this.props.details.longitude,
               }
             : {}
         }
@@ -54,7 +56,7 @@ export class MapContainer extends React.Component {
           this.props.details
             ? {
                 lat: this.props.details.latitude,
-                lng: this.props.details.longitude
+                lng: this.props.details.longitude,
               }
             : {}
         }
@@ -66,23 +68,20 @@ export class MapContainer extends React.Component {
             this.props.details
               ? {
                   lat: this.props.details.latitude,
-                  lng: this.props.details.longitude
+                  lng: this.props.details.longitude,
                 }
               : {}
           }
         />
-        <InfoWindow
-          visible={this.state.showingInfoWindow}
-          marker={this.state.activeMarker}
-        >
+        <InfoWindow visible={this.state.showingInfoWindow} marker={this.state.activeMarker}>
           {details ? (
-            <p style={{ padding: "0" }}>
+            <p style={{ padding: '0' }}>
               {details.address}
               <br />
               {details.city}, {details.state} {details.postalCode}
             </p>
           ) : (
-            ""
+            ''
           )}
         </InfoWindow>
       </Map>
@@ -92,9 +91,9 @@ export class MapContainer extends React.Component {
 
 MapContainer.propTypes = {
   details: PropTypes.object,
-  google: PropTypes.object
+  google: PropTypes.object,
 };
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyDjyph6WMcRSUDfFu-tnGiBzn9n5uXlpKc"
+  apiKey: process.env.REACT_APP_GMAPS_API_KEY,
 })(MapContainer);

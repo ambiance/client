@@ -13,45 +13,16 @@ body {
 html,
 body {
   margin: 0;
-  /*
-    height: 100%;
-    box-sizing: border-box;*/
-}
-
-p {
-  max-width: 600px;
-  margin: auto;
-  padding: 15px 90px;
-  letter-spacing: 0.35px;
-  font-weight: 400;
-  font-size: 20px;
 }
 
 h2 {
   margin: 0;
   height: 1rem;
-  /* 4 times the height of our base font */
-  /* background-color: #222; */
   padding: 1rem;
   color: #fff;
   line-height: 1rem;
   display: block;
   text-align: center;
-  /* box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.2);
-  background: radial-gradient(
-    circle,
-    rgba(39, 39, 39, 0.85),
-    rgba(0, 0, 0, 0.27) 70%
-  ); */
-}
-
-section img ul h3 {
-  font-size: 22px;
-  margin: 0;
-  padding-top: 0;
-  margin-bottom: 1rem;
-  border-radius: 15px 15px 0px 0px;
-  font-size: 26px;
 }
 
 h1,
@@ -65,67 +36,9 @@ h6 {
   font-size: 26px;
 }
 
-footer {
-  padding: 1rem;
-  padding-top: 2rem;
-  /*4 times the height of our base font*/
-  background-color: #272727;
-  color: #fff;
-  line-height: 3rem;
-  height: 2.5rem;
-  text-align: center;
-
-  box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.2);
-}
-
-footer p {
-  font-size: 15px;
-  display: block;
-  padding-bottom: 0px;
-  padding: 0;
-  line-height: 0;
-  margin-top: -17px;
-  font-size: 13px;
-}
-
-footer img {
-  height: 56px;
-  margin: 0;
-  float: right;
-  padding: 0;
-  margin-top: -20px;
-  float: none;
-  padding: 0;
-}
-
 .bold {
   font-size: 1.1em;
   font-weight: 700;
   font-family: 'Raleway', sans-serif;
   text-shadow: 1px 1px rgb(198, 240, 226);
-}
-
-@media all and (max-width: 493px) {
-  section.landing p {
-    font-size: 0.5em;
-  }
-
-  p {
-    max-width: 600px;
-    margin: auto;
-    padding: 15px 90px;
-    letter-spacing: 0.35px;
-    font-weight: 400;
-    font-size: 20px;
-  }
-}
-
-.sep3 {
-  transform: scale(1, 1);
-  transform-origin: top;
-}
-
-.bottomDivider {
-  transform: scale(1, -1);
-  margin-top: -1px;
 }

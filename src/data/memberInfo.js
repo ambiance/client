@@ -4,7 +4,7 @@ const memberInfo = [
     src: `${process.env.PUBLIC_URL}/assets/img/team/Devon_Marantz.jpg`,
     fullName: 'Devon Marantz',
     role: 'Product Owner',
-    aura: 'Casual',
+    aura: 'casual',
     link: 'mailto: DMarantz@talentpath.com',
   },
   {
@@ -12,7 +12,7 @@ const memberInfo = [
     src: `${process.env.PUBLIC_URL}/assets/img/team/Emily_Yang.png`,
     fullName: 'Emily Yang',
     role: 'Software Engineer',
-    aura: 'Inspired',
+    aura: 'inspired',
     link: 'mailto: EYang@talentpath.com',
   },
   {
@@ -20,7 +20,7 @@ const memberInfo = [
     src: `${process.env.PUBLIC_URL}/assets/img/team/Scott_Roberts.png`,
     fullName: 'Scott Roberts',
     role: 'Software Engineer',
-    aura: 'Romantic',
+    aura: 'romantic',
     link: 'mailto: SRoberts@talentpath.com',
   },
   {
@@ -28,7 +28,7 @@ const memberInfo = [
     src: `${process.env.PUBLIC_URL}/assets/img/team/Kevin_Amarbayar.jpg`,
     fullName: 'Kevin Amarbayar',
     role: 'Software Engineer',
-    aura: 'Cheerful',
+    aura: 'cheerful',
     // backgroundColor: 'var(--cheerful)',
     link: 'mailto: KAmarbayar@talentpath.com',
   },
@@ -37,7 +37,7 @@ const memberInfo = [
     src: `${process.env.PUBLIC_URL}/assets/img/team/Ervin_Mitra.jpg`,
     fullName: 'Ervin Mitra',
     role: 'Software Engineer',
-    aura: 'Hipster',
+    aura: 'hipster',
     link: 'mailto: EMitra@talentpath.com',
   },
   {
@@ -45,7 +45,7 @@ const memberInfo = [
     src: `${process.env.PUBLIC_URL}/assets/img/team/Jon_Azali.jpg`,
     fullName: 'Jonathan Azali',
     role: 'Software Engineer',
-    aura: 'Touristy',
+    aura: 'touristy',
     link: 'mailto: JAzali@talentpath.com',
   },
   {
@@ -53,7 +53,7 @@ const memberInfo = [
     src: `${process.env.PUBLIC_URL}/assets/img/team/Brock_Jameson.png`,
     fullName: 'Brock Jameson',
     role: 'Software Engineer',
-    aura: 'Classy',
+    aura: 'classy',
     link: 'mailto: BJameson@talentpath.com',
   },
 ];

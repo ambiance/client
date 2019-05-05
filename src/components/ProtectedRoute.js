@@ -4,7 +4,9 @@ import { Route, Redirect } from 'react-router-dom';
 
 /**
  * Higher Order Component that wraps the Router component to obfuscate authentication in routes.
- * @param {*} param0 Destructured Props Variables
+ * @param {Object} props Props Variables
+ * @param {Symbol} props.component Rendered component
+ * @param {bool} props.isAuthenticated Authenticated flag
  */
 const ProtectedRoute = ({ component: Component, isAuthenticated, ...rest }) => (
   <Route

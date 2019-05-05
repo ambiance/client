@@ -1,3 +1,18 @@
+.minthalf {
+  width: 50%;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  background-color: var(--mint-text);
+  border-radius: 15px;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.12);
+}
+
+.halfnhalf {
+  display: flex;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
 .halfpics {
   background-color: var(--mint);
   margin-left: 1rem;
@@ -15,8 +30,6 @@
   text-align: center;
 }
 
-
-
 #title {
   font-weight: bold;
   padding-left: 0.6rem;
@@ -29,6 +42,7 @@
 
 .info {
   font-weight: normal;
+  text-align: center;
   /* width: 100%; */
 }
 
