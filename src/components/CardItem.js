@@ -41,16 +41,19 @@ export default class CardItem extends React.Component {
       <button key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
         <div className="resultCardImageContainer">
           <div className="pillsContainer">
-            {business.attributes.aura.split(',').map(auraSingleton => {
-              const sanitizedAura = auraSingleton.trim().toLowerCase();
-              return (
-                <AuraPills
-                  aura={sanitizedAura}
-                  backgroundColor={getColor(sanitizedAura)}
-                  key={auraSingleton}
-                />
-              );
-            })}
+            {business.attributes.aura
+              .split(',')
+              .slice(0, 4)
+              .map(auraSingleton => {
+                const sanitizedAura = auraSingleton.trim().toLowerCase();
+                return (
+                  <AuraPills
+                    aura={sanitizedAura}
+                    backgroundColor={getColor(sanitizedAura)}
+                    key={auraSingleton}
+                  />
+                );
+              })}
           </div>
 
           <img
