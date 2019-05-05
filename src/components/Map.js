@@ -13,13 +13,11 @@ export class MapContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    this.onUpdate(() => {
-      if (this.props.details !== prevProps.details) {
-        this.setState({
-          showingInfoWindow: false,
-        });
-      }
-    });
+    if (this.props.details !== prevProps.details) {
+      this.setState({
+        showingInfoWindow: false,
+      });
+    }
   }
 
   onMarkerClick = (props, marker, e) =>
