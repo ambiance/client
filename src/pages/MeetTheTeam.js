@@ -1,4 +1,6 @@
 import React from 'react';
+
+import Head from './Head';
 import TeamMember from '../components/TeamMember';
 import memberInfo from '../data/memberInfo';
 import background from '../assets/img/trinityBackgroundWhite.png';
@@ -7,7 +9,8 @@ import '../styles/MeetTheTeam.scss';
 class MeetTheTeam extends React.Component {
   render() {
     return (
-      <div background={background}>
+      <main background={background}>
+        <Head title="Contact | Aura" />
         <section id="grid">
           {memberInfo.map(member => (
             <TeamMember
@@ -21,7 +24,7 @@ class MeetTheTeam extends React.Component {
             />
           ))}
         </section>
-      </div>
+      </main>
     );
   }
 }

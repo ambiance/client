@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Components
-import PropTypes from 'prop-types';
+import Head from './Head';
 import SearchForm from '../components/SearchForm';
 import SearchResults from '../components/SearchResults';
 import Modal from '../components/Modal';
@@ -24,6 +25,12 @@ class Home extends React.Component {
   }
 
   handleSearchSubmit = searchFormData => {
+    // Warn the user that there is already a request being made
+    if (this.state.loading) {
+      // TODO: Talk to the team about what we want to do when many requests are being made.
+    }
+
+    // Start the loader to ease waiting time.
     this.setState({ showResults: true, loading: true }, () => {
       window.scroll({
         top: this.searchRef.current.offsetTop - 50,
@@ -32,6 +39,7 @@ class Home extends React.Component {
       });
     });
 
+    // Dynamically add search parameters based on the results from the search form.
     const params = {};
     if (searchFormData.auraValue !== '') {
       params.aura = searchFormData.auraValue;
@@ -43,13 +51,9 @@ class Home extends React.Component {
       params.city = searchFormData.cityValue;
     }
 
+    // Make a request to the Aura Server for business information.
     API.get('businesses', {
       params,
-      // params: {
-      //   aura: searchFormData.auraValue,
-      //   category: searchFormData.categoryValue,
-      //   city: searchFormData.cityValue
-      // }
     })
       .then(response => {
         this.setState({ businesses: response.data });
@@ -60,13 +64,17 @@ class Home extends React.Component {
         }
       })
       .then(() => this.setState({ loading: false }))
-      .catch(err => alertErrorHandler(err));
+      .catch(err => {
+        alertErrorHandler(err);
+        this.setState({ showResults: false, loading: false });
+      });
   };
 
   render() {
     const { isShowing, modalDetails, openModal, closeModal } = this.props;
     return (
-      <div>
+      <main>
+        <Head title="Home | Aura" />
         <Modal
           className="modal"
           show={isShowing}
@@ -88,7 +96,7 @@ class Home extends React.Component {
             id="results"
           />
         </div>
-      </div>
+      </main>
     );
   }
 }

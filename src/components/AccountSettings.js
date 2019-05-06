@@ -13,6 +13,7 @@ class AccountSettings extends React.Component {
 
     this.state = {
       nameInputValue: '',
+      usernameInputValue: '',
       passwordInputValue: '',
       newPasswordInputValue: '',
       confirmPasswordInputValue: '',
@@ -102,6 +103,19 @@ class AccountSettings extends React.Component {
 
         <form onSubmit={this.handlePasswordChangeSubmit}>
           <h3>Update password</h3>
+          {/* Display none for accessibility and password manager reasons */}
+          <label style={{ display: 'none' }} htmlFor="usernameInputValue">
+            Username:
+            <input
+              className="credentialInput"
+              type="text"
+              autoComplete="username"
+              name="usernameInputValue"
+              value={this.state.usernameInputValue}
+              onChange={this.handleInputChange}
+            />
+          </label>
+
           <label htmlFor="passwordInputValue">
             Old password:
             <input
@@ -115,6 +129,7 @@ class AccountSettings extends React.Component {
               required
             />
           </label>
+
           <label htmlFor="newPasswordInputValue">
             New password:
             <input

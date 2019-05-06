@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import '../styles/LoginForm.scss';
+import '../styles/CredentialForm.scss';
 
 class LoginForm extends Component {
   static propTypes = {
@@ -33,16 +33,12 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <form
-        className="loginForm"
-        onSubmit={this.handleLogin}
-        style={{ display: 'flex', flexDirection: 'column' }}
-      >
-        <h1 className="loginTitle">Login</h1>
-        <label htmlFor="loginUsernameInputValue">
+      <form className="credentialForm" onSubmit={this.handleLogin}>
+        <h1 className="credentialTitle">Login</h1>
+        <label className="" htmlFor="loginUsernameInputValue">
           Username:
           <input
-            className="usernameSignin"
+            className="credentialInput"
             type="text"
             id="loginUsernameInputValue"
             autoComplete="username"
@@ -56,7 +52,7 @@ class LoginForm extends Component {
         <label htmlFor="loginPasswordInputValue">
           Password:
           <input
-            className="passwordSignin"
+            className="credentialInput"
             type="password"
             placeholder="password"
             id="loginPasswordInputValue"
