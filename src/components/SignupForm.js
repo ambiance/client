@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
-import '../styles/LoginForm.scss';
+import '../styles/CredentialForm.scss';
 
 class SignupForm extends Component {
   static propTypes = {
@@ -47,15 +47,12 @@ class SignupForm extends Component {
 
   render() {
     return (
-      <form
-        className="signupForm"
-        onSubmit={this.handleSubmit}
-        style={{ display: 'flex', flexDirection: 'column' }}
-      >
-        <h1 className="loginTitle">Signup</h1>
+      <form className="credentialForm" onSubmit={this.handleSubmit}>
+        <h1 className="credentialTitle">Signup</h1>
         <label htmlFor="signupUsernameInputValue">
           Username:
           <input
+            className="credentialInput"
             type="text"
             placeholder="username"
             id="signupUsernameInputValue"
@@ -68,6 +65,7 @@ class SignupForm extends Component {
         <label htmlFor="signupPasswordInputValue">
           Password:
           <input
+            className="credentialInput"
             type="password"
             placeholder="password"
             id="signupPasswordInputValue"
@@ -81,6 +79,7 @@ class SignupForm extends Component {
         <label htmlFor="signupPasswordConfirmInputValue">
           Confirm Password:
           <input
+            className="credentialInput"
             type="password"
             placeholder="password"
             id="signupPasswordConfirmInputValue"
