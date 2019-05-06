@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from './Head';
 import Slideshow from '../components/Slideshow';
 import Accordion from '../components/Accordion';
 import auraDescriptions from '../data/auraDescriptions';
@@ -10,7 +11,8 @@ class About extends React.Component {
   };
   render() {
     return (
-      <div className="about">
+      <main className="about">
+        <Head title="About | Aura" />
         <Slideshow />
 
         {/* TODO: Candidate for a component */}
@@ -86,7 +88,7 @@ class About extends React.Component {
             </div>
           ))}
         </Accordion>
-      </div>
+      </main>
     );
   }
 }
