@@ -31,11 +31,6 @@ const slideImages = [
     question: 'What is your aura?',
   },
   {
-    src: `${process.env.PUBLIC_URL}/assets/img/slideshow/place2.jpg`,
-    aura: 'lively',
-    question: 'What is your aura?',
-  },
-  {
     src: `${process.env.PUBLIC_URL}/assets/img/slideshow/place3.jpg`,
     aura: 'intimate',
     question: 'What is your aura?',
@@ -60,11 +55,6 @@ const slideImages = [
   {
     src: `${process.env.PUBLIC_URL}/assets/img/slideshow/place11.jpeg`,
     aura: 'classy',
-    question: 'What is your aura?',
-  },
-  {
-    src: `${process.env.PUBLIC_URL}/assets/img/slideshow/place12.jpeg`,
-    aura: 'hipster',
     question: 'What is your aura?',
   },
   // {
