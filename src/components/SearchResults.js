@@ -74,7 +74,7 @@ class SearchResults extends React.Component {
           ))}
         </div>
         {this.state.visible < this.state.results.length && (
-          <button onClick={() => this.loadMore()} type="button" className="load-more">
+          <button onClick={() => this.loadMore()} type="button" className="loadMore">
             Load more
           </button>
         )}
