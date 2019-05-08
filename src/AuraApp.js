@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import jwt from 'jsonwebtoken';
-import { Home, About, MeetTheTeam, Login, Dashboard, FourOhFour } from './pages';
+import { Home, About, MeetTheTeam, Login, Dashboard, FourOhFour, Signup } from './pages';
 import ProtectedRoute from './components/ProtectedRoute';
+// import ConditionalRoute from './components/ConditionalRoute';
 import Footer from './components/Footer';
 import API from './services/API';
 import slideImages from './data/slideImages';
@@ -124,7 +126,7 @@ class AuraApp extends React.Component {
                   </React.Fragment>
                 ) : (
                   <li>
-                    <NavLink to="/login">Login/Signup</NavLink>
+                    <NavLink to="/login">Sign In</NavLink>
                   </li>
                 )}
               </ul>
@@ -149,9 +151,23 @@ class AuraApp extends React.Component {
             <Route
               path="/login"
               render={props => (
-                <Login {...props} handleLogin={this.handleLogin} handleSignup={this.handleSignup} />
+                <Login
+                  {...props}
+                  handleLogin={this.handleLogin}
+                  // handleSwitch={this.handleSwitchToSignup}
+                />
               )}
             />
+            {/* <Route
+              path="/joinaura"
+              render={props => (
+                <Signup
+                  {...props}
+                  handleSignup={this.handleSignup}
+                  handleSwitch={this.handleSwitchToLogin}
+                />
+              )}
+            /> */}
             <ProtectedRoute
               path="/dashboard"
               isAuthenticated={isAuthenticated}

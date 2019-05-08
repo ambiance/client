@@ -1,9 +1,12 @@
 /* eslint-disable no-useless-return */
 import React from 'react';
 import PropTypes from 'prop-types';
+// components
 import AuraPills from './AuraPills';
+// helpers
 import { getColor } from './helpers/auraColors';
 import locations from '../data/LALocations';
+// cscc
 import '../styles/CardItem.scss';
 
 export default class CardItem extends React.Component {

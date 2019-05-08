@@ -1,16 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
 import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// components
 import SignupForm from '../components/SignupForm';
 import LoginForm from '../components/LoginForm';
-import '../styles/LoginPage.scss';
-
+// helpers
 import API, { alertErrorHandler } from '../services/API';
+// scss
+import '../styles/LoginPage.scss';
 
 class LoginPage extends React.Component {
   static propTypes = {
     handleLogin: PropTypes.func.isRequired,
+    handleSwitch: PropTypes.func.isRequired,
     history: PropTypes.shape({
       push: PropTypes.func.isRequired,
     }),
@@ -61,11 +64,19 @@ class LoginPage extends React.Component {
       .catch(err => alertErrorHandler(err));
   };
 
+  handleSwitchToLogin = event => {
+    console.log('Switch To Login!');
+  };
+
+  handleSwitchToSignup = event => {
+    console.log('Switch To Signup!');
+  };
+
   render() {
     return (
       <main className="loginPage">
-        <SignupForm handleSignup={this.handleSignup} />
-        <LoginForm handleLogin={this.handleLogin} />
+        <LoginForm handleLogin={this.handleLogin} handleSwitch={this.handleSwitchToSignup} />
+        <SignupForm handleSignup={this.handleSignup} handleSwitch={this.handleSwitchToLogin} />
       </main>
     );
   }

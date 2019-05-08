@@ -1,7 +1,10 @@
 import React from 'react';
+// components
 import TeamMember from '../components/TeamMember';
+// helpers
 import memberInfo from '../data/memberInfo';
 import background from '../assets/img/trinityBackgroundWhite.png';
+// scss
 import '../styles/MeetTheTeam.scss';
 
 class MeetTheTeam extends React.Component {

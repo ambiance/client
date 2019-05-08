@@ -4,5 +4,6 @@ import MeetTheTeam from './MeetTheTeam';
 import Login from './LoginPage';
 import Dashboard from './Dashboard';
 import FourOhFour from './404';
+import Signup from './SignupPage';
 
-export { Home, About, MeetTheTeam, Login, Dashboard, FourOhFour };
+export { Home, About, MeetTheTeam, Login, Dashboard, FourOhFour, Signup };

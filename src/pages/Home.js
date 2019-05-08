@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Components
-import PropTypes from 'prop-types';
 import SearchForm from '../components/SearchForm';
 import SearchResults from '../components/SearchResults';
 import Modal from '../components/Modal';
