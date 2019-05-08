@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import jwt from 'jsonwebtoken';
-import { Home, About, MeetTheTeam, Login, Dashboard, FourOhFour, Signup } from './pages';
+import { Home, About, MeetTheTeam, Login, Dashboard, FourOhFour } from './pages';
 import ProtectedRoute from './components/ProtectedRoute';
 // import ConditionalRoute from './components/ConditionalRoute';
 import Footer from './components/Footer';
