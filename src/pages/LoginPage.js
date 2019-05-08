@@ -22,7 +22,9 @@ class LoginPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      showLogin: true,
+    };
   }
 
   handleSignup = credentials => {
@@ -66,17 +68,24 @@ class LoginPage extends React.Component {
 
   handleSwitchToLogin = event => {
     console.log('Switch To Login!');
+    this.setState({ showLogin: true });
   };
 
   handleSwitchToSignup = event => {
     console.log('Switch To Signup!');
+    this.setState({ showLogin: false });
   };
 
   render() {
     return (
       <main className="loginPage">
-        <LoginForm handleLogin={this.handleLogin} handleSwitch={this.handleSwitchToSignup} />
-        <SignupForm handleSignup={this.handleSignup} handleSwitch={this.handleSwitchToLogin} />
+        {this.state.showLogin ? (
+          <LoginForm handleLogin={this.handleLogin} handleSwitch={this.handleSwitchToSignup} />
+        ) : (
+          <SignupForm handleSignup={this.handleSignup} handleSwitch={this.handleSwitchToLogin} />
+        )}
+        {/* <LoginForm handleLogin={this.handleLogin} handleSwitch={this.handleSwitchToSignup} /> */}
+        {/* <SignupForm handleSignup={this.handleSignup} handleSwitch={this.handleSwitchToLogin} /> */}
       </main>
     );
   }
