@@ -5,6 +5,36 @@ import CardItem from './CardItem';
 import '../styles/SearchResults.scss';
 
 class SearchResults extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      results: [],
+      visible: 8,
+      error: false,
+    };
+  }
+
+  componentDidMount() {
+    const { businesses } = this.props;
+    this.setState({
+      results: businesses,
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.businesses !== prevProps.businesses) {
+      this.setState({
+        results: this.props.businesses,
+        visible: 8,
+      });
+    }
+  }
+
+  loadMore() {
+    this.setState(prev => ({ visible: prev.visible + 8 }));
+  }
+
   render() {
     const { businesses, loading, noData, onOpenModal } = this.props;
     if (loading) {
@@ -37,12 +67,17 @@ class SearchResults extends React.Component {
     return (
       <section id="searchResults">
         <div className="resultCards">
-          {businesses.map((business, i) => (
+          {this.state.results.slice(0, this.state.visible).map((business, i) => (
             <div key={i}>
               <CardItem business={business} onOpenModal={onOpenModal} />
             </div>
           ))}
         </div>
+        {this.state.visible < this.state.results.length && (
+          <button onClick={() => this.loadMore()} type="button" className="load-more">
+            Load more
+          </button>
+        )}
       </section>
     );
   }
