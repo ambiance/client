@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
 import { withRouter } from 'react-router-dom';
 // components
-import PropTypes from 'prop-types';
 
 import Head from './Head';
 import SignupForm from '../components/SignupForm';
