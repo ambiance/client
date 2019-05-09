@@ -8,10 +8,11 @@ class SearchResults extends React.Component {
   constructor(props) {
     super(props);
 
+    this.multiples = Math.floor(window.innerWidth / 400) === 3 ? 6 : 8;
+
     this.state = {
       results: [],
-      visible: 8,
-      error: false,
+      visible: this.multiples,
     };
   }
 
@@ -26,13 +27,13 @@ class SearchResults extends React.Component {
     if (this.props.businesses !== prevProps.businesses) {
       this.setState({
         results: this.props.businesses,
-        visible: 8,
+        visible: this.multiples,
       });
     }
   }
 
   loadMore() {
-    this.setState(prev => ({ visible: prev.visible + 8 }));
+    this.setState(prev => ({ visible: prev.visible + this.multiples }));
   }
 
   render() {
