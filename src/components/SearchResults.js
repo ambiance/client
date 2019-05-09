@@ -8,11 +8,11 @@ class SearchResults extends React.Component {
   constructor(props) {
     super(props);
 
-    this.multiples = Math.floor(window.innerWidth / 400) === 3 ? 6 : 8;
+    this.multiples = Math.floor(window.innerWidth / 400) % 2 ? 6 : 8;
 
     this.state = {
       results: [],
-      visible: this.multiples,
+      numVisible: this.multiples,
     };
   }
 
@@ -27,13 +27,13 @@ class SearchResults extends React.Component {
     if (this.props.businesses !== prevProps.businesses) {
       this.setState({
         results: this.props.businesses,
-        visible: this.multiples,
+        numVisible: this.multiples,
       });
     }
   }
 
   loadMore() {
-    this.setState(prev => ({ visible: prev.visible + this.multiples }));
+    this.setState(prev => ({ numVisible: prev.numVisible + this.multiples }));
   }
 
   render() {
@@ -68,13 +68,13 @@ class SearchResults extends React.Component {
     return (
       <section id="searchResults">
         <div className="resultCards">
-          {this.state.results.slice(0, this.state.visible).map((business, i) => (
+          {this.state.results.slice(0, this.state.numVisible).map((business, i) => (
             <div key={i}>
               <CardItem business={business} onOpenModal={onOpenModal} />
             </div>
           ))}
         </div>
-        {this.state.visible < this.state.results.length && (
+        {this.state.numVisible < this.state.results.length && (
           <button onClick={() => this.loadMore()} type="button" className="loadMore">
             Load more
           </button>
