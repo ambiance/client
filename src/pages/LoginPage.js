@@ -31,6 +31,8 @@ class LoginPage extends React.Component {
     API.post('auth/signup/', {
       username: credentials.username,
       password: credentials.password,
+      email: credentials.email,
+      closestLocation: credentials.closestLocation,
     })
       .then(response => {
         this.handleLogin(credentials);

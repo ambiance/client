@@ -16,6 +16,8 @@ class SignupForm extends Component {
       signupUsernameInputValue: '',
       signupPasswordInputValue: '',
       signupPasswordConfirmInputValue: '',
+      signupEmailInputValue: '',
+      signupClosestLocationInputValue: '',
     };
   }
 
@@ -29,12 +31,36 @@ class SignupForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const { signupPasswordInputValue, signupPasswordConfirmInputValue } = this.state;
+    const {
+      signupPasswordInputValue,
+      signupPasswordConfirmInputValue,
+      signupEmailInputValue,
+      signupClosestLocationInputValue,
+    } = this.state;
+    // Regex
+    const re = /\S+@\S+\.\S+/;
     // FIXME: Create a validation middleware we can use instead of these checks here.
-    if (signupPasswordInputValue !== signupPasswordConfirmInputValue) {
+    if (re.test(String(signupEmailInputValue).toLowerCase()) !== true) {
+      Swal.fire({
+        type: 'error',
+        text: 'Enter a valid email',
+        showConfirmButton: false,
+        timer: 1200,
+      });
+    } else if (signupPasswordInputValue !== signupPasswordConfirmInputValue) {
       Swal.fire({
         type: 'error',
         text: 'New passwords must match',
+        showConfirmButton: false,
+        timer: 1200,
+      });
+    } else if (
+      signupClosestLocationInputValue === '' ||
+      signupClosestLocationInputValue === 'default'
+    ) {
+      Swal.fire({
+        type: 'error',
+        text: 'Choose a closest location',
         showConfirmButton: false,
         timer: 1200,
       });
@@ -42,6 +68,8 @@ class SignupForm extends Component {
       this.props.handleSignup({
         username: this.state.signupUsernameInputValue,
         password: this.state.signupPasswordInputValue,
+        email: this.state.signupEmailInputValue,
+        closestLocation: this.state.signupClosestLocationInputValue,
       });
     }
   };
@@ -81,8 +109,9 @@ class SignupForm extends Component {
             id="signupEmailInputValue"
             name="signupEmailInputValue"
             autoComplete="email"
-            // value={this.state.signupUsernameInputValue}
-            // onChange={this.handleInputChange}
+            minLength="7"
+            value={this.state.signupEmailInputValue}
+            onChange={this.handleInputChange}
           />
         </label>
         <span className="passwordInputs">
@@ -114,7 +143,14 @@ class SignupForm extends Component {
           </label>
         </span>
         <p className="locationWrap">
-          <select className="locationSelect">
+          <select
+            className="locationSelect"
+            type="text"
+            id="signupClosestLocationInputValue"
+            name="signupClosestLocationInputValue"
+            value={this.state.signupClosestLocationInputValue}
+            onChange={this.handleInputChange}
+          >
             <option value="default">Select Your Closest Location</option>
             <option value="santaMonica">Santa Monica</option>
             <option value="downtownLA">Downtown LA</option>
