@@ -1,8 +1,11 @@
 import React from 'react';
+// components
 import Head from './Head';
 import Slideshow from '../components/Slideshow';
 import Accordion from '../components/Accordion';
+// helpers
 import auraDescriptions from '../data/auraDescriptions';
+// scss
 import '../styles/About.scss';
 
 class About extends React.Component {

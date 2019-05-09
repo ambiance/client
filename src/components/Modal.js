@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+
+// Components
 import AuraPills from './AuraPills.js';
 import Map from './Map';
 import ModalWindow from './ModalWindow';

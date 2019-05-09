@@ -1,7 +1,10 @@
 import React from 'react';
+// components
 import { Glide } from 'react-glide';
 import Slide from './Slide';
+// helpers
 import slideImages from '../data/slideImages';
+// scss
 import '../styles/glide.scss';
 
 class Slideshow extends React.Component {
