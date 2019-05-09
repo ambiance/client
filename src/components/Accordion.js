@@ -41,7 +41,7 @@ class Accordion extends Component {
 
   /**
    * Toggles the open state
-   * @param {String} label Title of the accordion drop down
+   * @param {String} label Title of the individual section
    */
   handleClick = label => {
     const {
@@ -115,11 +115,15 @@ export default Accordion;
  * @param {Object} props.children Nested HTML elements
  */
 const AccordionSection = ({ handleClick, isOpen, label, children }) => (
-  <div className="accordionSection" style={{ backgroundColor: `var(--${label || 'white'})` }}>
+  <div className="accordionSection" style={{ backgroundColor: `var(--${label || 'mint'})` }}>
     <button
       onClick={() => handleClick(label)}
       className="accordionButton"
-      style={{ color: `var(--${label || 'off-black'})` }}
+      style={
+        isOpen
+          ? { color: `var(--off-white)`, backgroundColor: `var(--${label || 'mint'})` }
+          : { color: `var(--${label || 'off-black'})` }
+      }
     >
       {label}
       <div>
@@ -127,7 +131,7 @@ const AccordionSection = ({ handleClick, isOpen, label, children }) => (
         {isOpen && <span>&#8595;</span>}
       </div>
     </button>
-    {isOpen && <section style={{ padding: '2rem' }}>{children}</section>}
+    {isOpen && <section>{children}</section>}
   </div>
 );
 
