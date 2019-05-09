@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Head from './Head';
 import DashboardMenu from '../components/DashboardMenu';
 import AccountSettings from '../components/AccountSettings';
 import '../styles/Dashboard.scss';
@@ -34,7 +35,8 @@ class Dashboard extends React.Component {
     const { user, logout } = this.props;
 
     return (
-      <div className="dashboard">
+      <main className="dashboard">
+        <Head title="Dashboard | Aura" />
         <DashboardMenu
           user={user}
           activeView={this.state.active}
@@ -64,7 +66,7 @@ class Dashboard extends React.Component {
         ) : (
           ''
         )}
-      </div>
+      </main>
     );
   }
 }

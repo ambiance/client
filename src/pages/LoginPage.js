@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
 import { withRouter } from 'react-router-dom';
 // components
+import PropTypes from 'prop-types';
+
+import Head from './Head';
 import SignupForm from '../components/SignupForm';
 import LoginForm from '../components/LoginForm';
 // helpers
@@ -81,13 +84,12 @@ class LoginPage extends React.Component {
   render() {
     return (
       <main className="loginPage">
+        <Head title="Login | Aura" />
         {this.state.showLogin ? (
           <LoginForm handleLogin={this.handleLogin} handleSwitch={this.handleSwitchToSignup} />
         ) : (
           <SignupForm handleSignup={this.handleSignup} handleSwitch={this.handleSwitchToLogin} />
         )}
-        {/* <LoginForm handleLogin={this.handleLogin} handleSwitch={this.handleSwitchToSignup} /> */}
-        {/* <SignupForm handleSignup={this.handleSignup} handleSwitch={this.handleSwitchToLogin} /> */}
       </main>
     );
   }

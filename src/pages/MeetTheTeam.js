@@ -1,5 +1,7 @@
 import React from 'react';
 // components
+
+import Head from './Head';
 import TeamMember from '../components/TeamMember';
 // helpers
 import memberInfo from '../data/memberInfo';
@@ -10,7 +12,8 @@ import '../styles/MeetTheTeam.scss';
 class MeetTheTeam extends React.Component {
   render() {
     return (
-      <div background={background}>
+      <main background={background}>
+        <Head title="Contact | Aura" />
         <section id="grid">
           {memberInfo.map(member => (
             <TeamMember
@@ -24,7 +27,7 @@ class MeetTheTeam extends React.Component {
             />
           ))}
         </section>
-      </div>
+      </main>
     );
   }
 }

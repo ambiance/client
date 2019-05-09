@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Components
+import Head from './Head';
 import SearchForm from '../components/SearchForm';
 import SearchResults from '../components/SearchResults';
 import Modal from '../components/Modal';
@@ -72,7 +73,8 @@ class Home extends React.Component {
   render() {
     const { isShowing, modalDetails, openModal, closeModal } = this.props;
     return (
-      <div>
+      <main>
+        <Head title="Home | Aura" />
         <Modal
           className="modal"
           show={isShowing}
@@ -94,7 +96,7 @@ class Home extends React.Component {
             id="results"
           />
         </div>
-      </div>
+      </main>
     );
   }
 }
