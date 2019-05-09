@@ -10,9 +10,11 @@ class About extends React.Component {
     alert(business);
   };
   render() {
+    const { pathname: pathName } = this.props.location;
+    console.log('About props', this.props);
     return (
       <main className="about">
-        <Head title="About | Aura" />
+        <Head title="About | Aura" pathName={pathName} />
         <Slideshow />
 
         {/* TODO: Candidate for a component */}
