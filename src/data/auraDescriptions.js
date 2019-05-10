@@ -80,7 +80,7 @@ const auraDescriptions = [
   {
     aura: 'hipster',
     definition:
-      'A person who follows the latest trends and fashions, especially those regarded as being outside the cultural mainstream.',
+      'A person who follows the latest trends and fashions outside the cultural mainstream.',
     description: '',
     examples: [
       {
@@ -132,7 +132,7 @@ const auraDescriptions = [
   },
   {
     aura: 'intimate',
-    definition: 'Having or showing creativity or inventiveness.',
+    definition: 'Closely acquainted; familiar, close.',
     description: '',
     examples: [
       {
