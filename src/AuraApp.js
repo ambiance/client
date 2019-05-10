@@ -139,6 +139,7 @@ class AuraApp extends React.Component {
               exact
               render={props => (
                 <Home
+                  {...props}
                   modalDetails={this.state.modalDetails}
                   isShowing={this.state.isModalShowing}
                   openModal={this.openModalHandler}
