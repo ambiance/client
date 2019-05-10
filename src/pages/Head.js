@@ -10,9 +10,10 @@ function setGA(pathName) {
 //
 /**
  * React Helmet wrapper. Dynamically adds head tags when added to a React component.
- * @param {String} props.title Name of title
+ * @param {string} props.pathName Path of current page
+ * @param {string} props.title Name of title
  */
-const Head = ({ title, pathName }) => {
+const Head = ({ pathName, title }) => {
   setGA(pathName);
   return (
     <Helmet>
