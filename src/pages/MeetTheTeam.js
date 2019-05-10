@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// components
 import Head from './Head';
 import TeamMember from '../components/TeamMember';
+// helpers
 import memberInfo from '../data/memberInfo';
 import background from '../assets/img/trinityBackgroundWhite.png';
+// scss
 import '../styles/MeetTheTeam.scss';
 
 class MeetTheTeam extends React.Component {
