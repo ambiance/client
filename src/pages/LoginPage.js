@@ -86,7 +86,7 @@ class LoginPage extends React.Component {
   render() {
     const {
       location: { pathname: pathName },
-    } = this.state;
+    } = this.props;
     return (
       <main className="loginPage">
         <Head title="Login | Aura" />
