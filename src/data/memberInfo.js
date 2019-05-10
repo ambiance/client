@@ -1,7 +1,7 @@
 const memberInfo = [
   {
     sectionId: 'devon',
-    src: `${process.env.PUBLIC_URL}/assets/img/team/Devon_Marantz.jpg`,
+    src: `${process.env.PUBLIC_URL}/assets/img/team/Devon_Marantz.png`,
     fullName: 'Devon Marantz',
     role: 'Product Owner',
     aura: 'casual',

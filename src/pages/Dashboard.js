@@ -7,6 +7,9 @@ import '../styles/Dashboard.scss';
 
 class Dashboard extends React.Component {
   static propTypes = {
+    location: PropTypes.shape({
+      pathname: PropTypes.string.isRequired,
+    }),
     user: PropTypes.object.isRequired,
     logout: PropTypes.func,
     // modalDetails: PropTypes.object,
@@ -32,11 +35,15 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    const { user, logout } = this.props;
+    const {
+      user,
+      logout,
+      location: { pathname: pathName },
+    } = this.props;
 
     return (
       <main className="dashboard">
-        <Head title="Dashboard | Aura" />
+        <Head pathName={pathName} title="Dashboard | Aura" />
         <DashboardMenu
           user={user}
           activeView={this.state.active}

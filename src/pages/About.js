@@ -1,20 +1,32 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+// components
 import Head from './Head';
 import Slideshow from '../components/Slideshow';
 import Accordion from '../components/Accordion';
+// helpers
 import auraDescriptions from '../data/auraDescriptions';
+// scss
 import '../styles/About.scss';
 
 class About extends React.Component {
+  static propTypes = {
+    location: PropTypes.shape({
+      pathname: PropTypes.string.isRequired,
+    }),
+  };
   openModel = business => {
     alert(business);
   };
   render() {
+    const {
+      location: { pathname: pathName },
+    } = this.props;
     return (
       <main className="about">
-        <Head title="About | Aura" />
+        <Head pathName={pathName} title="About | Aura" />
         <Slideshow />
-
         {/* TODO: Candidate for a component */}
         <section className="content">
           <section className="mint landing">
