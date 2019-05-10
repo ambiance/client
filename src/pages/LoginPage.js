@@ -19,6 +19,9 @@ class LoginPage extends React.Component {
     history: PropTypes.shape({
       push: PropTypes.func.isRequired,
     }),
+    location: PropTypes.shape({
+      pathname: PropTypes.string.isRequired,
+    }),
   };
 
   constructor(props) {
@@ -81,6 +84,9 @@ class LoginPage extends React.Component {
   };
 
   render() {
+    const {
+      location: { pathname: pathName },
+    } = this.state;
     return (
       <main className="loginPage">
         <Head title="Login | Aura" />
