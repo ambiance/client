@@ -6,6 +6,7 @@ import AuraPills from './AuraPills.js';
 import Map from './Map';
 import ModalWindow from './ModalWindow';
 import BusinessDescription from './BusinessDescription';
+import Feedback from './Feedback';
 // import Feedback from './Feedback';
 import { getColor } from './helpers/auraColors';
 // import { handleStars } from './helpers/stars';
@@ -72,6 +73,14 @@ const Modal = ({ show, details, close }) => {
                 onClick={() => setComponent(<Map show={show} details={details} />)}
               >
                 Map
+              </button>
+            </li>
+            <li className="modalLI">
+              <button
+                className="modalNav"
+                onClick={() => setComponent(<Feedback show={show} details={details} />)}
+              >
+                Feedback
               </button>
             </li>
             {/* <li className="modalLI">
