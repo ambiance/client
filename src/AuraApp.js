@@ -93,6 +93,27 @@ class AuraApp extends React.Component {
     });
   };
 
+  likeBusinessHandler = business => {
+    // State verifies whether you are logged in or not
+    if (this.state.isAuthenticated) {
+      // Business Function
+      console.log(business);
+      console.log(AuraUserToken);
+      // API.patch('account/like-business', {
+      //   // user_.id = user._id from token
+      //   businessId: business._id,
+      // }).then(response => {});
+    } else {
+      Swal.fire({
+        position: 'top',
+        text: 'You are not logged in',
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
+    console.log('pressed');
+  };
+
   render() {
     const { isAuthenticated, user } = this.state;
     return (
@@ -141,6 +162,7 @@ class AuraApp extends React.Component {
                   isShowing={this.state.isModalShowing}
                   openModal={this.openModalHandler}
                   closeModal={this.closeModalHandler}
+                  likeBusiness={this.likeBusinessHandler}
                 />
               )}
             />

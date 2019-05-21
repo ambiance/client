@@ -33,7 +33,7 @@ export default class CardItem extends React.Component {
 
   render() {
     // consts here
-    const { business, onOpenModal } = this.props;
+    const { business, onOpenModal, likeBusiness } = this.props;
     // We cannot guarentee that the categories will not overflow in the cards with multiple categories.
     // FIXME: const categories = business.categories.map(category => category.title).join(', ');
     const categories = business.categories[0].title;
@@ -76,7 +76,18 @@ export default class CardItem extends React.Component {
           <p>
             <strong>{this.state.neighborhood || business.city}</strong>
           </p>
-          <p>{categories}</p>
+
+          <div className="cardFooter">
+            <p>{categories}</p>
+            <button
+              onClick={event => {
+                event.stopPropagation();
+                likeBusiness(business);
+              }}
+            >
+              LIKE
+            </button>
+          </div>
         </span>
       </button>
     );
@@ -95,4 +106,5 @@ CardItem.propTypes = {
     }).isRequired,
   }).isRequired,
   onOpenModal: PropTypes.func.isRequired,
+  likeBusiness: PropTypes.func.isRequired,
 };

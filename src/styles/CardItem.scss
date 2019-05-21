@@ -20,6 +20,8 @@
   box-shadow: 5px 5px var(--shadow);
   background-color: var(--mint);
   text-align: left;
+  position: relative;
+  z-index: 1;
 }
 
 @media all and (max-width: 360px) {
@@ -111,4 +113,13 @@
 .resultCard span:last-child {
   margin-top: auto;
   margin-bottom: 0.5rem;
+}
+
+.cardFooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 18rem;
+  position: relative;
+  z-index: 2;
 }
