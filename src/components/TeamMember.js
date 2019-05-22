@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AuraPills from './AuraPills';
+import AuraPill from './AuraPill';
 import { getColor } from './helpers/auraColors';
 
 class TeamMember extends React.Component {
@@ -17,7 +17,7 @@ class TeamMember extends React.Component {
           <li className="role">Role: {role}</li>
           <li className="fav">
             Favorite Aura:{' '}
-            <AuraPills
+            <AuraPill
               id="pills"
               aura={aura}
               backgroundColor={getColor(aura)}

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import jwt from 'jsonwebtoken';

@@ -89,7 +89,7 @@ class LoginPage extends React.Component {
     } = this.props;
     return (
       <main className="loginPage">
-        <Head title="Login | Aura" />
+        <Head title="Login | Aura" pathName={pathName} />
         {this.state.showLogin ? (
           <LoginForm handleLogin={this.handleLogin} handleSwitch={this.handleSwitchToSignup} />
         ) : (
