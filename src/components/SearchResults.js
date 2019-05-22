@@ -5,36 +5,27 @@ import CardItem from './CardItem';
 import '../styles/SearchResults.scss';
 
 class SearchResults extends React.Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.multiples = Math.floor(window.innerWidth / 400) % 2 ? 6 : 8;
+  //   // this.multiples = Math.floor(window.innerWidth / 400) % 2 ? 6 : 8;
 
-    this.state = {
-      results: [],
-      numVisible: this.multiples,
-    };
-  }
+  //   // this.state = {
+  //   //   results: [],
+  //   //   numVisible: this.multiples,
+  //   // };
+  // }
 
-  componentDidMount() {
-    const { businesses } = this.props;
-    this.setState({
-      results: businesses,
-    });
-  }
+  // componentDidMount() {
+  //   const { businesses } = this.props;
+  //   this.setState({
+  //     results: businesses,
+  //   });
+  // }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.businesses !== prevProps.businesses) {
-      this.setState({
-        results: this.props.businesses,
-        numVisible: this.multiples,
-      });
-    }
-  }
-
-  loadMore() {
-    this.setState(prev => ({ numVisible: prev.numVisible + this.multiples }));
-  }
+  // loadMore() {
+  //   // this.setState(prev => ({ numVisible: prev.numVisible + this.multiples }));
+  // }
 
   render() {
     const { businesses, loading, noData, onOpenModal } = this.props;
@@ -68,17 +59,17 @@ class SearchResults extends React.Component {
     return (
       <section id="searchResults">
         <div className="resultCards">
-          {this.state.results.slice(0, this.state.numVisible).map((business, i) => (
+          {this.props.businesses.map((business, i) => (
             <div key={i}>
               <CardItem business={business} onOpenModal={onOpenModal} />
             </div>
           ))}
         </div>
-        {this.state.numVisible < this.state.results.length && (
+        {
           <button onClick={() => this.loadMore()} type="button" className="loadMore">
             Load more
           </button>
-        )}
+        }
       </section>
     );
   }
