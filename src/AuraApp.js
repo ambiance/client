@@ -81,6 +81,10 @@ class AuraApp extends React.Component {
     });
   };
 
+  handleAuraVote = event => {
+    console.log(event);
+  };
+
   // Functions for Modals
   openModalHandler = details => {
     this.setState({
@@ -144,6 +148,7 @@ class AuraApp extends React.Component {
                   isShowing={this.state.isModalShowing}
                   openModal={this.openModalHandler}
                   closeModal={this.closeModalHandler}
+                  handleAuraVote={this.handleAuraVote}
                 />
               )}
             />

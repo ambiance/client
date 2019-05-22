@@ -10,8 +10,15 @@ import auraDescriptions from '../data/auraDescriptions';
 import '../styles/Feedback.scss';
 
 export default class Feedback extends React.Component {
+  static propTypes = {
+    handleAuraVote: PropTypes.func.isRequired,
+  };
+
   handleAuraVote = event => {
-    console.log(event);
+    this.props.handleAuraVote({
+      aura: event.aura,
+      vote: event.vote,
+    });
   };
 
   render() {
@@ -20,6 +27,8 @@ export default class Feedback extends React.Component {
       <div className="modalFeedback">
         {/* Call to action */}
         <p className="feedbackHeader"> Let us know what you think!</p>
+        <p className="feedbackHeader">Click an Aura to vote what you think about this place.</p>
+        <p>{details.yelpId.type}</p>
         {/* Aura pills */}
         <form className="buttonsContainer">
           {auraDescriptions.map((item, i) => (

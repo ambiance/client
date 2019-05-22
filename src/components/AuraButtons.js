@@ -22,20 +22,23 @@ class AuraButtons extends React.Component {
       aura: this.state.aura,
       vote: this.state.vote,
     });
-    // console.log(this.state.aura);
-    // console.log(this.state.vote);
   };
 
   render() {
     const { aura, backgroundColor } = this.props;
     this.state.aura = aura;
+    // const showBackground = this.state.vote;
     // consts here
     return (
       <div
         className="feedbackSection"
         style={{ backgroundColor: `var(--${backgroundColor || 'mint'})` }}
       >
-        <button className="feedbackTabAura" onClick={this.handleAuraVote}>
+        <button
+          className="feedbackTabAura"
+          // style={{ backgroundColor: showBackground ? 'rgba(197, 197, 197, 0)' : 'rgba(197, 197, 197)' }}
+          onClick={this.handleAuraVote}
+        >
           {aura}
         </button>
       </div>
