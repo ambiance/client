@@ -60,7 +60,11 @@ class AuraApp extends React.Component {
   }
 
   handleLogin = user => {
-    this.setState({ isAuthenticated: true, user });
+    this.setState({
+      isAuthenticated: true,
+      user,
+    });
+    console.log(this.state.user);
   };
 
   handleLogout = () => {
@@ -95,14 +99,34 @@ class AuraApp extends React.Component {
 
   likeBusinessHandler = business => {
     // State verifies whether you are logged in or not
+
     if (this.state.isAuthenticated) {
       // Business Function
-      console.log(business);
-      console.log(AuraUserToken);
-      // API.patch('account/like-business', {
-      //   // user_.id = user._id from token
-      //   businessId: business._id,
-      // }).then(response => {});
+      const token = localStorage.getItem('auraUserToken');
+
+      API.get('account/read-user', {
+        token,
+      }).then(response => {
+        console.log('BEFORE', response.data.user.favorites);
+      });
+
+      API.patch('account/like-business', {
+        token,
+        businessId: business._id,
+      }).then(response => {
+        Swal.fire({
+          position: 'top',
+          text: `You liked "${business.name}"`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
+
+      API.get('account/read-user', {
+        token,
+      }).then(response => {
+        console.log('AFTER', response.data.user.favorites);
+      });
     } else {
       Swal.fire({
         position: 'top',
@@ -111,7 +135,6 @@ class AuraApp extends React.Component {
         timer: 2000,
       });
     }
-    console.log('pressed');
   };
 
   render() {
