@@ -85,6 +85,7 @@ class AuraApp extends React.Component {
     console.log(event.aura);
     console.log(this.state.modalDetails._id);
     console.log(this.state.modalDetails.name);
+    console.log(event.vote);
     // State verifies whether you are logged in or not
     // if (this.state.isAuthenticated) {
     //   // Business Function

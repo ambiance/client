@@ -14,15 +14,24 @@ export default class Feedback extends React.Component {
     handleAuraVote: PropTypes.func.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      aurasVoted: [],
+    };
+  }
+
   handleAuraVote = event => {
     this.props.handleAuraVote({
       aura: event.aura,
-      vote: event.vote,
+      vote: event.selected,
     });
   };
 
   render() {
     const { details, show } = this.props;
+
     return (
       <div className="modalFeedback">
         {/* Call to action */}
@@ -31,11 +40,11 @@ export default class Feedback extends React.Component {
         <p>{details.yelpId.type}</p>
         {/* Aura pills */}
         <form className="buttonsContainer">
-          {auraDescriptions.map((item, i) => (
+          {auraDescriptions.map(item => (
             <AuraButtons
               aura={item.aura}
               key={item.aura}
-              backgroundColor={item.aura}
+              // selected={this.state.aurasVoted.includes(item.aura)}
               handleAuraVote={this.handleAuraVote}
             />
           ))}

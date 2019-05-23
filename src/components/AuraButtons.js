@@ -11,32 +11,36 @@ class AuraButtons extends React.Component {
 
     this.state = {
       aura: '',
-      vote: false,
+      selected: false,
     };
   }
 
   handleAuraVote = event => {
     event.preventDefault();
-    this.state.vote = !this.state.vote;
+    if (this.state.selected === false) {
+      this.setState({ selected: true });
+    } else {
+      this.setState({ selected: false });
+    }
     this.props.handleAuraVote({
       aura: this.state.aura,
-      vote: this.state.vote,
+      selected: this.state.selected,
     });
   };
 
   render() {
-    const { aura, backgroundColor } = this.props;
+    const { aura, selected } = this.props;
     this.state.aura = aura;
+    // this.state.selected = selected;
     // const showBackground = this.state.vote;
     // consts here
     return (
-      <div
-        className="feedbackSection"
-        style={{ backgroundColor: `var(--${backgroundColor || 'mint'})` }}
-      >
+      <div className="feedbackSection" style={{ backgroundColor: `var(--${aura || 'mint'})` }}>
         <button
           className="feedbackTabAura"
-          // style={{ backgroundColor: showBackground ? 'rgba(197, 197, 197, 0)' : 'rgba(197, 197, 197)' }}
+          style={{
+            backgroundColor: this.state.selected ? 'rgba(197, 197, 197, 0)' : 'rgba(197, 197, 197)',
+          }}
           onClick={this.handleAuraVote}
         >
           {aura}
@@ -48,7 +52,7 @@ class AuraButtons extends React.Component {
 
 AuraButtons.propTypes = {
   aura: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string.isRequired,
+  selected: PropTypes.bool.isRequired,
 };
 
 export default AuraButtons;
