@@ -14,6 +14,10 @@ class Home extends React.Component {
     super(props);
 
     this.searchRef = React.createRef();
+    const cardsPerRow = Math.floor(window.innerWidth / 400);
+    let resultsPerPage = 6;
+    if (cardsPerRow === 2) resultsPerPage = 8;
+    if (cardsPerRow > 2) resultsPerPage = cardsPerRow * 2;
 
     this.state = {
       // modalDetails: '',
@@ -21,6 +25,7 @@ class Home extends React.Component {
       loading: false,
       noData: false,
       showResults: false,
+      page: 0,
     };
   }
 
@@ -31,7 +36,7 @@ class Home extends React.Component {
     }
 
     // Start the loader to ease waiting time.
-    this.setState({ showResults: true, loading: true }, () => {
+    this.setState({ showResults: true, loading: true, page: 0 }, () => {
       window.scroll({
         top: this.searchRef.current.offsetTop - 50,
         left: 0,
@@ -50,6 +55,8 @@ class Home extends React.Component {
     if (searchFormData.cityValue !== '') {
       params.city = searchFormData.cityValue;
     }
+    params.page = this.state.page;
+    params.resultsPerPage = this.state.resultsPerPage;
 
     // Make a request to the Aura Server for business information.
     API.get('businesses', {
@@ -63,12 +70,15 @@ class Home extends React.Component {
           this.setState({ noData: false });
         }
       })
-      .then(() => this.setState({ loading: false }))
       .catch(err => {
         alertErrorHandler(err);
         this.setState({ showResults: false, loading: false });
       });
   };
+
+  handleLoadMore() {
+    this.setState(prevState => ({ page: prevState.page + 1 }));
+  }
 
   render() {
     console.log(this.props);
@@ -100,6 +110,7 @@ class Home extends React.Component {
             businesses={this.state.businesses}
             noData={this.state.noData}
             onOpenModal={openModal}
+            loadMore={this.handleLoadMore}
             id="results"
           />
         </div>

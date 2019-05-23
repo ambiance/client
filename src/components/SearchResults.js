@@ -66,7 +66,7 @@ class SearchResults extends React.Component {
           ))}
         </div>
         {
-          <button onClick={() => this.loadMore()} type="button" className="loadMore">
+          <button onClick={() => this.props.loadMore()} type="button" className="loadMore">
             Load more
           </button>
         }
@@ -80,6 +80,7 @@ SearchResults.propTypes = {
   loading: PropTypes.bool.isRequired,
   onOpenModal: PropTypes.func.isRequired,
   noData: PropTypes.bool.isRequired,
+  loadMore: PropTypes.func.isRequired,
 };
 
 export default SearchResults;
