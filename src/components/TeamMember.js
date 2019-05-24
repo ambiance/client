@@ -21,7 +21,7 @@ class TeamMember extends React.Component {
               id="pills"
               aura={aura}
               backgroundColor={getColor(aura)}
-              style={{ 'margin-left': 0 }}
+              toolTip={{ description: 'Hello Friends' }}
             />
           </li>
         </ul>

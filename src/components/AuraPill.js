@@ -1,21 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/AuraPill.scss';
 
 const AuraPill = ({ aura, backgroundColor, toolTip }) => {
-  const [showToolTip, setShowToolTip] = useState(false);
   const toggleToolTip = event => {
     event.stopPropagation();
-    if (toolTip) {
-      setShowToolTip(!showToolTip);
-    }
   };
   return (
-    <button className="auraPillContainer" onClick={toggleToolTip}>
-      {showToolTip ? <ToolTip toolTip={toolTip} /> : ''}
-      <div className="auraPill" style={{ background: backgroundColor }}>
-        {aura}
-      </div>
+    <button className="auraPill" onClick={toggleToolTip} style={{ background: backgroundColor }}>
+      {aura}
+      {toolTip ? <ToolTip toolTip={toolTip} /> : ''}
     </button>
   );
 };
@@ -39,7 +33,7 @@ const ToolTip = ({ toolTip }) => {
         {description ? <p>{description}</p> : ''}
         {upVote ? <p>👍: {upVote}</p> : ''}
       </div>
-      <div className="arrow-down" />
+      <div className="arrowDown" />
     </>
   );
 };
