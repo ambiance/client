@@ -18,6 +18,7 @@ AuraPill.propTypes = {
   aura: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string.isRequired,
   toolTip: PropTypes.shape({
+    position: PropTypes.string.isRequired,
     description: PropTypes.string,
     upVote: PropTypes.number,
   }),
@@ -26,20 +27,33 @@ AuraPill.propTypes = {
 export default AuraPill;
 
 const ToolTip = ({ toolTip }) => {
-  const { description, upVote } = toolTip;
+  let { position = 'Top', description, upVote } = toolTip;
+
+  // Capitalize first letter
+  position = position.charAt(0).toUpperCase() + position.slice(1);
+
   return (
     <>
-      <div className="auraPillToolTip">
+      <div className={`auraPillToolTip${position}`}>
         {description ? <p>{description}</p> : ''}
-        {upVote ? <p>👍: {upVote}</p> : ''}
+        {upVote ? (
+          <p>
+            <span role="img" aria-label="thumbs up">
+              👍
+            </span>
+            : {upVote}
+          </p>
+        ) : (
+          ''
+        )}
       </div>
-      <div className="arrowDown" />
     </>
   );
 };
 
 ToolTip.propTypes = {
   toolTip: PropTypes.shape({
+    position: PropTypes.string.isRequired,
     description: PropTypes.string,
     upVote: PropTypes.number,
   }),

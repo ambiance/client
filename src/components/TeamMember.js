@@ -21,7 +21,7 @@ class TeamMember extends React.Component {
               id="pills"
               aura={aura}
               backgroundColor={getColor(aura)}
-              toolTip={{ description: 'Hello Friends' }}
+              toolTip={{ position: 'right', description: 'Hello Friends' }}
             />
           </li>
         </ul>
@@ -37,7 +37,6 @@ TeamMember.propTypes = {
   role: PropTypes.string.isRequired,
   aura: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string.isRequired,
 };
 
 export default TeamMember;

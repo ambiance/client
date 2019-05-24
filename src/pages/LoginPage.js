@@ -74,12 +74,10 @@ class LoginPage extends React.Component {
   };
 
   handleSwitchToLogin = event => {
-    console.log('Switch To Login!');
     this.setState({ showLogin: true });
   };
 
   handleSwitchToSignup = event => {
-    console.log('Switch To Signup!');
     this.setState({ showLogin: false });
   };
 

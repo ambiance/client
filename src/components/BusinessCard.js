@@ -75,7 +75,11 @@ export default class CardItem extends React.Component {
                   key={auraSingleton}
                   aura={sanitizedAura}
                   backgroundColor={getColor(sanitizedAura)}
-                  toolTip={{ description: auras[sanitizedAura].definition, upVote: 1 }}
+                  toolTip={{
+                    position: 'top',
+                    description: auras[sanitizedAura].definition,
+                    upVote: 1,
+                  }}
                 />
               );
             })}

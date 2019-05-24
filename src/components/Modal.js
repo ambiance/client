@@ -46,7 +46,7 @@ const Modal = ({ show, details, close }) => {
                       aura={sanitizedAura}
                       backgroundColor={getColor(sanitizedAura)}
                       key={auraSingleton}
-                      toolTip={auraSingleton}
+                      toolTip={{ position: 'bottom', description: sanitizedAura }}
                     />
                   );
                 })
