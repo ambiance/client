@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -97,32 +98,46 @@ class AuraApp extends React.Component {
     });
   };
 
-  likeBusinessHandler = business => {
+  likeBusinessHandler = async business => {
     // State verifies whether you are logged in or not
-
     if (this.state.isAuthenticated) {
-      // Business Function
+      // Gets token from local storage
       const token = localStorage.getItem('auraUserToken');
-
-      API.get('account/read-user', {
+      console.log('business', business);
+      // Reads user from the database
+      await API.get('account/read-user', {
         token,
       }).then(response => {
         console.log('BEFORE', response.data.user.favorites);
+        // To see if the user already has the business._id in his list of favorite businesses
+        const output = response.data.user.favorites.filter(
+          favorite => favorite.businessId === business._id
+        );
+        console.log('OUTPUT', output);
+        // If statements based on output of the filter
+        if (output.length === 0) {
+          Swal.fire({
+            position: 'top',
+            text: `You liked "${business.name}"`,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        } else {
+          Swal.fire({
+            position: 'top',
+            text: `You unliked "${business.name}"`,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
       });
 
-      API.patch('account/like-business', {
+      await API.patch('account/like-business', {
         token,
         businessId: business._id,
-      }).then(response => {
-        Swal.fire({
-          position: 'top',
-          text: `You liked "${business.name}"`,
-          showConfirmButton: false,
-          timer: 2000,
-        });
       });
 
-      API.get('account/read-user', {
+      await API.get('account/read-user', {
         token,
       }).then(response => {
         console.log('AFTER', response.data.user.favorites);
