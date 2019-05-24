@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-useless-return */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -5,6 +7,7 @@ import AuraPills from './AuraPills';
 import { getColor } from './helpers/auraColors';
 import locations from '../data/LALocations';
 import '../styles/CardItem.scss';
+import heart from '../assets/img/heartEmpty.png';
 
 export default class CardItem extends React.Component {
   constructor(props) {
@@ -79,14 +82,26 @@ export default class CardItem extends React.Component {
 
           <div className="cardFooter">
             <p>{categories}</p>
-            <button
+
+            <img
+              className="heart"
+              src={heart}
+              alt="heart"
+              role="button"
+              onClick={event => {
+                event.stopPropagation();
+                likeBusiness(business);
+              }}
+            />
+
+            {/* <button
               onClick={event => {
                 event.stopPropagation();
                 likeBusiness(business);
               }}
             >
-              LIKE
-            </button>
+              Like
+            </button> */}
           </div>
         </span>
       </button>
