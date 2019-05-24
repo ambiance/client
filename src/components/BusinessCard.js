@@ -78,7 +78,7 @@ export default class CardItem extends React.Component {
                   toolTip={{
                     position: 'top',
                     description: auras[sanitizedAura].definition,
-                    upVote: 1,
+                    upVote: 0,
                   }}
                 />
               );
