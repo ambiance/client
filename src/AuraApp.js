@@ -82,35 +82,36 @@ class AuraApp extends React.Component {
   };
 
   handleAuraVote = event => {
+    console.log(this.state.modalDetails.usersVotedAura);
     console.log(event.aura);
     console.log(this.state.modalDetails._id);
     console.log(this.state.modalDetails.name);
     console.log(event.vote);
     // State verifies whether you are logged in or not
-    // if (this.state.isAuthenticated) {
-    //   // Business Function
-    //   const token = localStorage.getItem('auraUserToken');
+    if (this.state.isAuthenticated) {
+      // Business Function
+      const token = localStorage.getItem('auraUserToken');
 
-    //   API.patch('/businesses/vote-auras', {
-    //     token,
-    //     businessId: this.state.modalDetails._id,
-    //     aura: event.aura,
-    //   }).then(response => {
-    //     Swal.fire({
-    //       position: 'top',
-    //       text: `You voted ${event.aura} for "${this.state.modalDetails.name}"`,
-    //       showConfirmButton: false,
-    //       timer: 2000,
-    //     });
-    //   });
-    // } else {
-    //   Swal.fire({
-    //     position: 'top',
-    //     text: 'You are not logged in',
-    //     showConfirmButton: false,
-    //     timer: 2000,
-    //   });
-    // }
+      API.patch('/businesses/vote-auras', {
+        token,
+        businessId: this.state.modalDetails._id,
+        aura: event.aura,
+      }).then(response => {
+        Swal.fire({
+          position: 'top',
+          text: `You voted ${event.aura} for "${this.state.modalDetails.name}"`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
+    } else {
+      Swal.fire({
+        position: 'top',
+        text: 'You are not logged in',
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
   };
 
   // Functions for Modals
