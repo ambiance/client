@@ -93,15 +93,6 @@ export default class CardItem extends React.Component {
                 likeBusiness(business);
               }}
             />
-
-            {/* <button
-              onClick={event => {
-                event.stopPropagation();
-                likeBusiness(business);
-              }}
-            >
-              Like
-            </button> */}
           </div>
         </span>
       </button>
