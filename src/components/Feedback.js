@@ -33,7 +33,7 @@ export default class Feedback extends React.Component {
     const { details, show } = this.props;
     // Find aurasVoted array for user logged
     // [TODO]
-    // ---------------------------------------------------------How we want to check the votes the first time
+    // -----------------This should pass down the auras voted when it first renders-------------
     // If authenticated
     // DEPENDENCIES:
     //    -  userID
