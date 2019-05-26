@@ -14,10 +14,8 @@ class Home extends React.Component {
     super(props);
 
     this.searchRef = React.createRef();
-    const cardsPerRow = Math.floor(window.innerWidth / 400);
-    let resultsPerPage = 6;
-    if (cardsPerRow === 2) resultsPerPage = 8;
-    if (cardsPerRow > 2) resultsPerPage = cardsPerRow * 2;
+
+    const resultsPerChunk = this.calculateResultsPerChunk();
 
     this.state = {
       // modalDetails: '',
@@ -25,24 +23,42 @@ class Home extends React.Component {
       loading: false,
       noData: false,
       showResults: false,
-      page: 0,
+      params: { resultsPerChunk, page: 0 },
+      hasMoreResults: false,
     };
   }
 
-  handleSearchSubmit = searchFormData => {
+  calculateResultsPerChunk = () => {
+    const cardsPerRow = Math.floor(window.innerWidth / 400);
+    if (cardsPerRow === 2) return 8;
+    if (cardsPerRow > 2) return cardsPerRow * 2;
+    return 6;
+  };
+
+  handleSearchSubmit = async searchFormData => {
     // Warn the user that there is already a request being made
     if (this.state.loading) {
       // TODO: Talk to the team about what we want to do when many requests are being made.
     }
 
+    console.log('handle search submit');
     // Start the loader to ease waiting time.
-    this.setState({ showResults: true, loading: true, page: 0 }, () => {
-      window.scroll({
-        top: this.searchRef.current.offsetTop - 50,
-        left: 0,
-        passive: true,
-      });
-    });
+    await this.setState(
+      prevState => ({
+        showResults: true,
+        businesses: [],
+        loading: true,
+        params: { ...prevState.params, page: 0, resultsPerChunk: this.calculateResultsPerChunk() },
+        hasMoreResults: false,
+      }),
+      () => {
+        window.scroll({
+          top: this.searchRef.current.offsetTop - 50,
+          left: 0,
+          passive: true,
+        });
+      }
+    );
 
     // Dynamically add search parameters based on the results from the search form.
     const params = {};
@@ -55,15 +71,47 @@ class Home extends React.Component {
     if (searchFormData.cityValue !== '') {
       params.city = searchFormData.cityValue;
     }
-    params.page = this.state.page;
-    params.resultsPerPage = this.state.resultsPerPage;
+
+    params.page = this.state.params.page;
+    params.results = this.state.params.resultsPerChunk;
+
+    this.setState({ params });
+    console.log('params: ', params);
+    console.log('this.state.params: ', this.state.params);
+    this.queryDatabase(this.state.params);
+
+    // // Make a request to the Aura Server for business information.
+    // API.get('businesses', { params })
+    //   .then(response => {
+    //     this.setState({ businesses: response.data, loading: false });
+    //     if (response.data.length === 0) {
+    //       this.setState({ noData: true });
+    //     } else {
+    //       this.setState({ noData: false });
+    //     }
+    //   })
+    //   .catch(err => {
+    //     alertErrorHandler(err);
+    //     this.setState({ showResults: false, loading: false });
+    //   });
+  };
+
+  queryDatabase = params => {
+    // const { params } = this.state;
+    // params.page = this.state.page;
+    // params.results = this.state.resultsPerChunk;
+
+    console.log('params inside queryDatabase: ', params);
 
     // Make a request to the Aura Server for business information.
-    API.get('businesses', {
-      params,
-    })
+    API.get('businesses', { params })
       .then(response => {
-        this.setState({ businesses: response.data });
+        const { businesses, hasMoreResults } = response.data;
+        this.setState(prevState => ({
+          businesses: prevState.businesses.concat(businesses),
+          loading: false,
+          hasMoreResults,
+        }));
         if (response.data.length === 0) {
           this.setState({ noData: true });
         } else {
@@ -76,12 +124,15 @@ class Home extends React.Component {
       });
   };
 
-  handleLoadMore() {
-    this.setState(prevState => ({ page: prevState.page + 1 }));
-  }
+  handleLoadMore = () => {
+    this.setState(prevState => ({
+      params: { ...prevState.params, page: prevState.params.page + 1 },
+    }));
+    this.queryDatabase(this.state.params);
+  };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const {
       location: { pathname: pathName },
       isShowing,
@@ -110,7 +161,8 @@ class Home extends React.Component {
             businesses={this.state.businesses}
             noData={this.state.noData}
             onOpenModal={openModal}
-            loadMore={this.handleLoadMore}
+            handleloadMore={this.handleLoadMore}
+            showLoadMoreBtn={this.state.hasMoreResults}
             id="results"
           />
         </div>

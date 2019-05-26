@@ -5,30 +5,16 @@ import CardItem from './CardItem';
 import '../styles/SearchResults.scss';
 
 class SearchResults extends React.Component {
-  // constructor(props) {
-  //   super(props);
-
-  //   // this.multiples = Math.floor(window.innerWidth / 400) % 2 ? 6 : 8;
-
-  //   // this.state = {
-  //   //   results: [],
-  //   //   numVisible: this.multiples,
-  //   // };
-  // }
-
-  // componentDidMount() {
-  //   const { businesses } = this.props;
-  //   this.setState({
-  //     results: businesses,
-  //   });
-  // }
-
-  // loadMore() {
-  //   // this.setState(prev => ({ numVisible: prev.numVisible + this.multiples }));
-  // }
-
   render() {
-    const { businesses, loading, noData, onOpenModal } = this.props;
+    const {
+      businesses,
+      loading,
+      noData,
+      onOpenModal,
+      showLoadMoreBtn,
+      handleLoadMore,
+    } = this.props;
+
     if (loading) {
       return (
         <div className="loaderWrapper">
@@ -59,17 +45,19 @@ class SearchResults extends React.Component {
     return (
       <section id="searchResults">
         <div className="resultCards">
-          {this.props.businesses.map((business, i) => (
+          {businesses.map((business, i) => (
             <div key={i}>
               <CardItem business={business} onOpenModal={onOpenModal} />
             </div>
           ))}
         </div>
-        {
-          <button onClick={() => this.props.loadMore()} type="button" className="loadMore">
+        {showLoadMoreBtn ? (
+          <button onClick={handleLoadMore} type="button" className="loadMore">
             Load more
           </button>
-        }
+        ) : (
+          ''
+        )}
       </section>
     );
   }
@@ -80,7 +68,8 @@ SearchResults.propTypes = {
   loading: PropTypes.bool.isRequired,
   onOpenModal: PropTypes.func.isRequired,
   noData: PropTypes.bool.isRequired,
-  loadMore: PropTypes.func.isRequired,
+  handleLoadMore: PropTypes.func.isRequired,
+  showLoadMoreBtn: PropTypes.bool.isRequired,
 };
 
 export default SearchResults;
