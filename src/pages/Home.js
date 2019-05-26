@@ -16,7 +16,6 @@ class Home extends React.Component {
     this.searchRef = React.createRef();
 
     const resultsPerChunk = this.calculateResultsPerChunk();
-
     this.state = {
       // modalDetails: '',
       businesses: [],
@@ -78,34 +77,12 @@ class Home extends React.Component {
     params.page = this.state.params.page;
     params.results = this.state.params.resultsPerChunk;
 
-    this.setState({ params });
-    console.log('params: ', params);
-    console.log('this.state.params: ', this.state.params);
-    this.queryDatabase(this.state.params);
-
-    // // Make a request to the Aura Server for business information.
-    // API.get('businesses', { params })
-    //   .then(response => {
-    //     this.setState({ businesses: response.data, loading: false });
-    //     if (response.data.length === 0) {
-    //       this.setState({ noData: true });
-    //     } else {
-    //       this.setState({ noData: false });
-    //     }
-    //   })
-    //   .catch(err => {
-    //     alertErrorHandler(err);
-    //     this.setState({ showResults: false, loading: false });
-    //   });
+    this.setState({ params }, () => {
+      this.queryDatabase(this.state.params);
+    });
   };
 
   queryDatabase = params => {
-    // const { params } = this.state;
-    // params.page = this.state.page;
-    // params.results = this.state.resultsPerChunk;
-
-    console.log('params inside queryDatabase: ', params);
-
     // Make a request to the Aura Server for business information.
     API.get('businesses', { params })
       .then(response => {
@@ -128,10 +105,14 @@ class Home extends React.Component {
   };
 
   handleLoadMore = () => {
-    this.setState(prevState => ({
-      params: { ...prevState.params, page: prevState.params.page + 1 },
-    }));
-    this.queryDatabase(this.state.params);
+    this.setState(
+      prevState => ({
+        params: { ...prevState.params, page: prevState.params.page + 1 },
+      }),
+      () => {
+        this.queryDatabase(this.state.params);
+      }
+    );
   };
 
   render() {
