@@ -41,14 +41,17 @@ class Home extends React.Component {
       // TODO: Talk to the team about what we want to do when many requests are being made.
     }
 
-    console.log('handle search submit');
     // Start the loader to ease waiting time.
     await this.setState(
       prevState => ({
         showResults: true,
         businesses: [],
         loading: true,
-        params: { ...prevState.params, page: 0, resultsPerChunk: this.calculateResultsPerChunk() },
+        params: {
+          ...prevState.params,
+          page: 0,
+          resultsPerChunk: this.calculateResultsPerChunk(),
+        },
         hasMoreResults: false,
       }),
       () => {
