@@ -13,11 +13,10 @@ import heartFilled from '../assets/img/heartFilled.png';
 export default class CardItem extends React.Component {
   constructor(props) {
     super(props);
-
     // set initial state
     this.state = {
       neighborhood: null,
-      heartStatus: true,
+      heartStatus: true, // State used to decided between heartEmpty or heartFilled image
     };
   }
 
@@ -36,19 +35,21 @@ export default class CardItem extends React.Component {
     });
   };
 
+  // Method is used to toggle the state of heartStatus
   toggleImage = () => {
     this.setState(state => ({ heartStatus: !state.heartStatus }));
   };
 
+  // Method used to obtain the string referring to the image based on heartStatus state
   getImageName = () => (this.state.heartStatus ? heartEmpty : heartFilled);
-
   render() {
     // consts here
-    const { business, onOpenModal, likeBusiness } = this.props;
+    const { business, onOpenModal, likeBusiness, likedBusinesses } = this.props;
     // We cannot guarentee that the categories will not overflow in the cards with multiple categories.
     // FIXME: const categories = business.categories.map(category => category.title).join(', ');
     const categories = business.categories[0].title;
-    // Heart Image
+    // const utilizes method getHeartStatus to find if user already liked this businesses to determine image
+    // const utilizes method getImageName to get Image, refer to method above
     const imageName = this.getImageName();
     return (
       <button key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
@@ -99,9 +100,9 @@ export default class CardItem extends React.Component {
               alt="heart"
               role="button"
               onClick={event => {
-                event.stopPropagation();
-                likeBusiness(business);
-                this.toggleImage();
+                event.stopPropagation(); // Prevents modal (behind button) from activating
+                likeBusiness(business); // Calls likeBusiness Method (Refer to AuraApp.js for actual method)
+                this.toggleImage(); // Calls toggleImage to change heartStatus State (Refer to method above)
               }}
             />
           </div>
@@ -124,4 +125,5 @@ CardItem.propTypes = {
   }).isRequired,
   onOpenModal: PropTypes.func.isRequired,
   likeBusiness: PropTypes.func.isRequired,
+  likedBusinesses: PropTypes.array.isRequired,
 };

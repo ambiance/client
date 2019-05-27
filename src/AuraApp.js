@@ -18,6 +18,7 @@ class AuraApp extends React.Component {
     this.state = {
       isAuthenticated: false,
       user: {},
+      likedBusinesses: [],
       isModalShowing: false,
       modalDetails: {},
     };
@@ -98,6 +99,7 @@ class AuraApp extends React.Component {
     });
   };
 
+  // Method used to like a business
   likeBusinessHandler = async business => {
     // State verifies whether you are logged in or not
     if (this.state.isAuthenticated) {
@@ -141,6 +143,8 @@ class AuraApp extends React.Component {
         token,
       }).then(response => {
         console.log('AFTER', response.data.user.favorites);
+        this.setState({ likedBusinesses: response.data.user.favorites });
+        console.log('AFTER-STATUS', this.state.likedBusinesses);
       });
     } else {
       Swal.fire({
@@ -201,6 +205,7 @@ class AuraApp extends React.Component {
                   openModal={this.openModalHandler}
                   closeModal={this.closeModalHandler}
                   likeBusiness={this.likeBusinessHandler}
+                  likedBusinesses={this.state.likedBusinesses}
                 />
               )}
             />

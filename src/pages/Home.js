@@ -71,7 +71,14 @@ class Home extends React.Component {
   };
 
   render() {
-    const { isShowing, modalDetails, openModal, closeModal, likeBusiness } = this.props;
+    const {
+      isShowing,
+      modalDetails,
+      openModal,
+      closeModal,
+      likeBusiness,
+      likedBusinesses,
+    } = this.props;
     return (
       <main>
         <Head title="Home | Aura" />
@@ -95,6 +102,7 @@ class Home extends React.Component {
             onOpenModal={openModal}
             id="results"
             likeBusiness={likeBusiness}
+            likedBusinesses={likedBusinesses}
           />
         </div>
       </main>
@@ -108,6 +116,7 @@ Home.propTypes = {
   openModal: PropTypes.func,
   closeModal: PropTypes.func,
   likeBusiness: PropTypes.func,
+  likedBusinesses: PropTypes.array,
 };
 
 export default Home;

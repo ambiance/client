@@ -6,7 +6,7 @@ import '../styles/SearchResults.scss';
 
 class SearchResults extends React.Component {
   render() {
-    const { businesses, loading, noData, onOpenModal, likeBusiness } = this.props;
+    const { businesses, loading, noData, onOpenModal, likeBusiness, likedBusinesses } = this.props;
     if (loading) {
       return (
         <div className="loaderWrapper">
@@ -39,7 +39,12 @@ class SearchResults extends React.Component {
         <div className="resultCards">
           {businesses.map((business, i) => (
             <div key={i}>
-              <CardItem business={business} onOpenModal={onOpenModal} likeBusiness={likeBusiness} />
+              <CardItem
+                business={business}
+                onOpenModal={onOpenModal}
+                likeBusiness={likeBusiness}
+                likedBusinesses={likedBusinesses}
+              />
             </div>
           ))}
         </div>
@@ -54,6 +59,7 @@ SearchResults.propTypes = {
   onOpenModal: PropTypes.func.isRequired,
   noData: PropTypes.bool.isRequired,
   likeBusiness: PropTypes.func.isRequired,
+  likedBusinesses: PropTypes.array.isRequired,
 };
 
 export default SearchResults;
