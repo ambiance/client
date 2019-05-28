@@ -145,7 +145,7 @@ class Home extends React.Component {
             businesses={this.state.businesses}
             noData={this.state.noData}
             onOpenModal={openModal}
-            handleloadMore={this.handleLoadMore}
+            handleLoadMore={this.handleLoadMore}
             showLoadMoreBtn={this.state.hasMoreResults}
             id="results"
           />
