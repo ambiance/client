@@ -19,16 +19,14 @@ class Contact extends React.Component {
     return (
       <main background={background}>
         <Head pathName={pathName} title="Contact | Aura" />
-        <section id="grid">
+        <section className="teamMemberGrid">
           {memberInfo.map(member => (
             <TeamMember
-              sectionId={member.sectionId}
               key={member.fullName}
               img={member.src}
               fullName={member.fullName}
               role={member.role}
-              aura={member.aura}
-              link={member.link}
+              mailLink={member.mailLink}
             />
           ))}
         </section>
