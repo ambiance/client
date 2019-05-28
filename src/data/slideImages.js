@@ -1,13 +1,13 @@
 // trendy, lively, inspired, romantic, cheerful, intimate, classy, hipster, casual, touristy
 const slideImages = [
   {
-    src: `${process.env.PUBLIC_URL}/assets/img/slideshow/lively.jpg`,
-    aura: 'lively',
+    src: `${process.env.PUBLIC_URL}/assets/img/slideshow/trendy.jpg`,
+    aura: 'trendy',
     question: 'What is your aura?',
   },
   {
-    src: `${process.env.PUBLIC_URL}/assets/img/slideshow/trendy.jpg`,
-    aura: 'trendy',
+    src: `${process.env.PUBLIC_URL}/assets/img/slideshow/lively.jpg`,
+    aura: 'lively',
     question: 'What is your aura?',
   },
   {

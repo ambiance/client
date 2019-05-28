@@ -23,6 +23,16 @@
   display: block;
 }
 
+@media (hover: hover) {
+  // Focus displays
+  .auraPill:hover .auraPillToolTipTop,
+  .auraPill:hover .auraPillToolTipRight,
+  .auraPill:hover .auraPillToolTipBottom,
+  .auraPill:hover .auraPillToolTipLeft {
+    display: block;
+  }
+}
+
 // Tool Tip Top
 .auraPillToolTipTop {
   display: none;
