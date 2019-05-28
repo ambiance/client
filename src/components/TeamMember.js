@@ -15,8 +15,8 @@ class TeamMember extends React.Component {
             <a href={link}>{fullName}</a>
           </li>
           <li className="role">Role: {role}</li>
-          <li className="fav">
-            Favorite Aura:{' '}
+          <li className="fav">Favorite Aura: </li>
+          <li>
             <AuraPill
               id="pills"
               aura={aura}
