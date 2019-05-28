@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AuraPill from './AuraPill';
 import { getColor } from './helpers/auraColors';
+import auraDescriptions from '../data/auraDescriptions';
 
 class TeamMember extends React.Component {
   render() {
     const { sectionId, img, fullName, role, aura, link } = this.props;
-
     return (
       <section id={sectionId} className="halfpics">
         <img src={img} alt="profile" />
@@ -21,7 +21,7 @@ class TeamMember extends React.Component {
               id="pills"
               aura={aura}
               backgroundColor={getColor(aura)}
-              toolTip={{ position: 'right', description: 'Hello Friends' }}
+              toolTip={{ position: 'right', description: auraDescriptions[`${aura}`].definition }}
             />
           </li>
         </ul>

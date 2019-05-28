@@ -1,5 +1,5 @@
-const memberInfo = [
-  {
+const memberInfo = {
+  devon: {
     sectionId: 'devon',
     src: `${process.env.PUBLIC_URL}/assets/img/team/Devon_Marantz.png`,
     fullName: 'Devon Marantz',
@@ -7,7 +7,7 @@ const memberInfo = [
     aura: 'casual',
     link: 'mailto: DMarantz@talentpath.com',
   },
-  {
+  emily: {
     sectionId: 'none',
     src: `${process.env.PUBLIC_URL}/assets/img/team/Emily_Yang.png`,
     fullName: 'Emily Yang',
@@ -15,7 +15,7 @@ const memberInfo = [
     aura: 'inspired',
     link: 'mailto: EYang@talentpath.com',
   },
-  {
+  scott: {
     sectionId: 'none',
     src: `${process.env.PUBLIC_URL}/assets/img/team/Scott_Roberts.png`,
     fullName: 'Scott Roberts',
@@ -23,7 +23,7 @@ const memberInfo = [
     aura: 'romantic',
     link: 'mailto: SRoberts@talentpath.com',
   },
-  {
+  kevin: {
     sectionId: 'none',
     src: `${process.env.PUBLIC_URL}/assets/img/team/Kevin_Amarbayar.jpg`,
     fullName: 'Kevin Amarbayar',
@@ -32,7 +32,7 @@ const memberInfo = [
     // backgroundColor: 'var(--cheerful)',
     link: 'mailto: KAmarbayar@talentpath.com',
   },
-  {
+  ervin: {
     sectionId: 'none',
     src: `${process.env.PUBLIC_URL}/assets/img/team/Ervin_Mitra.jpg`,
     fullName: 'Ervin Mitra',
@@ -40,7 +40,7 @@ const memberInfo = [
     aura: 'hipster',
     link: 'mailto: EMitra@talentpath.com',
   },
-  {
+  jonathan: {
     sectionId: 'none',
     src: `${process.env.PUBLIC_URL}/assets/img/team/Jon_Azali.jpg`,
     fullName: 'Jonathan Azali',
@@ -48,7 +48,7 @@ const memberInfo = [
     aura: 'touristy',
     link: 'mailto: JAzali@talentpath.com',
   },
-  {
+  brock: {
     sectionId: 'none',
     src: `${process.env.PUBLIC_URL}/assets/img/team/Brock_Jameson.png`,
     fullName: 'Brock Jameson',
@@ -56,6 +56,6 @@ const memberInfo = [
     aura: 'classy',
     link: 'mailto: BJameson@talentpath.com',
   },
-];
+};
 
 export default memberInfo;
