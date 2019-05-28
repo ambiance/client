@@ -24,6 +24,13 @@ export default class CardItem extends React.Component {
     const { postalCode, city } = this.props.business;
     if (city !== 'Los Angeles') this.setState({ neighborhood: city });
     else this.setNeighborhood(postalCode);
+
+    // this.setState({ heartStatus: true });
+    // const { likedBusinesses, business } = this.props;
+    // const tempArray = likedBusinesses.filter(likedBusiness => likedBusiness === business._id);
+    // if (tempArray.length !== 0) {
+    //   this.setState({ heartStatus: false });
+    // }
   }
 
   setNeighborhood = postalCode => {
@@ -42,15 +49,15 @@ export default class CardItem extends React.Component {
 
   // Method used to obtain the string referring to the image based on heartStatus state
   getImageName = () => (this.state.heartStatus ? heartEmpty : heartFilled);
+
   render() {
     // consts here
     const { business, onOpenModal, likeBusiness, likedBusinesses } = this.props;
     // We cannot guarentee that the categories will not overflow in the cards with multiple categories.
     // FIXME: const categories = business.categories.map(category => category.title).join(', ');
     const categories = business.categories[0].title;
-    // const utilizes method getHeartStatus to find if user already liked this businesses to determine image
     // const utilizes method getImageName to get Image, refer to method above
-    const imageName = this.getImageName();
+    const imageName = this.getImageName(likedBusinesses, business);
     return (
       <button key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
         <div className="resultCardImageContainer">
