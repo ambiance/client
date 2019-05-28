@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import jwt from 'jsonwebtoken';
 
-import { Home, About, MeetTheTeam, Login, Dashboard, FourOhFour } from './pages';
+import { Home, About, Contact, Login, Dashboard, FourOhFour } from './pages';
 import Header from './components/Header';
 import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
@@ -116,7 +116,7 @@ class AuraApp extends React.Component {
             )}
           />
           <Route path="/about" component={About} />
-          <Route path="/meettheteam" component={MeetTheTeam} />
+          <Route path="/contact" component={Contact} />
           <Route
             path="/login"
             render={props => <Login {...props} handleLogin={this.handleLogin} />}
