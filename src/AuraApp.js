@@ -106,8 +106,8 @@ class AuraApp extends React.Component {
           showConfirmButton: false,
           timer: 2000,
         });
-        this.setState({ voteDetails: response.data.status });
-        console.log(response.data.status);
+        this.setState({ voteDetails: response.data.status.aura });
+        console.log(response.data.status.aura);
       });
     } else {
       Swal.fire({
