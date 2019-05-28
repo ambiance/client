@@ -31,7 +31,7 @@ class AuraButtons extends React.Component {
   render() {
     const { aura, selected } = this.props;
     this.state.aura = aura;
-    // this.state.selected = selected;
+    this.state.selected = selected;
     // const showBackground = this.state.vote;
     // consts here
     return (

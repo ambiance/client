@@ -55,7 +55,7 @@ export default class Feedback extends React.Component {
             <AuraButtons
               aura={item.aura}
               key={item.aura}
-              // selected={this.state.aurasVoted.includes(item.aura)}
+              selected={this.state.aurasVoted.includes(item.aura)}
               handleAuraVote={this.handleAuraVote}
             />
           ))}
