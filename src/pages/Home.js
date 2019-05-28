@@ -75,6 +75,7 @@ class Home extends React.Component {
       location: { pathname: pathName },
       isShowing,
       modalDetails,
+      voteDetails,
       openModal,
       closeModal,
       handleAuraVote,
@@ -87,6 +88,7 @@ class Home extends React.Component {
           show={isShowing}
           close={closeModal}
           details={modalDetails}
+          voteDetails={voteDetails}
           handleAuraVote={handleAuraVote}
           shouldCloseOnOverlayClick
         />
@@ -114,6 +116,7 @@ Home.propTypes = {
     pathname: PropTypes.string.isRequired,
   }),
   modalDetails: PropTypes.object,
+  voteDetails: PropTypes.array,
   isShowing: PropTypes.bool,
   openModal: PropTypes.func,
   closeModal: PropTypes.func,

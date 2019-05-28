@@ -21,6 +21,7 @@ class AuraApp extends React.Component {
       user: {},
       isModalShowing: false,
       modalDetails: {},
+      voteDetails: [],
     };
   }
   // FIXME: Might be throwing memory leaks if the request does not work... check this out...
@@ -88,32 +89,34 @@ class AuraApp extends React.Component {
     console.log(this.state.modalDetails.name);
     console.log(event.vote);
     // State verifies whether you are logged in or not
-    //   if (this.state.isAuthenticated) {
-    //     //
+    if (this.state.isAuthenticated) {
+      //
 
-    //     // Business Function
-    //     const token = localStorage.getItem('auraUserToken');
+      // Business Function
+      const token = localStorage.getItem('auraUserToken');
 
-    //     API.patch('/businesses/vote-auras', {
-    //       token,
-    //       businessId: this.state.modalDetails._id,
-    //       aura: event.aura,
-    //     }).then(response => {
-    //       Swal.fire({
-    //         position: 'top',
-    //         text: `You voted ${event.aura} for "${this.state.modalDetails.name}"`,
-    //         showConfirmButton: false,
-    //         timer: 2000,
-    //       });
-    //     });
-    //   } else {
-    //     Swal.fire({
-    //       position: 'top',
-    //       text: 'You are not logged in',
-    //       showConfirmButton: false,
-    //       timer: 2000,
-    //     });
-    //   }
+      API.patch('/businesses/vote-auras', {
+        token,
+        businessId: this.state.modalDetails._id,
+        aura: event.aura,
+      }).then(response => {
+        Swal.fire({
+          position: 'top',
+          text: `You voted ${event.aura} for "${this.state.modalDetails.name}"`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        this.setState({ voteDetails: response.data.status });
+        console.log(response.data.status);
+      });
+    } else {
+      Swal.fire({
+        position: 'top',
+        text: 'You are not logged in',
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
   };
 
   // Functions for Modals
@@ -176,6 +179,7 @@ class AuraApp extends React.Component {
                 <Home
                   {...props}
                   modalDetails={this.state.modalDetails}
+                  voteDetails={this.state.voteDetails}
                   isShowing={this.state.isModalShowing}
                   openModal={this.openModalHandler}
                   closeModal={this.closeModalHandler}

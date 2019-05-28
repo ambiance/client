@@ -14,14 +14,6 @@ export default class Feedback extends React.Component {
     handleAuraVote: PropTypes.func.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      aurasVoted: [],
-    };
-  }
-
   handleAuraVote = event => {
     this.props.handleAuraVote({
       aura: event.aura,
@@ -30,18 +22,20 @@ export default class Feedback extends React.Component {
   };
 
   render() {
-    const { details, show } = this.props;
+    const { details, voteDetails, show } = this.props;
     // Find aurasVoted array for user logged
     // [TODO]
-    // -----------------This should pass down the auras voted when it first renders-------------
-    // If authenticated
-    // DEPENDENCIES:
-    //    -  userID
-    //    -  ifAuthenticated
-    // Get index
-    const usersAuraIndex = details.usersVotedAura.findIndex(x => x.userId === 'THE USER ID!!!!');
-    // Use index to find aura array
-    this.state.aurasVoted = details.usersVotedAura[usersAuraIndex].aura;
+    // // -----------------This should pass down the auras voted when it first renders-------------
+    // // If authenticated
+    // // DEPENDENCIES:
+    // //    -  userID
+    // //    -  ifAuthenticated
+    // // Get index
+    // const usersAuraIndex = details.usersVotedAura.findIndex(x => x.userId === 'THE USER ID!!!!');
+    // // Use index to find aura array
+    // this.state.aurasVoted = details.usersVotedAura[usersAuraIndex].aura;
+    console.log('This is the voteDetails');
+    console.log(voteDetails);
 
     return (
       <div className="modalFeedback">
@@ -55,7 +49,7 @@ export default class Feedback extends React.Component {
             <AuraButtons
               aura={item.aura}
               key={item.aura}
-              selected={this.state.aurasVoted.includes(item.aura)}
+              selected={voteDetails.includes(item.aura)}
               handleAuraVote={this.handleAuraVote}
             />
           ))}
@@ -67,5 +61,6 @@ export default class Feedback extends React.Component {
 
 Feedback.propTypes = {
   details: PropTypes.object.isRequired,
+  voteDetails: PropTypes.array.isRequired,
   show: PropTypes.bool.isRequired,
 };

@@ -16,8 +16,8 @@ class AuraButtons extends React.Component {
   }
 
   handleAuraVote = event => {
-    event.preventDefault();
-    if (this.state.selected === false) {
+    // event.preventDefault();
+    if (!this.state.selected) {
       this.setState({ selected: true });
     } else {
       this.setState({ selected: false });
