@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Head from './Head';
 import TeamMember from '../components/TeamMember';
 // helpers
-import memberInfo from '../data/memberInfo';
+import memberObj from '../data/memberInfo';
 import background from '../assets/img/trinityBackgroundWhite.png';
 // scss
 import '../styles/MeetTheTeam.scss';
@@ -15,6 +15,7 @@ class MeetTheTeam extends React.Component {
     const {
       location: { pathname: pathName },
     } = this.props;
+    const memberInfo = Object.values(memberObj);
     return (
       <main background={background}>
         <Head pathName={pathName} title="Contact | Aura" />

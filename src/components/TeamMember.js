@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AuraPills from './AuraPills';
+import AuraPill from './AuraPill';
 import { getColor } from './helpers/auraColors';
+import auraDescriptions from '../data/auraDescriptions';
 
 class TeamMember extends React.Component {
   render() {
     const { sectionId, img, fullName, role, aura, link } = this.props;
-
     return (
       <section id={sectionId} className="halfpics">
         <img src={img} alt="profile" />
@@ -15,13 +15,13 @@ class TeamMember extends React.Component {
             <a href={link}>{fullName}</a>
           </li>
           <li className="role">Role: {role}</li>
-          <li className="fav">
-            Favorite Aura:{' '}
-            <AuraPills
+          <li className="fav">Favorite Aura: </li>
+          <li>
+            <AuraPill
               id="pills"
               aura={aura}
               backgroundColor={getColor(aura)}
-              style={{ 'margin-left': 0 }}
+              toolTip={{ position: 'right', description: auraDescriptions[`${aura}`].definition }}
             />
           </li>
         </ul>
@@ -37,7 +37,6 @@ TeamMember.propTypes = {
   role: PropTypes.string.isRequired,
   aura: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string.isRequired,
 };
 
 export default TeamMember;
