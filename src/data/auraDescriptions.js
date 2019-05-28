@@ -211,8 +211,7 @@ const auraDescriptions = {
   },
   touristy: {
     aura: 'touristy',
-    definition:
-      'Relating to, appealing to, or visited by tourists (often used to suggest tawdriness or lack of authenticity)',
+    definition: 'Relating to, appealing to, or visited by tourists',
     description: '',
     examples: [
       {
