@@ -25,7 +25,7 @@ const Header = ({ auraLogo, isAuthenticated }) => (
           <NavLink to="/about">About Aura</NavLink>
         </li>
         <li>
-          <NavLink to="/meettheteam">Contact</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
         </li>
         {isAuthenticated ? (
           <React.Fragment>
