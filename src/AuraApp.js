@@ -82,6 +82,10 @@ class AuraApp extends React.Component {
     });
   };
 
+  handleInitialFeedback = event => {
+    console.log('Welcome to Feedback');
+  };
+
   handleAuraVote = event => {
     console.log(this.state.modalDetails.usersVotedAura);
     console.log(event.aura);
@@ -125,6 +129,22 @@ class AuraApp extends React.Component {
       isModalShowing: true,
       modalDetails: details,
     });
+    if (this.state.isAuthenticated) {
+      console.log(details.usersVotedAura.userId);
+      console.log(details.usersVotedAura);
+      console.log(this.state.user._id);
+      // Finds index of user id
+      const index = details.usersVotedAura.findIndex(item => item.userId === this.state.user._id);
+      if (index !== -1) {
+        console.log(details.usersVotedAura[index].aura);
+        this.setState({
+          voteDetails: details.usersVotedAura[index].aura,
+        });
+      } else {
+        console.log('Not logged in brah');
+      }
+    }
+    // console.log(details);
   };
 
   closeModalHandler = () => {
@@ -184,6 +204,7 @@ class AuraApp extends React.Component {
                   openModal={this.openModalHandler}
                   closeModal={this.closeModalHandler}
                   handleAuraVote={this.handleAuraVote}
+                  handleInitialFeedback={this.handleInitialFeedback}
                 />
               )}
             />
