@@ -16,21 +16,26 @@ export default class CardItem extends React.Component {
     // set initial state
     this.state = {
       neighborhood: null,
-      heartStatus: true, // State used to decided between heartEmpty or heartFilled image
+      heartStatus: undefined, // State used to decided between heartEmpty or heartFilled image
     };
+  }
+
+  componentWillMount() {
+    const { likedBusinesses, business } = this.props;
+    const tempArray = likedBusinesses.filter(
+      likedBusiness => likedBusiness.businessId === business._id
+    );
+    if (tempArray.length !== 0) {
+      this.setState({ heartStatus: false });
+    } else {
+      this.setState({ heartStatus: true });
+    }
   }
 
   componentDidMount() {
     const { postalCode, city } = this.props.business;
     if (city !== 'Los Angeles') this.setState({ neighborhood: city });
     else this.setNeighborhood(postalCode);
-
-    // this.setState({ heartStatus: true });
-    // const { likedBusinesses, business } = this.props;
-    // const tempArray = likedBusinesses.filter(likedBusiness => likedBusiness === business._id);
-    // if (tempArray.length !== 0) {
-    //   this.setState({ heartStatus: false });
-    // }
   }
 
   setNeighborhood = postalCode => {

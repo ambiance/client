@@ -67,6 +67,14 @@ class AuraApp extends React.Component {
       user,
     });
     console.log(this.state.user);
+
+    // Read the user's list of favorite businesses then set the state to these favorited businesses
+    const token = localStorage.getItem('auraUserToken');
+    API.get('account/read-user', {
+      token,
+    }).then(response => {
+      this.setState({ likedBusinesses: response.data.user.favorites });
+    });
   };
 
   handleLogout = () => {
@@ -76,6 +84,7 @@ class AuraApp extends React.Component {
     localStorage.removeItem('auraUserToken');
     // set user and authentication to empty / false respectively
     this.setState({ isAuthenticated: false, user: {} });
+    this.setState({ likedBusinesses: [] });
     // redirect user to home page / login page.
     Swal.fire({
       position: 'top-end',
@@ -105,17 +114,14 @@ class AuraApp extends React.Component {
     if (this.state.isAuthenticated) {
       // Gets token from local storage
       const token = localStorage.getItem('auraUserToken');
-      console.log('business', business);
       // Reads user from the database
       await API.get('account/read-user', {
         token,
       }).then(response => {
-        console.log('BEFORE', response.data.user.favorites);
         // To see if the user already has the business._id in his list of favorite businesses
         const output = response.data.user.favorites.filter(
           favorite => favorite.businessId === business._id
         );
-        console.log('OUTPUT', output);
         // If statements based on output of the filter
         if (output.length === 0) {
           Swal.fire({
@@ -142,9 +148,7 @@ class AuraApp extends React.Component {
       await API.get('account/read-user', {
         token,
       }).then(response => {
-        console.log('AFTER', response.data.user.favorites);
         this.setState({ likedBusinesses: response.data.user.favorites });
-        console.log('AFTER-STATUS', this.state.likedBusinesses);
       });
     } else {
       Swal.fire({
