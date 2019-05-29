@@ -102,23 +102,21 @@ export default class CardItem extends React.Component {
           <p>
             <strong>{this.state.neighborhood || business.city}</strong>
           </p>
-
-          <div className="cardFooter">
-            <p>{categories}</p>
-
-            <img
-              className="heart"
-              src={imageName}
-              alt="heart"
-              role="button"
-              onClick={event => {
-                event.stopPropagation(); // Prevents modal (behind button) from activating
-                likeBusiness(business); // Calls likeBusiness Method (Refer to AuraApp.js for actual method)
-                this.toggleImage(); // Calls toggleImage to change heartStatus State (Refer to method above)
-              }}
-            />
-          </div>
+          <p>{categories}</p>
         </span>
+        <div className="cardFooter">
+          <img
+            className="heart"
+            src={imageName}
+            alt="heart"
+            role="button"
+            onClick={event => {
+              event.stopPropagation(); // Prevents modal (behind button) from activating
+              likeBusiness(business); // Calls likeBusiness Method (Refer to AuraApp.js for actual method)
+              this.toggleImage(); // Calls toggleImage to change heartStatus State (Refer to method above)
+            }}
+          />
+        </div>
       </button>
     );
   }
