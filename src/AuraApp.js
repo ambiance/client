@@ -82,16 +82,7 @@ class AuraApp extends React.Component {
     });
   };
 
-  handleInitialFeedback = event => {
-    console.log('Welcome to Feedback');
-  };
-
   handleAuraVote = event => {
-    console.log(this.state.modalDetails.usersVotedAura);
-    console.log(event.aura);
-    console.log(this.state.modalDetails._id);
-    console.log(this.state.modalDetails.name);
-    console.log(event.vote);
     // State verifies whether you are logged in or not
     if (this.state.isAuthenticated) {
       //
@@ -111,7 +102,6 @@ class AuraApp extends React.Component {
           timer: 2000,
         });
         this.setState({ voteDetails: response.data.status.aura });
-        console.log(response.data.status.aura);
       });
     } else {
       Swal.fire({
@@ -129,22 +119,22 @@ class AuraApp extends React.Component {
       isModalShowing: true,
       modalDetails: details,
     });
+    // If user is logged in, prepopulate the aura votes
     if (this.state.isAuthenticated) {
-      console.log(details.usersVotedAura.userId);
-      console.log(details.usersVotedAura);
-      console.log(this.state.user._id);
       // Finds index of user id
       const index = details.usersVotedAura.findIndex(item => item.userId === this.state.user._id);
+      // checks if there is a user
       if (index !== -1) {
-        console.log(details.usersVotedAura[index].aura);
         this.setState({
           voteDetails: details.usersVotedAura[index].aura,
         });
       } else {
-        console.log('Not logged in brah');
+        // Clears votes if there are none
+        this.setState({
+          voteDetails: [],
+        });
       }
     }
-    // console.log(details);
   };
 
   closeModalHandler = () => {
@@ -204,7 +194,6 @@ class AuraApp extends React.Component {
                   openModal={this.openModalHandler}
                   closeModal={this.closeModalHandler}
                   handleAuraVote={this.handleAuraVote}
-                  handleInitialFeedback={this.handleInitialFeedback}
                 />
               )}
             />

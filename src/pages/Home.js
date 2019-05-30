@@ -79,7 +79,6 @@ class Home extends React.Component {
       openModal,
       closeModal,
       handleAuraVote,
-      handleInitialFeedback,
     } = this.props;
     return (
       <main>
@@ -91,7 +90,6 @@ class Home extends React.Component {
           details={modalDetails}
           voteDetails={voteDetails}
           handleAuraVote={handleAuraVote}
-          handleInitialFeedback={handleInitialFeedback}
           shouldCloseOnOverlayClick
         />
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
@@ -123,7 +121,6 @@ Home.propTypes = {
   openModal: PropTypes.func,
   closeModal: PropTypes.func,
   handleAuraVote: PropTypes.func,
-  handleInitialFeedback: PropTypes.func,
 };
 
 export default Home;

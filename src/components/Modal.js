@@ -87,7 +87,6 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitia
                       handleAuraVote={handleAuraVote}
                     />
                   );
-                  handleInitialFeedback();
                 }}
               >
                 Feedback
@@ -138,7 +137,6 @@ Modal.propTypes = {
   voteDetails: PropTypes.array.isRequired,
   close: PropTypes.func.isRequired,
   handleAuraVote: PropTypes.func.isRequired,
-  handleInitialFeedback: PropTypes.func,
   // map: PropTypes.bool.isRequired,
 };
 

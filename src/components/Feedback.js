@@ -23,19 +23,6 @@ export default class Feedback extends React.Component {
 
   render() {
     const { details, voteDetails, show } = this.props;
-    // Find aurasVoted array for user logged
-    // [TODO]
-    // // -----------------This should pass down the auras voted when it first renders-------------
-    // // If authenticated
-    // // DEPENDENCIES:
-    // //    -  userID
-    // //    -  ifAuthenticated
-    // // Get index
-    // const usersAuraIndex = details.usersVotedAura.findIndex(x => x.userId === 'THE USER ID!!!!');
-    // // Use index to find aura array
-    // this.state.aurasVoted = details.usersVotedAura[usersAuraIndex].aura;
-    console.log('This is the voteDetails');
-    console.log(voteDetails);
 
     return (
       <div className="modalFeedback">
