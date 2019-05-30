@@ -26,6 +26,7 @@ class Home extends React.Component {
       showResults: false,
       params: { resultsPerChunk, page: 0 },
       hasMoreResults: false,
+      scrollTo: 0,
     };
   }
 
@@ -112,6 +113,8 @@ class Home extends React.Component {
         params: { ...prevState.params, page: prevState.params.page + 1 },
       }),
       () => {
+        const scrollTo = this.loadMoreRef.current.offsetTop - 70;
+        this.setState({ scrollTo });
         this.queryDatabase(this.state.params);
         this.toggleLoadingDots();
       }
@@ -161,6 +164,7 @@ class Home extends React.Component {
             loadMoreRef={this.loadMoreRef}
             loadingDotsRef={this.loadingDotsRef}
             toggleLoadingDots={this.toggleLoadingDots}
+            scrollTo={this.state.scrollTo}
             id="results"
           />
         </div>

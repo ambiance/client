@@ -9,8 +9,12 @@ class SearchResults extends React.Component {
     if (
       prevProps.loading !== this.props.loading ||
       this.props.businesses.length !== prevProps.businesses.length
-    )
+    ) {
       this.props.toggleLoadingDots();
+      if (prevProps.businesses.length !== 0) {
+        window.scroll({ left: 0, top: this.props.scrollTo, behavior: 'smooth' });
+      }
+    }
   }
   render() {
     const {
@@ -90,6 +94,7 @@ SearchResults.propTypes = {
   handleLoadMore: PropTypes.func.isRequired,
   showLoadMoreBtn: PropTypes.bool.isRequired,
   toggleLoadingDots: PropTypes.func.isRequired,
+  scrollTo: PropTypes.number.isRequired,
   loadMoreRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   loadingDotsRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
 };
