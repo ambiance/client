@@ -29,7 +29,7 @@ export default class Feedback extends React.Component {
         {/* Call to action */}
         <p className="feedbackHeader"> Let us know what you think!</p>
         <p className="feedbackHeader">Click an Aura to vote what you think about this place.</p>
-        <p>{details.yelpId.type}</p>
+        {/* <p>{details.yelpId.type}</p> */}
         {/* Aura pills */}
         <form className="buttonsContainer">
           {auraDescriptions.map(item => (

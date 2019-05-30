@@ -15,7 +15,20 @@ import '../styles/Modal.scss';
 const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitialFeedback }) => {
   const [component, setComponent] = useState(<BusinessDescription show={show} details={details} />);
 
+  useEffect(
+    () =>
+      setComponent(
+        <Feedback
+          show={show}
+          details={details}
+          voteDetails={voteDetails}
+          handleAuraVote={handleAuraVote}
+        />
+      ),
+    [voteDetails]
+  );
   useEffect(() => setComponent(<BusinessDescription show={show} details={details} />), [show]);
+  console.log(details);
 
   return (
     <div>
