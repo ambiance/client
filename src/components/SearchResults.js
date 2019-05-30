@@ -6,12 +6,11 @@ import '../styles/SearchResults.scss';
 
 class SearchResults extends React.Component {
   componentDidUpdate(prevProps) {
-    console.log(prevProps);
     if (
       prevProps.loading !== this.props.loading ||
       this.props.businesses.length !== prevProps.businesses.length
     )
-      this.props.toggleLoadMore();
+      this.props.toggleLoadingDots();
   }
   render() {
     const {
@@ -22,7 +21,7 @@ class SearchResults extends React.Component {
       showLoadMoreBtn,
       handleLoadMore,
       loadMoreRef,
-      dotLoaderRef,
+      loadingDotsRef,
     } = this.props;
 
     if (loading) {
@@ -71,7 +70,7 @@ class SearchResults extends React.Component {
             >
               Load more
             </button>
-            <div ref={dotLoaderRef} className="dotLoader">
+            <div ref={loadingDotsRef} className="dotLoader">
               <Loader type="ThreeDots" color="black" height={100} width={100} />
             </div>
           </div>
@@ -90,9 +89,9 @@ SearchResults.propTypes = {
   noData: PropTypes.bool.isRequired,
   handleLoadMore: PropTypes.func.isRequired,
   showLoadMoreBtn: PropTypes.bool.isRequired,
-  toggleLoadMore: PropTypes.func.isRequired,
+  toggleLoadingDots: PropTypes.func.isRequired,
   loadMoreRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
-  dotLoaderRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  loadingDotsRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
 };
 
 export default SearchResults;

@@ -14,7 +14,7 @@ class Home extends React.Component {
     super(props);
 
     this.loadMoreRef = React.createRef();
-    this.dotLoaderRef = React.createRef();
+    this.loadingDotsRef = React.createRef();
     this.searchRef = React.createRef();
 
     const resultsPerChunk = this.calculateResultsPerChunk();
@@ -113,24 +113,21 @@ class Home extends React.Component {
       }),
       () => {
         this.queryDatabase(this.state.params);
-        this.toggleHidden();
+        this.toggleLoadingDots();
       }
     );
   };
 
-  toggleHidden = () => {
+  toggleLoadingDots = () => {
     if (this.loadMoreRef.current) {
-      // console.log('toggling loadMore button');
       this.loadMoreRef.current.classList.toggle('hidden');
     }
-    if (this.dotLoaderRef.current) {
-      // console.log('toggling  dot loader');
-      this.dotLoaderRef.current.classList.toggle('hidden');
+    if (this.loadingDotsRef.current) {
+      this.loadingDotsRef.current.classList.toggle('hidden');
     }
   };
 
   render() {
-    // console.log(this.props);
     const {
       location: { pathname: pathName },
       isShowing,
@@ -162,8 +159,8 @@ class Home extends React.Component {
             handleLoadMore={this.handleLoadMore}
             showLoadMoreBtn={this.state.hasMoreResults}
             loadMoreRef={this.loadMoreRef}
-            dotLoaderRef={this.dotLoaderRef}
-            toggleLoadMore={this.toggleHidden}
+            loadingDotsRef={this.loadingDotsRef}
+            toggleLoadingDots={this.toggleLoadingDots}
             id="results"
           />
         </div>
