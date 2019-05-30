@@ -54,6 +54,13 @@
   color: var(--dark-mint);
 }
 
+.dotLoader {
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media all and (max-width: 770px) {
   .errorTitle {
     font-size: 22px;
