@@ -1,9 +1,11 @@
 /* eslint-disable no-console */
 import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import jwt from 'jsonwebtoken';
+
 import { Home, About, MeetTheTeam, Login, Dashboard, FourOhFour } from './pages';
+import Header from './components/Header';
 import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
 import API from './services/API';
@@ -164,78 +166,44 @@ class AuraApp extends React.Component {
     const { isAuthenticated, user } = this.state;
     return (
       <BrowserRouter>
-        <div className="App">
-          <header>
-            <NavLink to="/">
-              <img src={auraLogo} alt="auraLogo" className="headerLogo" />
-            </NavLink>
-
-            <nav>
-              <ul>
-                <li className="liActive">
-                  <NavLink exact to="/">
-                    Home
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/about">About Aura</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/meettheteam">Contact</NavLink>
-                </li>
-                {isAuthenticated ? (
-                  <React.Fragment>
-                    <li>
-                      <NavLink to="/dashboard">Dashboard</NavLink>
-                    </li>
-                  </React.Fragment>
-                ) : (
-                  <li>
-                    <NavLink to="/login">Login/Signup</NavLink>
-                  </li>
-                )}
-              </ul>
-            </nav>
-          </header>
-          <Switch>
-            {/* <Route path="/" exact component={Home} /> */}
-            <Route
-              path="/"
-              exact
-              render={props => (
-                <Home
-                  modalDetails={this.state.modalDetails}
-                  isShowing={this.state.isModalShowing}
-                  openModal={this.openModalHandler}
-                  closeModal={this.closeModalHandler}
-                  likeBusiness={this.likeBusinessHandler}
-                  likedBusinesses={this.state.likedBusinesses}
-                />
-              )}
-            />
-            <Route path="/about" component={About} />
-            <Route path="/meettheteam" component={MeetTheTeam} />
-            <Route
-              path="/login"
-              render={props => (
-                <Login {...props} handleLogin={this.handleLogin} handleSignup={this.handleSignup} />
-              )}
-            />
-            <ProtectedRoute
-              path="/dashboard"
-              isAuthenticated={isAuthenticated}
-              user={user}
-              component={Dashboard}
-              modalDetails={this.state.modalDetails}
-              isModalShowing={this.state.isModalShowing}
-              openModal={this.openModalHandler}
-              closeModal={this.closeModalHandler}
-              logout={this.handleLogout}
-            />
-            <Route component={FourOhFour} />
-          </Switch>
-          <Footer />
-        </div>
+        <Header auraLogo={auraLogo} isAuthenticated={isAuthenticated} />
+        <Switch>
+          {/* <Route path="/" exact component={Home} /> */}
+          <Route
+            path="/"
+            exact
+            render={props => (
+              <Home
+                {...props}
+                modalDetails={this.state.modalDetails}
+                isShowing={this.state.isModalShowing}
+                openModal={this.openModalHandler}
+                closeModal={this.closeModalHandler}
+                likeBusiness={this.likeBusinessHandler}
+                likedBusinesses={this.state.likedBusinesses}
+              />
+            )}
+          />
+          <Route path="/about" component={About} />
+          <Route path="/meettheteam" component={MeetTheTeam} />
+          <Route
+            path="/login"
+            render={props => <Login {...props} handleLogin={this.handleLogin} />}
+          />
+          <ProtectedRoute
+            path="/dashboard"
+            isAuthenticated={isAuthenticated}
+            user={user}
+            component={Dashboard}
+            modalDetails={this.state.modalDetails}
+            isModalShowing={this.state.isModalShowing}
+            openModal={this.openModalHandler}
+            closeModal={this.closeModalHandler}
+            logout={this.handleLogout}
+          />
+          <Route component={FourOhFour} />
+        </Switch>
+        <Footer />
       </BrowserRouter>
     );
   }

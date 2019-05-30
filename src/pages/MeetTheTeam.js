@@ -1,16 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
+// components
 import Head from './Head';
 import TeamMember from '../components/TeamMember';
+// helpers
 import memberInfo from '../data/memberInfo';
 import background from '../assets/img/trinityBackgroundWhite.png';
+// scss
 import '../styles/MeetTheTeam.scss';
 
 class MeetTheTeam extends React.Component {
   render() {
+    const {
+      location: { pathname: pathName },
+    } = this.props;
     return (
       <main background={background}>
-        <Head title="Contact | Aura" />
+        <Head pathName={pathName} title="Contact | Aura" />
         <section id="grid">
           {memberInfo.map(member => (
             <TeamMember
@@ -28,5 +35,11 @@ class MeetTheTeam extends React.Component {
     );
   }
 }
+
+MeetTheTeam.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }),
+};
 
 export default MeetTheTeam;

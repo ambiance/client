@@ -1,3 +1,5 @@
+@import './palette.scss';
+
 #searchResults {
   margin: 2rem 0rem;
 }
@@ -35,6 +37,21 @@
   color: black;
   padding: 8rem 5rem 12rem 5rem;
   line-height: 2rem;
+}
+
+.loadMore {
+  display: block;
+  margin: 30px auto;
+  font-size: 1rem;
+  font-family: Comfortaa, script;
+  color: var(--light-mint);
+  background-color: var(--off-black);
+  padding: 10px 30px;
+  border-radius: 5px;
+}
+
+.loadMore:hover {
+  color: var(--dark-mint);
 }
 
 @media all and (max-width: 770px) {

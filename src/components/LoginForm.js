@@ -5,6 +5,7 @@ import '../styles/CredentialForm.scss';
 class LoginForm extends Component {
   static propTypes = {
     handleLogin: PropTypes.func.isRequired,
+    handleSwitch: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -31,30 +32,39 @@ class LoginForm extends Component {
     });
   };
 
+  handleSwitchToSignup = event => {
+    event.preventDefault();
+    this.props.handleSwitch();
+  };
+
   render() {
     return (
-      <form className="credentialForm" onSubmit={this.handleLogin}>
-        <h1 className="credentialTitle">Login</h1>
+      <form className="credentialForm">
+        <h1 className="credentialTitle">Welcome back!</h1>
+        <p className="credentialDescription">
+          Don't have an account?{' '}
+          <button className="nipsey" onClick={this.handleSwitchToSignup}>
+            Sign up here!
+          </button>
+        </p>
         <label className="" htmlFor="loginUsernameInputValue">
-          Username:
           <input
             className="credentialInput"
             type="text"
             id="loginUsernameInputValue"
             autoComplete="username"
             name="loginUsernameInputValue"
-            placeholder="username"
+            placeholder="Enter username"
             value={this.state.loginUsernameInputValue}
             onChange={this.handleInputChange}
           />
         </label>
 
         <label htmlFor="loginPasswordInputValue">
-          Password:
           <input
             className="credentialInput"
             type="password"
-            placeholder="password"
+            placeholder="Enter password"
             id="loginPasswordInputValue"
             autoComplete="current-password"
             name="loginPasswordInputValue"
@@ -62,8 +72,8 @@ class LoginForm extends Component {
             onChange={this.handleInputChange}
           />
         </label>
-        <button className="submitButton" type="submit">
-          Submit
+        <button className="submitButton" type="submit" onClick={this.handleLogin}>
+          Login
         </button>
       </form>
     );

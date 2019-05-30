@@ -6,6 +6,7 @@ import '../styles/CredentialForm.scss';
 class SignupForm extends Component {
   static propTypes = {
     handleSignup: PropTypes.func.isRequired,
+    handleSwitch: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -15,6 +16,8 @@ class SignupForm extends Component {
       signupUsernameInputValue: '',
       signupPasswordInputValue: '',
       signupPasswordConfirmInputValue: '',
+      signupEmailInputValue: '',
+      signupClosestLocationInputValue: '',
     };
   }
 
@@ -28,12 +31,36 @@ class SignupForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const { signupPasswordInputValue, signupPasswordConfirmInputValue } = this.state;
+    const {
+      signupPasswordInputValue,
+      signupPasswordConfirmInputValue,
+      signupEmailInputValue,
+      signupClosestLocationInputValue,
+    } = this.state;
+    // Regex
+    const re = /\S+@\S+\.\S+/;
     // FIXME: Create a validation middleware we can use instead of these checks here.
-    if (signupPasswordInputValue !== signupPasswordConfirmInputValue) {
+    if (re.test(String(signupEmailInputValue).toLowerCase()) !== true) {
+      Swal.fire({
+        type: 'error',
+        text: 'Enter a valid email',
+        showConfirmButton: false,
+        timer: 1200,
+      });
+    } else if (signupPasswordInputValue !== signupPasswordConfirmInputValue) {
       Swal.fire({
         type: 'error',
         text: 'New passwords must match',
+        showConfirmButton: false,
+        timer: 1200,
+      });
+    } else if (
+      signupClosestLocationInputValue === '' ||
+      signupClosestLocationInputValue === 'default'
+    ) {
+      Swal.fire({
+        type: 'error',
+        text: 'Choose a closest location',
         showConfirmButton: false,
         timer: 1200,
       });
@@ -41,20 +68,32 @@ class SignupForm extends Component {
       this.props.handleSignup({
         username: this.state.signupUsernameInputValue,
         password: this.state.signupPasswordInputValue,
+        email: this.state.signupEmailInputValue,
+        closestLocation: this.state.signupClosestLocationInputValue,
       });
     }
   };
 
+  handleSwitchToLogin = event => {
+    event.preventDefault();
+    this.props.handleSwitch();
+  };
+
   render() {
     return (
-      <form className="credentialForm" onSubmit={this.handleSubmit}>
-        <h1 className="credentialTitle">Signup</h1>
+      <form className="credentialForm">
+        <h1 className="credentialTitle">Join our Community!</h1>
+        <p className="credentialDescription">
+          Already have an account?{' '}
+          <button className="nipsey" onClick={this.handleSwitchToLogin}>
+            Login here!
+          </button>
+        </p>
         <label htmlFor="signupUsernameInputValue">
-          Username:
           <input
             className="credentialInput"
             type="text"
-            placeholder="username"
+            placeholder="Enter Username"
             id="signupUsernameInputValue"
             name="signupUsernameInputValue"
             autoComplete="username"
@@ -62,36 +101,74 @@ class SignupForm extends Component {
             onChange={this.handleInputChange}
           />
         </label>
-        <label htmlFor="signupPasswordInputValue">
-          Password:
+        <label htmlFor="signupEmailInputValue">
           <input
             className="credentialInput"
-            type="password"
-            placeholder="password"
-            id="signupPasswordInputValue"
-            name="signupPasswordInputValue"
-            autoComplete="new-password"
-            minLength="8"
-            value={this.state.signupPasswordInputValue}
+            type="text"
+            placeholder="Enter Email"
+            id="signupEmailInputValue"
+            name="signupEmailInputValue"
+            autoComplete="email"
+            minLength="7"
+            value={this.state.signupEmailInputValue}
             onChange={this.handleInputChange}
           />
         </label>
-        <label htmlFor="signupPasswordConfirmInputValue">
-          Confirm Password:
-          <input
-            className="credentialInput"
-            type="password"
-            placeholder="password"
-            id="signupPasswordConfirmInputValue"
-            name="signupPasswordConfirmInputValue"
-            autoComplete="new-password"
-            minLength="8"
-            value={this.state.signupPasswordConfirmInputValue}
+        <span className="passwordInputs">
+          <label htmlFor="signupPasswordInputValue">
+            <input
+              className="credentialInput"
+              type="password"
+              placeholder="Enter Password"
+              id="signupPasswordInputValue"
+              name="signupPasswordInputValue"
+              autoComplete="new-password"
+              minLength="8"
+              value={this.state.signupPasswordInputValue}
+              onChange={this.handleInputChange}
+            />
+          </label>
+          <label htmlFor="signupPasswordConfirmInputValue">
+            <input
+              className="credentialInput"
+              type="password"
+              placeholder="Confirm Password"
+              id="signupPasswordConfirmInputValue"
+              name="signupPasswordConfirmInputValue"
+              autoComplete="new-password"
+              minLength="8"
+              value={this.state.signupPasswordConfirmInputValue}
+              onChange={this.handleInputChange}
+            />
+          </label>
+        </span>
+        <p className="locationWrap">
+          <select
+            className="locationSelect"
+            type="text"
+            id="signupClosestLocationInputValue"
+            name="signupClosestLocationInputValue"
+            value={this.state.signupClosestLocationInputValue}
             onChange={this.handleInputChange}
-          />
-        </label>
-        <button className="submitButton" type="submit">
-          Sign up!
+          >
+            <option value="default">Select Your Closest Location</option>
+            <option value="santaMonica">Santa Monica</option>
+            <option value="downtownLA">Downtown LA</option>
+            <option value="culver city">Culver City</option>
+            <option value="beverlyHills">Beverly Hills</option>
+            <option value="hollywood">Hollywood</option>
+            <option value="laBrea">La Brea</option>
+            <option value="vanNuys">Van Nuys</option>
+            <option value="pasadena">Pasadena</option>
+            <option value="newportBeach">Newport Beach</option>
+            <option value="anaheim">Anaheim</option>
+            <option value="rowlandHeights">Rowland Heights</option>
+            <option value="laguna">Laguna</option>
+            <option value="brea">Brea</option>
+          </select>
+        </p>
+        <button className="submitButton" type="submit" onClick={this.handleSubmit}>
+          Create my account
         </button>
       </form>
     );

@@ -71,7 +71,9 @@ class Home extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     const {
+      location: { pathname: pathName },
       isShowing,
       modalDetails,
       openModal,
@@ -82,7 +84,7 @@ class Home extends React.Component {
 
     return (
       <main>
-        <Head title="Home | Aura" />
+        <Head pathName={pathName} title="Home | Aura" />
         <Modal
           className="modal"
           show={isShowing}
@@ -112,6 +114,9 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }),
   modalDetails: PropTypes.object,
   isShowing: PropTypes.bool,
   openModal: PropTypes.func,
