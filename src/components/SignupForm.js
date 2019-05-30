@@ -81,11 +81,11 @@ class SignupForm extends Component {
 
   render() {
     return (
-      <form className="credentialForm">
+      <form onSubmit={this.handleSubmit} className="credentialForm">
         <h1 className="credentialTitle">Join our Community!</h1>
         <p className="credentialDescription">
           Already have an account?{' '}
-          <button className="nipsey" onClick={this.handleSwitchToLogin}>
+          <button type="button" className="nipsey" onClick={this.handleSwitchToLogin}>
             Login here!
           </button>
         </p>
@@ -167,7 +167,7 @@ class SignupForm extends Component {
             <option value="brea">Brea</option>
           </select>
         </p>
-        <button className="submitButton" type="submit" onClick={this.handleSubmit}>
+        <button className="submitButton" type="submit">
           Create my account
         </button>
       </form>
