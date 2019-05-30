@@ -121,7 +121,10 @@ const AccordionSection = ({ handleClick, isOpen, label, children }) => (
       className="accordionButton"
       style={
         isOpen
-          ? { color: `var(--off-white)`, backgroundColor: `var(--${label || 'mint'})` }
+          ? {
+              color: `var(--off-white)`,
+              backgroundColor: `var(--${label || 'mint'})`,
+            }
           : { color: `var(--${label || 'off-black'})` }
       }
     >
