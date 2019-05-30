@@ -13,8 +13,8 @@
   grid-template-columns: 20% 80%;
   grid-template-rows: 60px 1fr;
   grid-template-areas:
-    ' head head '
-    ' map detail ';
+    " head head "
+    " map detail ";
   overflow-x: hidden;
   // overflow-y: hidden;
   border: none;
@@ -88,8 +88,8 @@
     grid-template-columns: 1fr 1fr 30px;
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
-      ' title title button '
-      ' pills pills pills ';
+      " title title button "
+      " pills pills pills ";
   }
 
   .modalHeader h3 {
@@ -138,6 +138,11 @@
 .navBar {
   position: relative;
   background-color: #263238;
+  display: grid;
+  grid-template-rows: 80% 20%;
+  grid-template-areas:
+    " tabs "
+    " yelp ";
 }
 
 .backDrop {
@@ -174,10 +179,17 @@
 .categories {
   list-style: none;
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   padding-left: 0;
   margin-bottom: 3rem;
   font-weight: bold;
+}
+
+.category {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.75rem;
 }
 
 .address {
@@ -316,6 +328,8 @@
   font-size: 0.8rem;
   text-decoration: none;
   color: #818181;
+  display: flex;
+  justify-content: center;
   cursor: pointer;
 }
 
@@ -342,4 +356,50 @@
   width: 100%;
   height: 100%;
   position: relative;
+}
+
+.businessDetails {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "details picture";
+  height: 100%;
+  width: 100%;
+}
+
+.detailSection {
+  grid-area: details;
+  margin: auto;
+}
+
+.pictureSection {
+  grid-area: picture;
+  height: 100%;
+}
+
+.pic {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.pictureContainer {
+  height: 17rem;
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 858px) {
+  .businessDetails {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas:
+      " picture "
+      "  details ";
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.yelpLinkLI {
+  list-style: none;
+  padding-top: 5%;
 }
