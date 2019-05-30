@@ -116,9 +116,9 @@
 }
 
 .cardFooter {
+  width: 100%;
+  position: absolute;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 18rem;
-  position: relative;
+  flex-direction: row-reverse;
+  margin-top: 86%;
 }
