@@ -95,12 +95,21 @@ class AuraApp extends React.Component {
         businessId: this.state.modalDetails._id,
         aura: event.aura,
       }).then(response => {
-        Swal.fire({
-          position: 'top',
-          text: `You voted ${event.aura} for "${this.state.modalDetails.name}"`,
-          showConfirmButton: false,
-          timer: 2000,
-        });
+        if (response.data.status.aura.includes(event.aura)) {
+          Swal.fire({
+            position: 'top',
+            text: `You voted ${event.aura} for "${this.state.modalDetails.name}"`,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        } else {
+          Swal.fire({
+            position: 'top',
+            text: `You unvoted ${event.aura} for "${this.state.modalDetails.name}"`,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
         this.setState({ voteDetails: response.data.status.aura });
       });
     } else {
