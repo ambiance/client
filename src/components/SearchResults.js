@@ -5,6 +5,14 @@ import CardItem from './CardItem';
 import '../styles/SearchResults.scss';
 
 class SearchResults extends React.Component {
+  componentDidUpdate(prevProps) {
+    console.log(prevProps);
+    if (
+      prevProps.loading !== this.props.loading ||
+      this.props.businesses.length !== prevProps.businesses.length
+    )
+      this.props.toggleLoadMore();
+  }
   render() {
     const {
       businesses,
@@ -13,6 +21,8 @@ class SearchResults extends React.Component {
       onOpenModal,
       showLoadMoreBtn,
       handleLoadMore,
+      loadMoreRef,
+      dotLoaderRef,
     } = this.props;
 
     if (loading) {
@@ -52,9 +62,19 @@ class SearchResults extends React.Component {
           ))}
         </div>
         {showLoadMoreBtn ? (
-          <button onClick={handleLoadMore} type="button" className="loadMore">
-            Load more
-          </button>
+          <div>
+            <button
+              onClick={handleLoadMore}
+              type="button"
+              className="loadMore hidden"
+              ref={loadMoreRef}
+            >
+              Load more
+            </button>
+            <div ref={dotLoaderRef} className="dotLoader">
+              <Loader type="ThreeDots" color="black" height={100} width={100} />
+            </div>
+          </div>
         ) : (
           ''
         )}
@@ -70,6 +90,9 @@ SearchResults.propTypes = {
   noData: PropTypes.bool.isRequired,
   handleLoadMore: PropTypes.func.isRequired,
   showLoadMoreBtn: PropTypes.bool.isRequired,
+  toggleLoadMore: PropTypes.func.isRequired,
+  loadMoreRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  dotLoaderRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
 };
 
 export default SearchResults;
