@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // Components
-import AuraPills from './AuraPills.js';
+import AuraPill from './AuraPill';
 import Map from './Map';
 import ModalWindow from './ModalWindow';
 import BusinessDescription from './BusinessDescription';
@@ -55,10 +55,11 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitia
               ? details.attributes.aura.split(',').map(auraSingleton => {
                   const sanitizedAura = auraSingleton.trim().toLowerCase();
                   return (
-                    <AuraPills
+                    <AuraPill
                       aura={sanitizedAura}
                       backgroundColor={getColor(sanitizedAura)}
                       key={auraSingleton}
+                      toolTip={{ position: 'bottom', description: sanitizedAura }}
                     />
                   );
                 })

@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import jwt from 'jsonwebtoken';
-import { Home, About, MeetTheTeam, Login, Dashboard, FourOhFour } from './pages';
+
+import { Home, About, Contact, Login, Dashboard, FourOhFour } from './pages';
+import Header from './components/Header';
 import ProtectedRoute from './components/ProtectedRoute';
-// import ConditionalRoute from './components/ConditionalRoute';
 import Footer from './components/Footer';
 import API from './services/API';
 import slideImages from './data/slideImages';
@@ -218,16 +218,6 @@ class AuraApp extends React.Component {
                 />
               )}
             />
-            {/* <Route
-              path="/joinaura"
-              render={props => (
-                <Signup
-                  {...props}
-                  handleSignup={this.handleSignup}
-                  handleSwitch={this.handleSwitchToLogin}
-                />
-              )}
-            /> */}
             <ProtectedRoute
               path="/dashboard"
               isAuthenticated={isAuthenticated}

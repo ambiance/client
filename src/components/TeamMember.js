@@ -1,43 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AuraPills from './AuraPills';
-import { getColor } from './helpers/auraColors';
 
 class TeamMember extends React.Component {
   render() {
-    const { sectionId, img, fullName, role, aura, link } = this.props;
-
+    const { img, fullName, role, mailLink } = this.props;
     return (
-      <section id={sectionId} className="halfpics">
-        <img src={img} alt="profile" />
-        <ul id="title">
-          <li>
-            <a href={link}>{fullName}</a>
-          </li>
-          <li className="role">Role: {role}</li>
-          <li className="fav">
-            Favorite Aura:{' '}
-            <AuraPills
-              id="pills"
-              aura={aura}
-              backgroundColor={getColor(aura)}
-              style={{ 'margin-left': 0 }}
-            />
-          </li>
-        </ul>
-      </section>
+      <div className="teamMemberCardContainer">
+        <div className="teamMemberCard" tabIndex="0" role="button">
+          <div className="side">
+            <img className="teamMemberImage" src={img} alt="profile" />
+          </div>
+          <div className="side back">
+            <div className="teamMemberInfo">
+              <h2>{fullName}</h2>
+              <span>{role}</span>
+              <a className="teamMemberEmailLink" href={mailLink}>
+                Send Email &#62;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }
 
 TeamMember.propTypes = {
-  sectionId: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   fullName: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
   aura: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string.isRequired,
+  mailLink: PropTypes.string.isRequired,
 };
 
 export default TeamMember;
