@@ -402,4 +402,18 @@
 .yelpLinkLI {
   list-style: none;
   padding-top: 5%;
+  display: flex;
+  margin: auto;
+}
+
+@media screen and (max-width: 860px) {
+  .navBar {
+    height: 76%;
+  }
+}
+
+@media screen and (max-width: 809px) {
+  .navBar {
+    height: 82%;
+  }
 }

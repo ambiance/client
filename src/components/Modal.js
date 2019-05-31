@@ -1,19 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 // Components
-import AuraPills from './AuraPills.js';
-import Map from './Map';
-import ModalWindow from './ModalWindow';
-import BusinessDescription from './BusinessDescription';
-import Feedback from './Feedback';
+import AuraPills from "./AuraPills.js";
+import Map from "./Map";
+import ModalWindow from "./ModalWindow";
+import BusinessDescription from "./BusinessDescription";
+import Feedback from "./Feedback";
 // import Feedback from './Feedback';
-import { getColor } from './helpers/auraColors';
+import { getColor } from "./helpers/auraColors";
 // import { handleStars } from './helpers/stars';
-import '../styles/Modal.scss';
+import "../styles/Modal.scss";
 
-const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitialFeedback }) => {
-  const [component, setComponent] = useState(<BusinessDescription show={show} details={details} />);
+const Modal = ({
+  show,
+  details,
+  voteDetails,
+  close,
+  handleAuraVote,
+  handleInitialFeedback
+}) => {
+  const [component, setComponent] = useState(
+    <BusinessDescription show={show} details={details} />
+  );
 
   useEffect(
     () =>
@@ -27,7 +36,10 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitia
       ),
     [voteDetails]
   );
-  useEffect(() => setComponent(<BusinessDescription show={show} details={details} />), [show]);
+  useEffect(
+    () => setComponent(<BusinessDescription show={show} details={details} />),
+    [show]
+  );
 
   return (
     <div>
@@ -35,24 +47,24 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitia
         className="modalBackdrop"
         onClick={close}
         style={{
-          opacity: show ? '0.5' : '0',
-          position: show ? 'fixed' : 'absolute',
-          zIndex: show ? '15' : '-5'
+          opacity: show ? "0.5" : "0",
+          position: show ? "fixed" : "absolute",
+          zIndex: show ? "15" : "-5"
         }}
       />
 
       <div
         className="modalWrapper"
         style={{
-          transform: show ? 'translateY(0vh)' : 'translateY(-200vh)',
-          opacity: show ? '1' : '0'
+          transform: show ? "translateY(0vh)" : "translateY(-200vh)",
+          opacity: show ? "1" : "0"
         }}
       >
         <header className="modalHeader">
-          <h3>{show ? details.name : ''}</h3>
+          <h3>{show ? details.name : ""}</h3>
           <div className="modalPillsContainer">
             {show
-              ? details.attributes.aura.split(',').map(auraSingleton => {
+              ? details.attributes.aura.split(",").map(auraSingleton => {
                   const sanitizedAura = auraSingleton.trim().toLowerCase();
                   return (
                     <AuraPills
@@ -62,7 +74,7 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitia
                     />
                   );
                 })
-              : ''}
+              : ""}
           </div>
           <button className="closeModalBtn" onClick={close}>
             &#9587;
@@ -74,7 +86,11 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitia
             <li className="modalLI">
               <button
                 className="modalNav"
-                onClick={() => setComponent(<BusinessDescription show={show} details={details} />)}
+                onClick={() =>
+                  setComponent(
+                    <BusinessDescription show={show} details={details} />
+                  )
+                }
               >
                 Description
               </button>
@@ -82,7 +98,9 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitia
             <li className="modalLI">
               <button
                 className="modalNav"
-                onClick={() => setComponent(<Map show={show} details={details} />)}
+                onClick={() =>
+                  setComponent(<Map show={show} details={details} />)
+                }
               >
                 Map
               </button>
@@ -104,31 +122,18 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitia
                 Feedback
               </button>
             </li>
-            <li className="yelpLinkLI">
-              {/* <button
-                className="modalNav"
-                onClick={() => {
-                  setComponent(
-                    <Feedback
-                      show={show}
-                      details={details}
-                      voteDetails={voteDetails}
-                      handleAuraVote={handleAuraVote}
-                    />
-                  );
-                }}
-              > */}
-              <a className="modalNav" href={details.url} target="_blank">
-                Link to Yelp!
-              </a>
-              {/* </button> */}
-            </li>
+
             {/* <li className="modalLI">
               <button className="modalNav" onClick={() => setComponent(<Feedback />)}>
                 Feedback
               </button>
             </li> */}
           </ul>
+          <div className="yelpLinkLI">
+            <a className="modalNav" href={details.url} target="_blank">
+              Link to Yelp!
+            </a>
+          </div>
         </div>
         {/* <div className="businessDetails"> */}
         <div className="componentWindow">
@@ -167,7 +172,7 @@ Modal.propTypes = {
   details: PropTypes.object.isRequired,
   voteDetails: PropTypes.array.isRequired,
   close: PropTypes.func.isRequired,
-  handleAuraVote: PropTypes.func.isRequired,
+  handleAuraVote: PropTypes.func.isRequired
   // map: PropTypes.bool.isRequired,
 };
 
