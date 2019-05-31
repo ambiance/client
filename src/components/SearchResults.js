@@ -26,6 +26,9 @@ class SearchResults extends React.Component {
       handleLoadMore,
       loadMoreRef,
       loadingDotsRef,
+      likeBusiness,
+      likedBusinesses,
+      isAuthenticated,
     } = this.props;
 
     if (loading) {
@@ -60,7 +63,14 @@ class SearchResults extends React.Component {
         <div className="resultCards">
           {businesses.map((business, i) => (
             <div key={i}>
-              <BusinessCard key={i} business={business} handleOpen={onOpenModal} />
+              <BusinessCard
+                key={i}
+                business={business}
+                handleOpen={onOpenModal}
+                likeBusiness={likeBusiness}
+                likedBusinesses={likedBusinesses}
+                isAuthenticated={isAuthenticated}
+              />
             </div>
           ))}
         </div>
@@ -97,6 +107,9 @@ SearchResults.propTypes = {
   scrollTo: PropTypes.number.isRequired,
   loadMoreRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   loadingDotsRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  likeBusiness: PropTypes.func.isRequired,
+  likedBusinesses: PropTypes.array.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 export default SearchResults;

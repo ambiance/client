@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-useless-return */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -10,15 +12,29 @@ import locations from '../data/LALocations';
 import auras from '../data/auraDescriptions';
 // cscc
 import '../styles/CardItem.scss';
+import heartEmpty from '../assets/img/heartEmpty.png';
+import heartFilled from '../assets/img/heartFilled.png';
 
 export default class BusinessCard extends React.Component {
   constructor(props) {
     super(props);
-
     // set initial state
     this.state = {
       neighborhood: null,
+      heartStatus: false, // State used to decided between heartEmpty or heartFilled image
     };
+  }
+
+  componentWillMount() {
+    const { likedBusinesses, business } = this.props;
+    const tempArray = likedBusinesses.filter(
+      likedBusiness => likedBusiness.businessId === business._id
+    );
+    if (tempArray.length !== 0) {
+      this.setState({ heartStatus: false });
+    } else {
+      this.setState({ heartStatus: true });
+    }
   }
 
   componentDidMount() {
@@ -36,6 +52,16 @@ export default class BusinessCard extends React.Component {
     });
   };
 
+  // Method is used to toggle the state of heartStatus
+  toggleImage = isAuthenticated => {
+    if (isAuthenticated) {
+      this.setState(state => ({ heartStatus: !state.heartStatus }));
+    }
+  };
+
+  // Method used to obtain the string referring to the image based on heartStatus state
+  getImageName = () => (this.state.heartStatus ? heartEmpty : heartFilled);
+
   handleKeyPress = event => {
     // Check to see if space or enter were pressed
     if (event.key === ' ' || event.key === 'Enter' || event.key === 'Spacebar') {
@@ -47,10 +73,12 @@ export default class BusinessCard extends React.Component {
 
   render() {
     // consts here
-    const { business, handleOpen } = this.props;
+    const { business, handleOpen, likeBusiness, likedBusinesses, isAuthenticated } = this.props;
     // We cannot guarentee that the categories will not overflow in the cards with multiple categories.
     // FIXME: const categories = business.categories.map(category => category.title).join(', ');
     const categories = business.categories[0].title;
+    // const utilizes method getImageName to get Image, refer to method above
+    const imageName = this.getImageName(likedBusinesses, business);
     return (
       // FIXME: Fix the onKeyPress for accessibility
       <div
@@ -107,6 +135,19 @@ export default class BusinessCard extends React.Component {
           </p>
           <p>{categories}</p>
         </span>
+        <div className="cardFooter">
+          <img
+            className="heart"
+            src={imageName}
+            alt="heart"
+            role="button"
+            onClick={event => {
+              event.stopPropagation(); // Prevents modal (behind button) from activating
+              likeBusiness(business); // Calls likeBusiness Method (Refer to AuraApp.js for actual method)
+              this.toggleImage(isAuthenticated); // Calls toggleImage to change heartStatus State (Refer to method above)
+            }}
+          />
+        </div>
       </div>
     );
   }
@@ -123,5 +164,9 @@ BusinessCard.propTypes = {
       aura: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  onOpenModal: PropTypes.func.isRequired,
+  likeBusiness: PropTypes.func.isRequired,
+  likedBusinesses: PropTypes.array.isRequired,
   handleOpen: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
