@@ -175,6 +175,7 @@ class AuraApp extends React.Component {
             render={props => (
               <Home
                 {...props}
+                isAuthenticated={isAuthenticated}
                 modalDetails={this.state.modalDetails}
                 isShowing={this.state.isModalShowing}
                 openModal={this.openModalHandler}

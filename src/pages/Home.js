@@ -79,6 +79,7 @@ class Home extends React.Component {
       closeModal,
       likeBusiness,
       likedBusinesses,
+      isAuthenticated,
     } = this.props;
 
     return (
@@ -105,6 +106,7 @@ class Home extends React.Component {
             id="results"
             likeBusiness={likeBusiness}
             likedBusinesses={likedBusinesses}
+            isAuthenticated={isAuthenticated}
           />
         </div>
       </main>

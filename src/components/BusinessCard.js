@@ -21,7 +21,7 @@ export default class CardItem extends React.Component {
     // set initial state
     this.state = {
       neighborhood: null,
-      heartStatus: undefined, // State used to decided between heartEmpty or heartFilled image
+      heartStatus: false, // State used to decided between heartEmpty or heartFilled image
     };
   }
 
@@ -53,8 +53,10 @@ export default class CardItem extends React.Component {
   };
 
   // Method is used to toggle the state of heartStatus
-  toggleImage = () => {
-    this.setState(state => ({ heartStatus: !state.heartStatus }));
+  toggleImage = isAuthenticated => {
+    if (isAuthenticated) {
+      this.setState(state => ({ heartStatus: !state.heartStatus }));
+    }
   };
 
   // Method used to obtain the string referring to the image based on heartStatus state
@@ -71,7 +73,7 @@ export default class CardItem extends React.Component {
 
   render() {
     // consts here
-    const { business, handleOpen, likeBusiness, likedBusinesses } = this.props;
+    const { business, handleOpen, likeBusiness, likedBusinesses, isAuthenticated } = this.props;
     // We cannot guarentee that the categories will not overflow in the cards with multiple categories.
     // FIXME: const categories = business.categories.map(category => category.title).join(', ');
     const categories = business.categories[0].title;
@@ -142,7 +144,7 @@ export default class CardItem extends React.Component {
             onClick={event => {
               event.stopPropagation(); // Prevents modal (behind button) from activating
               likeBusiness(business); // Calls likeBusiness Method (Refer to AuraApp.js for actual method)
-              this.toggleImage(); // Calls toggleImage to change heartStatus State (Refer to method above)
+              this.toggleImage(isAuthenticated); // Calls toggleImage to change heartStatus State (Refer to method above)
             }}
           />
         </div>

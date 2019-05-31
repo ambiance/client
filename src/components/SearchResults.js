@@ -37,7 +37,15 @@ class SearchResults extends React.Component {
   }
 
   render() {
-    const { businesses, loading, noData, onOpenModal, likeBusiness, likedBusinesses } = this.props;
+    const {
+      businesses,
+      loading,
+      noData,
+      onOpenModal,
+      likeBusiness,
+      likedBusinesses,
+      isAuthenticated,
+    } = this.props;
     if (loading) {
       return (
         <div className="loaderWrapper">
@@ -75,6 +83,7 @@ class SearchResults extends React.Component {
               handleOpen={onOpenModal}
               likeBusiness={likeBusiness}
               likedBusinesses={likedBusinesses}
+              isAuthenticated={isAuthenticated}
             />
           ))}
         </div>
