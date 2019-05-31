@@ -23,6 +23,7 @@ class AuraApp extends React.Component {
       likedBusinesses: [],
       isModalShowing: false,
       modalDetails: {},
+      voteDetails: [],
     };
   }
   // FIXME: Might be throwing memory leaks if the request does not work... check this out...
@@ -96,12 +97,68 @@ class AuraApp extends React.Component {
     });
   };
 
+  handleAuraVote = event => {
+    // State verifies whether you are logged in or not
+    if (this.state.isAuthenticated) {
+      //
+
+      // Business Function
+      const token = localStorage.getItem('auraUserToken');
+
+      API.patch('/businesses/vote-auras', {
+        token,
+        businessId: this.state.modalDetails._id,
+        aura: event.aura,
+      }).then(response => {
+        if (response.data.status.aura.includes(event.aura)) {
+          Swal.fire({
+            position: 'top',
+            text: `You voted ${event.aura} for "${this.state.modalDetails.name}"`,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        } else {
+          Swal.fire({
+            position: 'top',
+            text: `You unvoted ${event.aura} for "${this.state.modalDetails.name}"`,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
+        this.setState({ voteDetails: response.data.status.aura });
+      });
+    } else {
+      Swal.fire({
+        position: 'top',
+        text: 'You are not logged in',
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
+  };
+
   // Functions for Modals
   openModalHandler = details => {
     this.setState({
       isModalShowing: true,
       modalDetails: details,
     });
+    // If user is logged in, prepopulate the aura votes
+    if (this.state.isAuthenticated) {
+      // Finds index of user id
+      const index = details.usersVotedAura.findIndex(item => item.userId === this.state.user._id);
+      // checks if there is a user
+      if (index !== -1) {
+        this.setState({
+          voteDetails: details.usersVotedAura[index].aura,
+        });
+      } else {
+        // Clears votes if there are none
+        this.setState({
+          voteDetails: [],
+        });
+      }
+    }
   };
 
   closeModalHandler = () => {
@@ -177,19 +234,27 @@ class AuraApp extends React.Component {
                 {...props}
                 isAuthenticated={isAuthenticated}
                 modalDetails={this.state.modalDetails}
+                voteDetails={this.state.voteDetails}
                 isShowing={this.state.isModalShowing}
                 openModal={this.openModalHandler}
                 closeModal={this.closeModalHandler}
+                handleAuraVote={this.handleAuraVote}
                 likeBusiness={this.likeBusinessHandler}
                 likedBusinesses={this.state.likedBusinesses}
               />
             )}
           />
           <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact} />
+          <Route path="/meettheteam" component={Contact} />
           <Route
             path="/login"
-            render={props => <Login {...props} handleLogin={this.handleLogin} />}
+            render={props => (
+              <Login
+                {...props}
+                handleLogin={this.handleLogin}
+                // handleSwitch={this.handleSwitchToSignup}
+              />
+            )}
           />
           <ProtectedRoute
             path="/dashboard"

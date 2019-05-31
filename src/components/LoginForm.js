@@ -39,11 +39,11 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <form className="credentialForm">
+      <form onSubmit={this.handleLogin} className="credentialForm">
         <h1 className="credentialTitle">Welcome back!</h1>
         <p className="credentialDescription">
           Don't have an account?{' '}
-          <button className="nipsey" onClick={this.handleSwitchToSignup}>
+          <button type="button" className="nipsey" onClick={this.handleSwitchToSignup}>
             Sign up here!
           </button>
         </p>
@@ -72,7 +72,7 @@ class LoginForm extends Component {
             onChange={this.handleInputChange}
           />
         </label>
-        <button className="submitButton" type="submit" onClick={this.handleLogin}>
+        <button className="submitButton" type="submit">
           Login
         </button>
       </form>
