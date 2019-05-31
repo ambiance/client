@@ -124,6 +124,7 @@ Home.propTypes = {
   closeModal: PropTypes.func,
   likeBusiness: PropTypes.func,
   likedBusinesses: PropTypes.array,
+  isAuthenticated: PropTypes.bool,
 };
 
 export default Home;

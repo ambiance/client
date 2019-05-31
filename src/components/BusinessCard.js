@@ -168,4 +168,5 @@ CardItem.propTypes = {
   likeBusiness: PropTypes.func.isRequired,
   likedBusinesses: PropTypes.array.isRequired,
   handleOpen: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };

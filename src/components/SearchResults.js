@@ -104,6 +104,7 @@ SearchResults.propTypes = {
   noData: PropTypes.bool.isRequired,
   likeBusiness: PropTypes.func.isRequired,
   likedBusinesses: PropTypes.array.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 export default SearchResults;
