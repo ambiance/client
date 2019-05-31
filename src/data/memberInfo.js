@@ -1,61 +1,54 @@
-const memberInfo = [
-  {
-    sectionId: 'devon',
-    src: `${process.env.PUBLIC_URL}/assets/img/team/Devon_Marantz.png`,
+const memberInfo = {
+  devon: {
     fullName: 'Devon Marantz',
+    src: `${process.env.PUBLIC_URL}/assets/img/team/Devon_Marantz.png`,
     role: 'Product Owner',
     aura: 'casual',
-    link: 'mailto: DMarantz@talentpath.com',
+    mailLink: 'mailto: DMarantz@talentpath.com',
   },
-  {
-    sectionId: 'none',
-    src: `${process.env.PUBLIC_URL}/assets/img/team/Emily_Yang.png`,
+  emily: {
     fullName: 'Emily Yang',
+    src: `${process.env.PUBLIC_URL}/assets/img/team/Emily_Yang.png`,
     role: 'Software Engineer',
     aura: 'inspired',
-    link: 'mailto: EYang@talentpath.com',
+    mailLink: 'mailto: EYang@talentpath.com',
   },
-  {
-    sectionId: 'none',
-    src: `${process.env.PUBLIC_URL}/assets/img/team/Scott_Roberts.png`,
+  scott: {
     fullName: 'Scott Roberts',
+    src: `${process.env.PUBLIC_URL}/assets/img/team/Scott_Roberts.png`,
     role: 'Software Engineer',
     aura: 'romantic',
-    link: 'mailto: SRoberts@talentpath.com',
+    mailLink: 'mailto: SRoberts@talentpath.com',
   },
-  {
-    sectionId: 'none',
-    src: `${process.env.PUBLIC_URL}/assets/img/team/Kevin_Amarbayar.jpg`,
+  kevin: {
     fullName: 'Kevin Amarbayar',
+    src: `${process.env.PUBLIC_URL}/assets/img/team/Kevin_Amarbayar.jpg`,
     role: 'Software Engineer',
     aura: 'cheerful',
     // backgroundColor: 'var(--cheerful)',
-    link: 'mailto: KAmarbayar@talentpath.com',
+    mailLink: 'mailto: KAmarbayar@talentpath.com',
   },
-  {
-    sectionId: 'none',
-    src: `${process.env.PUBLIC_URL}/assets/img/team/Ervin_Mitra.jpg`,
+  ervin: {
     fullName: 'Ervin Mitra',
+    src: `${process.env.PUBLIC_URL}/assets/img/team/Ervin_Mitra.jpg`,
     role: 'Software Engineer',
     aura: 'hipster',
-    link: 'mailto: EMitra@talentpath.com',
+    mailLink: 'mailto: EMitra@talentpath.com',
   },
-  {
-    sectionId: 'none',
-    src: `${process.env.PUBLIC_URL}/assets/img/team/Jon_Azali.jpg`,
+  jonathan: {
     fullName: 'Jonathan Azali',
+    src: `${process.env.PUBLIC_URL}/assets/img/team/Jon_Azali.jpg`,
     role: 'Software Engineer',
     aura: 'touristy',
-    link: 'mailto: JAzali@talentpath.com',
+    mailLink: 'mailto: JAzali@talentpath.com',
   },
-  {
-    sectionId: 'none',
-    src: `${process.env.PUBLIC_URL}/assets/img/team/Brock_Jameson.png`,
+  brock: {
     fullName: 'Brock Jameson',
+    src: `${process.env.PUBLIC_URL}/assets/img/team/Brock_Jameson.png`,
     role: 'Software Engineer',
     aura: 'classy',
-    link: 'mailto: BJameson@talentpath.com',
+    mailLink: 'mailto: BJameson@talentpath.com',
   },
-];
+};
 
 export default memberInfo;

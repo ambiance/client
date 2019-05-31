@@ -47,7 +47,6 @@
   height: 40px;
   line-height: 0.8rem;
   padding: 10px 20px;
-  text-align: right;
   display: flex;
   justify-content: space-between;
   grid-column-start: span 1;
@@ -64,12 +63,9 @@
 }
 
 .modalPillsContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: stretch;
-  margin-top: -10px;
-  margin-left: 15px;
-  height: 45px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
 }
 
 @media screen and (max-width: 570px) {

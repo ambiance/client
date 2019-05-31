@@ -5,29 +5,28 @@ import PropTypes from 'prop-types';
 import Head from './Head';
 import TeamMember from '../components/TeamMember';
 // helpers
-import memberInfo from '../data/memberInfo';
+import memberObj from '../data/memberInfo';
 import background from '../assets/img/trinityBackgroundWhite.png';
 // scss
-import '../styles/MeetTheTeam.scss';
+import '../styles/Contact.scss';
 
-class MeetTheTeam extends React.Component {
+class Contact extends React.Component {
   render() {
     const {
       location: { pathname: pathName },
     } = this.props;
+    const memberInfo = Object.values(memberObj);
     return (
       <main background={background}>
         <Head pathName={pathName} title="Contact | Aura" />
-        <section id="grid">
+        <section className="teamMemberGrid">
           {memberInfo.map(member => (
             <TeamMember
-              sectionId={member.sectionId}
               key={member.fullName}
               img={member.src}
               fullName={member.fullName}
               role={member.role}
-              aura={member.aura}
-              link={member.link}
+              mailLink={member.mailLink}
             />
           ))}
         </section>
@@ -36,10 +35,10 @@ class MeetTheTeam extends React.Component {
   }
 }
 
-MeetTheTeam.propTypes = {
+Contact.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }),
 };
 
-export default MeetTheTeam;
+export default Contact;
