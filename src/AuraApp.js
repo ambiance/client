@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -19,6 +20,7 @@ class AuraApp extends React.Component {
     this.state = {
       isAuthenticated: false,
       user: {},
+      likedBusinesses: [],
       isModalShowing: false,
       modalDetails: {},
       voteDetails: [],
@@ -63,7 +65,19 @@ class AuraApp extends React.Component {
   }
 
   handleLogin = user => {
-    this.setState({ isAuthenticated: true, user });
+    this.setState({
+      isAuthenticated: true,
+      user,
+    });
+    console.log(this.state.user);
+
+    // Read the user's list of favorite businesses then set the state to these favorited businesses
+    const token = localStorage.getItem('auraUserToken');
+    API.get('account/read-user', {
+      token,
+    }).then(response => {
+      this.setState({ likedBusinesses: response.data.user.favorites });
+    });
   };
 
   handleLogout = () => {
@@ -73,6 +87,7 @@ class AuraApp extends React.Component {
     localStorage.removeItem('auraUserToken');
     // set user and authentication to empty / false respectively
     this.setState({ isAuthenticated: false, user: {} });
+    this.setState({ likedBusinesses: [] });
     // redirect user to home page / login page.
     Swal.fire({
       position: 'top-end',
@@ -152,6 +167,58 @@ class AuraApp extends React.Component {
     });
   };
 
+  // Method used to like a business
+  likeBusinessHandler = async business => {
+    // State verifies whether you are logged in or not
+    if (this.state.isAuthenticated) {
+      // Gets token from local storage
+      const token = localStorage.getItem('auraUserToken');
+      // Reads user from the database
+      await API.get('account/read-user', {
+        token,
+      }).then(response => {
+        // To see if the user already has the business._id in his list of favorite businesses
+        const output = response.data.user.favorites.filter(
+          favorite => favorite.businessId === business._id
+        );
+        // If statements based on output of the filter
+        if (output.length === 0) {
+          Swal.fire({
+            position: 'top',
+            text: `You liked "${business.name}"`,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        } else {
+          Swal.fire({
+            position: 'top',
+            text: `You unliked "${business.name}"`,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
+      });
+
+      await API.patch('account/like-business', {
+        token,
+        businessId: business._id,
+      });
+
+      await API.get('account/read-user', {
+        token,
+      }).then(response => {
+        this.setState({ likedBusinesses: response.data.user.favorites });
+      });
+    } else {
+      Swal.fire({
+        position: 'top',
+        text: 'You are not logged in',
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
+  };
+
   render() {
     const { isAuthenticated, user } = this.state;
     return (
@@ -165,12 +232,15 @@ class AuraApp extends React.Component {
             render={props => (
               <Home
                 {...props}
+                isAuthenticated={isAuthenticated}
                 modalDetails={this.state.modalDetails}
                 voteDetails={this.state.voteDetails}
                 isShowing={this.state.isModalShowing}
                 openModal={this.openModalHandler}
                 closeModal={this.closeModalHandler}
                 handleAuraVote={this.handleAuraVote}
+                likeBusiness={this.likeBusinessHandler}
+                likedBusinesses={this.state.likedBusinesses}
               />
             )}
           />

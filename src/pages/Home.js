@@ -79,7 +79,11 @@ class Home extends React.Component {
       openModal,
       closeModal,
       handleAuraVote,
+      likeBusiness,
+      likedBusinesses,
+      isAuthenticated,
     } = this.props;
+
     return (
       <main>
         <Head pathName={pathName} title="Home | Aura" />
@@ -104,6 +108,9 @@ class Home extends React.Component {
             noData={this.state.noData}
             onOpenModal={openModal}
             id="results"
+            likeBusiness={likeBusiness}
+            likedBusinesses={likedBusinesses}
+            isAuthenticated={isAuthenticated}
           />
         </div>
       </main>
@@ -121,6 +128,9 @@ Home.propTypes = {
   openModal: PropTypes.func,
   closeModal: PropTypes.func,
   handleAuraVote: PropTypes.func,
+  likeBusiness: PropTypes.func,
+  likedBusinesses: PropTypes.array,
+  isAuthenticated: PropTypes.bool,
 };
 
 export default Home;

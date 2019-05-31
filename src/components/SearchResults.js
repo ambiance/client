@@ -37,7 +37,15 @@ class SearchResults extends React.Component {
   }
 
   render() {
-    const { businesses, loading, noData, onOpenModal } = this.props;
+    const {
+      businesses,
+      loading,
+      noData,
+      onOpenModal,
+      likeBusiness,
+      likedBusinesses,
+      isAuthenticated,
+    } = this.props;
     if (loading) {
       return (
         <div className="loaderWrapper">
@@ -69,7 +77,14 @@ class SearchResults extends React.Component {
       <section id="searchResults">
         <div className="resultCards">
           {this.state.results.slice(0, this.state.numVisible).map((business, i) => (
-            <BusinessCard key={i} business={business} handleOpen={onOpenModal} />
+            <BusinessCard
+              key={i}
+              business={business}
+              handleOpen={onOpenModal}
+              likeBusiness={likeBusiness}
+              likedBusinesses={likedBusinesses}
+              isAuthenticated={isAuthenticated}
+            />
           ))}
         </div>
         {this.state.numVisible < this.state.results.length && (
@@ -87,6 +102,9 @@ SearchResults.propTypes = {
   loading: PropTypes.bool.isRequired,
   onOpenModal: PropTypes.func.isRequired,
   noData: PropTypes.bool.isRequired,
+  likeBusiness: PropTypes.func.isRequired,
+  likedBusinesses: PropTypes.array.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 export default SearchResults;
