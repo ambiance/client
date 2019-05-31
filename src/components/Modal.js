@@ -105,31 +105,18 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitia
                 Feedback
               </button>
             </li>
-            <li className="yelpLinkLI">
-              {/* <button
-                className="modalNav"
-                onClick={() => {
-                  setComponent(
-                    <Feedback
-                      show={show}
-                      details={details}
-                      voteDetails={voteDetails}
-                      handleAuraVote={handleAuraVote}
-                    />
-                  );
-                }}
-              > */}
-              <a className="modalNav" href={details.url} target="_blank">
-                Link to Yelp!
-              </a>
-              {/* </button> */}
-            </li>
+
             {/* <li className="modalLI">
               <button className="modalNav" onClick={() => setComponent(<Feedback />)}>
                 Feedback
               </button>
             </li> */}
           </ul>
+          <div className="yelpLinkLI">
+            <a className="modalNav" href={details.url} target="_blank">
+              Link to Yelp!
+            </a>
+          </div>
         </div>
         {/* <div className="businessDetails"> */}
         <div className="componentWindow">

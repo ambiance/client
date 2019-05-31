@@ -24,6 +24,8 @@ export default class Feedback extends React.Component {
   render() {
     const { details, voteDetails, show } = this.props;
 
+    console.log(auraDescriptions);
+
     return (
       <div className="modalFeedback">
         {/* Call to action */}
@@ -31,16 +33,16 @@ export default class Feedback extends React.Component {
         <p className="feedbackHeader">Click an Aura to vote what you think about this place.</p>
         {/* <p>{details.yelpId.type}</p> */}
         {/* Aura pills */}
-        <form className="buttonsContainer">
-          {auraDescriptions.map(item => (
+        <div className="buttonsContainer">
+          {Object.keys(auraDescriptions).map(item => (
             <AuraButtons
-              aura={item.aura}
-              key={item.aura}
-              selected={voteDetails.includes(item.aura)}
+              aura={item}
+              key={item}
+              selected={voteDetails.includes(item)}
               handleAuraVote={this.handleAuraVote}
             />
           ))}
-        </form>
+        </div>
       </div>
     );
   }
