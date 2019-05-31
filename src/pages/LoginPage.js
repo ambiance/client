@@ -66,7 +66,6 @@ class LoginPage extends React.Component {
 
         // set user and authentication in state.
         this.props.handleLogin(response.data.user);
-
         // redirect User to their dashboard / home page.
         this.props.history.push('/dashboard');
       })
