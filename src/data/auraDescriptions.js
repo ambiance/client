@@ -1,6 +1,6 @@
 // trendy, lively, inspired, romantic, cheerful, intimate, classy, hipster, casual, touristy
-const auraDescriptions = [
-  {
+const auraDescriptions = {
+  casual: {
     aura: 'casual',
     definition: 'Relaxed and unconcerned.',
     description: '',
@@ -25,7 +25,7 @@ const auraDescriptions = [
       },
     ],
   },
-  {
+  cheerful: {
     aura: 'cheerful',
     definition: 'A place that is full of life and happiness.',
     description: '',
@@ -51,7 +51,7 @@ const auraDescriptions = [
       },
     ],
   },
-  {
+  classy: {
     aura: 'classy',
     definition: 'Stylish and sophisticated.',
     description: '',
@@ -77,7 +77,7 @@ const auraDescriptions = [
       },
     ],
   },
-  {
+  hipster: {
     aura: 'hipster',
     definition:
       'A person who follows the latest trends and fashions outside the cultural mainstream.',
@@ -103,7 +103,7 @@ const auraDescriptions = [
       },
     ],
   },
-  {
+  inspired: {
     aura: 'inspired',
     definition: 'Of extraordinary quality, as if arising from some external creative impulse.',
     description: '',
@@ -130,7 +130,7 @@ const auraDescriptions = [
       },
     ],
   },
-  {
+  intimate: {
     aura: 'intimate',
     definition: 'Closely acquainted; familiar, close.',
     description: '',
@@ -158,7 +158,7 @@ const auraDescriptions = [
       },
     ],
   },
-  {
+  lively: {
     aura: 'lively',
     definition: 'A place full of life and high energy.',
     description: 'An environment that can have loud conversations and movement.',
@@ -183,7 +183,7 @@ const auraDescriptions = [
       },
     ],
   },
-  {
+  romantic: {
     aura: 'romantic',
     definition: 'Conducive to or characterized by the expression of love.',
     description: '',
@@ -209,10 +209,9 @@ const auraDescriptions = [
       },
     ],
   },
-  {
+  touristy: {
     aura: 'touristy',
-    definition:
-      'Relating to, appealing to, or visited by tourists (often used to suggest tawdriness or lack of authenticity)',
+    definition: 'Relating to, appealing to, or visited by tourists',
     description: '',
     examples: [
       {
@@ -235,7 +234,7 @@ const auraDescriptions = [
       },
     ],
   },
-  {
+  trendy: {
     aura: 'trendy',
     definition: 'Very fashionable or up to date in style or influence.',
     description: '',
@@ -367,6 +366,6 @@ const auraDescriptions = [
   //     },
   //   ],
   // },
-];
+};
 
 export default auraDescriptions;

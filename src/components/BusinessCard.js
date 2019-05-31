@@ -2,14 +2,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // components
-import AuraPills from './AuraPills';
+import AuraPill from './AuraPill';
 // helpers
 import { getColor } from './helpers/auraColors';
 import locations from '../data/LALocations';
+// data
+import auras from '../data/auraDescriptions';
 // cscc
 import '../styles/CardItem.scss';
 
-export default class CardItem extends React.Component {
+export default class BusinessCard extends React.Component {
   constructor(props) {
     super(props);
 
@@ -34,31 +36,55 @@ export default class CardItem extends React.Component {
     });
   };
 
+  handleKeyPress = event => {
+    // Check to see if space or enter were pressed
+    if (event.key === ' ' || event.key === 'Enter' || event.key === 'Spacebar') {
+      // "Spacebar" for IE11 support
+      // Prevent the default action to stop scrolling when space is pressed
+      event.preventDefault();
+    }
+  };
+
   render() {
     // consts here
-    const { business, onOpenModal } = this.props;
+    const { business, handleOpen } = this.props;
     // We cannot guarentee that the categories will not overflow in the cards with multiple categories.
     // FIXME: const categories = business.categories.map(category => category.title).join(', ');
     const categories = business.categories[0].title;
     return (
-      <button key={business.id} className="resultCard" onClick={() => onOpenModal(business)}>
+      // FIXME: Fix the onKeyPress for accessibility
+      <div
+        className="resultCard"
+        role="button"
+        tabIndex="0"
+        aria-pressed="false"
+        onClick={() => handleOpen(business)}
+        onKeyPress={event => {
+          this.handleKeyPress(event);
+          handleOpen(business);
+        }}
+      >
+        <div className="pillsContainer">
+          {business.attributes.aura
+            .split(',')
+            .slice(0, 4)
+            .map(auraSingleton => {
+              const sanitizedAura = auraSingleton.trim().toLowerCase();
+              return (
+                <AuraPill
+                  key={auraSingleton}
+                  aura={sanitizedAura}
+                  backgroundColor={getColor(sanitizedAura)}
+                  toolTip={{
+                    position: 'top',
+                    description: auras[sanitizedAura] ? auras[sanitizedAura].definition : '',
+                    upVote: 0,
+                  }}
+                />
+              );
+            })}
+        </div>
         <div className="resultCardImageContainer">
-          <div className="pillsContainer">
-            {business.attributes.aura
-              .split(',')
-              .slice(0, 4)
-              .map(auraSingleton => {
-                const sanitizedAura = auraSingleton.trim().toLowerCase();
-                return (
-                  <AuraPills
-                    aura={sanitizedAura}
-                    backgroundColor={getColor(sanitizedAura)}
-                    key={auraSingleton}
-                  />
-                );
-              })}
-          </div>
-
           <img
             className="resultCardImage"
             src={
@@ -81,12 +107,12 @@ export default class CardItem extends React.Component {
           </p>
           <p>{categories}</p>
         </span>
-      </button>
+      </div>
     );
   }
 }
 
-CardItem.propTypes = {
+BusinessCard.propTypes = {
   business: PropTypes.shape({
     name: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired,
@@ -97,5 +123,5 @@ CardItem.propTypes = {
       aura: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  onOpenModal: PropTypes.func.isRequired,
+  handleOpen: PropTypes.func.isRequired,
 };

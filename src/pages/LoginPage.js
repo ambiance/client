@@ -74,12 +74,10 @@ class LoginPage extends React.Component {
   };
 
   handleSwitchToLogin = event => {
-    console.log('Switch To Login!');
     this.setState({ showLogin: true });
   };
 
   handleSwitchToSignup = event => {
-    console.log('Switch To Signup!');
     this.setState({ showLogin: false });
   };
 
@@ -89,7 +87,7 @@ class LoginPage extends React.Component {
     } = this.props;
     return (
       <main className="loginPage">
-        <Head title="Login | Aura" />
+        <Head title="Login | Aura" pathName={pathName} />
         {this.state.showLogin ? (
           <LoginForm handleLogin={this.handleLogin} handleSwitch={this.handleSwitchToSignup} />
         ) : (
