@@ -22,6 +22,7 @@
   text-align: left;
   position: relative;
   z-index: 1;
+  cursor: pointer;
 }
 
 @media all and (max-width: 360px) {
@@ -43,36 +44,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.pill {
-  text-align: right;
-}
-
-.resultCardAura {
-  color: var(--off-white);
-  font-size: 0.8rem;
-  padding: 0.5rem;
-  margin-top: 10px;
-  margin-left: 10px;
-  align-items: right;
-  border-color: white;
-  border-style: dotted;
-  /* background-color: rgba(90, 187, 158, 0.9); */
-  border-radius: 33px;
-}
-
-@media all and (max-width: 373px) {
-  .resultCardAura {
-    font-size: 0.55rem;
-  }
-}
-
-.pillsContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: stretch;
-  position: absolute;
 }
 
 .resultCardTitle {
@@ -126,4 +97,12 @@
   display: flex;
   flex-direction: row-reverse;
   margin: 16.75rem -0.5rem;
+}
+
+.pillsContainer {
+  position: absolute;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
+  margin: 0.5rem;
 }

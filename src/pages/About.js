@@ -6,7 +6,7 @@ import Head from './Head';
 import Slideshow from '../components/Slideshow';
 import Accordion from '../components/Accordion';
 // helpers
-import auraDescriptions from '../data/auraDescriptions';
+import auras from '../data/auraDescriptions';
 // scss
 import '../styles/About.scss';
 
@@ -23,6 +23,7 @@ class About extends React.Component {
     const {
       location: { pathname: pathName },
     } = this.props;
+    const auraDescriptions = Object.values(auras);
     return (
       <main className="about">
         <Head pathName={pathName} title="About | Aura" />

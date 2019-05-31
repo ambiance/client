@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
-import CardItem from './CardItem';
+import BusinessCard from './BusinessCard';
 import '../styles/SearchResults.scss';
 
 class SearchResults extends React.Component {
@@ -69,14 +69,13 @@ class SearchResults extends React.Component {
       <section id="searchResults">
         <div className="resultCards">
           {this.state.results.slice(0, this.state.numVisible).map((business, i) => (
-            <div key={i}>
-              <CardItem
-                business={business}
-                onOpenModal={onOpenModal}
-                likeBusiness={likeBusiness}
-                likedBusinesses={likedBusinesses}
-              />
-            </div>
+            <BusinessCard
+              key={i}
+              business={business}
+              handleOpen={onOpenModal}
+              likeBusiness={likeBusiness}
+              likedBusinesses={likedBusinesses}
+            />
           ))}
         </div>
         {this.state.numVisible < this.state.results.length && (
