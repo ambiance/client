@@ -1,0 +1,36 @@
+.feedbackSection {
+  color: var(--off-white);
+    font-size: 0.8rem;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 4rem;
+    -webkit-align-items: center;
+    align-items: center;
+    border-color: white;
+    border-radius: 33px;
+}
+
+.feedbackTabAura {
+  color: var(--off-white);
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  width: 4rem;
+  align-items: center;
+  border-color: white;
+  border-style: dotted;
+  border-radius: 33px;
+}
+
+.feedbackTabAura:hover {
+  background-color: rgba(197, 197, 197, 0);
+}
+
+.feedbackHeader {
+  text-align: center;
+}
+
+.buttonsContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
