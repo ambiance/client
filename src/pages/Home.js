@@ -56,8 +56,8 @@ class Home extends React.Component {
       params,
     })
       .then(response => {
-        this.setState({ businesses: response.data });
-        if (response.data.length === 0) {
+        this.setState({ businesses: response.data.businesses });
+        if (response.data.businesses.length === 0) {
           this.setState({ noData: true });
         } else {
           this.setState({ noData: false });
