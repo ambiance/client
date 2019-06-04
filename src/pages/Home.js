@@ -88,7 +88,7 @@ class Home extends React.Component {
           loading: false,
           hasMoreResults,
         }));
-        if (response.data.length === 0) {
+        if (response.data.businesses.length === 0) {
           this.setState({ noData: true });
         } else {
           this.setState({ noData: false });
