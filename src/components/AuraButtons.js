@@ -30,7 +30,13 @@ class AuraButtons extends React.Component {
 
   render() {
     const { aura, selected } = this.props;
-    this.setState({ aura, selected });
+    /*
+     * TODO: Changed this back to how it was originally written due
+     * to outside complications but we shouldn't assign state directly here
+     * Need to use this.setState() instead
+     */
+    this.state.aura = aura;
+    this.state.selected = selected;
     // const showBackground = this.state.vote;
     // consts here
     return (

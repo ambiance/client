@@ -17,14 +17,13 @@ class Home extends React.Component {
     this.loadingDotsRef = React.createRef();
     this.searchRef = React.createRef();
 
-    const resultsPerChunk = this.calculateResultsPerChunk();
     this.state = {
       // modalDetails: '',
       businesses: [],
       loading: false,
       noData: false,
       showResults: false,
-      params: { resultsPerChunk, page: 0 },
+      params: { results: 0, page: 0 },
       hasMoreResults: false,
       scrollTo: 0,
     };
@@ -37,33 +36,11 @@ class Home extends React.Component {
     return 6;
   };
 
-  handleSearchSubmit = async searchFormData => {
+  handleSearchSubmit = searchFormData => {
     // Warn the user that there is already a request being made
     if (this.state.loading) {
       // TODO: Talk to the team about what we want to do when many requests are being made.
     }
-
-    // Start the loader to ease waiting time.
-    await this.setState(
-      prevState => ({
-        showResults: true,
-        businesses: [],
-        loading: true,
-        params: {
-          ...prevState.params,
-          page: 0,
-          resultsPerChunk: this.calculateResultsPerChunk(),
-        },
-        hasMoreResults: false,
-      }),
-      () => {
-        window.scroll({
-          top: this.searchRef.current.offsetTop - 50,
-          left: 0,
-          passive: true,
-        });
-      }
-    );
 
     // Dynamically add search parameters based on the results from the search form.
     const params = {};
@@ -76,13 +53,29 @@ class Home extends React.Component {
     if (searchFormData.cityValue !== '') {
       params.city = searchFormData.cityValue;
     }
+    const resultsPerChunk = this.calculateResultsPerChunk();
 
-    params.page = this.state.params.page;
-    params.results = this.state.params.resultsPerChunk;
-
-    this.setState({ params }, () => {
-      this.queryDatabase(this.state.params);
-    });
+    this.setState(
+      {
+        showResults: true,
+        businesses: [],
+        loading: true,
+        params: {
+          ...params,
+          page: 0,
+          results: resultsPerChunk,
+        },
+        hasMoreResults: false,
+      },
+      () => {
+        window.scroll({
+          top: this.searchRef.current.offsetTop - 50,
+          left: 0,
+          passive: true,
+        });
+        this.queryDatabase(this.state.params);
+      }
+    );
   };
 
   queryDatabase = params => {
