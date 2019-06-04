@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { handleStars } from "./helpers/stars";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { handleStars } from './helpers/stars';
 
 const BusinessDescription = ({ show, details }) => {
   const starSrc = handleStars(show ? details.stars : 0);
@@ -14,20 +14,16 @@ const BusinessDescription = ({ show, details }) => {
                   {category.title}
                 </li>
               ))
-            : "No categories"}
+            : 'No categories'}
         </ul>
         <ul className="address">
-          {show
-            ? details.displayAddress.map(addr => <li key={addr}>{addr}</li>)
-            : "No address"}
+          {show ? details.displayAddress.map(addr => <li key={addr}>{addr}</li>) : 'No address'}
         </ul>
-        <p className="info">
-          {show ? details.attributes.priceRange : "No range"}
-        </p>
+        <p className="info">{show ? details.attributes.priceRange : 'No range'}</p>
       </div>
       <div className="pictureSection">
         <div className="pictureContainer">
-          {show && <img className="pic" src={details.businessImage.src} />}
+          {show && <img className="pic" src={details.businessImage.src} alt={details.name} />}
         </div>
         {/* <a
           className="yelpLink"
@@ -50,6 +46,6 @@ const BusinessDescription = ({ show, details }) => {
 
 BusinessDescription.propTypes = {
   details: PropTypes.object.isRequired,
-  show: PropTypes.bool.isRequired
+  show: PropTypes.bool.isRequired,
 };
 export default BusinessDescription;

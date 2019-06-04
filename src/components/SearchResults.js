@@ -5,47 +5,32 @@ import BusinessCard from './BusinessCard';
 import '../styles/SearchResults.scss';
 
 class SearchResults extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.multiples = Math.floor(window.innerWidth / 400) % 2 ? 6 : 8;
-
-    this.state = {
-      results: [],
-      numVisible: this.multiples,
-    };
-  }
-
-  componentDidMount() {
-    const { businesses } = this.props;
-    this.setState({
-      results: businesses,
-    });
-  }
-
   componentDidUpdate(prevProps) {
-    if (this.props.businesses !== prevProps.businesses) {
-      this.setState({
-        results: this.props.businesses,
-        numVisible: this.multiples,
-      });
+    if (
+      prevProps.loading !== this.props.loading ||
+      this.props.businesses.length !== prevProps.businesses.length
+    ) {
+      this.props.toggleLoadingDots();
+      if (prevProps.businesses.length !== 0) {
+        window.scroll({ left: 0, top: this.props.scrollTo, behavior: 'smooth' });
+      }
     }
   }
-
-  loadMore() {
-    this.setState(prev => ({ numVisible: prev.numVisible + this.multiples }));
-  }
-
   render() {
     const {
       businesses,
       loading,
       noData,
       onOpenModal,
+      showLoadMoreBtn,
+      handleLoadMore,
+      loadMoreRef,
+      loadingDotsRef,
       likeBusiness,
       likedBusinesses,
       isAuthenticated,
     } = this.props;
+
     if (loading) {
       return (
         <div className="loaderWrapper">
@@ -76,21 +61,35 @@ class SearchResults extends React.Component {
     return (
       <section id="searchResults">
         <div className="resultCards">
-          {this.state.results.slice(0, this.state.numVisible).map((business, i) => (
-            <BusinessCard
-              key={i}
-              business={business}
-              handleOpen={onOpenModal}
-              likeBusiness={likeBusiness}
-              likedBusinesses={likedBusinesses}
-              isAuthenticated={isAuthenticated}
-            />
+          {businesses.map((business, i) => (
+            <div key={i}>
+              <BusinessCard
+                key={i}
+                business={business}
+                handleOpen={onOpenModal}
+                likeBusiness={likeBusiness}
+                likedBusinesses={likedBusinesses}
+                isAuthenticated={isAuthenticated}
+              />
+            </div>
           ))}
         </div>
-        {this.state.numVisible < this.state.results.length && (
-          <button onClick={() => this.loadMore()} type="button" className="loadMore">
-            Load more
-          </button>
+        {showLoadMoreBtn ? (
+          <div>
+            <button
+              onClick={handleLoadMore}
+              type="button"
+              className="loadMore hidden"
+              ref={loadMoreRef}
+            >
+              Load more
+            </button>
+            <div ref={loadingDotsRef} className="dotLoader">
+              <Loader type="ThreeDots" color="black" height={100} width={100} />
+            </div>
+          </div>
+        ) : (
+          ''
         )}
       </section>
     );
@@ -102,6 +101,12 @@ SearchResults.propTypes = {
   loading: PropTypes.bool.isRequired,
   onOpenModal: PropTypes.func.isRequired,
   noData: PropTypes.bool.isRequired,
+  handleLoadMore: PropTypes.func.isRequired,
+  showLoadMoreBtn: PropTypes.bool.isRequired,
+  toggleLoadingDots: PropTypes.func.isRequired,
+  scrollTo: PropTypes.number.isRequired,
+  loadMoreRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  loadingDotsRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   likeBusiness: PropTypes.func.isRequired,
   likedBusinesses: PropTypes.array.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,

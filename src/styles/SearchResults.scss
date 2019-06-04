@@ -41,7 +41,7 @@
 
 .loadMore {
   display: block;
-  margin: 30px auto;
+  margin: 50px auto;
   font-size: 1rem;
   font-family: Comfortaa, script;
   color: var(--light-mint);
@@ -52,6 +52,13 @@
 
 .loadMore:hover {
   color: var(--dark-mint);
+}
+
+.dotLoader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
 @media all and (max-width: 770px) {
