@@ -88,6 +88,7 @@ class AuraApp extends React.Component {
     // set user and authentication to empty / false respectively
     this.setState({ isAuthenticated: false, user: {} });
     this.setState({ likedBusinesses: [] });
+    this.setState({ voteDetails: [] });
     // redirect user to home page / login page.
     Swal.fire({
       position: 'top-end',
