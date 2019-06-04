@@ -44,13 +44,13 @@ class Home extends React.Component {
 
     // Dynamically add search parameters based on the results from the search form.
     const params = {};
-    if (!searchFormData.auraValue) {
+    if (searchFormData.auraValue !== '') {
       params.aura = searchFormData.auraValue;
     }
-    if (!searchFormData.categoryValue) {
+    if (searchFormData.categoryValue !== '') {
       params.category = searchFormData.categoryValue;
     }
-    if (!searchFormData.cityValue) {
+    if (searchFormData.cityValue !== '') {
       params.city = searchFormData.cityValue;
     }
     const resultsPerChunk = this.calculateResultsPerChunk();
