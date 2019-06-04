@@ -12,7 +12,7 @@ import { getColor } from './helpers/auraColors';
 // import { handleStars } from './helpers/stars';
 import '../styles/Modal.scss';
 
-const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitialFeedback }) => {
+const Modal = ({ show, details, voteDetails, close, handleAuraVote, openFeedback }) => {
   const [component, setComponent] = useState(<BusinessDescription show={show} details={details} />);
 
   useEffect(
@@ -92,6 +92,7 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitia
               <button
                 className="modalNav"
                 onClick={() => {
+                  openFeedback();
                   setComponent(
                     <Feedback
                       show={show}
@@ -155,6 +156,7 @@ Modal.propTypes = {
   details: PropTypes.object.isRequired,
   voteDetails: PropTypes.array.isRequired,
   close: PropTypes.func.isRequired,
+  openFeedback: PropTypes.func.isRequired,
   handleAuraVote: PropTypes.func.isRequired,
   // map: PropTypes.bool.isRequired,
 };
