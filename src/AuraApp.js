@@ -88,6 +88,7 @@ class AuraApp extends React.Component {
     // set user and authentication to empty / false respectively
     this.setState({ isAuthenticated: false, user: {} });
     this.setState({ likedBusinesses: [] });
+    this.setState({ voteDetails: [] });
     // redirect user to home page / login page.
     Swal.fire({
       position: 'top-end',
@@ -167,6 +168,20 @@ class AuraApp extends React.Component {
     });
   };
 
+  openFeedbackhandler = () => {
+    console.log('Feedback opened');
+    // Get auras from database
+    console.log(this.state.modalDetails);
+    console.log(this.state.modalDetails._id);
+    API.get('/businesses/vote-auras', {
+      params: {
+        businessId: this.state.modalDetails._id,
+      },
+    }).then(response => {
+      this.setState({ voteDetails: response.data.status.aura });
+    });
+  };
+
   // Method used to like a business
   likeBusinessHandler = async business => {
     // State verifies whether you are logged in or not
@@ -238,6 +253,7 @@ class AuraApp extends React.Component {
                 isShowing={this.state.isModalShowing}
                 openModal={this.openModalHandler}
                 closeModal={this.closeModalHandler}
+                openFeedback={this.openFeedbackhandler}
                 handleAuraVote={this.handleAuraVote}
                 likeBusiness={this.likeBusinessHandler}
                 likedBusinesses={this.state.likedBusinesses}

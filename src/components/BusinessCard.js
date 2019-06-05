@@ -15,7 +15,7 @@ import '../styles/CardItem.scss';
 import heartEmpty from '../assets/img/heartEmpty.png';
 import heartFilled from '../assets/img/heartFilled.png';
 
-export default class CardItem extends React.Component {
+export default class BusinessCard extends React.Component {
   constructor(props) {
     super(props);
     // set initial state
@@ -105,7 +105,7 @@ export default class CardItem extends React.Component {
                   backgroundColor={getColor(sanitizedAura)}
                   toolTip={{
                     position: 'top',
-                    description: auras[sanitizedAura].definition,
+                    description: auras[sanitizedAura] ? auras[sanitizedAura].definition : '',
                     upVote: 0,
                   }}
                 />
@@ -153,7 +153,7 @@ export default class CardItem extends React.Component {
   }
 }
 
-CardItem.propTypes = {
+BusinessCard.propTypes = {
   business: PropTypes.shape({
     name: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired,

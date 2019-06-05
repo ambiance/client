@@ -12,7 +12,7 @@ import { getColor } from './helpers/auraColors';
 // import { handleStars } from './helpers/stars';
 import '../styles/Modal.scss';
 
-const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitialFeedback }) => {
+const Modal = ({ show, details, voteDetails, close, handleAuraVote, openFeedback }) => {
   const [component, setComponent] = useState(<BusinessDescription show={show} details={details} />);
 
   useEffect(
@@ -37,7 +37,7 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitia
         style={{
           opacity: show ? '0.5' : '0',
           position: show ? 'fixed' : 'absolute',
-          zIndex: show ? '15' : '-5'
+          zIndex: show ? '15' : '-5',
         }}
       />
 
@@ -45,7 +45,7 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitia
         className="modalWrapper"
         style={{
           transform: show ? 'translateY(0vh)' : 'translateY(-200vh)',
-          opacity: show ? '1' : '0'
+          opacity: show ? '1' : '0',
         }}
       >
         <header className="modalHeader">
@@ -92,6 +92,7 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitia
               <button
                 className="modalNav"
                 onClick={() => {
+                  openFeedback();
                   setComponent(
                     <Feedback
                       show={show}
@@ -113,7 +114,7 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, handleInitia
             </li> */}
           </ul>
           <div className="yelpLinkLI">
-            <a className="modalNav" href={details.url} target="_blank">
+            <a className="modalNav" href={details.url} target="_blank" rel="noopener noreferrer">
               Link to Yelp!
             </a>
           </div>
@@ -155,6 +156,7 @@ Modal.propTypes = {
   details: PropTypes.object.isRequired,
   voteDetails: PropTypes.array.isRequired,
   close: PropTypes.func.isRequired,
+  openFeedback: PropTypes.func.isRequired,
   handleAuraVote: PropTypes.func.isRequired,
   // map: PropTypes.bool.isRequired,
 };
