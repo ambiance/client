@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 // Components
 import AuraButtons from './AuraButtons.js';
 // helpers
-import { getColor } from './helpers/auraColors';
 import auraDescriptions from '../data/auraDescriptions';
 // scss
 import '../styles/Feedback.scss';

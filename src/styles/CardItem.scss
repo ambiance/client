@@ -100,6 +100,10 @@
   margin: 16.75rem -0.5rem 0rem;
 }
 
+.heart:hover {
+  background-image: url(../assets/img/heartFilled.png);
+}
+
 .pillsContainer {
   position: absolute;
   display: grid;
