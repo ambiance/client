@@ -21,45 +21,36 @@ export default class Feedback extends React.Component {
     });
   };
 
-  tester = () => {
-    console.log(this.props.details);
-  };
-
   render() {
-    const { details, voteDetails, show } = this.props;
-
-    console.log(auraDescriptions);
+    const { details, voteAuraDetails, show } = this.props;
 
     return (
       <div className="modalFeedback">
         {/* Call to action */}
         <p className="feedbackHeader"> Submit your input by clicking the buttons below.</p>
         {/* Aura pills */}
-        <p className="auraFeedbackDescription">What Aura is this place?</p>
+        <p className="feedbackDescription">What Aura is this place?</p>
         <div className="buttonsContainer">
           {Object.keys(auraDescriptions).map(item => (
             <AuraButtons
               aura={item}
               key={item}
-              selected={voteDetails.includes(item)}
+              selected={voteAuraDetails.includes(item)}
               handleAuraVote={this.handleAuraVote}
             />
           ))}
-          {/* Activity pills */}
-          <p className="activityFeedbackDescription">
-            Click an Aura to vote what you think about this place.
-          </p>
-          <button onClick={this.tester}>Hello</button>
-          {/* <div className="buttonsContainer">
-            {Object.keys(auraDescriptions).map(item => (
-              <VotingButtons
-                buttonName={item}
-                key={item}
-                selected={voteDetails.includes(item)}
-                // handleVote={this.handleActivityVote}
-              />
-            ))}
-          </div> */}
+        </div>
+        {/* Activity pills */}
+        <p className="feedbackDescription">What activities is it good for?</p>
+        <div className="buttonsContainer">
+          {Object.keys(details.activities).map(item => (
+            <VotingButtons
+              buttonName={item}
+              key={item}
+              selected={voteAuraDetails.includes(item)}
+              // handleVote={this.handleActivityVote}
+            />
+          ))}
         </div>
       </div>
     );
@@ -68,6 +59,6 @@ export default class Feedback extends React.Component {
 
 Feedback.propTypes = {
   details: PropTypes.object.isRequired,
-  voteDetails: PropTypes.array.isRequired,
+  voteAuraDetails: PropTypes.array.isRequired,
   show: PropTypes.bool.isRequired,
 };

@@ -12,7 +12,7 @@ import { getColor } from './helpers/auraColors';
 // import { handleStars } from './helpers/stars';
 import '../styles/Modal.scss';
 
-const Modal = ({ show, details, voteDetails, close, handleAuraVote, openFeedback }) => {
+const Modal = ({ show, details, voteAuraDetails, close, handleAuraVote, openFeedback }) => {
   const [component, setComponent] = useState(<BusinessDescription show={show} details={details} />);
 
   useEffect(
@@ -21,11 +21,11 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, openFeedback
         <Feedback
           show={show}
           details={details}
-          voteDetails={voteDetails}
+          voteAuraDetails={voteAuraDetails}
           handleAuraVote={handleAuraVote}
         />
       ),
-    [voteDetails]
+    [voteAuraDetails]
   );
   useEffect(() => setComponent(<BusinessDescription show={show} details={details} />), [show]);
 
@@ -97,7 +97,7 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, openFeedback
                     <Feedback
                       show={show}
                       details={details}
-                      voteDetails={voteDetails}
+                      voteAuraDetails={voteAuraDetails}
                       handleAuraVote={handleAuraVote}
                     />
                   );
@@ -154,7 +154,7 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, openFeedback
 Modal.propTypes = {
   show: PropTypes.bool.isRequired,
   details: PropTypes.object.isRequired,
-  voteDetails: PropTypes.array.isRequired,
+  voteAuraDetails: PropTypes.array.isRequired,
   close: PropTypes.func.isRequired,
   openFeedback: PropTypes.func.isRequired,
   handleAuraVote: PropTypes.func.isRequired,
