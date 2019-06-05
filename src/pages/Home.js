@@ -129,6 +129,7 @@ class Home extends React.Component {
       isShowing,
       modalDetails,
       voteAuraDetails,
+      voteActivityDetails,
       openModal,
       closeModal,
       openFeedback,
@@ -147,6 +148,7 @@ class Home extends React.Component {
           close={closeModal}
           details={modalDetails}
           voteAuraDetails={voteAuraDetails}
+          voteActivityDetails={voteActivityDetails}
           openFeedback={openFeedback}
           handleAuraVote={handleAuraVote}
           shouldCloseOnOverlayClick
@@ -185,6 +187,7 @@ Home.propTypes = {
   }),
   modalDetails: PropTypes.object,
   voteAuraDetails: PropTypes.array,
+  voteActivityDetails: PropTypes.array,
   isShowing: PropTypes.bool,
   openModal: PropTypes.func,
   closeModal: PropTypes.func,

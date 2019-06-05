@@ -12,7 +12,16 @@ import { getColor } from './helpers/auraColors';
 // import { handleStars } from './helpers/stars';
 import '../styles/Modal.scss';
 
-const Modal = ({ show, details, voteAuraDetails, close, handleAuraVote, openFeedback }) => {
+const Modal = ({
+  show,
+  details,
+  voteAuraDetails,
+  voteActivityDetails,
+  close,
+  handleAuraVote,
+  handleActivityVote,
+  openFeedback,
+}) => {
   const [component, setComponent] = useState(<BusinessDescription show={show} details={details} />);
 
   useEffect(
@@ -22,10 +31,26 @@ const Modal = ({ show, details, voteAuraDetails, close, handleAuraVote, openFeed
           show={show}
           details={details}
           voteAuraDetails={voteAuraDetails}
+          voteActivityDetails={voteActivityDetails}
           handleAuraVote={handleAuraVote}
+          handleActivityVote={handleActivityVote}
         />
       ),
     [voteAuraDetails]
+  );
+  useEffect(
+    () =>
+      setComponent(
+        <Feedback
+          show={show}
+          details={details}
+          voteAuraDetails={voteAuraDetails}
+          voteActivityDetails={voteActivityDetails}
+          handleAuraVote={handleAuraVote}
+          handleActivityVote={handleActivityVote}
+        />
+      ),
+    [voteActivityDetails]
   );
   useEffect(() => setComponent(<BusinessDescription show={show} details={details} />), [show]);
 
@@ -98,7 +123,9 @@ const Modal = ({ show, details, voteAuraDetails, close, handleAuraVote, openFeed
                       show={show}
                       details={details}
                       voteAuraDetails={voteAuraDetails}
+                      voteActivityDetails={voteActivityDetails}
                       handleAuraVote={handleAuraVote}
+                      handleActivityVote={handleActivityVote}
                     />
                   );
                 }}
@@ -155,9 +182,11 @@ Modal.propTypes = {
   show: PropTypes.bool.isRequired,
   details: PropTypes.object.isRequired,
   voteAuraDetails: PropTypes.array.isRequired,
+  voteActivityDetails: PropTypes.array.isRequired,
   close: PropTypes.func.isRequired,
   openFeedback: PropTypes.func.isRequired,
   handleAuraVote: PropTypes.func.isRequired,
+  handleActivityVote: PropTypes.func.isRequired,
   // map: PropTypes.bool.isRequired,
 };
 

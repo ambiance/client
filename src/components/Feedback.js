@@ -12,6 +12,7 @@ import '../styles/Feedback.scss';
 export default class Feedback extends React.Component {
   static propTypes = {
     handleAuraVote: PropTypes.func.isRequired,
+    handleActivityVote: PropTypes.func.isRequired,
   };
 
   handleAuraVote = event => {
@@ -21,8 +22,15 @@ export default class Feedback extends React.Component {
     });
   };
 
+  handleActivityVote = event => {
+    this.props.handleActivityVote({
+      activity: event.activity,
+      vote: event.selected,
+    });
+  };
+
   render() {
-    const { details, voteAuraDetails, show } = this.props;
+    const { details, voteAuraDetails, voteActivityDetails, show } = this.props;
 
     return (
       <div className="modalFeedback">
@@ -47,8 +55,8 @@ export default class Feedback extends React.Component {
             <VotingButtons
               buttonName={item}
               key={item}
-              selected={voteAuraDetails.includes(item)}
-              // handleVote={this.handleActivityVote}
+              selected={voteActivityDetails.includes(item)}
+              handleVote={this.handleActivityVote}
             />
           ))}
         </div>
