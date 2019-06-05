@@ -134,6 +134,7 @@ class Home extends React.Component {
       closeModal,
       openFeedback,
       handleAuraVote,
+      handleActivityVote,
       likeBusiness,
       likedBusinesses,
       isAuthenticated,
@@ -151,6 +152,7 @@ class Home extends React.Component {
           voteActivityDetails={voteActivityDetails}
           openFeedback={openFeedback}
           handleAuraVote={handleAuraVote}
+          handleActivityVote={handleActivityVote}
           shouldCloseOnOverlayClick
         />
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
@@ -193,6 +195,7 @@ Home.propTypes = {
   closeModal: PropTypes.func,
   openFeedback: PropTypes.func,
   handleAuraVote: PropTypes.func,
+  handleActivityVote: PropTypes.func,
   likeBusiness: PropTypes.func,
   likedBusinesses: PropTypes.array,
   isAuthenticated: PropTypes.bool,

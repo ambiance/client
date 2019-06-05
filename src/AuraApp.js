@@ -319,6 +319,7 @@ class AuraApp extends React.Component {
                 closeModal={this.closeModalHandler}
                 openFeedback={this.openFeedbackhandler}
                 handleAuraVote={this.handleAuraVote}
+                handleActivityVote={this.handleActivityVote}
                 likeBusiness={this.likeBusinessHandler}
                 likedBusinesses={this.state.likedBusinesses}
               />
