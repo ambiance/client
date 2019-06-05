@@ -26,12 +26,17 @@ export default class BusinessCard extends React.Component {
   }
 
   componentWillMount() {
-    const { likedBusinesses, business } = this.props;
-    const tempArray = likedBusinesses.filter(
-      likedBusiness => likedBusiness.businessId === business._id
-    );
-    if (tempArray.length !== 0) {
-      this.setState({ heartStatus: false });
+    const { user, business } = this.props;
+    // user favorites is undefined (logged in with an empty favorites array or not logged in at all)
+    if (user.favorites !== undefined) {
+      const tempArray = user.favorites.filter(
+        likedBusiness => likedBusiness.businessId === business._id
+      );
+      if (tempArray.length !== 0) {
+        this.setState({ heartStatus: false });
+      } else {
+        this.setState({ heartStatus: true });
+      }
     } else {
       this.setState({ heartStatus: true });
     }
@@ -73,12 +78,12 @@ export default class BusinessCard extends React.Component {
 
   render() {
     // consts here
-    const { business, handleOpen, likeBusiness, likedBusinesses, isAuthenticated } = this.props;
+    const { business, handleOpen, likeBusiness, user, isAuthenticated } = this.props;
     // We cannot guarentee that the categories will not overflow in the cards with multiple categories.
     // FIXME: const categories = business.categories.map(category => category.title).join(', ');
     const categories = business.categories[0].title;
     // const utilizes method getImageName to get Image, refer to method above
-    const imageName = this.getImageName(likedBusinesses, business);
+    const imageName = this.getImageName(user.favorites, business);
     return (
       // FIXME: Fix the onKeyPress for accessibility
       <div
@@ -166,7 +171,7 @@ BusinessCard.propTypes = {
   }).isRequired,
   onOpenModal: PropTypes.func.isRequired,
   likeBusiness: PropTypes.func.isRequired,
-  likedBusinesses: PropTypes.array.isRequired,
+  user: PropTypes.object.isRequired,
   handleOpen: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
 };
