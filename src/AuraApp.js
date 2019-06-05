@@ -20,7 +20,6 @@ class AuraApp extends React.Component {
     this.state = {
       isAuthenticated: false,
       user: {},
-      likedBusinesses: [],
       isModalShowing: false,
       modalDetails: {},
       voteDetails: [],
@@ -70,14 +69,6 @@ class AuraApp extends React.Component {
       user,
     });
     console.log(this.state.user);
-
-    // Read the user's list of favorite businesses then set the state to these favorited businesses
-    const token = localStorage.getItem('auraUserToken');
-    API.get('account/read-user', {
-      token,
-    }).then(response => {
-      this.setState({ likedBusinesses: response.data.user.favorites });
-    });
   };
 
   handleLogout = () => {
@@ -87,7 +78,6 @@ class AuraApp extends React.Component {
     localStorage.removeItem('auraUserToken');
     // set user and authentication to empty / false respectively
     this.setState({ isAuthenticated: false, user: {} });
-    this.setState({ likedBusinesses: [] });
     this.setState({ voteDetails: [] });
     // redirect user to home page / login page.
     Swal.fire({
@@ -222,7 +212,7 @@ class AuraApp extends React.Component {
       await API.get('account/read-user', {
         token,
       }).then(response => {
-        this.setState({ likedBusinesses: response.data.user.favorites });
+        this.setState({ user: response.data.user });
       });
     } else {
       Swal.fire({
@@ -256,7 +246,7 @@ class AuraApp extends React.Component {
                 openFeedback={this.openFeedbackhandler}
                 handleAuraVote={this.handleAuraVote}
                 likeBusiness={this.likeBusinessHandler}
-                likedBusinesses={this.state.likedBusinesses}
+                user={this.state.user}
               />
             )}
           />
