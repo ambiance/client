@@ -245,7 +245,7 @@ class AuraApp extends React.Component {
             )}
           />
           <Route path="/about" component={About} />
-          <Route path="/meettheteam" component={Contact} />
+          <Route path="/contact" component={Contact} />
           <Route
             path="/login"
             render={props => (
