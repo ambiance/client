@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 // Components
 import AuraButtons from './AuraButtons.js';
+import VotingButtons from './VotingButtons.js';
 // helpers
 import { getColor } from './helpers/auraColors';
 import auraDescriptions from '../data/auraDescriptions';
@@ -21,6 +22,10 @@ export default class Feedback extends React.Component {
     });
   };
 
+  tester = () => {
+    console.log(this.props.details);
+  };
+
   render() {
     const { details, voteDetails, show } = this.props;
 
@@ -29,10 +34,9 @@ export default class Feedback extends React.Component {
     return (
       <div className="modalFeedback">
         {/* Call to action */}
-        <p className="feedbackHeader"> Let us know what you think!</p>
-        <p className="feedbackHeader">Click an Aura to vote what you think about this place.</p>
-        {/* <p>{details.yelpId.type}</p> */}
+        <p className="feedbackHeader"> Submit your input by clicking the buttons below.</p>
         {/* Aura pills */}
+        <p className="auraFeedbackDescription">What Aura is this place?</p>
         <div className="buttonsContainer">
           {Object.keys(auraDescriptions).map(item => (
             <AuraButtons
@@ -42,6 +46,21 @@ export default class Feedback extends React.Component {
               handleAuraVote={this.handleAuraVote}
             />
           ))}
+          {/* Activity pills */}
+          <p className="activityFeedbackDescription">
+            Click an Aura to vote what you think about this place.
+          </p>
+          <button onClick={this.tester}>Hello</button>
+          {/* <div className="buttonsContainer">
+            {Object.keys(auraDescriptions).map(item => (
+              <VotingButtons
+                buttonName={item}
+                key={item}
+                selected={voteDetails.includes(item)}
+                // handleVote={this.handleActivityVote}
+              />
+            ))}
+          </div> */}
         </div>
       </div>
     );

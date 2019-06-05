@@ -26,7 +26,21 @@
 }
 
 .feedbackHeader {
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 1.5rem;
+}
+
+
+.modalFeedback p {
   text-align: center;
+}
+
+.auraFeedbackDescription {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: var(--mint);
+  color: white;
 }
 
 .buttonsContainer{
