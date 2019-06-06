@@ -21,10 +21,7 @@ export default class Feedback extends React.Component {
   };
 
   render() {
-    const { details, voteDetails, show } = this.props;
-
-    console.log(auraDescriptions);
-
+    const { voteDetails } = this.props;
     return (
       <div className="modalFeedback">
         {/* Call to action */}
@@ -48,7 +45,7 @@ export default class Feedback extends React.Component {
 }
 
 Feedback.propTypes = {
-  details: PropTypes.object.isRequired,
   voteDetails: PropTypes.array.isRequired,
-  show: PropTypes.bool.isRequired,
+  // details: PropTypes.object,
+  // show: PropTypes.bool,
 };

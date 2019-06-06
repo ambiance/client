@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable no-useless-return */
 import React from 'react';
 import PropTypes from 'prop-types';
 // components
@@ -52,7 +49,6 @@ export default class BusinessCard extends React.Component {
     Object.keys(locations).forEach(location => {
       if (locations[location].includes(parseInt(postalCode))) {
         this.setState({ neighborhood: location });
-        return;
       }
     });
   };
@@ -111,7 +107,8 @@ export default class BusinessCard extends React.Component {
                   toolTip={{
                     position: 'top',
                     description: auras[sanitizedAura] ? auras[sanitizedAura].definition : '',
-                    upVote: 0,
+                    // FIXME: Does not show results right away... Requires search to update vote data.
+                    upVote: business.auras[sanitizedAura] ? business.auras[sanitizedAura] : 0,
                   }}
                 />
               );
@@ -169,7 +166,6 @@ BusinessCard.propTypes = {
       aura: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  onOpenModal: PropTypes.func.isRequired,
   likeBusiness: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   handleOpen: PropTypes.func.isRequired,

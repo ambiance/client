@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -68,7 +67,6 @@ class AuraApp extends React.Component {
       isAuthenticated: true,
       user,
     });
-    console.log(this.state.user);
   };
 
   handleLogout = () => {
@@ -159,10 +157,7 @@ class AuraApp extends React.Component {
   };
 
   openFeedbackhandler = () => {
-    console.log('Feedback opened');
     // Get auras from database
-    console.log(this.state.modalDetails);
-    console.log(this.state.modalDetails._id);
     API.get('/businesses/vote-auras', {
       params: {
         businessId: this.state.modalDetails._id,
