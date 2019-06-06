@@ -24,7 +24,7 @@ export default class Feedback extends React.Component {
 
   handleActivityVote = event => {
     this.props.handleActivityVote({
-      activity: event.activity,
+      activity: event.buttonName,
       vote: event.selected,
     });
   };
