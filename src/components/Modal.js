@@ -9,6 +9,7 @@ import BusinessDescription from './BusinessDescription';
 import Feedback from './Feedback';
 // import Feedback from './Feedback';
 import { getColor } from './helpers/auraColors';
+import auras from '../data/auraDescriptions';
 // import { handleStars } from './helpers/stars';
 import '../styles/Modal.scss';
 
@@ -59,7 +60,11 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, openFeedback
                       aura={sanitizedAura}
                       backgroundColor={getColor(sanitizedAura)}
                       key={auraSingleton}
-                      toolTip={{ position: 'bottom', description: sanitizedAura }}
+                      toolTip={{
+                        position: 'bottom',
+                        description: auras[sanitizedAura] ? auras[sanitizedAura].definition : '',
+                        upVote: details.auras ? details.auras[sanitizedAura] : 0,
+                      }}
                     />
                   );
                 })
