@@ -7,7 +7,7 @@ import { Home, About, Contact, Login, Dashboard, FourOhFour } from './pages';
 import Header from './components/Header';
 import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
-import API from './services/API';
+import API, { alertErrorHandler } from './services/API';
 import slideImages from './data/slideImages';
 import auraLogo from './assets/img/auraLogo.png';
 import './styles/main.scss';
@@ -24,8 +24,37 @@ class AuraApp extends React.Component {
       voteDetails: [],
     };
   }
+
+  // ==================================== Lifecycle Hooks ==========================================
+
   // FIXME: Might be throwing memory leaks if the request does not work... check this out...
   componentWillMount() {
+    this.handleMountedLogin();
+  }
+
+  componentDidMount = () => {
+    // force browser to preload slideshow images when called here, in AuraApp
+    this.initializeSlide();
+  };
+
+  // ==================================== Local Functions ==========================================
+
+  /**
+   * Loads the slide images
+   */
+  initializeSlide = () => {
+    slideImages.forEach(slide => {
+      const img = new Image();
+      img.src = slide.src;
+    });
+  };
+
+  // ------------------------------------ Event Handlers ---------------------------------------
+
+  /**
+   * Login event handler - Sets state for an already authenticated user that is re-entering the website
+   */
+  handleMountedLogin = () => {
     // Get the auth token from local storage and set the auth state to true.
     const token = localStorage.getItem('auraUserToken');
     if (token) {
@@ -35,33 +64,32 @@ class AuraApp extends React.Component {
       const currentTime = Math.floor(Date.now() / 1000);
       if (currentTime <= exp) {
         API.defaults.headers.common.Authorization = token;
-        this.setState({ isAuthenticated: true });
 
         // Log the user in with token
-        API.get('auth/login').then(response => {
-          this.setState({ user: response.data.user });
-        });
+        API.get('account/read-user')
+          .then(response => {
+            this.setState({ user: response.data.user, isAuthenticated: true });
+          })
+          .catch(err => {
+            alertErrorHandler(err);
+          });
       } else {
         // Remove the token from local storage
         localStorage.removeItem('auraUserToken');
         // Warn the user that they have been logged out and need to log back in.
         Swal.fire(
           'Logout Warning',
-          'You have been logged out due to an expired account token. Please login for continued account access.',
+          'You have been logged out. Please login for continued account access.',
           'warning'
         );
       }
     }
-  }
+  };
 
-  // force browser to preload slideshow images
-  componentDidMount() {
-    slideImages.forEach(slide => {
-      const img = new Image();
-      img.src = slide.src;
-    });
-  }
-
+  /**
+   * Login event handler - Sets state for all user related data when logging in.
+   * @param {Object} user Authenticated user information
+   */
   handleLogin = user => {
     this.setState({
       isAuthenticated: true,
@@ -69,14 +97,16 @@ class AuraApp extends React.Component {
     });
   };
 
+  /**
+   * Logout event handler - Removes all user related data when logging out
+   */
   handleLogout = () => {
     // Revoke jwt from user requests
     API.defaults.headers.common.Authorization = '';
     // Remove token from local storage
     localStorage.removeItem('auraUserToken');
-    // set user and authentication to empty / false respectively
-    this.setState({ isAuthenticated: false, user: {} });
-    this.setState({ voteDetails: [] });
+    // Remove all user related data
+    this.setState({ isAuthenticated: false, user: {}, voteDetails: [] });
     // redirect user to home page / login page.
     Swal.fire({
       position: 'top-end',
@@ -218,6 +248,8 @@ class AuraApp extends React.Component {
       });
     }
   };
+
+  // ==================================== UI Render ==========================================
 
   render() {
     const { isAuthenticated, user } = this.state;
