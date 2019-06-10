@@ -68,5 +68,6 @@ export default class Feedback extends React.Component {
 Feedback.propTypes = {
   details: PropTypes.object.isRequired,
   voteAuraDetails: PropTypes.array.isRequired,
+  voteActivityDetails: PropTypes.array.isRequired,
   show: PropTypes.bool.isRequired,
 };

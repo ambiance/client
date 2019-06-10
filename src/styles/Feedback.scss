@@ -37,10 +37,8 @@
 }
 
 .feedbackDescription {
-  margin-top: 1.5rem;
-  padding: 1rem;
-  background-color: var(--mint);
-  color: white;
+  margin-top: 3.5rem;
+  margin-bottom: 1rem;
 }
 
 .buttonsContainer{
@@ -48,4 +46,11 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 2rem;
+}
+
+@media all and (min-width: 800px) {
+  .buttonsContainer{
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
 }

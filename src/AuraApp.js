@@ -87,10 +87,13 @@ class AuraApp extends React.Component {
     // Remove token from local storage
     localStorage.removeItem('auraUserToken');
     // set user and authentication to empty / false respectively
-    this.setState({ isAuthenticated: false, user: {} });
-    this.setState({ likedBusinesses: [] });
-    this.setState({ voteAuraDetails: [] });
-    this.setState({ voteActivityDetails: [] });
+    this.setState({
+      isAuthenticated: false,
+      user: {},
+      likedBusinesses: [],
+      voteAuraDetails: [],
+      voteActivityDetails: [],
+    });
     // redirect user to home page / login page.
     Swal.fire({
       position: 'top-end',
@@ -103,13 +106,7 @@ class AuraApp extends React.Component {
   handleAuraVote = event => {
     // State verifies whether you are logged in or not
     if (this.state.isAuthenticated) {
-      //
-
-      // Business Function
-      const token = localStorage.getItem('auraUserToken');
-
       API.patch('/businesses/vote-auras', {
-        token,
         businessId: this.state.modalDetails._id,
         aura: event.aura,
       }).then(response => {
@@ -143,13 +140,7 @@ class AuraApp extends React.Component {
   handleActivityVote = event => {
     // State verifies whether you are logged in or not
     if (this.state.isAuthenticated) {
-      //
-
-      // Business Function
-      const token = localStorage.getItem('auraUserToken');
-
       API.patch('/businesses/vote-activities', {
-        token,
         businessId: this.state.modalDetails._id,
         activity: event.activity,
       }).then(response => {
