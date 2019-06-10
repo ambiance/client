@@ -3,7 +3,7 @@
     font-size: 0.8rem;
     margin-top: 10px;
     margin-left: 10px;
-    width: 4rem;
+    width: 4.7rem;
     -webkit-align-items: center;
     align-items: center;
     border-color: white;
@@ -14,7 +14,7 @@
   color: var(--off-white);
   font-size: 0.8rem;
   padding: 0.5rem;
-  width: 4rem;
+  width: 4.7rem;
   align-items: center;
   border-color: white;
   border-style: dotted;
@@ -26,11 +26,31 @@
 }
 
 .feedbackHeader {
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 1.5rem;
+}
+
+
+.modalFeedback p {
   text-align: center;
+}
+
+.feedbackDescription {
+  margin-top: 3.5rem;
+  margin-bottom: 1rem;
 }
 
 .buttonsContainer{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 2rem;
+}
+
+@media all and (min-width: 800px) {
+  .buttonsContainer{
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
 }

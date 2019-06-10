@@ -128,11 +128,13 @@ class Home extends React.Component {
       location: { pathname: pathName },
       isShowing,
       modalDetails,
-      voteDetails,
+      voteAuraDetails,
+      voteActivityDetails,
       openModal,
       closeModal,
       openFeedback,
       handleAuraVote,
+      handleActivityVote,
       likeBusiness,
       user,
       isAuthenticated,
@@ -146,9 +148,11 @@ class Home extends React.Component {
           show={isShowing}
           close={closeModal}
           details={modalDetails}
-          voteDetails={voteDetails}
+          voteAuraDetails={voteAuraDetails}
+          voteActivityDetails={voteActivityDetails}
           openFeedback={openFeedback}
           handleAuraVote={handleAuraVote}
+          handleActivityVote={handleActivityVote}
           shouldCloseOnOverlayClick
         />
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
@@ -184,12 +188,14 @@ Home.propTypes = {
     pathname: PropTypes.string.isRequired,
   }),
   modalDetails: PropTypes.object,
-  voteDetails: PropTypes.array,
+  voteAuraDetails: PropTypes.array,
+  voteActivityDetails: PropTypes.array,
   isShowing: PropTypes.bool,
   openModal: PropTypes.func,
   closeModal: PropTypes.func,
   openFeedback: PropTypes.func,
   handleAuraVote: PropTypes.func,
+  handleActivityVote: PropTypes.func,
   likeBusiness: PropTypes.func,
   user: PropTypes.object,
   isAuthenticated: PropTypes.bool,

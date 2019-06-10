@@ -21,7 +21,8 @@ class AuraApp extends React.Component {
       user: {},
       isModalShowing: false,
       modalDetails: {},
-      voteDetails: [],
+      voteAuraDetails: [],
+      voteActivityDetails: [],
     };
   }
 
@@ -106,7 +107,15 @@ class AuraApp extends React.Component {
     // Remove token from local storage
     localStorage.removeItem('auraUserToken');
     // Remove all user related data
-    this.setState({ isAuthenticated: false, user: {}, voteDetails: [] });
+    // set user and authentication to empty / false respectively
+    this.setState({
+      isAuthenticated: false,
+      user: {},
+      likedBusinesses: [],
+      voteAuraDetails: [],
+      voteActivityDetails: [],
+    });
+    
     // redirect user to home page / login page.
     Swal.fire({
       position: 'top-end',
@@ -119,13 +128,7 @@ class AuraApp extends React.Component {
   handleAuraVote = event => {
     // State verifies whether you are logged in or not
     if (this.state.isAuthenticated) {
-      //
-
-      // Business Function
-      const token = localStorage.getItem('auraUserToken');
-
       API.patch('/businesses/vote-auras', {
-        token,
         businessId: this.state.modalDetails._id,
         aura: event.aura,
       }).then(response => {
@@ -144,7 +147,41 @@ class AuraApp extends React.Component {
             timer: 2000,
           });
         }
-        this.setState({ voteDetails: response.data.status.aura });
+        this.setState({ voteAuraDetails: response.data.status.aura });
+      });
+    } else {
+      Swal.fire({
+        position: 'top',
+        text: 'You are not logged in',
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
+  };
+
+  handleActivityVote = event => {
+    // State verifies whether you are logged in or not
+    if (this.state.isAuthenticated) {
+      API.patch('/businesses/vote-activities', {
+        businessId: this.state.modalDetails._id,
+        activity: event.activity,
+      }).then(response => {
+        if (response.data.status.activity.includes(event.activity)) {
+          Swal.fire({
+            position: 'top',
+            text: `You voted ${event.activity} for "${this.state.modalDetails.name}"`,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        } else {
+          Swal.fire({
+            position: 'top',
+            text: `You unvoted ${event.activity} for "${this.state.modalDetails.name}"`,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
+        this.setState({ voteActivityDetails: response.data.status.activity });
       });
     } else {
       Swal.fire({
@@ -165,16 +202,31 @@ class AuraApp extends React.Component {
     // If user is logged in, prepopulate the aura votes
     if (this.state.isAuthenticated) {
       // Finds index of user id
-      const index = details.usersVotedAura.findIndex(item => item.userId === this.state.user._id);
+      const auraIndex = details.usersVotedAura.findIndex(
+        item => item.userId === this.state.user._id
+      );
+      const activityIndex = details.usersVotedActivity.findIndex(
+        item => item.userId === this.state.user._id
+      );
       // checks if there is a user
-      if (index !== -1) {
+      if (auraIndex !== -1) {
         this.setState({
-          voteDetails: details.usersVotedAura[index].aura,
+          voteAuraDetails: details.usersVotedAura[auraIndex].aura,
         });
       } else {
         // Clears votes if there are none
         this.setState({
-          voteDetails: [],
+          voteAuraDetails: [],
+        });
+      }
+      if (activityIndex !== -1) {
+        this.setState({
+          voteActivityDetails: details.usersVotedActivity[activityIndex].activity,
+        });
+      } else {
+        // Clears votes if there are none
+        this.setState({
+          voteActivityDetails: [],
         });
       }
     }
@@ -193,7 +245,16 @@ class AuraApp extends React.Component {
         businessId: this.state.modalDetails._id,
       },
     }).then(response => {
-      this.setState({ voteDetails: response.data.status.aura });
+      this.setState({ voteAuraDetails: response.data.status.aura });
+    });
+
+    // Get activities from database
+    API.get('/businesses/vote-activities', {
+      params: {
+        businessId: this.state.modalDetails._id,
+      },
+    }).then(response => {
+      this.setState({ voteActivityDetails: response.data.status.activity });
     });
   };
 
@@ -266,12 +327,14 @@ class AuraApp extends React.Component {
                 {...props}
                 isAuthenticated={isAuthenticated}
                 modalDetails={this.state.modalDetails}
-                voteDetails={this.state.voteDetails}
+                voteAuraDetails={this.state.voteAuraDetails}
+                voteActivityDetails={this.state.voteActivityDetails}
                 isShowing={this.state.isModalShowing}
                 openModal={this.openModalHandler}
                 closeModal={this.closeModalHandler}
                 openFeedback={this.openFeedbackhandler}
                 handleAuraVote={this.handleAuraVote}
+                handleActivityVote={this.handleActivityVote}
                 likeBusiness={this.likeBusinessHandler}
                 user={this.state.user}
               />

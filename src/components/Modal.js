@@ -13,7 +13,16 @@ import auras from '../data/auraDescriptions';
 // import { handleStars } from './helpers/stars';
 import '../styles/Modal.scss';
 
-const Modal = ({ show, details, voteDetails, close, handleAuraVote, openFeedback }) => {
+const Modal = ({
+  show,
+  details,
+  voteAuraDetails,
+  voteActivityDetails,
+  close,
+  handleAuraVote,
+  handleActivityVote,
+  openFeedback,
+}) => {
   const [component, setComponent] = useState(<BusinessDescription show={show} details={details} />);
 
   useEffect(
@@ -22,11 +31,27 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, openFeedback
         <Feedback
           show={show}
           details={details}
-          voteDetails={voteDetails}
+          voteAuraDetails={voteAuraDetails}
+          voteActivityDetails={voteActivityDetails}
           handleAuraVote={handleAuraVote}
+          handleActivityVote={handleActivityVote}
         />
       ),
-    [voteDetails]
+    [voteAuraDetails]
+  );
+  useEffect(
+    () =>
+      setComponent(
+        <Feedback
+          show={show}
+          details={details}
+          voteAuraDetails={voteAuraDetails}
+          voteActivityDetails={voteActivityDetails}
+          handleAuraVote={handleAuraVote}
+          handleActivityVote={handleActivityVote}
+        />
+      ),
+    [voteActivityDetails]
   );
   useEffect(() => setComponent(<BusinessDescription show={show} details={details} />), [show]);
 
@@ -102,8 +127,10 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, openFeedback
                     <Feedback
                       show={show}
                       details={details}
-                      voteDetails={voteDetails}
+                      voteAuraDetails={voteAuraDetails}
+                      voteActivityDetails={voteActivityDetails}
                       handleAuraVote={handleAuraVote}
+                      handleActivityVote={handleActivityVote}
                     />
                   );
                 }}
@@ -159,10 +186,12 @@ const Modal = ({ show, details, voteDetails, close, handleAuraVote, openFeedback
 Modal.propTypes = {
   show: PropTypes.bool.isRequired,
   details: PropTypes.object.isRequired,
-  voteDetails: PropTypes.array.isRequired,
+  voteAuraDetails: PropTypes.array.isRequired,
+  voteActivityDetails: PropTypes.array.isRequired,
   close: PropTypes.func.isRequired,
   openFeedback: PropTypes.func.isRequired,
   handleAuraVote: PropTypes.func.isRequired,
+  handleActivityVote: PropTypes.func.isRequired,
   // map: PropTypes.bool.isRequired,
 };
 
