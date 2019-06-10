@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { RadialChart, Hint } from 'react-vis';
 
 // Components
 import AuraButtons from './AuraButtons.js';
@@ -10,6 +11,10 @@ import auraDescriptions from '../data/auraDescriptions';
 import '../styles/Feedback.scss';
 
 export default class Feedback extends React.Component {
+  state = {
+    value: false,
+  };
+
   static propTypes = {
     handleAuraVote: PropTypes.func.isRequired,
     handleActivityVote: PropTypes.func.isRequired,
@@ -31,6 +36,7 @@ export default class Feedback extends React.Component {
 
   render() {
     const { details, voteAuraDetails, voteActivityDetails, show } = this.props;
+    const { value } = this.state;
 
     return (
       <div className="modalFeedback">
@@ -38,6 +44,20 @@ export default class Feedback extends React.Component {
         <p className="feedbackHeader"> Submit your input by clicking the buttons below.</p>
         {/* Aura pills */}
         <p className="feedbackDescription">What Aura is this place?</p>
+        <RadialChart
+          // padAngle={1}
+          innerRadius={100}
+          radius={140}
+          padAngle={0.04}
+          data={[{ angle: 1 }, { angle: 0 }, { angle: 2 }]}
+          width={300}
+          height={300}
+          onValueMouseOver={v => this.setState({ value: v })}
+          onSeriesMouseOut={v => this.setState({ value: false })}
+        >
+          {value !== false && <Hint value={value} />}
+        </RadialChart>
+
         <div className="buttonsContainer">
           {Object.keys(auraDescriptions).map(item => (
             <AuraButtons
