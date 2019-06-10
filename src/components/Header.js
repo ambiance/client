@@ -10,32 +10,42 @@ import { NavLink } from 'react-router-dom';
  */
 const Header = ({ auraLogo, isAuthenticated }) => (
   <header>
-    <NavLink to="/">
-      <img src={auraLogo} alt="auraLogo" className="headerLogo" />
+    <NavLink id="logo" to="/">
+      <div>
+        <img src={auraLogo} alt="auraLogo" />
+      </div>
     </NavLink>
 
     <nav>
       <ul>
-        <li className="liActive">
+        <li>
           <NavLink exact to="/">
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink to="/about">About Aura</NavLink>
+          <NavLink activeClassName="active" to="/about">
+            About Aura
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/contact">Contact</NavLink>
+          <NavLink activeClassName="active" to="/contact">
+            Contact
+          </NavLink>
         </li>
         {isAuthenticated ? (
           <React.Fragment>
             <li>
-              <NavLink to="/dashboard">Dashboard</NavLink>
+              <NavLink activeClassName="active" to="/dashboard">
+                Dashboard
+              </NavLink>
             </li>
           </React.Fragment>
         ) : (
           <li>
-            <NavLink to="/login">Sign In</NavLink>
+            <NavLink activeClassName="active" to="/login">
+              Sign In
+            </NavLink>
           </li>
         )}
       </ul>

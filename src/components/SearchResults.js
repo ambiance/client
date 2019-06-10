@@ -12,7 +12,11 @@ class SearchResults extends React.Component {
     ) {
       this.props.toggleLoadingDots();
       if (prevProps.businesses.length !== 0) {
-        window.scroll({ left: 0, top: this.props.scrollTo, behavior: 'smooth' });
+        window.scroll({
+          left: 0,
+          top: this.props.scrollTo,
+          behavior: 'smooth',
+        });
       }
     }
   }
@@ -27,7 +31,7 @@ class SearchResults extends React.Component {
       loadMoreRef,
       loadingDotsRef,
       likeBusiness,
-      likedBusinesses,
+      user,
       isAuthenticated,
     } = this.props;
 
@@ -68,7 +72,7 @@ class SearchResults extends React.Component {
                 business={business}
                 handleOpen={onOpenModal}
                 likeBusiness={likeBusiness}
-                likedBusinesses={likedBusinesses}
+                user={user}
                 isAuthenticated={isAuthenticated}
               />
             </div>
@@ -108,7 +112,7 @@ SearchResults.propTypes = {
   loadMoreRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   loadingDotsRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   likeBusiness: PropTypes.func.isRequired,
-  likedBusinesses: PropTypes.array.isRequired,
+  user: PropTypes.object.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
 };
 

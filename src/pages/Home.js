@@ -136,7 +136,7 @@ class Home extends React.Component {
       handleAuraVote,
       handleActivityVote,
       likeBusiness,
-      likedBusinesses,
+      user,
       isAuthenticated,
     } = this.props;
 
@@ -174,7 +174,7 @@ class Home extends React.Component {
             scrollTo={this.state.scrollTo}
             id="results"
             likeBusiness={likeBusiness}
-            likedBusinesses={likedBusinesses}
+            user={user}
             isAuthenticated={isAuthenticated}
           />
         </div>
@@ -197,7 +197,7 @@ Home.propTypes = {
   handleAuraVote: PropTypes.func,
   handleActivityVote: PropTypes.func,
   likeBusiness: PropTypes.func,
-  likedBusinesses: PropTypes.array,
+  user: PropTypes.object,
   isAuthenticated: PropTypes.bool,
 };
 

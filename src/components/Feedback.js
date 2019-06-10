@@ -31,7 +31,6 @@ export default class Feedback extends React.Component {
 
   render() {
     const { details, voteAuraDetails, voteActivityDetails, show } = this.props;
-
     return (
       <div className="modalFeedback">
         {/* Call to action */}
