@@ -45,11 +45,25 @@ export default class Feedback extends React.Component {
         {/* Aura pills */}
         <p className="feedbackDescription">What Aura is this place?</p>
         <RadialChart
-          // padAngle={1}
-          innerRadius={100}
-          radius={140}
+          className="pollDonut"
+          innerRadius={70}
+          radius={150}
           padAngle={0.04}
-          data={[{ angle: 1 }, { angle: 0 }, { angle: 2 }]}
+          showLabels
+          labelsAboveChildren
+          labelsRadiusMultiplier={0.9}
+          data={[
+            { angle: 1, label: 'casual', className: 'casualData' },
+            { angle: 1, label: 'cheerful', className: 'cheerfulData' },
+            { angle: 1, label: 'classy', className: 'classyData' },
+            { angle: 1, label: 'hipster', className: 'hipsterData' },
+            { angle: 1, label: 'inspired', className: 'inspiredData' },
+            { angle: 1, label: 'intimate', className: 'intimateData' },
+            { angle: 1, label: 'lively', className: 'livelyData' },
+            { angle: 1, label: 'romantic', className: 'romanticData' },
+            { angle: 1, label: 'touristy', className: 'touristyData' },
+            { angle: 1, label: 'trendy', className: 'trendyData' },
+          ]}
           width={300}
           height={300}
           onValueMouseOver={v => this.setState({ value: v })}
