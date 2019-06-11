@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Head from './Head';
 import DashboardMenu from '../components/DashboardMenu';
 import AccountSettings from '../components/AccountSettings';
+// import BusinessCard from './BusinessCard';
+
 import '../styles/Dashboard.scss';
 
 class Dashboard extends React.Component {
@@ -23,6 +25,7 @@ class Dashboard extends React.Component {
 
     this.state = {
       active: 'overview',
+      // favoriteBusinesses: [],
     };
   }
 
@@ -54,13 +57,32 @@ class Dashboard extends React.Component {
         {this.state.active === 'overview' ? (
           <div className="dashboardBody">
             <h1 className="dashboardHeader">Welcome, {user.username ? user.username : 'Anon'}!</h1>
+            <h2>
+              {user.favorites
+                ? user.favorites.map(favorite => <div>{favorite.businessId}</div>)
+                : 'nada'}
+            </h2>
             {/* <Favorites
               modalDetails={modalDetails}
               isShowing={isModalShowing}
               openModal={openModal}
               closeModal={closeModal}
             /> */}
-            <h3>You do not have any favorites saved.</h3>
+
+            {/* <div className="resultCards">
+              {favoriteBusinesses.map((business, i) => (
+                <div key={i}>
+                  <BusinessCard
+                    key={i}
+                    business={business}
+                    handleOpen={onOpenModal}
+                    likeBusiness={likeBusiness}
+                    user={user}
+                    isAuthenticated={isAuthenticated}
+                  /> 
+                </div>
+              ))}
+            </div> */}
           </div>
         ) : (
           ''
