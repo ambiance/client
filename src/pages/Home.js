@@ -188,7 +188,7 @@ Home.propTypes = {
     pathname: PropTypes.string.isRequired,
   }),
   modalDetails: PropTypes.object,
-  voteAuraDetails: PropTypes.array,
+  voteAuraDetails: PropTypes.object,
   voteActivityDetails: PropTypes.array,
   isShowing: PropTypes.bool,
   openModal: PropTypes.func,

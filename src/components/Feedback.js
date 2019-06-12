@@ -53,16 +53,76 @@ export default class Feedback extends React.Component {
           labelsAboveChildren
           labelsRadiusMultiplier={0.9}
           data={[
-            { angle: 1, label: 'casual', className: 'casualData' },
-            { angle: 1, label: 'cheerful', className: 'cheerfulData' },
-            { angle: 1, label: 'classy', className: 'classyData' },
-            { angle: 1, label: 'hipster', className: 'hipsterData' },
-            { angle: 1, label: 'inspired', className: 'inspiredData' },
-            { angle: 1, label: 'intimate', className: 'intimateData' },
-            { angle: 1, label: 'lively', className: 'livelyData' },
-            { angle: 1, label: 'romantic', className: 'romanticData' },
-            { angle: 1, label: 'touristy', className: 'touristyData' },
-            { angle: 1, label: 'trendy', className: 'trendyData' },
+            {
+              angle: voteAuraDetails.poll.casual,
+              label:
+                voteAuraDetails.poll.casual <= 0 ? '' : `casual: ${voteAuraDetails.poll.casual}`,
+              className: 'casualData',
+            },
+            {
+              angle: voteAuraDetails.poll.cheerful,
+              label:
+                voteAuraDetails.poll.cheerful <= 0
+                  ? ''
+                  : `cheerful ${voteAuraDetails.poll.cheerful}`,
+              className: 'cheerfulData',
+            },
+            {
+              angle: voteAuraDetails.poll.classy,
+              label:
+                voteAuraDetails.poll.classy <= 0 ? '' : `classy ${voteAuraDetails.poll.classy}`,
+              className: 'classyData',
+            },
+            {
+              angle: voteAuraDetails.poll.hipster,
+              label:
+                voteAuraDetails.poll.hipster <= 0 ? '' : `hipster ${voteAuraDetails.poll.hipster}`,
+              className: 'hipsterData',
+            },
+            {
+              angle: voteAuraDetails.poll.inspired,
+              label:
+                voteAuraDetails.poll.inspired <= 0
+                  ? ''
+                  : `inspired ${voteAuraDetails.poll.inspired}`,
+              className: 'inspiredData',
+            },
+            {
+              angle: voteAuraDetails.poll.intimate,
+              label:
+                voteAuraDetails.poll.intimate <= 0
+                  ? ''
+                  : `intimate ${voteAuraDetails.poll.intimate}`,
+              className: 'intimateData',
+            },
+            {
+              angle: voteAuraDetails.poll.lively,
+              label:
+                voteAuraDetails.poll.lively <= 0 ? '' : `lively ${voteAuraDetails.poll.lively}`,
+              className: 'livelyData',
+            },
+            {
+              angle: voteAuraDetails.poll.romantic,
+              label:
+                voteAuraDetails.poll.romantic <= 0
+                  ? ''
+                  : `romantic ${voteAuraDetails.poll.romantic}`,
+              className: 'romanticData',
+            },
+            {
+              angle: voteAuraDetails.poll.touristy,
+              label:
+                voteAuraDetails.poll.touristy <= 0
+                  ? ''
+                  : `touristy ${voteAuraDetails.poll.touristy}`,
+              className: 'touristyData',
+            },
+            {
+              angle: voteAuraDetails.poll.trendy,
+              label:
+                voteAuraDetails.poll.trendy <= 0 ? '' : `trendy ${voteAuraDetails.poll.trendy}`,
+              className: 'trendyData',
+            },
           ]}
           width={300}
           height={300}
@@ -77,7 +137,7 @@ export default class Feedback extends React.Component {
             <AuraButtons
               aura={item}
               key={item}
-              selected={voteAuraDetails.includes(item)}
+              // selected={voteAuraDetails.aura.includes(item)}
               handleAuraVote={this.handleAuraVote}
             />
           ))}
@@ -101,7 +161,7 @@ export default class Feedback extends React.Component {
 
 Feedback.propTypes = {
   details: PropTypes.object.isRequired,
-  voteAuraDetails: PropTypes.array.isRequired,
+  voteAuraDetails: PropTypes.object.isRequired,
   voteActivityDetails: PropTypes.array.isRequired,
   show: PropTypes.bool.isRequired,
 };

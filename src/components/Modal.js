@@ -51,7 +51,7 @@ const Modal = ({
           handleActivityVote={handleActivityVote}
         />
       ),
-    [voteActivityDetails]
+    [voteActivityDetails.aura]
   );
   useEffect(() => setComponent(<BusinessDescription show={show} details={details} />), [show]);
 
@@ -186,7 +186,7 @@ const Modal = ({
 Modal.propTypes = {
   show: PropTypes.bool.isRequired,
   details: PropTypes.object.isRequired,
-  voteAuraDetails: PropTypes.array.isRequired,
+  voteAuraDetails: PropTypes.object.isRequired,
   voteActivityDetails: PropTypes.array.isRequired,
   close: PropTypes.func.isRequired,
   openFeedback: PropTypes.func.isRequired,

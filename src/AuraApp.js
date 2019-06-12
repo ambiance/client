@@ -21,7 +21,10 @@ class AuraApp extends React.Component {
       user: {},
       isModalShowing: false,
       modalDetails: {},
-      voteAuraDetails: [],
+      voteAuraDetails: {
+        aura: [],
+        poll: {},
+      },
       voteActivityDetails: [],
     };
   }
@@ -112,10 +115,12 @@ class AuraApp extends React.Component {
       isAuthenticated: false,
       user: {},
       likedBusinesses: [],
-      voteAuraDetails: [],
+      voteAuraDetails: {
+        aura: [],
+      },
       voteActivityDetails: [],
     });
-    
+
     // redirect user to home page / login page.
     Swal.fire({
       position: 'top-end',
@@ -147,7 +152,12 @@ class AuraApp extends React.Component {
             timer: 2000,
           });
         }
-        this.setState({ voteAuraDetails: response.data.status.aura });
+        this.setState({
+          voteAuraDetails: {
+            aura: response.data.status.aura,
+            poll: response.data.status.poll,
+          },
+        });
       });
     } else {
       Swal.fire({
@@ -198,6 +208,9 @@ class AuraApp extends React.Component {
     this.setState({
       isModalShowing: true,
       modalDetails: details,
+      voteAuraDetails: {
+        poll: details.auras,
+      },
     });
     // If user is logged in, prepopulate the aura votes
     if (this.state.isAuthenticated) {
@@ -211,12 +224,18 @@ class AuraApp extends React.Component {
       // checks if there is a user
       if (auraIndex !== -1) {
         this.setState({
-          voteAuraDetails: details.usersVotedAura[auraIndex].aura,
+          voteAuraDetails: {
+            aura: details.usersVotedAura[auraIndex].aura,
+            poll: details.auras,
+          },
         });
       } else {
         // Clears votes if there are none
         this.setState({
-          voteAuraDetails: [],
+          voteAuraDetails: {
+            aura: [],
+            poll: details.auras,
+          },
         });
       }
       if (activityIndex !== -1) {
@@ -245,7 +264,9 @@ class AuraApp extends React.Component {
         businessId: this.state.modalDetails._id,
       },
     }).then(response => {
-      this.setState({ voteAuraDetails: response.data.status.aura });
+      this.setState({
+        voteAuraDetails: response.data.status,
+      });
     });
 
     // Get activities from database
