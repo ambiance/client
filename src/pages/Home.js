@@ -189,7 +189,7 @@ Home.propTypes = {
   }),
   modalDetails: PropTypes.object,
   voteAuraDetails: PropTypes.object,
-  voteActivityDetails: PropTypes.array,
+  voteActivityDetails: PropTypes.object,
   isShowing: PropTypes.bool,
   openModal: PropTypes.func,
   closeModal: PropTypes.func,

@@ -25,7 +25,10 @@ class AuraApp extends React.Component {
         aura: [],
         poll: {},
       },
-      voteActivityDetails: [],
+      voteActivityDetails: {
+        aura: [],
+        poll: {},
+      },
     };
   }
 
@@ -118,7 +121,9 @@ class AuraApp extends React.Component {
       voteAuraDetails: {
         aura: [],
       },
-      voteActivityDetails: [],
+      voteActivityDetails: {
+        activity: [],
+      },
     });
 
     // redirect user to home page / login page.
@@ -191,7 +196,12 @@ class AuraApp extends React.Component {
             timer: 2000,
           });
         }
-        this.setState({ voteActivityDetails: response.data.status.activity });
+        this.setState({
+          voteActivityDetails: {
+            activity: response.data.status.activity,
+            poll: response.data.status.poll,
+          },
+        });
       });
     } else {
       Swal.fire({
@@ -211,6 +221,10 @@ class AuraApp extends React.Component {
       voteAuraDetails: {
         aura: [],
         poll: details.auras,
+      },
+      voteActivityDetails: {
+        activity: [],
+        poll: details.activities,
       },
     });
     // If user is logged in, prepopulate the aura votes
@@ -241,12 +255,18 @@ class AuraApp extends React.Component {
       }
       if (activityIndex !== -1) {
         this.setState({
-          voteActivityDetails: details.usersVotedActivity[activityIndex].activity,
+          voteActivityDetails: {
+            activity: details.usersVotedActivity[activityIndex].activity,
+            poll: details.activities,
+          },
         });
       } else {
         // Clears votes if there are none
         this.setState({
-          voteActivityDetails: [],
+          voteActivityDetails: {
+            activity: [],
+            poll: details.activities,
+          },
         });
       }
     }
@@ -276,7 +296,9 @@ class AuraApp extends React.Component {
         businessId: this.state.modalDetails._id,
       },
     }).then(response => {
-      this.setState({ voteActivityDetails: response.data.status.activity });
+      this.setState({
+        voteActivityDetails: response.data.status,
+      });
     });
   };
 

@@ -13,6 +13,7 @@ import '../styles/Feedback.scss';
 export default class Feedback extends React.Component {
   state = {
     showAuraPoll: false,
+    showActivityPoll: false,
   };
 
   static propTypes = {
@@ -37,6 +38,12 @@ export default class Feedback extends React.Component {
   handleAuraPollSwitch = () => {
     this.setState(prevState => ({
       showAuraPoll: !prevState.showAuraPoll,
+    }));
+  };
+
+  handleActivityPollSwitch = () => {
+    this.setState(prevState => ({
+      showActivityPoll: !prevState.showActivityPoll,
     }));
   };
 
@@ -155,12 +162,104 @@ export default class Feedback extends React.Component {
         </div>
         {/* Activity pills */}
         <p className="feedbackDescription">What activities is it good for?</p>
+        <p className="feedbackVoteDescription">
+          See what other people voted,
+          <button type="button" className="nipsey" onClick={this.handleActivityPollSwitch}>
+            click here!
+          </button>
+        </p>
+        {this.state.showActivityPoll ? (
+          <RadialChart
+            className="pollDonut"
+            innerRadius={70}
+            radius={150}
+            padAngle={0.04}
+            showLabels
+            labelsAboveChildren
+            labelsRadiusMultiplier={0.9}
+            data={[
+              {
+                angle: voteActivityDetails.poll.eating,
+                label:
+                  voteActivityDetails.poll.eating <= 0
+                    ? ''
+                    : `eating: ${voteActivityDetails.poll.eating}`,
+              },
+              {
+                angle: voteActivityDetails.poll.drinking,
+                label:
+                  voteActivityDetails.poll.drinking <= 0
+                    ? ''
+                    : `drinking ${voteActivityDetails.poll.drinking}`,
+              },
+              {
+                angle: voteActivityDetails.poll.dating,
+                label:
+                  voteActivityDetails.poll.dating <= 0
+                    ? ''
+                    : `dating ${voteActivityDetails.poll.dating}`,
+              },
+              {
+                angle: voteActivityDetails.poll.studying,
+                label:
+                  voteActivityDetails.poll.studying <= 0
+                    ? ''
+                    : `studying ${voteActivityDetails.poll.studying}`,
+              },
+              {
+                angle: voteActivityDetails.poll.relaxing,
+                label:
+                  voteActivityDetails.poll.relaxing <= 0
+                    ? ''
+                    : `relaxing ${voteActivityDetails.poll.relaxing}`,
+              },
+              {
+                angle: voteActivityDetails.poll.exercising,
+                label:
+                  voteActivityDetails.poll.exercising <= 0
+                    ? ''
+                    : `exercising ${voteActivityDetails.poll.exercising}`,
+              },
+              {
+                angle: voteActivityDetails.poll.gaming,
+                label:
+                  voteActivityDetails.poll.gaming <= 0
+                    ? ''
+                    : `gaming ${voteActivityDetails.poll.gaming}`,
+              },
+              {
+                angle: voteActivityDetails.poll.leisure,
+                label:
+                  voteActivityDetails.poll.leisure <= 0
+                    ? ''
+                    : `leisure ${voteActivityDetails.poll.leisure}`,
+              },
+              {
+                angle: voteActivityDetails.poll.pleasure,
+                label:
+                  voteActivityDetails.poll.pleasure <= 0
+                    ? ''
+                    : `pleasure ${voteActivityDetails.poll.pleasure}`,
+              },
+              {
+                angle: voteActivityDetails.poll.hobbies,
+                label:
+                  voteActivityDetails.poll.hobbies <= 0
+                    ? ''
+                    : `hobbies ${voteActivityDetails.poll.hobbies}`,
+              },
+            ]}
+            width={300}
+            height={300}
+          />
+        ) : null}
+
         <div className="buttonsContainer">
           {Object.keys(details.activities).map(item => (
             <VotingButtons
               buttonName={item}
               key={item}
-              selected={voteActivityDetails.includes(item)}
+              selected={voteActivityDetails.activity.includes(item)}
               handleVote={this.handleActivityVote}
             />
           ))}
@@ -173,6 +272,6 @@ export default class Feedback extends React.Component {
 Feedback.propTypes = {
   details: PropTypes.object.isRequired,
   voteAuraDetails: PropTypes.object.isRequired,
-  voteActivityDetails: PropTypes.array.isRequired,
+  voteActivityDetails: PropTypes.object.isRequired,
   show: PropTypes.bool.isRequired,
 };
