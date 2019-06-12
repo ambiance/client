@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RadialChart, Hint } from 'react-vis';
+import { RadialChart } from 'react-vis';
 
 // Components
 import AuraButtons from './AuraButtons.js';
