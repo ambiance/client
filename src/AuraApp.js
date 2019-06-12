@@ -209,6 +209,7 @@ class AuraApp extends React.Component {
       isModalShowing: true,
       modalDetails: details,
       voteAuraDetails: {
+        aura: [],
         poll: details.auras,
       },
     });

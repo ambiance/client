@@ -12,7 +12,7 @@ import '../styles/Feedback.scss';
 
 export default class Feedback extends React.Component {
   state = {
-    value: false,
+    showAuraPoll: false,
   };
 
   static propTypes = {
@@ -34,9 +34,14 @@ export default class Feedback extends React.Component {
     });
   };
 
+  handleAuraPollSwitch = () => {
+    this.setState(prevState => ({
+      showAuraPoll: !prevState.showAuraPoll,
+    }));
+  };
+
   render() {
     const { details, voteAuraDetails, voteActivityDetails, show } = this.props;
-    const { value } = this.state;
 
     return (
       <div className="modalFeedback">
@@ -44,100 +49,106 @@ export default class Feedback extends React.Component {
         <p className="feedbackHeader"> Submit your input by clicking the buttons below.</p>
         {/* Aura pills */}
         <p className="feedbackDescription">What Aura is this place?</p>
-        <RadialChart
-          className="pollDonut"
-          innerRadius={70}
-          radius={150}
-          padAngle={0.04}
-          showLabels
-          labelsAboveChildren
-          labelsRadiusMultiplier={0.9}
-          data={[
-            {
-              angle: voteAuraDetails.poll.casual,
-              label:
-                voteAuraDetails.poll.casual <= 0 ? '' : `casual: ${voteAuraDetails.poll.casual}`,
-              className: 'casualData',
-            },
-            {
-              angle: voteAuraDetails.poll.cheerful,
-              label:
-                voteAuraDetails.poll.cheerful <= 0
-                  ? ''
-                  : `cheerful ${voteAuraDetails.poll.cheerful}`,
-              className: 'cheerfulData',
-            },
-            {
-              angle: voteAuraDetails.poll.classy,
-              label:
-                voteAuraDetails.poll.classy <= 0 ? '' : `classy ${voteAuraDetails.poll.classy}`,
-              className: 'classyData',
-            },
-            {
-              angle: voteAuraDetails.poll.hipster,
-              label:
-                voteAuraDetails.poll.hipster <= 0 ? '' : `hipster ${voteAuraDetails.poll.hipster}`,
-              className: 'hipsterData',
-            },
-            {
-              angle: voteAuraDetails.poll.inspired,
-              label:
-                voteAuraDetails.poll.inspired <= 0
-                  ? ''
-                  : `inspired ${voteAuraDetails.poll.inspired}`,
-              className: 'inspiredData',
-            },
-            {
-              angle: voteAuraDetails.poll.intimate,
-              label:
-                voteAuraDetails.poll.intimate <= 0
-                  ? ''
-                  : `intimate ${voteAuraDetails.poll.intimate}`,
-              className: 'intimateData',
-            },
-            {
-              angle: voteAuraDetails.poll.lively,
-              label:
-                voteAuraDetails.poll.lively <= 0 ? '' : `lively ${voteAuraDetails.poll.lively}`,
-              className: 'livelyData',
-            },
-            {
-              angle: voteAuraDetails.poll.romantic,
-              label:
-                voteAuraDetails.poll.romantic <= 0
-                  ? ''
-                  : `romantic ${voteAuraDetails.poll.romantic}`,
-              className: 'romanticData',
-            },
-            {
-              angle: voteAuraDetails.poll.touristy,
-              label:
-                voteAuraDetails.poll.touristy <= 0
-                  ? ''
-                  : `touristy ${voteAuraDetails.poll.touristy}`,
-              className: 'touristyData',
-            },
-            {
-              angle: voteAuraDetails.poll.trendy,
-              label:
-                voteAuraDetails.poll.trendy <= 0 ? '' : `trendy ${voteAuraDetails.poll.trendy}`,
-              className: 'trendyData',
-            },
-          ]}
-          width={300}
-          height={300}
-          onValueMouseOver={v => this.setState({ value: v })}
-          onSeriesMouseOut={v => this.setState({ value: false })}
-        >
-          {value !== false && <Hint value={value} />}
-        </RadialChart>
+        <p className="feedbackVoteDescription">
+          See what other people voted,
+          <button type="button" className="nipsey" onClick={this.handleAuraPollSwitch}>
+            click here!
+          </button>
+        </p>
+        {this.state.showAuraPoll ? (
+          <RadialChart
+            className="pollDonut"
+            innerRadius={70}
+            radius={150}
+            padAngle={0.04}
+            showLabels
+            labelsAboveChildren
+            labelsRadiusMultiplier={0.9}
+            data={[
+              {
+                angle: voteAuraDetails.poll.casual,
+                label:
+                  voteAuraDetails.poll.casual <= 0 ? '' : `casual: ${voteAuraDetails.poll.casual}`,
+                className: 'casualData',
+              },
+              {
+                angle: voteAuraDetails.poll.cheerful,
+                label:
+                  voteAuraDetails.poll.cheerful <= 0
+                    ? ''
+                    : `cheerful ${voteAuraDetails.poll.cheerful}`,
+                className: 'cheerfulData',
+              },
+              {
+                angle: voteAuraDetails.poll.classy,
+                label:
+                  voteAuraDetails.poll.classy <= 0 ? '' : `classy ${voteAuraDetails.poll.classy}`,
+                className: 'classyData',
+              },
+              {
+                angle: voteAuraDetails.poll.hipster,
+                label:
+                  voteAuraDetails.poll.hipster <= 0
+                    ? ''
+                    : `hipster ${voteAuraDetails.poll.hipster}`,
+                className: 'hipsterData',
+              },
+              {
+                angle: voteAuraDetails.poll.inspired,
+                label:
+                  voteAuraDetails.poll.inspired <= 0
+                    ? ''
+                    : `inspired ${voteAuraDetails.poll.inspired}`,
+                className: 'inspiredData',
+              },
+              {
+                angle: voteAuraDetails.poll.intimate,
+                label:
+                  voteAuraDetails.poll.intimate <= 0
+                    ? ''
+                    : `intimate ${voteAuraDetails.poll.intimate}`,
+                className: 'intimateData',
+              },
+              {
+                angle: voteAuraDetails.poll.lively,
+                label:
+                  voteAuraDetails.poll.lively <= 0 ? '' : `lively ${voteAuraDetails.poll.lively}`,
+                className: 'livelyData',
+              },
+              {
+                angle: voteAuraDetails.poll.romantic,
+                label:
+                  voteAuraDetails.poll.romantic <= 0
+                    ? ''
+                    : `romantic ${voteAuraDetails.poll.romantic}`,
+                className: 'romanticData',
+              },
+              {
+                angle: voteAuraDetails.poll.touristy,
+                label:
+                  voteAuraDetails.poll.touristy <= 0
+                    ? ''
+                    : `touristy ${voteAuraDetails.poll.touristy}`,
+                className: 'touristyData',
+              },
+              {
+                angle: voteAuraDetails.poll.trendy,
+                label:
+                  voteAuraDetails.poll.trendy <= 0 ? '' : `trendy ${voteAuraDetails.poll.trendy}`,
+                className: 'trendyData',
+              },
+            ]}
+            width={300}
+            height={300}
+          />
+        ) : null}
 
         <div className="buttonsContainer">
           {Object.keys(auraDescriptions).map(item => (
             <AuraButtons
               aura={item}
               key={item}
-              // selected={voteAuraDetails.aura.includes(item)}
+              selected={voteAuraDetails.aura.includes(item)}
               handleAuraVote={this.handleAuraVote}
             />
           ))}
