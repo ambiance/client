@@ -89,7 +89,7 @@ class SearchResults extends React.Component {
               Load more
             </button>
             <div ref={loadingDotsRef} className="dotLoader">
-              <Loader type="ThreeDots" color="black" height={100} width={100} />
+              <Loader type="Triangle" color="#5abb9e" height="30vh" width="100%" />
             </div>
           </div>
         ) : (

@@ -61,6 +61,7 @@ nav ul li a {
   transition: background-color, height 350ms;
 }
 
+nav ul li a:focus,
 nav ul li a:hover {
   background-color: var(--dark-mint);
 }

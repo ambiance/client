@@ -10,7 +10,7 @@
 .teamMemberCardContainer {
   height: 15rem;
   width: 15rem;
-  perspective: 600;
+  perspective: 500;
   position: relative;
 }
 .teamMemberCard {
@@ -32,18 +32,10 @@
   }
 }
 
-@media (hover: hover) {
-  .teamMemberCard:hover {
-    transform: rotateY(180deg);
-    outline: none;
-  }
-}
-
-@media (hover: none) {
-  .teamMemberCard:focus {
-    transform: rotateY(180deg);
-    outline: none;
-  }
+// See the other side of the card
+.teamMemberCard:focus-within:not(:focus), // Any focus inside of the card
+.teamMemberCard.active {
+  transform: rotateY(180deg);
 }
 
 // Standard Styling
