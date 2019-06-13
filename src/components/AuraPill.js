@@ -35,7 +35,7 @@ const ToolTip = ({ toolTip }) => {
   return (
     <>
       <div className={`auraPillToolTip${position}`}>
-        {description ? <p>{description}</p> : ''}
+        {description ? <p>{description}</p> : 'No description available at this time.'}
         {upVote ? (
           <p>
             <span role="img" aria-label="thumbs up">
