@@ -6,6 +6,7 @@ import AccountSettings from '../components/AccountSettings';
 // import BusinessCard from './BusinessCard';
 
 import '../styles/Dashboard.scss';
+import BusinessCard from '../components/BusinessCard';
 
 class Dashboard extends React.Component {
   static propTypes = {
@@ -42,6 +43,11 @@ class Dashboard extends React.Component {
       user,
       logout,
       location: { pathname: pathName },
+      // Below is for favorited businesses
+      favoriteBusinesses,
+      openModal,
+      isAuthenticated,
+      likeBusiness,
     } = this.props;
 
     return (
@@ -57,32 +63,20 @@ class Dashboard extends React.Component {
         {this.state.active === 'overview' ? (
           <div className="dashboardBody">
             <h1 className="dashboardHeader">Welcome, {user.username ? user.username : 'Anon'}!</h1>
-            <h2>
-              {user.favorites
-                ? user.favorites.map(favorite => <div>{favorite.businessId}</div>)
+            <div className="resultCards">
+              {favoriteBusinesses
+                ? favoriteBusinesses.map((favorite, i) => (
+                    <BusinessCard
+                      key={i}
+                      business={favorite}
+                      handleOpen={openModal}
+                      likeBusiness={likeBusiness}
+                      user={user}
+                      isAuthenticated={isAuthenticated}
+                    />
+                  ))
                 : 'nada'}
-            </h2>
-            {/* <Favorites
-              modalDetails={modalDetails}
-              isShowing={isModalShowing}
-              openModal={openModal}
-              closeModal={closeModal}
-            /> */}
-
-            {/* <div className="resultCards">
-              {favoriteBusinesses.map((business, i) => (
-                <div key={i}>
-                  <BusinessCard
-                    key={i}
-                    business={business}
-                    handleOpen={onOpenModal}
-                    likeBusiness={likeBusiness}
-                    user={user}
-                    isAuthenticated={isAuthenticated}
-                  /> 
-                </div>
-              ))}
-            </div> */}
+            </div>
           </div>
         ) : (
           ''

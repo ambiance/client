@@ -23,6 +23,7 @@ class AuraApp extends React.Component {
       isModalShowing: false,
       modalDetails: {},
       voteDetails: [],
+      favoriteBusinesses: [],
     };
   }
   // FIXME: Might be throwing memory leaks if the request does not work... check this out...
@@ -69,6 +70,14 @@ class AuraApp extends React.Component {
       user,
     });
     console.log(this.state.user);
+
+    const token = localStorage.getItem('auraUserToken');
+
+    API.get('/account/read-user-favorites', { token }).then(response => {
+      this.setState({ favoriteBusinesses: response.data.businesses });
+      console.log('response', response.data.businesses);
+    });
+
   };
 
   handleLogout = () => {
@@ -272,6 +281,7 @@ class AuraApp extends React.Component {
             openModal={this.openModalHandler}
             closeModal={this.closeModalHandler}
             logout={this.handleLogout}
+            favoriteBusinesses={this.state.favoriteBusinesses}
           />
           <Route component={FourOhFour} />
         </Switch>
