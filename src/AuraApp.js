@@ -21,8 +21,14 @@ class AuraApp extends React.Component {
       user: {},
       isModalShowing: false,
       modalDetails: {},
-      voteAuraDetails: [],
-      voteActivityDetails: [],
+      voteAuraDetails: {
+        aura: [],
+        poll: {},
+      },
+      voteActivityDetails: {
+        aura: [],
+        poll: {},
+      },
     };
   }
 
@@ -112,10 +118,14 @@ class AuraApp extends React.Component {
       isAuthenticated: false,
       user: {},
       likedBusinesses: [],
-      voteAuraDetails: [],
-      voteActivityDetails: [],
+      voteAuraDetails: {
+        aura: [],
+      },
+      voteActivityDetails: {
+        activity: [],
+      },
     });
-    
+
     // redirect user to home page / login page.
     Swal.fire({
       position: 'top-end',
@@ -147,7 +157,12 @@ class AuraApp extends React.Component {
             timer: 2000,
           });
         }
-        this.setState({ voteAuraDetails: response.data.status.aura });
+        this.setState({
+          voteAuraDetails: {
+            aura: response.data.status.aura,
+            poll: response.data.status.poll,
+          },
+        });
       });
     } else {
       Swal.fire({
@@ -181,7 +196,12 @@ class AuraApp extends React.Component {
             timer: 2000,
           });
         }
-        this.setState({ voteActivityDetails: response.data.status.activity });
+        this.setState({
+          voteActivityDetails: {
+            activity: response.data.status.activity,
+            poll: response.data.status.poll,
+          },
+        });
       });
     } else {
       Swal.fire({
@@ -198,6 +218,14 @@ class AuraApp extends React.Component {
     this.setState({
       isModalShowing: true,
       modalDetails: details,
+      voteAuraDetails: {
+        aura: [],
+        poll: details.auras,
+      },
+      voteActivityDetails: {
+        activity: [],
+        poll: details.activities,
+      },
     });
     // If user is logged in, prepopulate the aura votes
     if (this.state.isAuthenticated) {
@@ -211,22 +239,34 @@ class AuraApp extends React.Component {
       // checks if there is a user
       if (auraIndex !== -1) {
         this.setState({
-          voteAuraDetails: details.usersVotedAura[auraIndex].aura,
+          voteAuraDetails: {
+            aura: details.usersVotedAura[auraIndex].aura,
+            poll: details.auras,
+          },
         });
       } else {
         // Clears votes if there are none
         this.setState({
-          voteAuraDetails: [],
+          voteAuraDetails: {
+            aura: [],
+            poll: details.auras,
+          },
         });
       }
       if (activityIndex !== -1) {
         this.setState({
-          voteActivityDetails: details.usersVotedActivity[activityIndex].activity,
+          voteActivityDetails: {
+            activity: details.usersVotedActivity[activityIndex].activity,
+            poll: details.activities,
+          },
         });
       } else {
         // Clears votes if there are none
         this.setState({
-          voteActivityDetails: [],
+          voteActivityDetails: {
+            activity: [],
+            poll: details.activities,
+          },
         });
       }
     }
@@ -245,7 +285,9 @@ class AuraApp extends React.Component {
         businessId: this.state.modalDetails._id,
       },
     }).then(response => {
-      this.setState({ voteAuraDetails: response.data.status.aura });
+      this.setState({
+        voteAuraDetails: response.data.status,
+      });
     });
 
     // Get activities from database
@@ -254,7 +296,9 @@ class AuraApp extends React.Component {
         businessId: this.state.modalDetails._id,
       },
     }).then(response => {
-      this.setState({ voteActivityDetails: response.data.status.activity });
+      this.setState({
+        voteActivityDetails: response.data.status,
+      });
     });
   };
 

@@ -31,6 +31,9 @@
   margin-top: 1.5rem;
 }
 
+.modalFeedback {
+  text-align: center;
+}
 
 .modalFeedback p {
   text-align: center;
@@ -53,4 +56,72 @@
     margin-left: 2rem;
     margin-right: 2rem;
   }
+}
+
+.pollDonut {
+  display: inline-block;
+  font-size: 12px;
+}
+
+.casualData {
+  stroke: var(--casual) !important;
+  fill: var(--casual) !important;
+}
+
+.cheerfulData {
+  stroke: var(--cheerful) !important;
+  fill: var(--cheerful) !important;
+}
+
+.classyData {
+  stroke: #7b7b7b !important;
+  fill: #7b7b7b !important;
+}
+
+.hipsterData {
+  stroke: var(--hipster) !important;
+  fill: var(--hipster) !important;
+}
+
+.inspiredData {
+  stroke: var(--inspired) !important;
+  fill: var(--inspired) !important;
+}
+
+.intimateData {
+  stroke: var(--intimate) !important;
+  fill: var(--intimate) !important;
+}
+
+.livelyData {
+  stroke: var(--lively) !important;
+  fill: var(--lively) !important;
+}
+
+.romanticData {
+  stroke: var(--romantic) !important;
+  fill: var(--romantic) !important;
+}
+
+.touristyData {
+  stroke: var(--touristy) !important;
+  fill: var(--touristy) !important;
+}
+
+.trendyData {
+  stroke: var(--trendy) !important;
+  fill: var(--trendy) !important;
+}
+
+.feedbackVoteDescription{
+  font-size: 13px;
+  margin-top: 0rem;
+  align-self: center;
+}
+
+.nipsey{
+  font-family: inherit;
+  background: none;
+  border: none;
+  color: blue;
 }

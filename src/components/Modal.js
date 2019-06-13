@@ -186,8 +186,8 @@ const Modal = ({
 Modal.propTypes = {
   show: PropTypes.bool.isRequired,
   details: PropTypes.object.isRequired,
-  voteAuraDetails: PropTypes.array.isRequired,
-  voteActivityDetails: PropTypes.array.isRequired,
+  voteAuraDetails: PropTypes.object.isRequired,
+  voteActivityDetails: PropTypes.object.isRequired,
   close: PropTypes.func.isRequired,
   openFeedback: PropTypes.func.isRequired,
   handleAuraVote: PropTypes.func.isRequired,
