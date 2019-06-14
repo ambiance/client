@@ -34,7 +34,7 @@ class AuraApp extends React.Component {
 
   // ==================================== Lifecycle Hooks ==========================================
 
-  // FIXME: Might be throwing memory leaks if the request does not work... check this out...
+  // TODO: Put this in the index.js before the AuraApp to get this logic safely before the render.
   componentWillMount() {
     this.handleMountedLogin();
   }
