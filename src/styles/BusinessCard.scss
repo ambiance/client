@@ -24,6 +24,13 @@
   z-index: 1;
   cursor: pointer;
   outline: none;
+
+  transition: background 0.5s;
+}
+
+.resultCard:hover,
+.resultCard:focus {
+  background: var(--dark-mint);
 }
 
 @media all and (max-width: 360px) {
@@ -96,18 +103,26 @@
   background: none;
   border: 0;
   padding: 0;
-  // outline: none;
+  outline: none;
 
   // styling
-
-  // width: 100%;
+  width: 2.2rem;
+  height: 2.2rem;
   position: absolute;
-  bottom: 0.6em;
-  right: 0.6em;
+  bottom: 0.4em;
+  right: 0.4em;
+
   font-size: 1.5rem;
   cursor: pointer;
-
   color: var(--off-white);
+  border-radius: 50%;
+
+  transition: background-color 0.5s;
+}
+
+.resultCardHeart:hover,
+.resultCardHeart:focus {
+  background-color: grey;
 }
 
 .pillsContainer {
