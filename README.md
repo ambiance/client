@@ -4,6 +4,8 @@ Project that acts as a business finder (mainly for restaurants). It is not inten
 
 ## Build Status
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4a6764c5-39f3-4f9d-a730-0c7fc1370a76/deploy-status)](https://app.netlify.com/sites/projectaura/deploys)
+
 ## Motivation
 
 During training at [Talent Path](https://talentpath.com), we were tasked to create a web solution using the technologies we were learning. We believed that many business finders gave you hard facts about the business, but not how a person felt when they visited that business. Aura attempts to capture the "aura" (vibe) of a business to provide a better search experience.
