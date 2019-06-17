@@ -11,15 +11,19 @@ import auraDescriptions from '../data/auraDescriptions';
 import '../styles/Feedback.scss';
 
 export default class Feedback extends React.Component {
-  state = {
-    showAuraPoll: false,
-    showActivityPoll: false,
-  };
-
   static propTypes = {
     handleAuraVote: PropTypes.func.isRequired,
     handleActivityVote: PropTypes.func.isRequired,
   };
+
+  constructor(props) {
+    super(props);
+    // set initial state
+    this.state = {
+      showAuraPoll: false,
+      showActivityPoll: false,
+    };
+  }
 
   handleAuraVote = event => {
     this.props.handleAuraVote({
