@@ -63,52 +63,62 @@
   font-size: 12px;
 }
 
-.casualData {
+.pollLegend {
+  display: inline-block;
+}
+
+.pollLegendItem p { 
+  display: inline-block;
+  // font-size: 12px;
+  margin: 0;
+}
+
+.casualData, .casual {
   stroke: var(--casual) !important;
   fill: var(--casual) !important;
 }
 
-.cheerfulData {
+.cheerfulData, .cheerful {
   stroke: var(--cheerful) !important;
   fill: var(--cheerful) !important;
 }
 
-.classyData {
+.classyData, .classy {
   stroke: #7b7b7b !important;
   fill: #7b7b7b !important;
 }
 
-.hipsterData {
+.hipsterData, .hipster {
   stroke: var(--hipster) !important;
   fill: var(--hipster) !important;
 }
 
-.inspiredData {
+.inspiredData, .inspired {
   stroke: var(--inspired) !important;
   fill: var(--inspired) !important;
 }
 
-.intimateData {
+.intimateData, .intimate {
   stroke: var(--intimate) !important;
   fill: var(--intimate) !important;
 }
 
-.livelyData {
+.livelyData, .lively {
   stroke: var(--lively) !important;
   fill: var(--lively) !important;
 }
 
-.romanticData {
+.romanticData, .lively {
   stroke: var(--romantic) !important;
   fill: var(--romantic) !important;
 }
 
-.touristyData {
+.touristyData, .touristy {
   stroke: var(--touristy) !important;
   fill: var(--touristy) !important;
 }
 
-.trendyData {
+.trendyData, .trendy {
   stroke: var(--trendy) !important;
   fill: var(--trendy) !important;
 }

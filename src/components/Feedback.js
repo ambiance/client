@@ -56,7 +56,7 @@ export default class Feedback extends React.Component {
     const { poll } = props;
     const theData = fields.map(field => ({
       angle: poll[field],
-      label: poll[field] <= 0 ? '' : `${field} ${poll[field]}`,
+      label: poll[field] <= 0 ? '' : `${poll[field]}`,
       className: `${field}Data`,
     }));
     return theData;
@@ -107,18 +107,30 @@ export default class Feedback extends React.Component {
           </button>
         </p>
         {this.state.showAuraPoll ? (
-          <RadialChart
-            className="pollDonut"
-            innerRadius={70}
-            radius={150}
-            padAngle={0.04}
-            showLabels
-            labelsAboveChildren
-            labelsRadiusMultiplier={0.9}
-            data={auraDonut}
-            width={300}
-            height={300}
-          />
+          <div>
+            <RadialChart
+              className="pollDonut"
+              innerRadius={40}
+              radius={100}
+              padAngle={0.04}
+              showLabels
+              labelsAboveChildren
+              labelsRadiusMultiplier={0.9}
+              data={auraDonut}
+              width={200}
+              height={200}
+            />
+            <div className="pollLegend">
+              {Object.keys(auraDescriptions).map(item => (
+                <div className="pollLegendItem">
+                  <svg height="14" width="14">
+                    <path d="M 0 0 L 0 14 L 14 14 L 14 0 Z" className={item} />
+                  </svg>
+                  <p>{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         ) : null}
 
         <div className="buttonsContainer">
@@ -142,15 +154,15 @@ export default class Feedback extends React.Component {
         {this.state.showActivityPoll ? (
           <RadialChart
             className="pollDonut"
-            innerRadius={70}
-            radius={150}
+            innerRadius={40}
+            radius={100}
             padAngle={0.04}
             showLabels
             labelsAboveChildren
             labelsRadiusMultiplier={0.9}
             data={activityDonut}
-            width={300}
-            height={300}
+            width={200}
+            height={200}
           />
         ) : null}
 
