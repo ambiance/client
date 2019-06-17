@@ -10,6 +10,10 @@ class TeamMember extends React.Component {
     };
   }
 
+  /**
+   * Event handler - Key events for toggling team member.
+   * @param {Event} event Key press event
+   */
   toggleKeyActive = event => {
     if (event.key === ' ' || event.key === 'Enter') {
       // Prevent the default action to stop scrolling when space is pressed
@@ -18,9 +22,17 @@ class TeamMember extends React.Component {
     }
   };
 
+  /**
+   * Event handler - click events for toggling team member.
+   */
   toggleActive = () => {
     this.setState(prevState => ({ active: !prevState.active }));
   };
+
+  /**
+   * Event handler - event for sending mail inside card.
+   * @param {Event} event Submit event
+   */
   sendMail = event => {
     event.stopPropagation();
   };
@@ -63,7 +75,6 @@ TeamMember.propTypes = {
   img: PropTypes.string.isRequired,
   fullName: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
-  aura: PropTypes.string.isRequired,
   mailLink: PropTypes.string.isRequired,
 };
 

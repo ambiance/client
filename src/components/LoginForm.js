@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 import '../styles/CredentialForm.scss';
 
 class LoginForm extends Component {
-  static propTypes = {
-    handleLogin: PropTypes.func.isRequired,
-    handleSwitch: PropTypes.func.isRequired,
-  };
-
   constructor(props) {
     super(props);
 
@@ -17,6 +12,12 @@ class LoginForm extends Component {
     };
   }
 
+  /**
+   * Text-based input change handler.
+   *
+   * `NOTE:` Requires some alteration for radio buttons and drop down selects.
+   * @param {Event} event Input change event
+   */
   handleInputChange = event => {
     const { target } = event;
     const { name, value } = target;
@@ -24,6 +25,10 @@ class LoginForm extends Component {
     this.setState({ [name]: value });
   };
 
+  /**
+   * Login event handler
+   * @param {Event} event Submit event
+   */
   handleLogin = event => {
     event.preventDefault();
     this.props.handleLogin({
@@ -32,6 +37,10 @@ class LoginForm extends Component {
     });
   };
 
+  /**
+   * Event handler - Toggles app's active form between 'Login' and 'Signup'
+   * @param {Event} event Submit event
+   */
   handleSwitchToSignup = event => {
     event.preventDefault();
     this.props.handleSwitch();
@@ -79,5 +88,10 @@ class LoginForm extends Component {
     );
   }
 }
+
+LoginForm.propTypes = {
+  handleLogin: PropTypes.func.isRequired,
+  handleSwitch: PropTypes.func.isRequired,
+};
 
 export default LoginForm;

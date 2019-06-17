@@ -4,10 +4,6 @@ import PropTypes from 'prop-types';
 import API, { alertErrorHandler } from '../services/API';
 
 class AccountSettings extends React.Component {
-  static propTypes = {
-    user: PropTypes.object.isRequired,
-  };
-
   constructor(props) {
     super(props);
 
@@ -85,6 +81,7 @@ class AccountSettings extends React.Component {
   render() {
     return (
       <div className="accountForms">
+        {/* FIXME: Is this code section still needed? */}
         {/* <form onSubmit={this.handleNameChangeSubmit}>
           <h3>Update display name</h3>
           <label htmlFor="nameInputValue">
@@ -164,5 +161,9 @@ class AccountSettings extends React.Component {
     );
   }
 }
+
+AccountSettings.propTypes = {
+  user: PropTypes.object.isRequired,
+};
 
 export default AccountSettings;

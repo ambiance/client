@@ -5,23 +5,12 @@ import PropTypes from 'prop-types';
 import '../styles/Accordion.scss';
 
 class Accordion extends Component {
-  static propTypes = {
-    allowMultipleOpen: PropTypes.bool,
-    children: PropTypes.instanceOf(Object).isRequired,
-    title: PropTypes.string,
-  };
-
-  static defaultProps = {
-    allowMultipleOpen: false,
-  };
-
   constructor(props) {
     super(props);
-
     const openSections = {};
-
     const { children } = this.props;
-    /*
+    /* 
+    DEV:
     Check for one or many AccordianSection children
     
     Warning!!!!: You cannot have multiple sections in an accordian with the same label. It will trigger both of them because of the way the state is set up.
@@ -76,9 +65,9 @@ class Accordion extends Component {
 
     return (
       <section className="accordion">
-        {/* Optional Title */}
+        {/* DEV: Optional Title */}
         {title ? <h3 className="accordionHeader">{title}</h3> : ''}
-        {/* Check for one or many AccordianSection children */}
+        {/* DEV: Check for one or many AccordianSection children */}
         {Array.isArray(children) ? (
           children.map((child, i) => (
             <AccordionSection
@@ -104,11 +93,21 @@ class Accordion extends Component {
   }
 }
 
+Accordion.propTypes = {
+  allowMultipleOpen: PropTypes.bool,
+  children: PropTypes.instanceOf(Object).isRequired,
+  title: PropTypes.string,
+};
+
+Accordion.defaultProps = {
+  allowMultipleOpen: false,
+};
+
 export default Accordion;
 
 /**
  * Clickable helper component to show expanded information
- * @param {*} props Parent Values
+ * @param {Object} props Parent Values
  * @param {Function} props.handleClick Handler method to toggle section
  * @param {boolean} props.isOpen Toggled flag
  * @param {string} props.label Title

@@ -11,14 +11,6 @@ import auras from '../data/auraDescriptions';
 import '../styles/About.scss';
 
 class About extends React.Component {
-  static propTypes = {
-    location: PropTypes.shape({
-      pathname: PropTypes.string.isRequired,
-    }),
-  };
-  openModel = business => {
-    alert(business);
-  };
   render() {
     const {
       location: { pathname: pathName },
@@ -105,5 +97,11 @@ class About extends React.Component {
     );
   }
 }
+
+About.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }),
+};
 
 export default About;

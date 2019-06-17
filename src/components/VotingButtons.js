@@ -2,10 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class VotingButtons extends React.Component {
-  static propTypes = {
-    handleVote: PropTypes.func.isRequired,
-  };
-
   constructor(props) {
     super(props);
 
@@ -15,6 +11,10 @@ class VotingButtons extends React.Component {
     };
   }
 
+  /**
+   * Event handler - handles toggling the vote button when pushed.
+   * @param {Event} event Submit event
+   */
   handleVote = event => {
     event.preventDefault();
     if (!this.state.selected) {
@@ -56,6 +56,7 @@ class VotingButtons extends React.Component {
 }
 
 VotingButtons.propTypes = {
+  handleVote: PropTypes.func.isRequired,
   buttonName: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,
 };

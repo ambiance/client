@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import Head from './Head';
 import '../styles/404.scss';
 
+/**
+ * Missing page - Someone went to the wrong location (404 error)
+ * @param {Object} props Passed Props
+ * @param {Object} props.location Location object passed from router
+ * @param {string} props.location.pathname Path name
+ */
 const FourOhFour = ({ location: { pathname: pathName } }) => (
   <main className="fourOhFourMain">
     <Head pathName={pathName} title="Page Not Found | Aura" />
