@@ -58,20 +58,38 @@
   }
 }
 
+.pollWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .pollDonut {
   display: inline-block;
-  font-size: 12px;
+  font-size: 15px;
+  color: white;
+  margin-bottom: 1rem;
 }
 
 .pollLegend {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 2rem;
+}
+
+.pollLegendItem {
   display: inline-block;
 }
 
 .pollLegendItem p { 
   display: inline-block;
-  // font-size: 12px;
+  font-size: 12px;
   margin: 0;
+  margin-left: 0.5rem;
 }
+
 
 .casualData, .casual {
   stroke: var(--casual) !important;
@@ -84,8 +102,8 @@
 }
 
 .classyData, .classy {
-  stroke: #7b7b7b !important;
-  fill: #7b7b7b !important;
+  stroke: #565656 !important;
+  fill: #565656 !important;
 }
 
 .hipsterData, .hipster {
@@ -108,7 +126,7 @@
   fill: var(--lively) !important;
 }
 
-.romanticData, .lively {
+.romanticData, .romantic {
   stroke: var(--romantic) !important;
   fill: var(--romantic) !important;
 }
@@ -121,6 +139,56 @@
 .trendyData, .trendy {
   stroke: var(--trendy) !important;
   fill: var(--trendy) !important;
+}
+
+.eatingData, .eating {
+  stroke: var(--eating) !important;
+  fill: var(--eating) !important;
+}
+
+.drinkingData, .drinking {
+  stroke: var(--drinking) !important;
+  fill: var(--drinking) !important;
+}
+
+.datingData, .dating {
+  stroke: var(--dating) !important;
+  fill: var(--dating) !important;
+}
+
+.studyingData, .studying {
+  stroke: var(--studying) !important;
+  fill: var(--studying) !important;
+}
+
+.relaxingData, .relaxing {
+  stroke: var(--relaxing) !important;
+  fill: var(--relaxing) !important;
+}
+
+.exercisingData, .exercising {
+  stroke: var(--exercising) !important;
+  fill: var(--exercising) !important;
+}
+
+.gamingData, .gaming {
+  stroke: var(--gaming) !important;
+  fill: var(--gaming) !important;
+}
+
+.leisureData, .leisure {
+  stroke: var(--leisure) !important;
+  fill: var(--leisure) !important;
+}
+
+.pleasureData, .pleasure {
+  stroke: var(--pleasure) !important;
+  fill: var(--pleasure) !important;
+}
+
+.hobbiesData, .hobbies {
+  stroke: var(--hobbies) !important;
+  fill: var(--hobbies) !important;
 }
 
 .feedbackVoteDescription{

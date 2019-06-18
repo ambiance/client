@@ -40,7 +40,10 @@ class VotingButtons extends React.Component {
     // const showBackground = this.state.vote;
     // consts here
     return (
-      <div className="feedbackSection" style={{ backgroundColor: `var(--mint)` }}>
+      <div
+        className="feedbackSection"
+        style={{ backgroundColor: `var(--${buttonName || 'mint'})` }}
+      >
         <button
           className="feedbackTabAura"
           style={{

@@ -91,9 +91,6 @@ export default class Feedback extends React.Component {
       'hobbies',
     ]);
 
-    console.log('This is an activity donut', activityDonut);
-    console.log('This is an aura donut', auraDonut);
-
     return (
       <div className="modalFeedback">
         {/* Call to action */}
@@ -107,7 +104,7 @@ export default class Feedback extends React.Component {
           </button>
         </p>
         {this.state.showAuraPoll ? (
-          <div>
+          <div className="pollWrapper">
             <RadialChart
               className="pollDonut"
               innerRadius={40}
