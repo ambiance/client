@@ -149,18 +149,30 @@ export default class Feedback extends React.Component {
           </button>
         </p>
         {this.state.showActivityPoll ? (
-          <RadialChart
-            className="pollDonut"
-            innerRadius={40}
-            radius={100}
-            padAngle={0.04}
-            showLabels
-            labelsAboveChildren
-            labelsRadiusMultiplier={0.9}
-            data={activityDonut}
-            width={200}
-            height={200}
-          />
+          <div className="pollWrapper">
+            <RadialChart
+              className="pollDonut"
+              innerRadius={40}
+              radius={100}
+              padAngle={0.04}
+              showLabels
+              labelsAboveChildren
+              labelsRadiusMultiplier={0.9}
+              data={activityDonut}
+              width={200}
+              height={200}
+            />
+            <div className="pollLegend">
+              {Object.keys(details.activities).map(item => (
+                <div className="pollLegendItem">
+                  <svg height="14" width="14">
+                    <path d="M 0 0 L 0 14 L 14 14 L 14 0 Z" className={item} />
+                  </svg>
+                  <p>{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         ) : null}
 
         <div className="buttonsContainer">
