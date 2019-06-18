@@ -2,6 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/AuraPill.scss';
 
+/**
+ * Singular text property for each aura.
+ * @param {Object} props Passed props
+ * @param {string} props.aura Aura text
+ * @param {string} props.backgroundColor Aura color
+ * @param {Object} props.toolTip Object tooltip
+ */
 const AuraPill = ({ aura, backgroundColor, toolTip }) => {
   const toggleToolTip = event => {
     event.stopPropagation();
@@ -26,6 +33,11 @@ AuraPill.propTypes = {
 
 export default AuraPill;
 
+/**
+ * Hidden description adding additional information
+ * @param {props} props Passed props
+ * @param {Object} props.toolTip Object tooltip
+ */
 const ToolTip = ({ toolTip }) => {
   let { position = 'Top', description, upVote } = toolTip;
 

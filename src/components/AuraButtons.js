@@ -2,12 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class AuraButtons extends React.Component {
-  static propTypes = {
-    handleAuraVote: PropTypes.func.isRequired,
-    aura: PropTypes.string.isRequired,
-    selected: PropTypes.bool.isRequired,
-  };
-
+  /**
+   * Event handler for voting for an aura
+   * @param {Event} event Submit event
+   */
   handleAuraVote = event => {
     event.preventDefault();
     const { selected } = this.props;
@@ -41,5 +39,11 @@ class AuraButtons extends React.Component {
     );
   }
 }
+
+AuraButtons.propTypes = {
+  handleAuraVote: PropTypes.func.isRequired,
+  aura: PropTypes.string.isRequired,
+  selected: PropTypes.bool.isRequired,
+};
 
 export default AuraButtons;

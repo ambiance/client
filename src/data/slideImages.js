@@ -1,4 +1,6 @@
-// trendy, lively, inspired, romantic, cheerful, intimate, classy, hipster, casual, touristy
+/**
+ * Slide images with their related information
+ */
 const slideImages = [
   {
     src: `${process.env.PUBLIC_URL}/assets/img/slideshow/trendy.jpg`,

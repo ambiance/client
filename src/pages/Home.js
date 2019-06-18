@@ -78,6 +78,9 @@ class Home extends React.Component {
     );
   };
 
+  /**
+   * TODO: What does this do exactly?
+   */
   queryDatabase = params => {
     // Make a request to the Aura Server for business information.
     API.get('businesses', { params })
@@ -100,6 +103,9 @@ class Home extends React.Component {
       });
   };
 
+  /**
+   * TODO: What does this do exactly?
+   */
   handleLoadMore = () => {
     this.setState(
       prevState => ({
@@ -114,6 +120,9 @@ class Home extends React.Component {
     );
   };
 
+  /**
+   * Toggles the loader when requesting more businesses.
+   */
   toggleLoadingDots = () => {
     if (this.loadMoreRef.current) {
       this.loadMoreRef.current.classList.toggle('hidden');

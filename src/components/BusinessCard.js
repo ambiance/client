@@ -7,13 +7,12 @@ import { getColor } from './helpers/auraColors';
 import locations from '../data/LALocations';
 // data
 import auras from '../data/auraDescriptions';
-// cscc
+// style
 import '../styles/BusinessCard.scss';
 
 export default class BusinessCard extends React.Component {
   constructor(props) {
     super(props);
-    // set initial state
     this.state = {
       neighborhood: null,
       heartStatus: false, // State used to decided between heartEmpty or heartFilled image
@@ -34,17 +33,23 @@ export default class BusinessCard extends React.Component {
   }
 
   componentDidMount() {
-    const { postalCode, city } = this.props.business;
-    if (city !== 'Los Angeles') this.setState({ neighborhood: city });
-    else this.setNeighborhood(postalCode);
+    this.setNeighborhood();
   }
 
-  setNeighborhood = postalCode => {
-    Object.keys(locations).forEach(location => {
-      if (locations[location].includes(parseInt(postalCode))) {
-        this.setState({ neighborhood: location });
-      }
-    });
+  /**
+   * Setting business neighborhood
+   */
+  setNeighborhood = () => {
+    const { postalCode, city } = this.props.business;
+    if (city !== 'Los Angeles') {
+      this.setState({ neighborhood: city });
+    } else {
+      Object.keys(locations).forEach(location => {
+        if (locations[location].includes(parseInt(postalCode))) {
+          this.setState({ neighborhood: location });
+        }
+      });
+    }
   };
 
   /**
@@ -58,11 +63,14 @@ export default class BusinessCard extends React.Component {
     }
   };
 
+  /**
+   * Event handling for key press events.
+   * @param {Event} event Key press event
+   */
   handleKeyPress = event => {
-    // Check to see if space or enter were pressed
+    // Prevent the default action to stop scrolling when space is pressed
     if (event.key === ' ' || event.key === 'Enter' || event.key === 'Spacebar') {
       // "Spacebar" for IE11 support
-      // Prevent the default action to stop scrolling when space is pressed
       event.preventDefault();
     }
   };
@@ -82,9 +90,8 @@ export default class BusinessCard extends React.Component {
     // consts here
     const { business, handleOpen } = this.props;
     const { heartStatus } = this.state;
-    // We cannot guarentee that the categories will not overflow in the cards with multiple categories.
-    // FIXME: const categories = business.categories.map(category => category.title).join(', ');
     const categories = business.categories[0].title;
+
     return (
       <div
         className="resultCard"

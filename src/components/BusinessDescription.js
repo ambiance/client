@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { handleStars } from './helpers/stars';
 
+/**
+ * @param {Object} props Passed props
+ * @param {boolean} show Display flag
+ * @param {Object} details Business details
+ */
 const BusinessDescription = ({ show, details }) => {
   const starSrc = handleStars(show ? details.stars : 0);
   return (
@@ -25,6 +30,7 @@ const BusinessDescription = ({ show, details }) => {
         <div className="pictureContainer">
           {show && <img className="pic" src={details.businessImage.src} alt={details.name} />}
         </div>
+        {/* FIXME: Remove the code block if you do not need it. */}
         {/* <a
           className="yelpLink"
           target="_blank"
@@ -48,4 +54,5 @@ BusinessDescription.propTypes = {
   details: PropTypes.object.isRequired,
   show: PropTypes.bool.isRequired,
 };
+
 export default BusinessDescription;
