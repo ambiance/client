@@ -58,59 +58,137 @@
   }
 }
 
-.pollDonut {
-  display: inline-block;
-  font-size: 12px;
+.pollWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.casualData {
+.pollDonut {
+  display: inline-block;
+  font-size: 15px;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.pollLegend {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 2rem;
+}
+
+.pollLegendItem {
+  display: inline-block;
+}
+
+.pollLegendItem p { 
+  display: inline-block;
+  font-size: 12px;
+  margin: 0;
+  margin-left: 0.5rem;
+}
+
+
+.casualData, .casual {
   stroke: var(--casual) !important;
   fill: var(--casual) !important;
 }
 
-.cheerfulData {
+.cheerfulData, .cheerful {
   stroke: var(--cheerful) !important;
   fill: var(--cheerful) !important;
 }
 
-.classyData {
-  stroke: #7b7b7b !important;
-  fill: #7b7b7b !important;
+.classyData, .classy {
+  stroke: #565656 !important;
+  fill: #565656 !important;
 }
 
-.hipsterData {
+.hipsterData, .hipster {
   stroke: var(--hipster) !important;
   fill: var(--hipster) !important;
 }
 
-.inspiredData {
+.inspiredData, .inspired {
   stroke: var(--inspired) !important;
   fill: var(--inspired) !important;
 }
 
-.intimateData {
+.intimateData, .intimate {
   stroke: var(--intimate) !important;
   fill: var(--intimate) !important;
 }
 
-.livelyData {
+.livelyData, .lively {
   stroke: var(--lively) !important;
   fill: var(--lively) !important;
 }
 
-.romanticData {
+.romanticData, .romantic {
   stroke: var(--romantic) !important;
   fill: var(--romantic) !important;
 }
 
-.touristyData {
+.touristyData, .touristy {
   stroke: var(--touristy) !important;
   fill: var(--touristy) !important;
 }
 
-.trendyData {
+.trendyData, .trendy {
   stroke: var(--trendy) !important;
   fill: var(--trendy) !important;
+}
+
+.eatingData, .eating {
+  stroke: var(--eating) !important;
+  fill: var(--eating) !important;
+}
+
+.drinkingData, .drinking {
+  stroke: var(--drinking) !important;
+  fill: var(--drinking) !important;
+}
+
+.datingData, .dating {
+  stroke: var(--dating) !important;
+  fill: var(--dating) !important;
+}
+
+.studyingData, .studying {
+  stroke: var(--studying) !important;
+  fill: var(--studying) !important;
+}
+
+.relaxingData, .relaxing {
+  stroke: var(--relaxing) !important;
+  fill: var(--relaxing) !important;
+}
+
+.exercisingData, .exercising {
+  stroke: var(--exercising) !important;
+  fill: var(--exercising) !important;
+}
+
+.gamingData, .gaming {
+  stroke: var(--gaming) !important;
+  fill: var(--gaming) !important;
+}
+
+.leisureData, .leisure {
+  stroke: var(--leisure) !important;
+  fill: var(--leisure) !important;
+}
+
+.pleasureData, .pleasure {
+  stroke: var(--pleasure) !important;
+  fill: var(--pleasure) !important;
+}
+
+.hobbiesData, .hobbies {
+  stroke: var(--hobbies) !important;
+  fill: var(--hobbies) !important;
 }
 
 .feedbackVoteDescription{
