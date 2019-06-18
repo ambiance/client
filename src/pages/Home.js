@@ -78,6 +78,9 @@ class Home extends React.Component {
     );
   };
 
+  /**
+   * TODO: What does this do exactly?
+   */
   queryDatabase = params => {
     // Make a request to the Aura Server for business information.
     API.get('businesses', { params })
@@ -100,6 +103,9 @@ class Home extends React.Component {
       });
   };
 
+  /**
+   * TODO: What does this do exactly?
+   */
   handleLoadMore = () => {
     this.setState(
       prevState => ({
@@ -114,6 +120,9 @@ class Home extends React.Component {
     );
   };
 
+  /**
+   * Toggles the loader when requesting more businesses.
+   */
   toggleLoadingDots = () => {
     if (this.loadMoreRef.current) {
       this.loadMoreRef.current.classList.toggle('hidden');
@@ -128,11 +137,13 @@ class Home extends React.Component {
       location: { pathname: pathName },
       isShowing,
       modalDetails,
-      voteDetails,
+      voteAuraDetails,
+      voteActivityDetails,
       openModal,
       closeModal,
       openFeedback,
       handleAuraVote,
+      handleActivityVote,
       likeBusiness,
       user,
       isAuthenticated,
@@ -146,9 +157,11 @@ class Home extends React.Component {
           show={isShowing}
           close={closeModal}
           details={modalDetails}
-          voteDetails={voteDetails}
+          voteAuraDetails={voteAuraDetails}
+          voteActivityDetails={voteActivityDetails}
           openFeedback={openFeedback}
           handleAuraVote={handleAuraVote}
+          handleActivityVote={handleActivityVote}
           shouldCloseOnOverlayClick
         />
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
@@ -184,12 +197,14 @@ Home.propTypes = {
     pathname: PropTypes.string.isRequired,
   }),
   modalDetails: PropTypes.object,
-  voteDetails: PropTypes.array,
+  voteAuraDetails: PropTypes.object,
+  voteActivityDetails: PropTypes.object,
   isShowing: PropTypes.bool,
   openModal: PropTypes.func,
   closeModal: PropTypes.func,
   openFeedback: PropTypes.func,
   handleAuraVote: PropTypes.func,
+  handleActivityVote: PropTypes.func,
   likeBusiness: PropTypes.func,
   user: PropTypes.object,
   isAuthenticated: PropTypes.bool,

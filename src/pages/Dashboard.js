@@ -6,18 +6,6 @@ import AccountSettings from '../components/AccountSettings';
 import '../styles/Dashboard.scss';
 
 class Dashboard extends React.Component {
-  static propTypes = {
-    location: PropTypes.shape({
-      pathname: PropTypes.string.isRequired,
-    }),
-    user: PropTypes.object.isRequired,
-    logout: PropTypes.func,
-    // modalDetails: PropTypes.object,
-    // isModalShowing: PropTypes.bool,
-    // openModal: PropTypes.func,
-    // closeModal: PropTypes.func,
-  };
-
   constructor(props) {
     super(props);
 
@@ -77,5 +65,17 @@ class Dashboard extends React.Component {
     );
   }
 }
+
+Dashboard.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }),
+  user: PropTypes.object.isRequired,
+  logout: PropTypes.func,
+  // modalDetails: PropTypes.object,
+  // isModalShowing: PropTypes.bool,
+  // openModal: PropTypes.func,
+  // closeModal: PropTypes.func,
+};
 
 export default Dashboard;

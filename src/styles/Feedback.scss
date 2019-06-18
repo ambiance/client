@@ -3,7 +3,7 @@
     font-size: 0.8rem;
     margin-top: 10px;
     margin-left: 10px;
-    width: 4rem;
+    width: 4.7rem;
     -webkit-align-items: center;
     align-items: center;
     border-color: white;
@@ -14,7 +14,7 @@
   color: var(--off-white);
   font-size: 0.8rem;
   padding: 0.5rem;
-  width: 4rem;
+  width: 4.7rem;
   align-items: center;
   border-color: white;
   border-style: dotted;
@@ -26,11 +26,180 @@
 }
 
 .feedbackHeader {
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 1.5rem;
+}
+
+.modalFeedback {
   text-align: center;
+}
+
+.modalFeedback p {
+  text-align: center;
+}
+
+.feedbackDescription {
+  margin-top: 3.5rem;
+  margin-bottom: 1rem;
 }
 
 .buttonsContainer{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 2rem;
+}
+
+@media all and (min-width: 800px) {
+  .buttonsContainer{
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+.pollWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pollDonut {
+  display: inline-block;
+  font-size: 15px;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.pollLegend {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 2rem;
+}
+
+.pollLegendItem {
+  display: inline-block;
+}
+
+.pollLegendItem p { 
+  display: inline-block;
+  font-size: 12px;
+  margin: 0;
+  margin-left: 0.5rem;
+}
+
+
+.casualData, .casual {
+  stroke: var(--casual) !important;
+  fill: var(--casual) !important;
+}
+
+.cheerfulData, .cheerful {
+  stroke: var(--cheerful) !important;
+  fill: var(--cheerful) !important;
+}
+
+.classyData, .classy {
+  stroke: #565656 !important;
+  fill: #565656 !important;
+}
+
+.hipsterData, .hipster {
+  stroke: var(--hipster) !important;
+  fill: var(--hipster) !important;
+}
+
+.inspiredData, .inspired {
+  stroke: var(--inspired) !important;
+  fill: var(--inspired) !important;
+}
+
+.intimateData, .intimate {
+  stroke: var(--intimate) !important;
+  fill: var(--intimate) !important;
+}
+
+.livelyData, .lively {
+  stroke: var(--lively) !important;
+  fill: var(--lively) !important;
+}
+
+.romanticData, .romantic {
+  stroke: var(--romantic) !important;
+  fill: var(--romantic) !important;
+}
+
+.touristyData, .touristy {
+  stroke: var(--touristy) !important;
+  fill: var(--touristy) !important;
+}
+
+.trendyData, .trendy {
+  stroke: var(--trendy) !important;
+  fill: var(--trendy) !important;
+}
+
+.eatingData, .eating {
+  stroke: var(--eating) !important;
+  fill: var(--eating) !important;
+}
+
+.drinkingData, .drinking {
+  stroke: var(--drinking) !important;
+  fill: var(--drinking) !important;
+}
+
+.datingData, .dating {
+  stroke: var(--dating) !important;
+  fill: var(--dating) !important;
+}
+
+.studyingData, .studying {
+  stroke: var(--studying) !important;
+  fill: var(--studying) !important;
+}
+
+.relaxingData, .relaxing {
+  stroke: var(--relaxing) !important;
+  fill: var(--relaxing) !important;
+}
+
+.exercisingData, .exercising {
+  stroke: var(--exercising) !important;
+  fill: var(--exercising) !important;
+}
+
+.gamingData, .gaming {
+  stroke: var(--gaming) !important;
+  fill: var(--gaming) !important;
+}
+
+.leisureData, .leisure {
+  stroke: var(--leisure) !important;
+  fill: var(--leisure) !important;
+}
+
+.pleasureData, .pleasure {
+  stroke: var(--pleasure) !important;
+  fill: var(--pleasure) !important;
+}
+
+.hobbiesData, .hobbies {
+  stroke: var(--hobbies) !important;
+  fill: var(--hobbies) !important;
+}
+
+.feedbackVoteDescription{
+  font-size: 13px;
+  margin-top: 0rem;
+  align-self: center;
+}
+
+.nipsey{
+  font-family: inherit;
+  background: none;
+  border: none;
+  color: blue;
 }

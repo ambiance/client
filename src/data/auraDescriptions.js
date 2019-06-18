@@ -1,4 +1,6 @@
-// trendy, lively, inspired, romantic, cheerful, intimate, classy, hipster, casual, touristy
+/**
+ * List of auras with their description information
+ */
 const auraDescriptions = {
   casual: {
     aura: 'casual',

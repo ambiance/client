@@ -1,3 +1,6 @@
+/**
+ * Each team member and their related information
+ */
 const memberInfo = {
   devon: {
     fullName: 'Devon Marantz',

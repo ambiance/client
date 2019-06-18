@@ -1,5 +1,3 @@
-@import './palette.scss';
-
 #searchResults {
   margin: 2rem 0rem;
 }
@@ -48,8 +46,10 @@
   background-color: var(--off-black);
   padding: 10px 30px;
   border-radius: 5px;
+  outline: none;
 }
 
+.loadMore:focus,
 .loadMore:hover {
   color: var(--dark-mint);
 }

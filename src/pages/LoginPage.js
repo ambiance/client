@@ -2,28 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
 import { withRouter } from 'react-router-dom';
-// components
 
+// components
 import Head from './Head';
 import SignupForm from '../components/SignupForm';
 import LoginForm from '../components/LoginForm';
+
 // helpers
 import API, { alertErrorHandler } from '../services/API';
 // scss
 import '../styles/LoginPage.scss';
 
 class LoginPage extends React.Component {
-  static propTypes = {
-    handleLogin: PropTypes.func.isRequired,
-    handleSwitch: PropTypes.func.isRequired,
-    history: PropTypes.shape({
-      push: PropTypes.func.isRequired,
-    }),
-    location: PropTypes.shape({
-      pathname: PropTypes.string.isRequired,
-    }),
-  };
-
   constructor(props) {
     super(props);
 
@@ -32,6 +22,10 @@ class LoginPage extends React.Component {
     };
   }
 
+  /**
+   * Signup handler - requests from service to create a new user.
+   * @param {Object} credentials Signup credentials
+   */
   handleSignup = credentials => {
     API.post('auth/signup/', {
       username: credentials.username,
@@ -51,6 +45,10 @@ class LoginPage extends React.Component {
       .catch(err => alertErrorHandler(err));
   };
 
+  /**
+   * Login handler - requests from service to provide an access token for an existing user.
+   * @param {Object} credentials Login credentials
+   */
   handleLogin = credentials => {
     // Make axios call to server to authenticate.
     API.post('auth/login/', {
@@ -72,12 +70,11 @@ class LoginPage extends React.Component {
       .catch(err => alertErrorHandler(err));
   };
 
-  handleSwitchToLogin = event => {
-    this.setState({ showLogin: true });
-  };
-
-  handleSwitchToSignup = event => {
-    this.setState({ showLogin: false });
+  /**
+   * Toggles the displayed form between signup and login
+   */
+  toggleForm = () => {
+    this.setState(prevState => ({ showLogin: !prevState.showLogin }));
   };
 
   render() {
@@ -88,14 +85,24 @@ class LoginPage extends React.Component {
       <main className="loginPage">
         <Head title="Login | Aura" pathName={pathName} />
         {this.state.showLogin ? (
-          <LoginForm handleLogin={this.handleLogin} handleSwitch={this.handleSwitchToSignup} />
+          <LoginForm handleLogin={this.handleLogin} handleSwitch={this.toggleForm} />
         ) : (
-          <SignupForm handleSignup={this.handleSignup} handleSwitch={this.handleSwitchToLogin} />
+          <SignupForm handleSignup={this.handleSignup} handleSwitch={this.toggleForm} />
         )}
       </main>
     );
   }
 }
+
+LoginPage.propTypes = {
+  handleLogin: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }),
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }),
+};
 
 // Just in case we are not using it with React Router and we still want to push the history state.
 export default withRouter(LoginPage);

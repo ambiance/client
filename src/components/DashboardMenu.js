@@ -1,6 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * Dashboard navigation menu
+ * @param {Object} props Passed props
+ * @param {Object} user User details
+ * @param {string} activeView Active navigation text
+ * @param {Function} showOverview Display function handler
+ * @param {Function} showSettings Display function handler
+ * @param {Function} logout Logout function handler
+ */
 const DashboardMenu = ({ user, activeView, showOverview, showSettings, logout }) => (
   <div className="accountMenu">
     <h1 className="dashboardHeader">{user.username || 'User'}</h1>

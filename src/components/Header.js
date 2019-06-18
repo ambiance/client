@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 
 /**
  * Global navigation header
- * @param {Object} props Props
- * @param {string} props.auraLogo Logo Url
- * @param {boolean} props.isAuthenticated Authenticated Flag
+ * @param {Object} props Passed props
+ * @param {string} props.auraLogo Logo URL
+ * @param {boolean} props.isAuthenticated Authenticated flag
  */
 const Header = ({ auraLogo, isAuthenticated }) => (
   <header>

@@ -87,11 +87,13 @@ export class MapContainer extends React.Component {
   }
 }
 
+// TODO: Prop types?
 MapContainer.propTypes = {
   details: PropTypes.object,
   google: PropTypes.object,
 };
 
+// Higher order component - Wraps "GoogleApiWrapper" with our google maps key
 export default GoogleApiWrapper({
   apiKey: process.env.REACT_APP_GMAPS_API_KEY,
 })(MapContainer);

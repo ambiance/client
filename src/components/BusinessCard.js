@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable no-useless-return */
 import React from 'react';
 import PropTypes from 'prop-types';
 // components
@@ -10,15 +7,12 @@ import { getColor } from './helpers/auraColors';
 import locations from '../data/LALocations';
 // data
 import auras from '../data/auraDescriptions';
-// cscc
-import '../styles/CardItem.scss';
-import heartEmpty from '../assets/img/heartEmpty.png';
-import heartFilled from '../assets/img/heartFilled.png';
+// style
+import '../styles/BusinessCard.scss';
 
 export default class BusinessCard extends React.Component {
   constructor(props) {
     super(props);
-    // set initial state
     this.state = {
       neighborhood: null,
       heartStatus: false, // State used to decided between heartEmpty or heartFilled image
@@ -33,59 +27,72 @@ export default class BusinessCard extends React.Component {
         likedBusiness => likedBusiness.businessId === business._id
       );
       if (tempArray.length !== 0) {
-        this.setState({ heartStatus: false });
-      } else {
         this.setState({ heartStatus: true });
       }
-    } else {
-      this.setState({ heartStatus: true });
     }
   }
 
   componentDidMount() {
-    const { postalCode, city } = this.props.business;
-    if (city !== 'Los Angeles') this.setState({ neighborhood: city });
-    else this.setNeighborhood(postalCode);
+    this.setNeighborhood();
   }
 
-  setNeighborhood = postalCode => {
-    Object.keys(locations).forEach(location => {
-      if (locations[location].includes(parseInt(postalCode))) {
-        this.setState({ neighborhood: location });
-        return;
-      }
-    });
+  /**
+   * Setting business neighborhood
+   */
+  setNeighborhood = () => {
+    const { postalCode, city } = this.props.business;
+    if (city !== 'Los Angeles') {
+      this.setState({ neighborhood: city });
+    } else {
+      Object.keys(locations).forEach(location => {
+        if (locations[location].includes(parseInt(postalCode))) {
+          this.setState({ neighborhood: location });
+        }
+      });
+    }
   };
 
-  // Method is used to toggle the state of heartStatus
+  /**
+   * Method is used to toggle the state of heartStatus
+   * @param {boolean} isAuthenticated User auth flag
+   */
   toggleImage = isAuthenticated => {
     if (isAuthenticated) {
+      // FIXME: We are not supposed to set state like this.
       this.setState(state => ({ heartStatus: !state.heartStatus }));
     }
   };
 
-  // Method used to obtain the string referring to the image based on heartStatus state
-  getImageName = () => (this.state.heartStatus ? heartEmpty : heartFilled);
-
+  /**
+   * Event handling for key press events.
+   * @param {Event} event Key press event
+   */
   handleKeyPress = event => {
-    // Check to see if space or enter were pressed
+    // Prevent the default action to stop scrolling when space is pressed
     if (event.key === ' ' || event.key === 'Enter' || event.key === 'Spacebar') {
       // "Spacebar" for IE11 support
-      // Prevent the default action to stop scrolling when space is pressed
       event.preventDefault();
     }
   };
 
+  /**
+   * Handles the logic for "liking" or "unliking" a business
+   * @param {Event} event Button event
+   */
+  handleToggleLike = event => {
+    const { business, likeBusiness, isAuthenticated } = this.props;
+    event.stopPropagation(); // Prevents modal (behind button) from activating
+    likeBusiness(business); // Calls likeBusiness Method (Refer to AuraApp.js for actual method)
+    this.toggleImage(isAuthenticated);
+  };
+
   render() {
     // consts here
-    const { business, handleOpen, likeBusiness, user, isAuthenticated } = this.props;
-    // We cannot guarentee that the categories will not overflow in the cards with multiple categories.
-    // FIXME: const categories = business.categories.map(category => category.title).join(', ');
+    const { business, handleOpen } = this.props;
+    const { heartStatus } = this.state;
     const categories = business.categories[0].title;
-    // const utilizes method getImageName to get Image, refer to method above
-    const imageName = this.getImageName(user.favorites, business);
+
     return (
-      // FIXME: Fix the onKeyPress for accessibility
       <div
         className="resultCard"
         role="button"
@@ -111,7 +118,8 @@ export default class BusinessCard extends React.Component {
                   toolTip={{
                     position: 'top',
                     description: auras[sanitizedAura] ? auras[sanitizedAura].definition : '',
-                    upVote: 0,
+                    // FIXME: Does not show results right away... Requires search to update vote data.
+                    upVote: business.auras[sanitizedAura] ? business.auras[sanitizedAura] : 0,
                   }}
                 />
               );
@@ -140,19 +148,9 @@ export default class BusinessCard extends React.Component {
           </p>
           <p>{categories}</p>
         </span>
-        <div className="cardFooter">
-          <img
-            className="heart"
-            src={imageName}
-            alt="heart"
-            role="button"
-            onClick={event => {
-              event.stopPropagation(); // Prevents modal (behind button) from activating
-              likeBusiness(business); // Calls likeBusiness Method (Refer to AuraApp.js for actual method)
-              this.toggleImage(isAuthenticated); // Calls toggleImage to change heartStatus State (Refer to method above)
-            }}
-          />
-        </div>
+        <button className="resultCardHeart" onClick={event => this.handleToggleLike(event)}>
+          {heartStatus ? <i className="fas fa-heart" /> : <i className="far fa-heart" />}
+        </button>
       </div>
     );
   }
@@ -169,7 +167,6 @@ BusinessCard.propTypes = {
       aura: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  onOpenModal: PropTypes.func.isRequired,
   likeBusiness: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   handleOpen: PropTypes.func.isRequired,

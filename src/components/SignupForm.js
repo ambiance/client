@@ -4,11 +4,6 @@ import Swal from 'sweetalert2';
 import '../styles/CredentialForm.scss';
 
 class SignupForm extends Component {
-  static propTypes = {
-    handleSignup: PropTypes.func.isRequired,
-    handleSwitch: PropTypes.func.isRequired,
-  };
-
   constructor(props) {
     super(props);
 
@@ -21,6 +16,10 @@ class SignupForm extends Component {
     };
   }
 
+  /**
+   * Handle form input changes
+   * @param {Event} event Submit event
+   */
   handleInputChange = event => {
     const { target } = event;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -29,6 +28,10 @@ class SignupForm extends Component {
     this.setState({ [name]: value });
   };
 
+  /**
+   * Handle form input changes
+   * @param {Event} event Submit event
+   */
   handleSubmit = event => {
     event.preventDefault();
     const {
@@ -174,5 +177,10 @@ class SignupForm extends Component {
     );
   }
 }
+
+SignupForm.propTypes = {
+  handleSignup: PropTypes.func.isRequired,
+  handleSwitch: PropTypes.func.isRequired,
+};
 
 export default SignupForm;
