@@ -170,7 +170,7 @@ export default class Feedback extends React.Component {
         </p>
         {this.state.showActivityPoll ? (
           <div>
-            {this.checkDonutData(voteAuraDetails, auraArray) ? (
+            {this.checkDonutData(voteActivityDetails, activityArray) ? (
               <div className="pollWrapper">
                 <RadialChart
                   className="pollDonut"
