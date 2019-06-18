@@ -51,6 +51,17 @@ export default class Feedback extends React.Component {
     }));
   };
 
+  checkDonutData = (props, fields) => {
+    const { poll } = props;
+    let check = 0;
+    fields.forEach(field => {
+      if (poll[field] > 0) {
+        check++;
+      }
+    });
+    return check > 0;
+  };
+
   // TODO: Add classname
   structureDonutData = (props, fields) => {
     const { poll } = props;
@@ -65,7 +76,7 @@ export default class Feedback extends React.Component {
   render() {
     const { details, voteAuraDetails, voteActivityDetails, show } = this.props;
 
-    const auraDonut = this.structureDonutData(voteAuraDetails, [
+    const auraArray = [
       'casual',
       'cheerful',
       'classy',
@@ -76,9 +87,9 @@ export default class Feedback extends React.Component {
       'romantic',
       'touristy',
       'trendy',
-    ]);
+    ];
 
-    const activityDonut = this.structureDonutData(voteActivityDetails, [
+    const activityArray = [
       'eating',
       'drinking',
       'dating',
@@ -89,7 +100,10 @@ export default class Feedback extends React.Component {
       'leisure',
       'pleasure',
       'hobbies',
-    ]);
+    ];
+
+    const auraDonut = this.structureDonutData(voteAuraDetails, auraArray);
+    const activityDonut = this.structureDonutData(voteActivityDetails, activityArray);
 
     return (
       <div className="modalFeedback">
@@ -104,29 +118,35 @@ export default class Feedback extends React.Component {
           </button>
         </p>
         {this.state.showAuraPoll ? (
-          <div className="pollWrapper">
-            <RadialChart
-              className="pollDonut"
-              innerRadius={40}
-              radius={100}
-              padAngle={0.04}
-              showLabels
-              labelsAboveChildren
-              labelsRadiusMultiplier={0.9}
-              data={auraDonut}
-              width={200}
-              height={200}
-            />
-            <div className="pollLegend">
-              {Object.keys(auraDescriptions).map(item => (
-                <div className="pollLegendItem">
-                  <svg height="14" width="14">
-                    <path d="M 0 0 L 0 14 L 14 14 L 14 0 Z" className={item} />
-                  </svg>
-                  <p>{item}</p>
+          <div>
+            {this.checkDonutData(voteAuraDetails, auraArray) ? (
+              <div className="pollWrapper">
+                <RadialChart
+                  className="pollDonut"
+                  innerRadius={40}
+                  radius={100}
+                  padAngle={0.04}
+                  showLabels
+                  labelsAboveChildren
+                  labelsRadiusMultiplier={0.9}
+                  data={auraDonut}
+                  width={200}
+                  height={200}
+                />
+                <div className="pollLegend">
+                  {Object.keys(auraDescriptions).map(item => (
+                    <div className="pollLegendItem">
+                      <svg height="14" width="14">
+                        <path d="M 0 0 L 0 14 L 14 14 L 14 0 Z" className={item} />
+                      </svg>
+                      <p>{item}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ) : (
+              <p className="noDataLabel">Sorry. No data available at this moment. :(</p>
+            )}
           </div>
         ) : null}
 
@@ -149,32 +169,37 @@ export default class Feedback extends React.Component {
           </button>
         </p>
         {this.state.showActivityPoll ? (
-          <div className="pollWrapper">
-            <RadialChart
-              className="pollDonut"
-              innerRadius={40}
-              radius={100}
-              padAngle={0.04}
-              showLabels
-              labelsAboveChildren
-              labelsRadiusMultiplier={0.9}
-              data={activityDonut}
-              width={200}
-              height={200}
-            />
-            <div className="pollLegend">
-              {Object.keys(details.activities).map(item => (
-                <div className="pollLegendItem">
-                  <svg height="14" width="14">
-                    <path d="M 0 0 L 0 14 L 14 14 L 14 0 Z" className={item} />
-                  </svg>
-                  <p>{item}</p>
+          <div>
+            {this.checkDonutData(voteAuraDetails, auraArray) ? (
+              <div className="pollWrapper">
+                <RadialChart
+                  className="pollDonut"
+                  innerRadius={40}
+                  radius={100}
+                  padAngle={0.04}
+                  showLabels
+                  labelsAboveChildren
+                  labelsRadiusMultiplier={0.9}
+                  data={activityDonut}
+                  width={200}
+                  height={200}
+                />
+                <div className="pollLegend">
+                  {Object.keys(details.activities).map(item => (
+                    <div className="pollLegendItem">
+                      <svg height="14" width="14">
+                        <path d="M 0 0 L 0 14 L 14 14 L 14 0 Z" className={item} />
+                      </svg>
+                      <p>{item}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ) : (
+              <p className="noDataLabel">Sorry. No data available at this moment. :(</p>
+            )}
           </div>
         ) : null}
-
         <div className="buttonsContainer">
           {Object.keys(details.activities).map(item => (
             <VotingButtons
