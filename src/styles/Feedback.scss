@@ -102,8 +102,8 @@
 }
 
 .classyData, .classy {
-  stroke: #565656 !important;
-  fill: #565656 !important;
+  stroke: var(--classy) !important;
+  fill: var(--classy) !important;
 }
 
 .hipsterData, .hipster {
@@ -202,4 +202,8 @@
   background: none;
   border: none;
   color: blue;
+}
+
+.rv-xy-plot__series--label {
+  fill: white;
 }
