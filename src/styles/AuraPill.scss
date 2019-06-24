@@ -1,0 +1,173 @@
+// FIXME: Changes to this have affected the modal pills.
+.auraPill {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  // Cosmetic
+  outline: none;
+  color: var(--off-white);
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  border: 3px dotted white;
+  border-radius: 33px;
+}
+
+// Focus displays
+.auraPill:focus .auraPillToolTipTop,
+.auraPill:focus .auraPillToolTipRight,
+.auraPill:focus .auraPillToolTipBottom,
+.auraPill:focus .auraPillToolTipLeft {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  // Focus displays
+  .auraPill:hover .auraPillToolTipTop,
+  .auraPill:hover .auraPillToolTipRight,
+  .auraPill:hover .auraPillToolTipBottom,
+  .auraPill:hover .auraPillToolTipLeft {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+// Tool Tip Top
+.auraPillToolTipTop {
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 140%;
+
+  // Cosmetic
+  min-width: 6rem;
+  padding: 0.3rem;
+  font-size: 0.75rem;
+  background: var(--off-black);
+  color: var(--off-white);
+  border-radius: 5px;
+
+  transition: visibility 0.2s cubic-bezier(1, 0, 0.5, 1) 0.2s,
+    opacity 0.2s cubic-bezier(1, 0, 0.5, 1) 0.2s;
+
+  // Arrow Down
+  ::after {
+    content: '';
+    position: absolute;
+    top: 100%; // At the bottom of the tool tip
+    left: 50%; // HACK: Somewhat in the middle of the tool tip
+
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: var(--off-black) transparent transparent transparent;
+  }
+}
+
+// Tool Tip Bottom
+.auraPillToolTipBottom {
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 140%;
+
+  // Cosmetic
+  min-width: 6rem;
+  padding: 0.3rem;
+  font-size: 0.75rem;
+  background: var(--off-black);
+  color: var(--off-white);
+  border-radius: 5px;
+
+  transition: visibility 0.2s cubic-bezier(1, 0, 0, 1) 0.2s,
+    opacity 0.2s cubic-bezier(1, 0, 0, 1) 0.2s;
+
+  // Arrow Up
+  ::after {
+    content: ' ';
+    position: absolute;
+    bottom: 100%; /* At the top of the tooltip */
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent var(--off-black) transparent;
+  }
+}
+
+// Tool Tip Right
+.auraPillToolTipRight {
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  left: 120%;
+
+  // Cosmetic
+  min-width: 6rem;
+  padding: 0.3rem;
+  font-size: 0.75rem;
+  background: var(--off-black);
+  color: var(--off-white);
+  border-radius: 5px;
+
+  transition: visibility 0.2s cubic-bezier(1, 0, 0, 1) 0.2s,
+    opacity 0.2s cubic-bezier(1, 0, 0, 1) 0.2s;
+
+  // Arrow Left
+  ::after {
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    right: 100%; /* To the left of the tooltip */
+    margin-top: -8px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent var(--off-black) transparent transparent;
+  }
+}
+
+// Tool Tip Left
+.auraPillToolTipLeft {
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  right: 120%;
+
+  // Cosmetic
+  min-width: 6rem;
+  padding: 0.3rem;
+  font-size: 0.75rem;
+  background: var(--off-black);
+  color: var(--off-white);
+  border-radius: 5px;
+
+  transition: visibility 0.2s cubic-bezier(1, 0, 0, 1) 0.2s,
+    opacity 0.2s cubic-bezier(1, 0, 0, 1) 0.2s;
+
+  // Arrow Right
+  ::after {
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 100%; /* To the right of the tooltip */
+    margin-top: -8px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--off-black);
+  }
+}
+
+// Other
+
+@media all and (max-width: 373px) {
+  .auraPill {
+    font-size: 0.55rem;
+  }
+}

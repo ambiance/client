@@ -1,43 +1,81 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AuraPills from './AuraPills';
-import { getColor } from './helpers/auraColors';
 
 class TeamMember extends React.Component {
-  render() {
-    const { sectionId, img, fullName, role, aura, link } = this.props;
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      active: false,
+    };
+  }
+
+  /**
+   * Event handler - Key events for toggling team member.
+   * @param {Event} event Key press event
+   */
+  toggleKeyActive = event => {
+    if (event.key === ' ' || event.key === 'Enter') {
+      // Prevent the default action to stop scrolling when space is pressed
+      event.preventDefault();
+      this.toggleActive();
+    }
+  };
+
+  /**
+   * Event handler - click events for toggling team member.
+   */
+  toggleActive = () => {
+    this.setState(prevState => ({ active: !prevState.active }));
+  };
+
+  /**
+   * Event handler - event for sending mail inside card.
+   * @param {Event} event Submit event
+   */
+  sendMail = event => {
+    event.stopPropagation();
+  };
+  render() {
+    const { img, fullName, role, mailLink } = this.props;
+    const { active } = this.state;
     return (
-      <section id={sectionId} className="halfpics">
-        <img src={img} alt="profile" />
-        <ul id="title">
-          <li>
-            <a href={link}>{fullName}</a>
-          </li>
-          <li className="role">Role: {role}</li>
-          <li className="fav">
-            Favorite Aura:{' '}
-            <AuraPills
-              id="pills"
-              aura={aura}
-              backgroundColor={getColor(aura)}
-              style={{ 'margin-left': 0 }}
-            />
-          </li>
-        </ul>
-      </section>
+      <div className="teamMemberCardContainer">
+        <div
+          className={`${active ? 'active ' : ''}teamMemberCard`}
+          tabIndex="0"
+          role="button"
+          onClick={this.toggleActive}
+          onKeyDown={this.toggleKeyActive}
+        >
+          <div className="side">
+            <img className="teamMemberImage" src={img} alt={`${fullName} face`} />
+          </div>
+          <div className="side back">
+            <div className="teamMemberInfo">
+              <h2>{fullName}</h2>
+              <span>{role}</span>
+              <a
+                className="teamMemberEmailLink"
+                href={mailLink}
+                onClick={this.sendMail}
+                onKeyDown={this.sendMail}
+              >
+                Send Email &#62;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }
 
 TeamMember.propTypes = {
-  sectionId: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   fullName: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
-  aura: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string.isRequired,
+  mailLink: PropTypes.string.isRequired,
 };
 
 export default TeamMember;

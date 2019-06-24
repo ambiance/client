@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import '../styles/LoginForm.scss';
+import '../styles/CredentialForm.scss';
 
 class LoginForm extends Component {
-  static propTypes = {
-    handleLogin: PropTypes.func.isRequired,
-  };
-
   constructor(props) {
     super(props);
 
@@ -16,6 +12,12 @@ class LoginForm extends Component {
     };
   }
 
+  /**
+   * Text-based input change handler.
+   *
+   * `NOTE:` Requires some alteration for radio buttons and drop down selects.
+   * @param {Event} event Input change event
+   */
   handleInputChange = event => {
     const { target } = event;
     const { name, value } = target;
@@ -23,6 +25,10 @@ class LoginForm extends Component {
     this.setState({ [name]: value });
   };
 
+  /**
+   * Login event handler
+   * @param {Event} event Submit event
+   */
   handleLogin = event => {
     event.preventDefault();
     this.props.handleLogin({
@@ -31,34 +37,43 @@ class LoginForm extends Component {
     });
   };
 
+  /**
+   * Event handler - Toggles app's active form between 'Login' and 'Signup'
+   * @param {Event} event Submit event
+   */
+  handleSwitchToSignup = event => {
+    event.preventDefault();
+    this.props.handleSwitch();
+  };
+
   render() {
     return (
-      <form
-        className="loginForm"
-        onSubmit={this.handleLogin}
-        style={{ display: 'flex', flexDirection: 'column' }}
-      >
-        <h1 className="loginTitle">Login</h1>
-        <label htmlFor="loginUsernameInputValue">
-          Username:
+      <form onSubmit={this.handleLogin} className="credentialForm">
+        <h1 className="credentialTitle">Welcome back!</h1>
+        <p className="credentialDescription">
+          Don't have an account?{' '}
+          <button type="button" className="nipsey" onClick={this.handleSwitchToSignup}>
+            Sign up here!
+          </button>
+        </p>
+        <label className="" htmlFor="loginUsernameInputValue">
           <input
-            className="usernameSignin"
+            className="credentialInput"
             type="text"
             id="loginUsernameInputValue"
             autoComplete="username"
             name="loginUsernameInputValue"
-            placeholder="username"
+            placeholder="Enter username"
             value={this.state.loginUsernameInputValue}
             onChange={this.handleInputChange}
           />
         </label>
 
         <label htmlFor="loginPasswordInputValue">
-          Password:
           <input
-            className="passwordSignin"
+            className="credentialInput"
             type="password"
-            placeholder="password"
+            placeholder="Enter password"
             id="loginPasswordInputValue"
             autoComplete="current-password"
             name="loginPasswordInputValue"
@@ -67,11 +82,16 @@ class LoginForm extends Component {
           />
         </label>
         <button className="submitButton" type="submit">
-          Submit
+          Login
         </button>
       </form>
     );
   }
 }
+
+LoginForm.propTypes = {
+  handleLogin: PropTypes.func.isRequired,
+  handleSwitch: PropTypes.func.isRequired,
+};
 
 export default LoginForm;

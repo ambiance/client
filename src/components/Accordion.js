@@ -1,35 +1,20 @@
 // Credit: https://alligator.io/react/react-accordion-component/
 
-/*
-Warning!!!!
-You cannot have multiple sections in an accordian with the same label.
-It will trigger both of them because of the way the state is set up.
-*/
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-import AccordionSection from './AccordionSection';
 import '../styles/Accordion.scss';
 
 class Accordion extends Component {
-  static propTypes = {
-    allowMultipleOpen: PropTypes.bool,
-    children: PropTypes.instanceOf(Object).isRequired,
-    title: PropTypes.string,
-  };
-
-  static defaultProps = {
-    allowMultipleOpen: false,
-  };
-
   constructor(props) {
     super(props);
-
     const openSections = {};
-
     const { children } = this.props;
-    // Check for one or many AccordianSection children
+    /* 
+    DEV:
+    Check for one or many AccordianSection children
+    
+    Warning!!!!: You cannot have multiple sections in an accordian with the same label. It will trigger both of them because of the way the state is set up.
+    */
     if (Array.isArray(children)) {
       children.forEach(child => {
         if (child.props.isOpen) {
@@ -45,9 +30,9 @@ class Accordion extends Component {
 
   /**
    * Toggles the open state
-   * @param {String} label Title of the accordion drop down
+   * @param {String} label Title of the individual section
    */
-  onClick = label => {
+  handleClick = label => {
     const {
       props: { allowMultipleOpen },
       state: { openSections },
@@ -73,23 +58,23 @@ class Accordion extends Component {
 
   render() {
     const {
-      onClick,
+      handleClick,
       props: { children, title },
       state: { openSections },
     } = this;
 
     return (
       <section className="accordion">
-        {/* Optional Title */}
+        {/* DEV: Optional Title */}
         {title ? <h3 className="accordionHeader">{title}</h3> : ''}
-        {/* Check for one or many AccordianSection children */}
+        {/* DEV: Check for one or many AccordianSection children */}
         {Array.isArray(children) ? (
           children.map((child, i) => (
             <AccordionSection
               key={i}
               isOpen={!!openSections[child.props.label]}
               label={child.props.label}
-              onClick={onClick}
+              handleClick={handleClick}
             >
               {child.props.children}
             </AccordionSection>
@@ -98,7 +83,7 @@ class Accordion extends Component {
           <AccordionSection
             isOpen={!!openSections[children.props.label]}
             label={children.props.label}
-            onClick={onClick}
+            handleClick={handleClick}
           >
             {children.props.children}
           </AccordionSection>
@@ -108,4 +93,53 @@ class Accordion extends Component {
   }
 }
 
+Accordion.propTypes = {
+  allowMultipleOpen: PropTypes.bool,
+  children: PropTypes.instanceOf(Object).isRequired,
+  title: PropTypes.string,
+};
+
+Accordion.defaultProps = {
+  allowMultipleOpen: false,
+};
+
 export default Accordion;
+
+/**
+ * Clickable helper component to show expanded information
+ * @param {Object} props Parent Values
+ * @param {Function} props.handleClick Handler method to toggle section
+ * @param {boolean} props.isOpen Toggled flag
+ * @param {string} props.label Title
+ * @param {Object} props.children Nested HTML elements
+ */
+const AccordionSection = ({ handleClick, isOpen, label, children }) => (
+  <div className="accordionSection" style={{ backgroundColor: `var(--${label || 'mint'})` }}>
+    <button
+      onClick={() => handleClick(label)}
+      className="accordionButton"
+      style={
+        isOpen
+          ? {
+              color: `var(--off-white)`,
+              backgroundColor: `var(--${label || 'mint'})`,
+            }
+          : { color: `var(--${label || 'off-black'})` }
+      }
+    >
+      {label}
+      <div>
+        {!isOpen && <span>&#8592;</span>}
+        {isOpen && <span>&#8595;</span>}
+      </div>
+    </button>
+    {isOpen && <section>{children}</section>}
+  </div>
+);
+
+AccordionSection.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Object)]).isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  label: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
+};

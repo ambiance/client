@@ -13,10 +13,10 @@
   grid-template-columns: 20% 80%;
   grid-template-rows: 60px 1fr;
   grid-template-areas:
-    ' head head '
-    ' map detail ';
+    " head head "
+    " map detail ";
   overflow-x: hidden;
-  overflow-y: hidden;
+  // overflow-y: hidden;
   border: none;
 }
 
@@ -47,7 +47,6 @@
   height: 40px;
   line-height: 0.8rem;
   padding: 10px 20px;
-  text-align: right;
   display: flex;
   justify-content: space-between;
   grid-column-start: span 1;
@@ -64,12 +63,9 @@
 }
 
 .modalPillsContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: stretch;
-  margin-top: -10px;
-  margin-left: 15px;
-  height: 45px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5rem;
 }
 
 @media screen and (max-width: 570px) {
@@ -88,18 +84,13 @@
     grid-template-columns: 1fr 1fr 30px;
     grid-template-rows: 1fr 1fr;
     grid-template-areas:
-      ' title title button '
-      ' pills pills pills ';
+      " title title button "
+      " pills pills pills ";
   }
 
   .modalHeader h3 {
     height: 40px;
   }
-
-  // .modalPillsContainer {
-  //   margin-left: -10px;
-  //   margin-top: -6px;
-  // }
 
   .modalHeader > h3 {
     grid-area: title;
@@ -143,6 +134,11 @@
 .navBar {
   position: relative;
   background-color: #263238;
+  display: grid;
+  grid-template-rows: 80% 20%;
+  grid-template-areas:
+    " tabs "
+    " yelp ";
 }
 
 .backDrop {
@@ -179,19 +175,17 @@
 .categories {
   list-style: none;
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   padding-left: 0;
   margin-bottom: 3rem;
   font-weight: bold;
 }
 
-.address {
-  list-style: none;
+.category {
   display: flex;
-  justify-content: space-evenly;
-  padding-left: 0;
-  margin-bottom: 3rem;
-  font-weight: bold;
+  justify-content: center;
+  margin-bottom: 0.75rem;
 }
 
 .address {
@@ -272,21 +266,6 @@
   cursor: pointer;
 }
 
-h1 {
-  color: var(--off-white);
-  font-size: 1rem;
-  padding: 0rem 0.5rem 0rem 0.5rem;
-  float: left;
-  margin-left: 10px;
-  /* align-items: left; */
-  display: block;
-  /* position: absolute; */
-  border-color: white;
-  border-style: dotted;
-  background-color: rgba(90, 187, 158, 0.9);
-  border-radius: 33px;
-}
-
 .modalBackdrop {
   width: 100%;
   height: 125%;
@@ -345,6 +324,8 @@ h1 {
   font-size: 0.8rem;
   text-decoration: none;
   color: #818181;
+  display: flex;
+  justify-content: center;
   cursor: pointer;
 }
 
@@ -371,4 +352,70 @@ h1 {
   width: 100%;
   height: 100%;
   position: relative;
+}
+
+.businessDetails {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "details picture";
+  height: 100%;
+  width: 100%;
+}
+
+.detailSection {
+  grid-area: details;
+  margin: auto;
+}
+
+.pictureSection {
+  grid-area: picture;
+  height: 100%;
+}
+
+.pic {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.pictureContainer {
+  height: 17rem;
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 858px) {
+  .businessDetails {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas:
+      " picture "
+      "  details ";
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.yelpLinkLI {
+  list-style: none;
+  display: flex;
+  align-self: end;
+  padding-bottom: 1rem;
+}
+
+@media screen and (max-width: 860px) {
+  .navBar {
+    height: 76%;
+  }
+}
+
+@media screen and (max-width: 814px) {
+  .navBar {
+    height: 82%;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .navBar {
+    height: 78%;
+  }
 }

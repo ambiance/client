@@ -1,18 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+// components
+import Head from './Head';
 import Slideshow from '../components/Slideshow';
 import Accordion from '../components/Accordion';
-import auraDescriptions from '../data/auraDescriptions';
+// helpers
+import auras from '../data/auraDescriptions';
+// scss
 import '../styles/About.scss';
 
 class About extends React.Component {
-  openModel = business => {
-    alert(business);
-  };
   render() {
+    const {
+      location: { pathname: pathName },
+    } = this.props;
+    const auraDescriptions = Object.values(auras);
     return (
-      <div className="about">
+      <main className="about">
+        <Head pathName={pathName} title="About | Aura" />
         <Slideshow />
-
         {/* TODO: Candidate for a component */}
         <section className="content">
           <section className="mint landing">
@@ -86,9 +93,15 @@ class About extends React.Component {
             </div>
           ))}
         </Accordion>
-      </div>
+      </main>
     );
   }
 }
+
+About.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }),
+};
 
 export default About;

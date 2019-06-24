@@ -1,19 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Head from './Head';
 import DashboardMenu from '../components/DashboardMenu';
 import AccountSettings from '../components/AccountSettings';
 import '../styles/Dashboard.scss';
 
 class Dashboard extends React.Component {
-  static propTypes = {
-    user: PropTypes.object.isRequired,
-    logout: PropTypes.func,
-    // modalDetails: PropTypes.object,
-    // isModalShowing: PropTypes.bool,
-    // openModal: PropTypes.func,
-    // closeModal: PropTypes.func,
-  };
-
   constructor(props) {
     super(props);
 
@@ -31,10 +23,15 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    const { user, logout } = this.props;
+    const {
+      user,
+      logout,
+      location: { pathname: pathName },
+    } = this.props;
 
     return (
-      <div className="dashboard">
+      <main className="dashboard">
+        <Head pathName={pathName} title="Dashboard | Aura" />
         <DashboardMenu
           user={user}
           activeView={this.state.active}
@@ -64,9 +61,21 @@ class Dashboard extends React.Component {
         ) : (
           ''
         )}
-      </div>
+      </main>
     );
   }
 }
+
+Dashboard.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }),
+  user: PropTypes.object.isRequired,
+  logout: PropTypes.func,
+  // modalDetails: PropTypes.object,
+  // isModalShowing: PropTypes.bool,
+  // openModal: PropTypes.func,
+  // closeModal: PropTypes.func,
+};
 
 export default Dashboard;

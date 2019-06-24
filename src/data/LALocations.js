@@ -1,3 +1,6 @@
+/**
+ * Mapped information - City : Zip codes
+ */
 const locations = {
   'Downtown LA': [
     90014,

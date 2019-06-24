@@ -5,6 +5,10 @@
   font-family: 'Comfortaa', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-image: url(../assets/img/trinityBackgroundWhite.png);
 }
@@ -14,13 +18,10 @@ body {
   margin: 0;
 }
 
-h2 {
-  margin: 0;
-  height: 1rem;
-  padding: 1rem;
-  color: #fff;
-  line-height: 1rem;
-  display: block;
+// TODO: Figure out if we need this in all of our articles...
+article {
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
@@ -35,9 +36,28 @@ h6 {
   font-size: 26px;
 }
 
+h2 {
+  margin: 0;
+  height: 1rem;
+  padding: 1rem;
+  color: #fff;
+  line-height: 1rem;
+  display: block;
+  text-align: center;
+}
+
+input {
+  height: 1.5rem;
+  border-radius: 10px;
+}
+
 .bold {
   font-size: 1.1em;
   font-weight: 700;
   font-family: 'Raleway', sans-serif;
   text-shadow: 1px 1px rgb(198, 240, 226);
+}
+
+.hidden {
+  display: none;
 }

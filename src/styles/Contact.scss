@@ -1,0 +1,94 @@
+.teamMemberGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  justify-items: center;
+  grid-gap: 2rem;
+  margin: 3rem;
+}
+
+// Animation Transitions
+.teamMemberCardContainer {
+  height: 15rem;
+  width: 15rem;
+  perspective: 500;
+  position: relative;
+}
+.teamMemberCard {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: all 1s ease-in-out;
+
+  .side {
+    backface-visibility: hidden;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+
+  .back {
+    transform: rotateY(180deg);
+  }
+}
+
+// See the other side of the card
+.teamMemberCard:focus-within:not(:focus), // Any focus inside of the card
+.teamMemberCard.active {
+  transform: rotateY(180deg);
+}
+
+// Standard Styling
+
+.teamMemberCard {
+  img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    border-radius: 15px;
+  }
+
+  .teamMemberInfo {
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    list-style: none;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 15px;
+
+    background-color: var(--mint);
+
+    .teamMemberEmailLink {
+      position: absolute;
+      bottom: 5%;
+      right: 5%;
+      color: var(--off-white);
+    }
+  }
+}
+
+/* @media all and (max-width: 493px) { */
+@media all and (max-width: 493px) {
+  .teamMemberGrid {
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    .teamMember {
+      width: 12rem;
+      height: 12rem;
+    }
+  }
+}
+
+@media all and (max-width: 355px) {
+  #title {
+    font-size: 0.7rem;
+  }
+}

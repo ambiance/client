@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Components
-import PropTypes from 'prop-types';
+import Head from './Head';
 import SearchForm from '../components/SearchForm';
 import SearchResults from '../components/SearchResults';
 import Modal from '../components/Modal';
@@ -12,6 +13,8 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
 
+    this.loadMoreRef = React.createRef();
+    this.loadingDotsRef = React.createRef();
     this.searchRef = React.createRef();
 
     this.state = {
@@ -20,18 +23,26 @@ class Home extends React.Component {
       loading: false,
       noData: false,
       showResults: false,
+      params: { results: 0, page: 0 },
+      hasMoreResults: false,
+      scrollTo: 0,
     };
   }
 
-  handleSearchSubmit = searchFormData => {
-    this.setState({ showResults: true, loading: true }, () => {
-      window.scroll({
-        top: this.searchRef.current.offsetTop - 50,
-        left: 0,
-        passive: true,
-      });
-    });
+  calculateResultsPerChunk = () => {
+    const cardsPerRow = Math.floor(window.innerWidth / 400);
+    if (cardsPerRow === 2) return 8;
+    if (cardsPerRow > 2) return cardsPerRow * 2;
+    return 6;
+  };
 
+  handleSearchSubmit = searchFormData => {
+    // Warn the user that there is already a request being made
+    if (this.state.loading) {
+      // TODO: Talk to the team about what we want to do when many requests are being made.
+    }
+
+    // Dynamically add search parameters based on the results from the search form.
     const params = {};
     if (searchFormData.auraValue !== '') {
       params.aura = searchFormData.auraValue;
@@ -42,36 +53,115 @@ class Home extends React.Component {
     if (searchFormData.cityValue !== '') {
       params.city = searchFormData.cityValue;
     }
+    const resultsPerChunk = this.calculateResultsPerChunk();
 
-    API.get('businesses', {
-      params,
-      // params: {
-      //   aura: searchFormData.auraValue,
-      //   category: searchFormData.categoryValue,
-      //   city: searchFormData.cityValue
-      // }
-    })
+    this.setState(
+      {
+        showResults: true,
+        businesses: [],
+        loading: true,
+        params: {
+          ...params,
+          page: 0,
+          results: resultsPerChunk,
+        },
+        hasMoreResults: false,
+      },
+      () => {
+        window.scroll({
+          top: this.searchRef.current.offsetTop - 50,
+          left: 0,
+          passive: true,
+        });
+        this.queryDatabase(this.state.params);
+      }
+    );
+  };
+
+  /**
+   * TODO: What does this do exactly?
+   */
+  queryDatabase = params => {
+    // Make a request to the Aura Server for business information.
+    API.get('businesses', { params })
       .then(response => {
-        this.setState({ businesses: response.data });
-        if (response.data.length === 0) {
+        const { businesses, hasMoreResults } = response.data;
+        this.setState(prevState => ({
+          businesses: prevState.businesses.concat(businesses),
+          loading: false,
+          hasMoreResults,
+        }));
+        if (response.data.businesses.length === 0) {
           this.setState({ noData: true });
         } else {
           this.setState({ noData: false });
         }
       })
-      .then(() => this.setState({ loading: false }))
-      .catch(err => alertErrorHandler(err));
+      .catch(err => {
+        alertErrorHandler(err);
+        this.setState({ showResults: false, loading: false });
+      });
+  };
+
+  /**
+   * TODO: What does this do exactly?
+   */
+  handleLoadMore = () => {
+    this.setState(
+      prevState => ({
+        params: { ...prevState.params, page: prevState.params.page + 1 },
+      }),
+      () => {
+        const scrollTo = this.loadMoreRef.current.offsetTop - 70;
+        this.setState({ scrollTo });
+        this.queryDatabase(this.state.params);
+        this.toggleLoadingDots();
+      }
+    );
+  };
+
+  /**
+   * Toggles the loader when requesting more businesses.
+   */
+  toggleLoadingDots = () => {
+    if (this.loadMoreRef.current) {
+      this.loadMoreRef.current.classList.toggle('hidden');
+    }
+    if (this.loadingDotsRef.current) {
+      this.loadingDotsRef.current.classList.toggle('hidden');
+    }
   };
 
   render() {
-    const { isShowing, modalDetails, openModal, closeModal } = this.props;
+    const {
+      location: { pathname: pathName },
+      isShowing,
+      modalDetails,
+      voteAuraDetails,
+      voteActivityDetails,
+      openModal,
+      closeModal,
+      openFeedback,
+      handleAuraVote,
+      handleActivityVote,
+      likeBusiness,
+      user,
+      isAuthenticated,
+    } = this.props;
+
     return (
-      <div>
+      <main>
+        <Head pathName={pathName} title="Home | Aura" />
         <Modal
           className="modal"
           show={isShowing}
           close={closeModal}
           details={modalDetails}
+          voteAuraDetails={voteAuraDetails}
+          voteActivityDetails={voteActivityDetails}
+          openFeedback={openFeedback}
+          handleAuraVote={handleAuraVote}
+          handleActivityVote={handleActivityVote}
           shouldCloseOnOverlayClick
         />
         <SearchForm onSearchSubmit={this.handleSearchSubmit} />
@@ -85,19 +175,39 @@ class Home extends React.Component {
             businesses={this.state.businesses}
             noData={this.state.noData}
             onOpenModal={openModal}
+            handleLoadMore={this.handleLoadMore}
+            showLoadMoreBtn={this.state.hasMoreResults}
+            loadMoreRef={this.loadMoreRef}
+            loadingDotsRef={this.loadingDotsRef}
+            toggleLoadingDots={this.toggleLoadingDots}
+            scrollTo={this.state.scrollTo}
             id="results"
+            likeBusiness={likeBusiness}
+            user={user}
+            isAuthenticated={isAuthenticated}
           />
         </div>
-      </div>
+      </main>
     );
   }
 }
 
 Home.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }),
   modalDetails: PropTypes.object,
+  voteAuraDetails: PropTypes.object,
+  voteActivityDetails: PropTypes.object,
   isShowing: PropTypes.bool,
   openModal: PropTypes.func,
   closeModal: PropTypes.func,
+  openFeedback: PropTypes.func,
+  handleAuraVote: PropTypes.func,
+  handleActivityVote: PropTypes.func,
+  likeBusiness: PropTypes.func,
+  user: PropTypes.object,
+  isAuthenticated: PropTypes.bool,
 };
 
 export default Home;

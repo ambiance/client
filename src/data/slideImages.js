@@ -1,13 +1,15 @@
-// trendy, lively, inspired, romantic, cheerful, intimate, classy, hipster, casual, touristy
+/**
+ * Slide images with their related information
+ */
 const slideImages = [
-  {
-    src: `${process.env.PUBLIC_URL}/assets/img/slideshow/lively.jpg`,
-    aura: 'lively',
-    question: 'What is your aura?',
-  },
   {
     src: `${process.env.PUBLIC_URL}/assets/img/slideshow/trendy.jpg`,
     aura: 'trendy',
+    question: 'What is your aura?',
+  },
+  {
+    src: `${process.env.PUBLIC_URL}/assets/img/slideshow/lively.jpg`,
+    aura: 'lively',
     question: 'What is your aura?',
   },
   {
@@ -28,11 +30,6 @@ const slideImages = [
   {
     src: `${process.env.PUBLIC_URL}/assets/img/slideshow/touristy.jpg`,
     aura: 'touristy',
-    question: 'What is your aura?',
-  },
-  {
-    src: `${process.env.PUBLIC_URL}/assets/img/slideshow/place2.jpg`,
-    aura: 'lively',
     question: 'What is your aura?',
   },
   {
@@ -60,11 +57,6 @@ const slideImages = [
   {
     src: `${process.env.PUBLIC_URL}/assets/img/slideshow/place11.jpeg`,
     aura: 'classy',
-    question: 'What is your aura?',
-  },
-  {
-    src: `${process.env.PUBLIC_URL}/assets/img/slideshow/place12.jpeg`,
-    aura: 'hipster',
     question: 'What is your aura?',
   },
   // {

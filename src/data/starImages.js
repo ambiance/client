@@ -1,3 +1,6 @@
+/**
+ * All star rating images and their related information
+ */
 const starImages = [
   {
     src: `${process.env.PUBLIC_URL}./assets/img/stars/0stars.png`,

@@ -37,6 +37,30 @@
   line-height: 2rem;
 }
 
+.loadMore {
+  display: block;
+  margin: 50px auto;
+  font-size: 1rem;
+  font-family: Comfortaa, script;
+  color: var(--light-mint);
+  background-color: var(--off-black);
+  padding: 10px 30px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.loadMore:focus,
+.loadMore:hover {
+  color: var(--dark-mint);
+}
+
+.dotLoader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
 @media all and (max-width: 770px) {
   .errorTitle {
     font-size: 22px;

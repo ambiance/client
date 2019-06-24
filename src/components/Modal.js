@@ -1,17 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import AuraPills from './AuraPills.js';
+
+// Components
+import AuraPill from './AuraPill';
 import Map from './Map';
 import ModalWindow from './ModalWindow';
 import BusinessDescription from './BusinessDescription';
+import Feedback from './Feedback';
 // import Feedback from './Feedback';
 import { getColor } from './helpers/auraColors';
+import auras from '../data/auraDescriptions';
 // import { handleStars } from './helpers/stars';
 import '../styles/Modal.scss';
 
-const Modal = ({ show, details, close }) => {
+const Modal = ({
+  show,
+  details,
+  voteAuraDetails,
+  voteActivityDetails,
+  close,
+  handleAuraVote,
+  handleActivityVote,
+  openFeedback,
+}) => {
   const [component, setComponent] = useState(<BusinessDescription show={show} details={details} />);
 
+  useEffect(
+    () =>
+      setComponent(
+        <Feedback
+          show={show}
+          details={details}
+          voteAuraDetails={voteAuraDetails}
+          voteActivityDetails={voteActivityDetails}
+          handleAuraVote={handleAuraVote}
+          handleActivityVote={handleActivityVote}
+        />
+      ),
+    [voteAuraDetails]
+  );
+  useEffect(
+    () =>
+      setComponent(
+        <Feedback
+          show={show}
+          details={details}
+          voteAuraDetails={voteAuraDetails}
+          voteActivityDetails={voteActivityDetails}
+          handleAuraVote={handleAuraVote}
+          handleActivityVote={handleActivityVote}
+        />
+      ),
+    [voteActivityDetails]
+  );
   useEffect(() => setComponent(<BusinessDescription show={show} details={details} />), [show]);
 
   return (
@@ -40,10 +81,15 @@ const Modal = ({ show, details, close }) => {
               ? details.attributes.aura.split(',').map(auraSingleton => {
                   const sanitizedAura = auraSingleton.trim().toLowerCase();
                   return (
-                    <AuraPills
+                    <AuraPill
                       aura={sanitizedAura}
                       backgroundColor={getColor(sanitizedAura)}
                       key={auraSingleton}
+                      toolTip={{
+                        position: 'bottom',
+                        description: auras[sanitizedAura] ? auras[sanitizedAura].definition : '',
+                        upVote: details.auras ? details.auras[sanitizedAura] : 0,
+                      }}
                     />
                   );
                 })
@@ -72,12 +118,38 @@ const Modal = ({ show, details, close }) => {
                 Map
               </button>
             </li>
+            <li className="modalLI">
+              <button
+                className="modalNav"
+                onClick={() => {
+                  openFeedback();
+                  setComponent(
+                    <Feedback
+                      show={show}
+                      details={details}
+                      voteAuraDetails={voteAuraDetails}
+                      voteActivityDetails={voteActivityDetails}
+                      handleAuraVote={handleAuraVote}
+                      handleActivityVote={handleActivityVote}
+                    />
+                  );
+                }}
+              >
+                Feedback
+              </button>
+            </li>
+
             {/* <li className="modalLI">
               <button className="modalNav" onClick={() => setComponent(<Feedback />)}>
                 Feedback
               </button>
             </li> */}
           </ul>
+          <div className="yelpLinkLI">
+            <a className="modalNav" href={details.url} target="_blank" rel="noopener noreferrer">
+              Link to Yelp!
+            </a>
+          </div>
         </div>
         {/* <div className="businessDetails"> */}
         <div className="componentWindow">
@@ -114,7 +186,12 @@ const Modal = ({ show, details, close }) => {
 Modal.propTypes = {
   show: PropTypes.bool.isRequired,
   details: PropTypes.object.isRequired,
+  voteAuraDetails: PropTypes.object.isRequired,
+  voteActivityDetails: PropTypes.object.isRequired,
   close: PropTypes.func.isRequired,
+  openFeedback: PropTypes.func.isRequired,
+  handleAuraVote: PropTypes.func.isRequired,
+  handleActivityVote: PropTypes.func.isRequired,
   // map: PropTypes.bool.isRequired,
 };
 

@@ -22,7 +22,6 @@
 }
 
 .accordionSection {
-  background-color: var(--mint);
   color: white;
   p {
     margin: 1em 0;
@@ -35,15 +34,20 @@
   border-bottom: 0;
 }
 
+.accordionSection section {
+  padding: 2rem;
+}
+
 .accordionButton {
-  font-family: 'Comfortaa' sans-serif;
+  font-family: 'Comfortaa';
   background-color: var(--off-white);
   cursor: pointer;
   padding: 1rem 2rem;
+  margin: 0; // Needed for safari default styling.
   width: 100%;
 
   border: none;
-  border-bottom: black solid 1px;
+  border-bottom: var(--off-white) solid 1px;
   outline: none;
 
   font-size: 1.5rem;
@@ -64,7 +68,7 @@
 }
 
 .accordionButton:hover {
-  background-color: var(--shadow);
+  background-color: var(--shadow) !important;
   color: var(--off-white) !important;
 }
 
