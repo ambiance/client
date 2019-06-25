@@ -15,8 +15,6 @@
   grid-template-areas:
     " head head "
     " map detail ";
-  overflow-x: hidden;
-  // overflow-y: hidden;
   border: none;
 }
 
@@ -136,6 +134,7 @@
   background-color: #263238;
   display: grid;
   grid-template-rows: 80% 20%;
+  height: 100%;
   grid-template-areas:
     " tabs "
     " yelp ";
@@ -352,6 +351,7 @@
   width: 100%;
   height: 100%;
   position: relative;
+  overflow-x: hidden;
 }
 
 .businessDetails {
@@ -400,22 +400,4 @@
   display: flex;
   align-self: end;
   padding-bottom: 1rem;
-}
-
-@media screen and (max-width: 860px) {
-  .navBar {
-    height: 76%;
-  }
-}
-
-@media screen and (max-width: 814px) {
-  .navBar {
-    height: 82%;
-  }
-}
-
-@media screen and (max-width: 510px) {
-  .navBar {
-    height: 78%;
-  }
 }
