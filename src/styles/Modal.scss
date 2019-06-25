@@ -131,7 +131,7 @@
 
 .navBar {
   position: relative;
-  background-color: #263238;
+  background-color: #7ba99c;
   display: grid;
   grid-template-rows: 80% 20%;
   height: 100%;
@@ -312,28 +312,35 @@
 
 .navContainer {
   padding-left: 0;
-  margin-top: 0;
+  margin-top: 13px;
 }
 
 .modalNav {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0);
   border: none;
   outline: none;
   font-size: 0.8rem;
   text-decoration: none;
-  color: #818181;
+  color: white;
   display: flex;
   justify-content: center;
   cursor: pointer;
+  
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 0px;
+  padding-left: 0px;
+  font-family: inherit;
+  background-color: #263238;
+  border-radius: 2px;
 }
 
 .modalNav:hover {
-  color: #f1f1f1;
+  background-color: var(--dark-mint);
 }
 
 .modalNav:focus {
-  color: #f1f1f1;
+  background-color: var(--dark-mint);
 }
 
 @media screen and (max-width: 434px) {
@@ -344,7 +351,7 @@
 
 .modalLI {
   list-style: none;
-  padding-top: 5%;
+  margin-top: 4px
 }
 
 .componentWindow {
