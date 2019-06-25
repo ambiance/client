@@ -66,7 +66,7 @@
   grid-gap: 0.5rem;
 }
 
-@media screen and (max-width: 570px) {
+@media screen and (max-width: 650px) {
   .modalWrapper {
     grid-template-rows: 97px 1fr;
   }
@@ -343,7 +343,7 @@
   background-color: var(--dark-mint);
 }
 
-@media screen and (max-width: 434px) {
+@media screen and (max-width: 520px) {
   .modalNav {
     font-size: 10px;
   }
