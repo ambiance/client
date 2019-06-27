@@ -411,3 +411,8 @@
   align-self: end;
   padding-bottom: 1rem;
 }
+
+html{ 
+  overflow: scroll; 
+  -webkit-overflow-scrolling: touch;
+}
