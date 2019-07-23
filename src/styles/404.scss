@@ -3,15 +3,38 @@
   min-height: calc(100vh - 175px);
   flex-direction: column;
   justify-content: center;
+  background-color: black;
 }
 
 .fourOhFourHeading {
+  position: absolute;
   text-align: center;
-  margin: 4rem 0;
+  width: 100%;
+  margin: 4rem 0rem;
   font-size: 4rem;
+  color: white;
 }
 
 .fourOhFourSubheading {
+  width: 100%;
+  padding: 0rem;
+  position: absolute;
   text-align: center;
-  color: var(--off-black);
+  color: white;
+}
+
+.fourOhFourPicture {
+  width: 100%
+}
+
+@media all and (max-width: 510px) {
+  .fourOhFourHeading {
+    margin: 3rem 0rem;
+    font-size: 2rem;
+  }
+  
+  .fourOhFourSubheading {
+    font-size: 1rem;
+  }
+
 }
